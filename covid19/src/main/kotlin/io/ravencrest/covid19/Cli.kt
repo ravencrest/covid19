@@ -27,19 +27,16 @@ const val CSSE_GLOBAL_URL =
 const val CSSE_US_URL =
   "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv"
 
-val timeSeriesPath: Path = Paths.get("./timeseries.csv").toAbsolutePath()
+val timeSeriesPath: Path = Paths.get("../timeseries.csv").toAbsolutePath()
 
 // Population data is manually scraped from https://www.worldometers.info/world-population/population-by-country/ It'd be nice to find a better source
-val populationPath: Path = Paths.get("./population.csv").toAbsolutePath()
+val populationPath: Path = Paths.get("../population.csv").toAbsolutePath()
 
 // Manually generated list that maps the country labels in the population data to the COVID-19 time series country labels
-val countriesPath: Path = Paths.get("./countries.csv").toAbsolutePath()
-
-// Manually generated list that maps territories to their sovereign state
-val territoriesPath: Path = Paths.get("./territories.csv").toAbsolutePath()
+val countriesPath: Path = Paths.get("../countries.csv").toAbsolutePath()
 
 // Manually generated list for data we don't want to io.ravencrest.covid19.parse
-val blacklistPath: Path = Paths.get("./blacklist.txt").toAbsolutePath()
+val blacklistPath: Path = Paths.get("../blacklist.txt").toAbsolutePath()
 
 fun loadCountries(): Map<String, String> {
   val map = mutableMapOf<String, String>()
@@ -103,6 +100,9 @@ fun loadTimeSeries(url: String): MappingIterator<Array<String>> {
       println("Failed to load data from GitHub. Exiting.")
       exitProcess(1)
     }
+  } else {
+    println("Timeseries data already exists on disk. Using that to generate results.")
+    println("If you'd like fresh data, delete $timeSeriesPath and run the tool again.")
   }
   return readCsvToStringArray(timeSeriesPath)
 }
@@ -172,7 +172,8 @@ fun main() {
     .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
   val rawData = parseCsse()
   val sortedSeries = rawData.mapIndexed { index, it -> it.last(index) }.sortedWith(compareByDescending { v -> v?.normalizedValue }).mapIndexed { index, point -> point?.copy(rank = index) }
-  val path = Paths.get("./results.json").toAbsolutePath()
+  val path = Paths.get("results.json").toAbsolutePath()
   val exportBytes = jsonMapper.writeValueAsString(sortedSeries)
   Files.write(path, exportBytes.toByteArray())
+  println("Results exported to $path")
 }

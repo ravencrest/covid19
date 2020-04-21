@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm'
+    id 'application'
 }
 
 repositories {
@@ -23,6 +24,23 @@ repositories {
 }
 
 sourceCompatibility = 1.8
+
+
+
+distributions {
+    main {
+        distributionBaseName = 'covid19'
+        contents {
+            from '../blacklist.txt'
+            from '../countries.csv'
+            from '../population.csv'
+        }
+    }
+}
+
+application {
+    mainClassName = 'io.ravencrest.covid19.CliKt'
+}
 
 test {
     useJUnitPlatform()
