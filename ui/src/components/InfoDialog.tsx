@@ -56,9 +56,10 @@ export const InfoDialog = () => {
         <DialogTitle onClose={onClose}>About</DialogTitle>
         <DialogContent>
           <DialogContentText>
+            Licensed under the <Link href='https://www.apache.org/licenses/LICENSE-2.0.html'>Apache 2.0 License</Link><br />
+            Source can be found at: <Link href='https://github.com/ravencrest/covid19'>GitHub</Link><br />
             COVID-19 data is taken from: <Link href='https://github.com/CSSEGISandData/COVID-19'>CSSE at Johns Hopkins University</Link><br />
-            Population data is taken from: <Link href='https://www.worldometers.info/world-population/population-by-country/'>Worldometer</Link><br />
-            Licensed under the <Link href='https://www.apache.org/licenses/LICENSE-2.0.html'>Apache 2.0 License</Link>
+            Population data is taken from: <Link href='https://www.worldometers.info/world-population/population-by-country/'>Worldometer</Link>
           </DialogContentText>
         </DialogContent>
       </Dialog></>);
