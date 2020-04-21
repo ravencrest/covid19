@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation deps.kotlinStdlib
+    implementation deps.jacksonKotlin
+    implementation deps.jacksonCsv
+    implementation deps.jacksonDatabind
+    implementation deps.jacksonKotlin
+    implementation deps.jacksonJavaTime
+    implementation deps.okhttp
+    testImplementation deps.junit
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+
+test {
+    useJUnitPlatform()
+}

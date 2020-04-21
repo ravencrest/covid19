@@ -1,0 +1,9 @@
+/.idea
+/.gradle
+/bin
+build
+out
+/venv
+/timeseries.csv
+*.iml
+node_modules
