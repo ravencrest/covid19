@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Dialog,
   DialogTitle as MuiDialogTitle,
@@ -9,9 +9,9 @@ import {
   withStyles,
   DialogTitleProps,
   createStyles,
-  Theme
+  Theme,
 } from '@material-ui/core';
-import { Help, Close } from '@material-ui/icons'
+import { Help, Close } from '@material-ui/icons';
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -27,23 +27,31 @@ const styles = (theme: Theme) =>
     },
   });
 
-const Link = ({href, children}: { href: string, children: string }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
+const Link = ({ href, children }: { href: string; children: string }) => (
+  <a href={href} target='_blank' rel='noopener noreferrer'>
+    {children}
+  </a>
 );
 
-const DialogTitle = withStyles(styles)((props: DialogTitleProps & { onClose: () => void }) => {
-  const {children, classes, onClose, ...other} = props;
-  return (
-    <MuiDialogTitle disableTypography {...other}>
-      <Typography variant="h6">{children}</Typography>
-      {onClose ? (
-        <IconButton aria-label="close" className={(classes as any).closeButton} onClick={onClose}>
-          <Close />
-        </IconButton>
-      ) : null}
-    </MuiDialogTitle>
-  );
-});
+const DialogTitle = withStyles(styles)(
+  (props: DialogTitleProps & { onClose: () => void }) => {
+    const { children, classes, onClose, ...other } = props;
+    return (
+      <MuiDialogTitle disableTypography {...other}>
+        <Typography variant='h6'>{children}</Typography>
+        {onClose ? (
+          <IconButton
+            aria-label='close'
+            className={(classes as any).closeButton}
+            onClick={onClose}
+          >
+            <Close />
+          </IconButton>
+        ) : null}
+      </MuiDialogTitle>
+    );
+  }
+);
 
 export const InfoDialog = () => {
   const [open, setOpen] = React.useState(false);
@@ -51,16 +59,37 @@ export const InfoDialog = () => {
   const onOpen = () => setOpen(true);
   return (
     <>
-      <IconButton onClick={onOpen}><Help /></IconButton>
-      <Dialog onClose={onClose} aria-labelledby="simple-dialog-title" open={open}>
+      <IconButton onClick={onOpen}>
+        <Help />
+      </IconButton>
+      <Dialog
+        onClose={onClose}
+        aria-labelledby='simple-dialog-title'
+        open={open}
+      >
         <DialogTitle onClose={onClose}>About</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Licensed under the <Link href='https://www.apache.org/licenses/LICENSE-2.0.html'>Apache 2.0 License</Link><br />
-            Source can be found at: <Link href='https://github.com/ravencrest/covid19'>GitHub</Link><br />
-            COVID-19 data is taken from: <Link href='https://github.com/CSSEGISandData/COVID-19'>CSSE at Johns Hopkins University</Link><br />
-            Population data is taken from: <Link href='https://www.worldometers.info/world-population/population-by-country/'>Worldometer</Link>
+            Licensed under the{' '}
+            <Link href='https://www.apache.org/licenses/LICENSE-2.0.html'>
+              Apache 2.0 License
+            </Link>
+            <br />
+            Source can be found at:{' '}
+            <Link href='https://github.com/ravencrest/covid19'>GitHub</Link>
+            <br />
+            COVID-19 data is taken from:{' '}
+            <Link href='https://github.com/CSSEGISandData/COVID-19'>
+              CSSE at Johns Hopkins University
+            </Link>
+            <br />
+            Population data is taken from:{' '}
+            <Link href='https://www.worldometers.info/world-population/population-by-country/'>
+              Worldometer
+            </Link>
           </DialogContentText>
         </DialogContent>
-      </Dialog></>);
+      </Dialog>
+    </>
+  );
 };

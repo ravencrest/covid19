@@ -1,9 +1,9 @@
-import React from 'react'
-import { fade, makeStyles } from '@material-ui/core/styles'
-import SearchIcon from '@material-ui/icons/Search'
-import { IconButton, TextField } from "@material-ui/core";
+import React from 'react';
+import { fade, makeStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
+import { IconButton, TextField } from '@material-ui/core';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   search: {
     display: 'flex',
     alignItems: 'center',
@@ -32,38 +32,35 @@ const useStyles = makeStyles(theme => ({
       width: 200,
     },
   },
-}))
+}));
 
 type Props = {
-  globalFilter: string,
-  setGlobalFilter: (filter: string | undefined) => void,
+  globalFilter: string;
+  setGlobalFilter: (filter: string | undefined) => void;
 };
 
-export const GlobalFilter = ({
-  globalFilter,
-  setGlobalFilter,
-}: Props) => {
-  const classes = useStyles()
+export const GlobalFilter = ({ globalFilter, setGlobalFilter }: Props) => {
+  const classes = useStyles();
 
   return (
     <div className={classes.search}>
       <TextField
         fullWidth
-        variant="outlined"
+        variant='outlined'
         value={globalFilter || ''}
-        onChange={e => {
-          setGlobalFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
+        onChange={(e) => {
+          setGlobalFilter(e.target.value || undefined); // Set undefined to remove the filter entirely
         }}
         placeholder='Search...'
-        inputProps={{'aria-label': 'search'}}
+        inputProps={{ 'aria-label': 'search' }}
         InputProps={{
           endAdornment: (
             <IconButton>
               <SearchIcon />
             </IconButton>
-          )
+          ),
         }}
       />
     </div>
-  )
+  );
 };

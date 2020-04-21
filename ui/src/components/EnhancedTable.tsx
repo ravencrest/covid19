@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Table,
   TableBody,
@@ -17,8 +17,8 @@ import {
   UseGlobalFiltersState,
   TableInstance,
   CellProps,
-} from 'react-table'
-import { TableToolbar } from './TableToolbar'
+} from 'react-table';
+import { TableToolbar } from './TableToolbar';
 
 export type Point = {
   country: string;
@@ -35,17 +35,13 @@ type Props = {
   getCellProps: (cell: CellProps<any, Point>) => {};
 };
 
-export const EnhancedTable = ({
-  columns,
-  data,
-  getCellProps,
-}: Props) => {
+export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
   const {
     getTableProps,
     headerGroups,
     prepareRow,
     setGlobalFilter,
-    state: {globalFilter},
+    state: { globalFilter },
     rows,
   } = useTable(
     {
@@ -54,12 +50,11 @@ export const EnhancedTable = ({
     },
     useGlobalFilter,
     useSortBy,
-    hooks => {
-      hooks.allColumns.push(columns => [
-        ...columns,
-      ])
+    (hooks) => {
+      hooks.allColumns.push((columns) => [...columns]);
     }
-  ) as UseGlobalFiltersInstanceProps<any> & TableInstance<any> & { state: UseGlobalFiltersState<any> };
+  ) as UseGlobalFiltersInstanceProps<any> &
+    TableInstance<any> & { state: UseGlobalFiltersState<any> };
 
   return (
     <TableContainer>
@@ -69,14 +64,17 @@ export const EnhancedTable = ({
       />
       <Table {...getTableProps()}>
         <TableHead>
-          {headerGroups.map(headerGroup => (
+          {headerGroups.map((headerGroup) => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column: any) => (
                 <TableCell
                   key={column.id}
-                  {...column.getHeaderProps({...column.getSortByToggleProps(), title: undefined})}
+                  {...column.getHeaderProps({
+                    ...column.getSortByToggleProps(),
+                    title: undefined,
+                  })}
                 >
-                  <div style={{display: 'inline-flex'}}>
+                  <div style={{ display: 'inline-flex' }}>
                     {column.render('Header')}
                     {column.id !== 'selection' ? (
                       <TableSortLabel
@@ -93,16 +91,19 @@ export const EnhancedTable = ({
         </TableHead>
         <TableBody>
           {rows.map((row, i) => {
-            prepareRow(row)
+            prepareRow(row);
             return (
               <TableRow {...row.getRowProps()}>
-                {row.cells.map(cell => (
-                  <TableCell {...cell.getCellProps()} {...getCellProps(cell as any)}>
+                {row.cells.map((cell) => (
+                  <TableCell
+                    {...cell.getCellProps()}
+                    {...getCellProps(cell as any)}
+                  >
                     {cell.render('Cell')}
-                  </TableCell>)
-                )}
+                  </TableCell>
+                ))}
               </TableRow>
-            )
+            );
           })}
         </TableBody>
       </Table>

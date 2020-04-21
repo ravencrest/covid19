@@ -23,6 +23,9 @@
     "@types/react-table": "^7.0.16",
     "babel-eslint": "10.1.0",
     "eslint-config-prettier": "^6.10.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.7",
+    "prettier": "2.0.5",
     "react-scripts": "3.4.1",
     "typescript": "^3.8.3"
   },
@@ -37,5 +40,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md,ts,tsx,jsx,html,htm}": "prettier --write"
   }
 }
