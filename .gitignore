@@ -4,6 +4,6 @@
 build
 out
 /venv
-/timeseries.csv
+/tmp
 *.iml
 node_modules

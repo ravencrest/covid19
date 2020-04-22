@@ -31,9 +31,7 @@ distributions {
     main {
         distributionBaseName = 'covid19'
         contents {
-            from '../blacklist.txt'
-            from '../countries.csv'
-            from '../population.csv'
+            from '../data'
         }
     }
 }

@@ -1,6 +1,5 @@
 - Tested and built with JDK 13. (Will not build on JDK 14 due to a bug in Gradle)
-- Can be built on UNIX-like platforms using `./gradlew :covid19:installDist`
-- Can be built on Windows platforms using `./gradlew.bat :covid19:installDist`
+- Can be built using `./gradlew :covid19:installDist`
 - To generate data (JSON):
   - Navigate to `[root_project_dir]/covid19/build/install/covid19/bin`
   - Run either `covid19` or `covid19.bat` depending on your platform.
