@@ -13,12 +13,13 @@ import java.time.*
 import java.time.format.DateTimeFormatterBuilder
 import kotlin.system.exitProcess
 
-const val WHO_URL =
+const val WHO_CASES_URL =
   "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/who_covid_19_situation_reports/who_covid_19_sit_rep_time_series/who_covid_19_sit_rep_time_series.csv"
-const val CSSE_GLOBAL_URL =
+const val CSSE_CASES_GLOBAL_URL =
   "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
-const val CSSE_US_URL =
+const val CSSE_CASES_US_URL =
   "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv"
+const val CSSE_DEATHS_GLOBAL_URL = "https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
 
 val timeSeriesPath: Path = Paths.get(if (isDev) "tmp" else ".","timeseries.csv").toAbsolutePath()
 
@@ -102,9 +103,9 @@ fun parse(url: String, countryOffSet: Int, timeSeriesOffset: Int): Set<TimeSerie
 }
 
 fun parseWho(): Set<TimeSeries> {
-  return parse(WHO_URL, 1, 3)
+  return parse(WHO_CASES_URL, 1, 3)
 }
 
-fun parseCsse(): Set<TimeSeries> {
-  return parse(CSSE_GLOBAL_URL, 1, 4)
+fun parseCsseCases(): Set<TimeSeries> {
+  return parse(CSSE_CASES_GLOBAL_URL, 1, 4)
 }
