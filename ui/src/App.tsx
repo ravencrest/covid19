@@ -44,8 +44,20 @@ const columns: Column<TableRow>[] = [
     accessor: 'casesNormalized',
   },
   {
+    Header: (
+      <Header tooltip='Confirmed Deaths (Normalized per 100,000 people)'>
+        Deaths (N)
+      </Header>
+    ),
+    accessor: 'deathsNormalized',
+  },
+  {
     Header: <Header tooltip='Confirmed Cases'>Cases</Header>,
     accessor: 'cases',
+  },
+  {
+    Header: <Header tooltip='Confirmed Deaths'>Deaths</Header>,
+    accessor: 'deaths',
   },
   {
     Header: <Header tooltip='Population'>Pop</Header>,

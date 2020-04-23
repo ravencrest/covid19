@@ -19,11 +19,12 @@ const val CSSE_CASES_GLOBAL_URL =
   "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
 const val CSSE_CASES_US_URL =
   "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv"
-const val CSSE_DEATHS_GLOBAL_URL = "https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+const val CSSE_DEATHS_GLOBAL_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
 
-val timeSeriesPath: Path = Paths.get(if (isDev) "tmp" else ".","timeseries.csv").toAbsolutePath()
+val baseTimeSeriesPath: Path = Paths.get(if (isDev) "tmp" else ".").toAbsolutePath()
 
-fun loadTimeSeries(url: String): MappingIterator<Array<String>> {
+fun loadTimeSeries(name: String, url: String): MappingIterator<Array<String>> {
+  val timeSeriesPath = baseTimeSeriesPath.resolve("$name.csv").toAbsolutePath()
   val timeSeriesFile = timeSeriesPath.toFile()
   val purgeIfOlder = LocalDateTime.now().toInstant(ZoneOffset.UTC) - Duration.ofHours(8)
   if (timeSeriesFile.exists() && timeSeriesFile.lastModified() > purgeIfOlder.toEpochMilli()) {
@@ -53,12 +54,12 @@ fun loadTimeSeries(url: String): MappingIterator<Array<String>> {
   return readCsvToStringArray(timeSeriesPath)
 }
 
-fun parse(url: String, countryOffSet: Int, timeSeriesOffset: Int): Set<TimeSeries> {
+fun parse(name: String, url: String, countryOffSet: Int, timeSeriesOffset: Int): Set<TimeSeries> {
   val blacklist = loadBlacklist()
   val countries = loadCountries()
   val populations = loadPopulations(countries = countries)
 
-  val csvIterator = loadTimeSeries(url)
+  val csvIterator = loadTimeSeries(name, url)
   val parser = DateTimeFormatterBuilder()
     .appendPattern("M/d/y")
     .toFormatter()
@@ -103,9 +104,13 @@ fun parse(url: String, countryOffSet: Int, timeSeriesOffset: Int): Set<TimeSerie
 }
 
 fun parseWho(): Set<TimeSeries> {
-  return parse(WHO_CASES_URL, 1, 3)
+  return parse("who_cases", WHO_CASES_URL, 1, 3)
 }
 
 fun parseCsseCases(): Set<TimeSeries> {
-  return parse(CSSE_CASES_GLOBAL_URL, 1, 4)
+  return parse("csse_cases", CSSE_CASES_GLOBAL_URL, 1, 4)
+}
+
+fun parseCsseDeaths(): Set<TimeSeries> {
+  return parse("csse_deaths", CSSE_DEATHS_GLOBAL_URL, 1, 4)
 }

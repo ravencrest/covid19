@@ -1,11 +1,11 @@
 {
-  "lastUpdated" : "2020-04-23T12:36:10.0184498Z",
+  "lastUpdated" : "2020-04-23T12:50:41.159763Z",
   "rows" : [ {
     "region" : "San Marino",
     "cases" : 488,
     "casesNormalized" : 1438,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 40,
+    "deathsNormalized" : 118,
     "population" : 33931,
     "rank" : 1
   }, {
@@ -20,79 +20,79 @@
     "region" : "Andorra",
     "cases" : 723,
     "casesNormalized" : 936,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 37,
+    "deathsNormalized" : 48,
     "population" : 77265,
     "rank" : 3
   }, {
     "region" : "Luxembourg",
     "cases" : 3654,
     "casesNormalized" : 584,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 80,
+    "deathsNormalized" : 13,
     "population" : 625978,
     "rank" : 4
   }, {
     "region" : "Iceland",
     "cases" : 1785,
     "casesNormalized" : 523,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 10,
+    "deathsNormalized" : 3,
     "population" : 341243,
     "rank" : 5
   }, {
     "region" : "Spain",
     "cases" : 208389,
     "casesNormalized" : 446,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 21717,
+    "deathsNormalized" : 46,
     "population" : 46754778,
     "rank" : 6
   }, {
     "region" : "Belgium",
     "cases" : 41889,
     "casesNormalized" : 361,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 6262,
+    "deathsNormalized" : 54,
     "population" : 11589623,
     "rank" : 7
   }, {
     "region" : "Ireland",
     "cases" : 16671,
     "casesNormalized" : 338,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 769,
+    "deathsNormalized" : 16,
     "population" : 4937786,
     "rank" : 8
   }, {
     "region" : "Switzerland",
     "cases" : 28268,
     "casesNormalized" : 327,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 1509,
+    "deathsNormalized" : 17,
     "population" : 8654622,
     "rank" : 9
   }, {
     "region" : "Italy",
     "cases" : 187327,
     "casesNormalized" : 310,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 25085,
+    "deathsNormalized" : 41,
     "population" : 60461826,
     "rank" : 10
   }, {
     "region" : "United States",
     "cases" : 839675,
     "casesNormalized" : 254,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 46583,
+    "deathsNormalized" : 14,
     "population" : 331228985,
     "rank" : 11
   }, {
     "region" : "Qatar",
     "cases" : 7141,
     "casesNormalized" : 248,
-    "deaths" : 0,
+    "deaths" : 10,
     "deathsNormalized" : 0,
     "population" : 2881053,
     "rank" : 12
@@ -100,63 +100,63 @@
     "region" : "Monaco",
     "cases" : 94,
     "casesNormalized" : 240,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 3,
+    "deathsNormalized" : 8,
     "population" : 39242,
     "rank" : 13
   }, {
     "region" : "France",
     "cases" : 157125,
     "casesNormalized" : 239,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 21373,
+    "deathsNormalized" : 32,
     "population" : 65839917,
     "rank" : 14
   }, {
     "region" : "Portugal",
     "cases" : 21982,
     "casesNormalized" : 216,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 785,
+    "deathsNormalized" : 8,
     "population" : 10196709,
     "rank" : 15
   }, {
     "region" : "Liechtenstein",
     "cases" : 81,
     "casesNormalized" : 212,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 1,
+    "deathsNormalized" : 3,
     "population" : 38128,
     "rank" : 16
   }, {
     "region" : "Netherlands",
     "cases" : 35041,
     "casesNormalized" : 205,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 4070,
+    "deathsNormalized" : 24,
     "population" : 17134872,
     "rank" : 17
   }, {
     "region" : "United Kingdom",
     "cases" : 134638,
     "casesNormalized" : 198,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 18151,
+    "deathsNormalized" : 27,
     "population" : 68004735,
     "rank" : 18
   }, {
     "region" : "Germany",
     "cases" : 150648,
     "casesNormalized" : 180,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 5279,
+    "deathsNormalized" : 6,
     "population" : 83783942,
     "rank" : 19
   }, {
     "region" : "Singapore",
     "cases" : 10141,
     "casesNormalized" : 173,
-    "deaths" : 0,
+    "deaths" : 12,
     "deathsNormalized" : 0,
     "population" : 5850342,
     "rank" : 20
@@ -164,47 +164,47 @@
     "region" : "Israel",
     "cases" : 14498,
     "casesNormalized" : 167,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 189,
+    "deathsNormalized" : 2,
     "population" : 8655535,
     "rank" : 21
   }, {
     "region" : "Austria",
     "cases" : 14925,
     "casesNormalized" : 166,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 510,
+    "deathsNormalized" : 6,
     "population" : 9006398,
     "rank" : 22
   }, {
     "region" : "Sweden",
     "cases" : 16004,
     "casesNormalized" : 158,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 1937,
+    "deathsNormalized" : 19,
     "population" : 10099265,
     "rank" : 23
   }, {
     "region" : "Denmark",
     "cases" : 8108,
     "casesNormalized" : 140,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 384,
+    "deathsNormalized" : 7,
     "population" : 5792202,
     "rank" : 24
   }, {
     "region" : "Norway",
     "cases" : 7338,
     "casesNormalized" : 135,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 187,
+    "deathsNormalized" : 3,
     "population" : 5421241,
     "rank" : 25
   }, {
     "region" : "Bahrain",
     "cases" : 2027,
     "casesNormalized" : 119,
-    "deaths" : 0,
+    "deaths" : 7,
     "deathsNormalized" : 0,
     "population" : 1701575,
     "rank" : 26
@@ -212,55 +212,55 @@
     "region" : "Estonia",
     "cases" : 1559,
     "casesNormalized" : 118,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 44,
+    "deathsNormalized" : 3,
     "population" : 1326535,
     "rank" : 27
   }, {
     "region" : "Turkey",
     "cases" : 98674,
     "casesNormalized" : 117,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 2376,
+    "deathsNormalized" : 3,
     "population" : 84339067,
     "rank" : 28
   }, {
     "region" : "Panama",
     "cases" : 4821,
     "casesNormalized" : 112,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 141,
+    "deathsNormalized" : 3,
     "population" : 4314767,
     "rank" : 29
   }, {
     "region" : "Canada",
     "cases" : 41648,
     "casesNormalized" : 110,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 2075,
+    "deathsNormalized" : 5,
     "population" : 37742154,
     "rank" : 30
   }, {
     "region" : "Iran",
     "cases" : 85996,
     "casesNormalized" : 102,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 5391,
+    "deathsNormalized" : 6,
     "population" : 83992949,
     "rank" : 31
   }, {
     "region" : "Malta",
     "cases" : 444,
     "casesNormalized" : 101,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 3,
+    "deathsNormalized" : 1,
     "population" : 441543,
     "rank" : 32
   }, {
     "region" : "Djibouti",
     "cases" : 974,
     "casesNormalized" : 99,
-    "deaths" : 0,
+    "deaths" : 2,
     "deathsNormalized" : 0,
     "population" : 988000,
     "rank" : 33
@@ -268,103 +268,103 @@
     "region" : "United Arab Emirates",
     "cases" : 8238,
     "casesNormalized" : 83,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 52,
+    "deathsNormalized" : 1,
     "population" : 9890402,
     "rank" : 34
   }, {
     "region" : "Belarus",
     "cases" : 7281,
     "casesNormalized" : 77,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 58,
+    "deathsNormalized" : 1,
     "population" : 9449323,
     "rank" : 35
   }, {
     "region" : "Serbia",
     "cases" : 6630,
     "casesNormalized" : 76,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 125,
+    "deathsNormalized" : 1,
     "population" : 8737371,
     "rank" : 36
   }, {
     "region" : "Finland",
     "cases" : 4129,
     "casesNormalized" : 75,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 149,
+    "deathsNormalized" : 3,
     "population" : 5540720,
     "rank" : 37
   }, {
     "region" : "Moldova",
     "cases" : 2778,
     "casesNormalized" : 69,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 75,
+    "deathsNormalized" : 2,
     "population" : 4033963,
     "rank" : 38
   }, {
     "region" : "Czech Republic (Czechia)",
     "cases" : 7132,
     "casesNormalized" : 67,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 208,
+    "deathsNormalized" : 2,
     "population" : 10708981,
     "rank" : 39
   }, {
     "region" : "Cyprus",
     "cases" : 790,
     "casesNormalized" : 65,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 13,
+    "deathsNormalized" : 1,
     "population" : 1207359,
     "rank" : 40
   }, {
     "region" : "Slovenia",
     "cases" : 1353,
     "casesNormalized" : 65,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 79,
+    "deathsNormalized" : 4,
     "population" : 2078938,
     "rank" : 41
   }, {
     "region" : "Ecuador",
     "cases" : 10850,
     "casesNormalized" : 61,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 537,
+    "deathsNormalized" : 3,
     "population" : 17643054,
     "rank" : 42
   }, {
     "region" : "North Macedonia",
     "cases" : 1259,
     "casesNormalized" : 60,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 56,
+    "deathsNormalized" : 3,
     "population" : 2083374,
     "rank" : 43
   }, {
     "region" : "Chile",
     "cases" : 11296,
     "casesNormalized" : 59,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 160,
+    "deathsNormalized" : 1,
     "population" : 19116201,
     "rank" : 44
   }, {
     "region" : "Peru",
     "cases" : 19250,
     "casesNormalized" : 58,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 530,
+    "deathsNormalized" : 2,
     "population" : 32971854,
     "rank" : 45
   }, {
     "region" : "Kuwait",
     "cases" : 2248,
     "casesNormalized" : 53,
-    "deaths" : 0,
+    "deaths" : 13,
     "deathsNormalized" : 0,
     "population" : 4270571,
     "rank" : 46
@@ -372,71 +372,71 @@
     "region" : "Armenia",
     "cases" : 1473,
     "casesNormalized" : 50,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 24,
+    "deathsNormalized" : 1,
     "population" : 2963243,
     "rank" : 47
   }, {
     "region" : "Lithuania",
     "cases" : 1370,
     "casesNormalized" : 50,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 38,
+    "deathsNormalized" : 1,
     "population" : 2722289,
     "rank" : 48
   }, {
     "region" : "Montenegro",
     "cases" : 315,
     "casesNormalized" : 50,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 5,
+    "deathsNormalized" : 1,
     "population" : 628066,
     "rank" : 49
   }, {
     "region" : "Romania",
     "cases" : 9710,
     "casesNormalized" : 50,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 524,
+    "deathsNormalized" : 3,
     "population" : 19237691,
     "rank" : 50
   }, {
     "region" : "Dominican Republic",
     "cases" : 5300,
     "casesNormalized" : 49,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 260,
+    "deathsNormalized" : 2,
     "population" : 10847910,
     "rank" : 51
   }, {
     "region" : "Croatia",
     "cases" : 1950,
     "casesNormalized" : 47,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 48,
+    "deathsNormalized" : 1,
     "population" : 4105267,
     "rank" : 52
   }, {
     "region" : "Bosnia and Herzegovina",
     "cases" : 1368,
     "casesNormalized" : 42,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 53,
+    "deathsNormalized" : 2,
     "population" : 3280819,
     "rank" : 53
   }, {
     "region" : "Latvia",
     "cases" : 761,
     "casesNormalized" : 40,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 11,
+    "deathsNormalized" : 1,
     "population" : 1886198,
     "rank" : 54
   }, {
     "region" : "Russia",
     "cases" : 57999,
     "casesNormalized" : 40,
-    "deaths" : 0,
+    "deaths" : 513,
     "deathsNormalized" : 0,
     "population" : 145934462,
     "rank" : 55
@@ -444,7 +444,7 @@
     "region" : "Saudi Arabia",
     "cases" : 12772,
     "casesNormalized" : 37,
-    "deaths" : 0,
+    "deaths" : 114,
     "deathsNormalized" : 0,
     "population" : 34813871,
     "rank" : 56
@@ -452,7 +452,7 @@
     "region" : "Brunei",
     "cases" : 138,
     "casesNormalized" : 32,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 437479,
     "rank" : 57
@@ -460,7 +460,7 @@
     "region" : "Oman",
     "cases" : 1614,
     "casesNormalized" : 32,
-    "deaths" : 0,
+    "deaths" : 8,
     "deathsNormalized" : 0,
     "population" : 5106626,
     "rank" : 58
@@ -468,7 +468,7 @@
     "region" : "New Zealand",
     "cases" : 1451,
     "casesNormalized" : 30,
-    "deaths" : 0,
+    "deaths" : 14,
     "deathsNormalized" : 0,
     "population" : 4822233,
     "rank" : 59
@@ -484,15 +484,15 @@
     "region" : "Poland",
     "cases" : 10169,
     "casesNormalized" : 27,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 426,
+    "deathsNormalized" : 1,
     "population" : 37846611,
     "rank" : 61
   }, {
     "region" : "Australia",
     "cases" : 6547,
     "casesNormalized" : 26,
-    "deaths" : 0,
+    "deaths" : 67,
     "deathsNormalized" : 0,
     "population" : 25499884,
     "rank" : 62
@@ -500,39 +500,39 @@
     "region" : "Barbados",
     "cases" : 75,
     "casesNormalized" : 26,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 5,
+    "deathsNormalized" : 2,
     "population" : 287375,
     "rank" : 63
   }, {
     "region" : "Mauritius",
     "cases" : 329,
     "casesNormalized" : 26,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 9,
+    "deathsNormalized" : 1,
     "population" : 1271768,
     "rank" : 64
   }, {
     "region" : "Antigua and Barbuda",
     "cases" : 24,
     "casesNormalized" : 25,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 3,
+    "deathsNormalized" : 3,
     "population" : 97929,
     "rank" : 65
   }, {
     "region" : "Greece",
     "cases" : 2408,
     "casesNormalized" : 23,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 121,
+    "deathsNormalized" : 1,
     "population" : 10423054,
     "rank" : 66
   }, {
     "region" : "Slovakia",
     "cases" : 1244,
     "casesNormalized" : 23,
-    "deaths" : 0,
+    "deaths" : 14,
     "deathsNormalized" : 0,
     "population" : 5459642,
     "rank" : 67
@@ -540,24 +540,24 @@
     "region" : "Albania",
     "cases" : 634,
     "casesNormalized" : 22,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 27,
+    "deathsNormalized" : 1,
     "population" : 2877797,
     "rank" : 68
   }, {
     "region" : "Brazil",
     "cases" : 45757,
     "casesNormalized" : 22,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 2906,
+    "deathsNormalized" : 1,
     "population" : 212559417,
     "rank" : 69
   }, {
     "region" : "Hungary",
     "cases" : 2168,
     "casesNormalized" : 22,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 225,
+    "deathsNormalized" : 2,
     "population" : 9660351,
     "rank" : 70
   }, {
@@ -572,7 +572,7 @@
     "region" : "South Korea",
     "cases" : 10694,
     "casesNormalized" : 21,
-    "deaths" : 0,
+    "deaths" : 238,
     "deathsNormalized" : 0,
     "population" : 51269185,
     "rank" : 72
@@ -580,15 +580,15 @@
     "region" : "Bahamas",
     "cases" : 65,
     "casesNormalized" : 17,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 9,
+    "deathsNormalized" : 2,
     "population" : 393244,
     "rank" : 73
   }, {
     "region" : "Malaysia",
     "cases" : 5532,
     "casesNormalized" : 17,
-    "deaths" : 0,
+    "deaths" : 93,
     "deathsNormalized" : 0,
     "population" : 32365999,
     "rank" : 74
@@ -604,7 +604,7 @@
     "region" : "Uruguay",
     "cases" : 543,
     "casesNormalized" : 16,
-    "deaths" : 0,
+    "deaths" : 12,
     "deathsNormalized" : 0,
     "population" : 3473730,
     "rank" : 76
@@ -612,7 +612,7 @@
     "region" : "Azerbaijan",
     "cases" : 1518,
     "casesNormalized" : 15,
-    "deaths" : 0,
+    "deaths" : 20,
     "deathsNormalized" : 0,
     "population" : 10139177,
     "rank" : 77
@@ -620,15 +620,15 @@
     "region" : "Bulgaria",
     "cases" : 1024,
     "casesNormalized" : 15,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 49,
+    "deathsNormalized" : 1,
     "population" : 6948445,
     "rank" : 78
   }, {
     "region" : "Ukraine",
     "cases" : 6592,
     "casesNormalized" : 15,
-    "deaths" : 0,
+    "deaths" : 174,
     "deathsNormalized" : 0,
     "population" : 43733762,
     "rank" : 79
@@ -636,7 +636,7 @@
     "region" : "Cabo Verde",
     "cases" : 73,
     "casesNormalized" : 13,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 555987,
     "rank" : 80
@@ -644,7 +644,7 @@
     "region" : "Costa Rica",
     "cases" : 681,
     "casesNormalized" : 13,
-    "deaths" : 0,
+    "deaths" : 6,
     "deathsNormalized" : 0,
     "population" : 5094118,
     "rank" : 81
@@ -668,7 +668,7 @@
     "region" : "Kazakhstan",
     "cases" : 2135,
     "casesNormalized" : 11,
-    "deaths" : 0,
+    "deaths" : 19,
     "deathsNormalized" : 0,
     "population" : 18776707,
     "rank" : 84
@@ -684,15 +684,15 @@
     "region" : "Congo",
     "cases" : 545,
     "casesNormalized" : 10,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 31,
+    "deathsNormalized" : 1,
     "population" : 5518087,
     "rank" : 86
   }, {
     "region" : "Cuba",
     "cases" : 1189,
     "casesNormalized" : 10,
-    "deaths" : 0,
+    "deaths" : 40,
     "deathsNormalized" : 0,
     "population" : 11326616,
     "rank" : 87
@@ -700,7 +700,7 @@
     "region" : "Georgia",
     "cases" : 416,
     "casesNormalized" : 10,
-    "deaths" : 0,
+    "deaths" : 5,
     "deathsNormalized" : 0,
     "population" : 3989167,
     "rank" : 88
@@ -708,7 +708,7 @@
     "region" : "Lebanon",
     "cases" : 682,
     "casesNormalized" : 10,
-    "deaths" : 0,
+    "deaths" : 22,
     "deathsNormalized" : 0,
     "population" : 6825445,
     "rank" : 89
@@ -716,7 +716,7 @@
     "region" : "Colombia",
     "cases" : 4356,
     "casesNormalized" : 9,
-    "deaths" : 0,
+    "deaths" : 206,
     "deathsNormalized" : 0,
     "population" : 50882891,
     "rank" : 90
@@ -724,15 +724,15 @@
     "region" : "Guyana",
     "cases" : 67,
     "casesNormalized" : 9,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 7,
+    "deathsNormalized" : 1,
     "population" : 786552,
     "rank" : 91
   }, {
     "region" : "Japan",
     "cases" : 11512,
     "casesNormalized" : 9,
-    "deaths" : 0,
+    "deaths" : 281,
     "deathsNormalized" : 0,
     "population" : 126476461,
     "rank" : 92
@@ -740,7 +740,7 @@
     "region" : "Kyrgyzstan",
     "cases" : 612,
     "casesNormalized" : 9,
-    "deaths" : 0,
+    "deaths" : 7,
     "deathsNormalized" : 0,
     "population" : 6524195,
     "rank" : 93
@@ -748,7 +748,7 @@
     "region" : "Morocco",
     "cases" : 3446,
     "casesNormalized" : 9,
-    "deaths" : 0,
+    "deaths" : 149,
     "deathsNormalized" : 0,
     "population" : 36910560,
     "rank" : 94
@@ -756,7 +756,7 @@
     "region" : "Palestine",
     "cases" : 474,
     "casesNormalized" : 9,
-    "deaths" : 0,
+    "deaths" : 4,
     "deathsNormalized" : 0,
     "population" : 5101414,
     "rank" : 95
@@ -764,7 +764,7 @@
     "region" : "Jamaica",
     "cases" : 233,
     "casesNormalized" : 8,
-    "deaths" : 0,
+    "deaths" : 6,
     "deathsNormalized" : 0,
     "population" : 2961167,
     "rank" : 96
@@ -780,15 +780,15 @@
     "region" : "Trinidad and Tobago",
     "cases" : 115,
     "casesNormalized" : 8,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 8,
+    "deathsNormalized" : 1,
     "population" : 1399488,
     "rank" : 98
   }, {
     "region" : "Tunisia",
     "cases" : 909,
     "casesNormalized" : 8,
-    "deaths" : 0,
+    "deaths" : 38,
     "deathsNormalized" : 0,
     "population" : 11818619,
     "rank" : 99
@@ -796,15 +796,15 @@
     "region" : "Algeria",
     "cases" : 2910,
     "casesNormalized" : 7,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 402,
+    "deathsNormalized" : 1,
     "population" : 43851044,
     "rank" : 100
   }, {
     "region" : "Argentina",
     "cases" : 3144,
     "casesNormalized" : 7,
-    "deaths" : 0,
+    "deaths" : 152,
     "deathsNormalized" : 0,
     "population" : 45195774,
     "rank" : 101
@@ -812,7 +812,7 @@
     "region" : "Gabon",
     "cases" : 166,
     "casesNormalized" : 7,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 2225734,
     "rank" : 102
@@ -820,15 +820,15 @@
     "region" : "Mexico",
     "cases" : 9501,
     "casesNormalized" : 7,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 857,
+    "deathsNormalized" : 1,
     "population" : 128932753,
     "rank" : 103
   }, {
     "region" : "China",
     "cases" : 83868,
     "casesNormalized" : 6,
-    "deaths" : 0,
+    "deaths" : 4636,
     "deathsNormalized" : 0,
     "population" : 1439323776,
     "rank" : 104
@@ -836,7 +836,7 @@
     "region" : "Equatorial Guinea",
     "cases" : 84,
     "casesNormalized" : 6,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 1402985,
     "rank" : 105
@@ -844,7 +844,7 @@
     "region" : "Guinea",
     "cases" : 761,
     "casesNormalized" : 6,
-    "deaths" : 0,
+    "deaths" : 6,
     "deathsNormalized" : 0,
     "population" : 13132795,
     "rank" : 106
@@ -852,7 +852,7 @@
     "region" : "Philippines",
     "cases" : 6710,
     "casesNormalized" : 6,
-    "deaths" : 0,
+    "deaths" : 446,
     "deathsNormalized" : 0,
     "population" : 109581078,
     "rank" : 107
@@ -860,7 +860,7 @@
     "region" : "South Africa",
     "cases" : 3635,
     "casesNormalized" : 6,
-    "deaths" : 0,
+    "deaths" : 65,
     "deathsNormalized" : 0,
     "population" : 59308690,
     "rank" : 108
@@ -868,7 +868,7 @@
     "region" : "Bolivia",
     "cases" : 609,
     "casesNormalized" : 5,
-    "deaths" : 0,
+    "deaths" : 37,
     "deathsNormalized" : 0,
     "population" : 11673021,
     "rank" : 109
@@ -876,7 +876,7 @@
     "region" : "Honduras",
     "cases" : 510,
     "casesNormalized" : 5,
-    "deaths" : 0,
+    "deaths" : 46,
     "deathsNormalized" : 0,
     "population" : 9904607,
     "rank" : 110
@@ -884,7 +884,7 @@
     "region" : "Pakistan",
     "cases" : 10076,
     "casesNormalized" : 5,
-    "deaths" : 0,
+    "deaths" : 212,
     "deathsNormalized" : 0,
     "population" : 220892340,
     "rank" : 111
@@ -892,7 +892,7 @@
     "region" : "Uzbekistan",
     "cases" : 1716,
     "casesNormalized" : 5,
-    "deaths" : 0,
+    "deaths" : 7,
     "deathsNormalized" : 0,
     "population" : 33469203,
     "rank" : 112
@@ -900,15 +900,15 @@
     "region" : "Belize",
     "cases" : 18,
     "casesNormalized" : 5,
-    "deaths" : 0,
-    "deathsNormalized" : 0,
+    "deaths" : 2,
+    "deathsNormalized" : 1,
     "population" : 397628,
     "rank" : 113
   }, {
     "region" : "Cameroon",
     "cases" : 1163,
     "casesNormalized" : 4,
-    "deaths" : 0,
+    "deaths" : 43,
     "deathsNormalized" : 0,
     "population" : 26545863,
     "rank" : 114
@@ -916,7 +916,7 @@
     "region" : "Côte d’Ivoire",
     "cases" : 952,
     "casesNormalized" : 4,
-    "deaths" : 0,
+    "deaths" : 14,
     "deathsNormalized" : 0,
     "population" : 26378274,
     "rank" : 115
@@ -924,7 +924,7 @@
     "region" : "Egypt",
     "cases" : 3659,
     "casesNormalized" : 4,
-    "deaths" : 0,
+    "deaths" : 276,
     "deathsNormalized" : 0,
     "population" : 102334404,
     "rank" : 116
@@ -932,7 +932,7 @@
     "region" : "El Salvador",
     "cases" : 237,
     "casesNormalized" : 4,
-    "deaths" : 0,
+    "deaths" : 7,
     "deathsNormalized" : 0,
     "population" : 6486205,
     "rank" : 117
@@ -940,7 +940,7 @@
     "region" : "Ghana",
     "cases" : 1154,
     "casesNormalized" : 4,
-    "deaths" : 0,
+    "deaths" : 9,
     "deathsNormalized" : 0,
     "population" : 31072940,
     "rank" : 118
@@ -948,7 +948,7 @@
     "region" : "Iraq",
     "cases" : 1631,
     "casesNormalized" : 4,
-    "deaths" : 0,
+    "deaths" : 83,
     "deathsNormalized" : 0,
     "population" : 40222493,
     "rank" : 119
@@ -956,7 +956,7 @@
     "region" : "Jordan",
     "cases" : 435,
     "casesNormalized" : 4,
-    "deaths" : 0,
+    "deaths" : 7,
     "deathsNormalized" : 0,
     "population" : 10203134,
     "rank" : 120
@@ -964,7 +964,7 @@
     "region" : "Thailand",
     "cases" : 2826,
     "casesNormalized" : 4,
-    "deaths" : 0,
+    "deaths" : 49,
     "deathsNormalized" : 0,
     "population" : 69799978,
     "rank" : 121
@@ -972,7 +972,7 @@
     "region" : "Afghanistan",
     "cases" : 1176,
     "casesNormalized" : 3,
-    "deaths" : 0,
+    "deaths" : 40,
     "deathsNormalized" : 0,
     "population" : 38928346,
     "rank" : 122
@@ -980,7 +980,7 @@
     "region" : "Burkina Faso",
     "cases" : 609,
     "casesNormalized" : 3,
-    "deaths" : 0,
+    "deaths" : 39,
     "deathsNormalized" : 0,
     "population" : 20903273,
     "rank" : 123
@@ -988,7 +988,7 @@
     "region" : "Eswatini",
     "cases" : 31,
     "casesNormalized" : 3,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 1160164,
     "rank" : 124
@@ -996,7 +996,7 @@
     "region" : "Indonesia",
     "cases" : 7418,
     "casesNormalized" : 3,
-    "deaths" : 0,
+    "deaths" : 635,
     "deathsNormalized" : 0,
     "population" : 273523615,
     "rank" : 125
@@ -1004,7 +1004,7 @@
     "region" : "Niger",
     "cases" : 662,
     "casesNormalized" : 3,
-    "deaths" : 0,
+    "deaths" : 22,
     "deathsNormalized" : 0,
     "population" : 24206644,
     "rank" : 126
@@ -1012,7 +1012,7 @@
     "region" : "Paraguay",
     "cases" : 213,
     "casesNormalized" : 3,
-    "deaths" : 0,
+    "deaths" : 9,
     "deathsNormalized" : 0,
     "population" : 7132538,
     "rank" : 127
@@ -1020,7 +1020,7 @@
     "region" : "Senegal",
     "cases" : 442,
     "casesNormalized" : 3,
-    "deaths" : 0,
+    "deaths" : 6,
     "deathsNormalized" : 0,
     "population" : 16743927,
     "rank" : 128
@@ -1036,7 +1036,7 @@
     "region" : "Bangladesh",
     "cases" : 3772,
     "casesNormalized" : 2,
-    "deaths" : 0,
+    "deaths" : 120,
     "deathsNormalized" : 0,
     "population" : 164689383,
     "rank" : 130
@@ -1052,7 +1052,7 @@
     "region" : "Guatemala",
     "cases" : 316,
     "casesNormalized" : 2,
-    "deaths" : 0,
+    "deaths" : 8,
     "deathsNormalized" : 0,
     "population" : 17915568,
     "rank" : 132
@@ -1060,7 +1060,7 @@
     "region" : "India",
     "cases" : 21370,
     "casesNormalized" : 2,
-    "deaths" : 0,
+    "deaths" : 681,
     "deathsNormalized" : 0,
     "population" : 1380004385,
     "rank" : 133
@@ -1068,7 +1068,7 @@
     "region" : "Liberia",
     "cases" : 101,
     "casesNormalized" : 2,
-    "deaths" : 0,
+    "deaths" : 8,
     "deathsNormalized" : 0,
     "population" : 5057681,
     "rank" : 134
@@ -1076,7 +1076,7 @@
     "region" : "Somalia",
     "cases" : 286,
     "casesNormalized" : 2,
-    "deaths" : 0,
+    "deaths" : 8,
     "deathsNormalized" : 0,
     "population" : 15893222,
     "rank" : 135
@@ -1084,7 +1084,7 @@
     "region" : "Sri Lanka",
     "cases" : 330,
     "casesNormalized" : 2,
-    "deaths" : 0,
+    "deaths" : 7,
     "deathsNormalized" : 0,
     "population" : 21413249,
     "rank" : 136
@@ -1092,7 +1092,7 @@
     "region" : "Suriname",
     "cases" : 10,
     "casesNormalized" : 2,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 586632,
     "rank" : 137
@@ -1100,7 +1100,7 @@
     "region" : "Taiwan",
     "cases" : 426,
     "casesNormalized" : 2,
-    "deaths" : 0,
+    "deaths" : 6,
     "deathsNormalized" : 0,
     "population" : 23816775,
     "rank" : 138
@@ -1148,7 +1148,7 @@
     "region" : "Haiti",
     "cases" : 62,
     "casesNormalized" : 1,
-    "deaths" : 0,
+    "deaths" : 4,
     "deathsNormalized" : 0,
     "population" : 11402528,
     "rank" : 144
@@ -1156,7 +1156,7 @@
     "region" : "Kenya",
     "cases" : 303,
     "casesNormalized" : 1,
-    "deaths" : 0,
+    "deaths" : 14,
     "deathsNormalized" : 0,
     "population" : 53771296,
     "rank" : 145
@@ -1188,7 +1188,7 @@
     "region" : "Togo",
     "cases" : 88,
     "casesNormalized" : 1,
-    "deaths" : 0,
+    "deaths" : 6,
     "deathsNormalized" : 0,
     "population" : 8278724,
     "rank" : 149
@@ -1196,7 +1196,7 @@
     "region" : "Venezuela",
     "cases" : 288,
     "casesNormalized" : 1,
-    "deaths" : 0,
+    "deaths" : 10,
     "deathsNormalized" : 0,
     "population" : 28435940,
     "rank" : 150
@@ -1204,7 +1204,7 @@
     "region" : "Libya",
     "cases" : 59,
     "casesNormalized" : 1,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 6871292,
     "rank" : 151
@@ -1212,7 +1212,7 @@
     "region" : "Mali",
     "cases" : 293,
     "casesNormalized" : 1,
-    "deaths" : 0,
+    "deaths" : 17,
     "deathsNormalized" : 0,
     "population" : 20250833,
     "rank" : 152
@@ -1220,7 +1220,7 @@
     "region" : "Botswana",
     "cases" : 22,
     "casesNormalized" : 1,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 2351627,
     "rank" : 153
@@ -1244,7 +1244,7 @@
     "region" : "Angola",
     "cases" : 25,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 2,
     "deathsNormalized" : 0,
     "population" : 32866272,
     "rank" : 156
@@ -1252,7 +1252,7 @@
     "region" : "Benin",
     "cases" : 54,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 12123200,
     "rank" : 157
@@ -1276,7 +1276,7 @@
     "region" : "Ethiopia",
     "cases" : 116,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 3,
     "deathsNormalized" : 0,
     "population" : 114963588,
     "rank" : 160
@@ -1284,7 +1284,7 @@
     "region" : "Gambia",
     "cases" : 10,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 2416668,
     "rank" : 161
@@ -1300,7 +1300,7 @@
     "region" : "Mauritania",
     "cases" : 7,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 4649658,
     "rank" : 163
@@ -1316,7 +1316,7 @@
     "region" : "Nicaragua",
     "cases" : 10,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 2,
     "deathsNormalized" : 0,
     "population" : 6624554,
     "rank" : 165
@@ -1324,7 +1324,7 @@
     "region" : "Nigeria",
     "cases" : 873,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 28,
     "deathsNormalized" : 0,
     "population" : 206139589,
     "rank" : 166
@@ -1340,7 +1340,7 @@
     "region" : "Sudan",
     "cases" : 140,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 13,
     "deathsNormalized" : 0,
     "population" : 43849260,
     "rank" : 168
@@ -1348,7 +1348,7 @@
     "region" : "Tanzania",
     "cases" : 284,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 10,
     "deathsNormalized" : 0,
     "population" : 59734218,
     "rank" : 169
@@ -1372,7 +1372,7 @@
     "region" : "Zambia",
     "cases" : 74,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 3,
     "deathsNormalized" : 0,
     "population" : 18383955,
     "rank" : 172
@@ -1380,7 +1380,7 @@
     "region" : "Zimbabwe",
     "cases" : 28,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 4,
     "deathsNormalized" : 0,
     "population" : 14862924,
     "rank" : 173
@@ -1396,7 +1396,7 @@
     "region" : "Syria",
     "cases" : 42,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 3,
     "deathsNormalized" : 0,
     "population" : 17500658,
     "rank" : 175
@@ -1412,7 +1412,7 @@
     "region" : "Myanmar",
     "cases" : 123,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 5,
     "deathsNormalized" : 0,
     "population" : 54409800,
     "rank" : 177
@@ -1420,7 +1420,7 @@
     "region" : "Burundi",
     "cases" : 11,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 1,
     "deathsNormalized" : 0,
     "population" : 11890784,
     "rank" : 178
@@ -1428,7 +1428,7 @@
     "region" : "Malawi",
     "cases" : 23,
     "casesNormalized" : 0,
-    "deaths" : 0,
+    "deaths" : 3,
     "deathsNormalized" : 0,
     "population" : 19129952,
     "rank" : 179

@@ -24,16 +24,18 @@ fun main() {
   val countries = loadCountries()
   val populations = loadPopulations(countries)
 
-  val rawData = parseCsseCases()
-  val sortedSeries = rawData.mapNotNull {
+  val rawCases = parseCsseCases()
+  val rawDeaths = parseCsseDeaths().associate { Pair(it.country, it) }
+  val sortedCases = rawCases.mapNotNull {
     it.last()?.let { p ->
       val population = populations[p.country] ?: error("Missing population data for ${p.country}")
+      val deaths = rawDeaths[p.country]?.last()?.value ?: 0
       TableRow(
         region = p.country,
         cases = p.value,
-        casesNormalized = (p.value.toDouble() / population * NORMALIZER).roundToLong()  ,
-        deaths = 0,
-        deathsNormalized = 0,
+        casesNormalized = (p.value.toDouble() / population * NORMALIZER).roundToLong(),
+        deaths = deaths,
+        deathsNormalized = (deaths.toDouble() / population * NORMALIZER).roundToLong(),
         population = population,
         rank = 0
       )
@@ -44,7 +46,7 @@ fun main() {
     .let { Results(lastUpdated = OffsetDateTime.now(ZoneOffset.UTC), rows = it) }
   val path = Paths.get(if (isDev) "./ui/src" else ".", "results.json").toAbsolutePath()
   deleteStaleData(path)
-  val exportBytes = jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(sortedSeries)
+  val exportBytes = jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(sortedCases)
   Files.write(path, exportBytes.toByteArray())
   println("Results exported to $path")
 }
