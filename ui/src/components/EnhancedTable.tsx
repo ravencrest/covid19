@@ -69,15 +69,7 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
     useGlobalFilter,
     useSortBy,
     (hooks) => {
-      hooks.allColumns.push((columns) => [
-        {
-          id: 'rank',
-          Header: () => '',
-          groupByBoundary: true,
-          Cell: ({ row }: any) => row.index,
-        },
-        ...columns,
-      ]);
+      hooks.allColumns.push((columns) => columns);
     }
   ) as UseGlobalFiltersInstanceProps<any> &
     TableInstance<any> & { state: UseGlobalFiltersState<any> };
@@ -96,6 +88,7 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
         <TableHead>
           {headerGroups.map((headerGroup) => (
             <MuiTableRow {...headerGroup.getHeaderGroupProps()}>
+              <TableCell></TableCell>
               {headerGroup.headers.map((column: any) => (
                 <TableCell
                   key={column.id}
@@ -106,13 +99,11 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
                 >
                   <div style={{ display: 'inline-flex' }}>
                     {column.render('Header')}
-                    {column.id !== 'rank' ? (
-                      <TableSortLabel
-                        active={column.isSorted}
-                        // react-table has a unsorted state which is not treated here
-                        direction={column.isSortedDesc ? 'desc' : 'asc'}
-                      />
-                    ) : null}
+                    <TableSortLabel
+                      active={column.isSorted}
+                      // react-table has a unsorted state which is not treated here
+                      direction={column.isSortedDesc ? 'desc' : 'asc'}
+                    />
                   </div>
                 </TableCell>
               ))}
@@ -124,14 +115,17 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
             prepareRow(row);
             return (
               <MuiTableRow {...row.getRowProps()}>
-                {row.cells.map((cell) => (
-                  <TableCell
-                    {...cell.getCellProps()}
-                    {...getCellProps(cell as any)}
-                  >
-                    {cell.render('Cell')}
-                  </TableCell>
-                ))}
+                <TableCell>{i + 1}</TableCell>
+                {row.cells.map((cell) => {
+                  return (
+                    <TableCell
+                      {...cell.getCellProps()}
+                      {...getCellProps(cell as any)}
+                    >
+                      {cell.render('Cell')}
+                    </TableCell>
+                  );
+                })}
               </MuiTableRow>
             );
           })}
