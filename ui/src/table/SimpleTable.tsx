@@ -23,7 +23,7 @@ import {
 import { parseJSON, formatRelative as format } from 'date-fns';
 import { TableToolbar } from './TableToolbar';
 import clsx from 'clsx';
-import './EnhancedTable.module.css';
+import './SimpleTable.module.css';
 
 const useLastUpdatedStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +53,7 @@ type Props = {
   getCellProps: (cell: CellProps<any, TableRow>) => {};
 };
 
-export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
+export const SimpleTable = ({ columns, data, getCellProps }: Props) => {
   const {
     getTableProps,
     headerGroups,
