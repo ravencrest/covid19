@@ -80,13 +80,13 @@ fun parse(url: String, countryOffSet: Int, timeSeriesOffset: Int): Set<TimeSerie
       println("Failed to find an appropriate country for $country. Most likely, we're missing a mapping `countries.csv`.")
       continue
     }
-    val newSeries = row.slice(timeSeriesOffset until row.size).map { it.toDoubleOrNull() }
+    val newSeries = row.slice(timeSeriesOffset until row.size).map { it.toLongOrNull() }
     val previousSeries = dataMap[country]?.points
 
     // Some countries are broken up into multiple rows, we want to merge the previously parsed rows with the most recently parsed row
     val mergedSeries = previousSeries?.mapIndexed { index, oldValue ->
-      val newValue = newSeries[index] ?: 0.0
-      (oldValue ?: 0.0) + newValue
+      val newValue = newSeries[index] ?: 0
+      (oldValue ?: 0) + newValue
     } ?: newSeries
 
     val newRow = RawTimeSeries(

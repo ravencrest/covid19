@@ -5,11 +5,10 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
+  TableRow as MuiTableRow,
   TableSortLabel,
   Chip,
   makeStyles,
-  lighten,
 } from '@material-ui/core';
 import {
   Column,
@@ -32,21 +31,22 @@ const useLastUpdatedStyles = makeStyles((theme) => ({
   },
 }));
 
-export type Results = { lastUpdated: string; rows: Array<Point> };
+export type Results = { lastUpdated: string; rows: Array<TableRow> };
 
-export type Point = {
-  country: string;
-  normalizedValue: number;
-  rawValue: number;
-  population: number;
-  date: string;
+export type TableRow = {
   rank: number;
+  region: string;
+  cases: number;
+  casesNormalized: number;
+  deaths: number;
+  deathsNormalized: number;
+  population: number;
 };
 
 type Props = {
-  columns: Column<Point>[];
+  columns: Column<TableRow>[];
   data: Results;
-  getCellProps: (cell: CellProps<any, Point>) => {};
+  getCellProps: (cell: CellProps<any, TableRow>) => {};
 };
 
 export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
@@ -83,7 +83,7 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
       <Table {...getTableProps()}>
         <TableHead>
           {headerGroups.map((headerGroup) => (
-            <TableRow {...headerGroup.getHeaderGroupProps()}>
+            <MuiTableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column: any) => (
                 <TableCell
                   key={column.id}
@@ -104,14 +104,14 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
                   </div>
                 </TableCell>
               ))}
-            </TableRow>
+            </MuiTableRow>
           ))}
         </TableHead>
         <TableBody>
           {rows.map((row, i) => {
             prepareRow(row);
             return (
-              <TableRow {...row.getRowProps()}>
+              <MuiTableRow {...row.getRowProps()}>
                 {row.cells.map((cell) => (
                   <TableCell
                     {...cell.getCellProps()}
@@ -120,7 +120,7 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
                     {cell.render('Cell')}
                   </TableCell>
                 ))}
-              </TableRow>
+              </MuiTableRow>
             );
           })}
         </TableBody>

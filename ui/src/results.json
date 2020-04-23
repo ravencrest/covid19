@@ -1,1 +1,1452 @@
-{"lastUpdated":"2020-04-22T23:57:30.6331402Z","rows":[{"country":"San Marino","population":33931,"rawValue":476.0,"normalizedValue":1403,"date":"2020-04-21","rank":1},{"country":"Holy See","population":801,"rawValue":9.0,"normalizedValue":1124,"date":"2020-04-21","rank":2},{"country":"Andorra","population":77265,"rawValue":717.0,"normalizedValue":928,"date":"2020-04-21","rank":3},{"country":"Luxembourg","population":625978,"rawValue":3618.0,"normalizedValue":578,"date":"2020-04-21","rank":4},{"country":"Iceland","population":341243,"rawValue":1778.0,"normalizedValue":521,"date":"2020-04-21","rank":5},{"country":"Spain","population":46754778,"rawValue":204178.0,"normalizedValue":437,"date":"2020-04-21","rank":6},{"country":"Belgium","population":11589623,"rawValue":40956.0,"normalizedValue":353,"date":"2020-04-21","rank":7},{"country":"Ireland","population":4937786,"rawValue":16040.0,"normalizedValue":325,"date":"2020-04-21","rank":8},{"country":"Switzerland","population":8654622,"rawValue":28063.0,"normalizedValue":324,"date":"2020-04-21","rank":9},{"country":"Italy","population":60461826,"rawValue":183957.0,"normalizedValue":304,"date":"2020-04-21","rank":10},{"country":"United States","population":331228985,"rawValue":812036.0,"normalizedValue":245,"date":"2020-04-21","rank":11},{"country":"France","population":65839917,"rawValue":159297.0,"normalizedValue":242,"date":"2020-04-21","rank":12},{"country":"Monaco","population":39242,"rawValue":94.0,"normalizedValue":240,"date":"2020-04-21","rank":13},{"country":"Qatar","population":2881053,"rawValue":6533.0,"normalizedValue":227,"date":"2020-04-21","rank":14},{"country":"Liechtenstein","population":38128,"rawValue":81.0,"normalizedValue":212,"date":"2020-04-21","rank":15},{"country":"Portugal","population":10196709,"rawValue":21379.0,"normalizedValue":210,"date":"2020-04-21","rank":16},{"country":"Netherlands","population":17134872,"rawValue":34326.0,"normalizedValue":200,"date":"2020-04-21","rank":17},{"country":"United Kingdom","population":68004735,"rawValue":130172.0,"normalizedValue":191,"date":"2020-04-21","rank":18},{"country":"Germany","population":83783942,"rawValue":148291.0,"normalizedValue":177,"date":"2020-04-21","rank":19},{"country":"Austria","population":9006398,"rawValue":14873.0,"normalizedValue":165,"date":"2020-04-21","rank":20},{"country":"Israel","population":8655535,"rawValue":13942.0,"normalizedValue":161,"date":"2020-04-21","rank":21},{"country":"Singapore","population":5850342,"rawValue":9125.0,"normalizedValue":156,"date":"2020-04-21","rank":22},{"country":"Sweden","population":10099265,"rawValue":15322.0,"normalizedValue":152,"date":"2020-04-21","rank":23},{"country":"Denmark","population":5792202,"rawValue":7891.0,"normalizedValue":136,"date":"2020-04-21","rank":24},{"country":"Norway","population":5421241,"rawValue":7191.0,"normalizedValue":133,"date":"2020-04-21","rank":25},{"country":"Estonia","population":1326535,"rawValue":1552.0,"normalizedValue":117,"date":"2020-04-21","rank":26},{"country":"Bahrain","population":1701575,"rawValue":1973.0,"normalizedValue":116,"date":"2020-04-21","rank":27},{"country":"Turkey","population":84339067,"rawValue":95591.0,"normalizedValue":113,"date":"2020-04-21","rank":28},{"country":"Panama","population":4314767,"rawValue":4658.0,"normalizedValue":108,"date":"2020-04-21","rank":29},{"country":"Canada","population":37742154,"rawValue":39401.0,"normalizedValue":104,"date":"2020-04-21","rank":30},{"country":"Iran","population":83992949,"rawValue":84802.0,"normalizedValue":101,"date":"2020-04-21","rank":31},{"country":"Malta","population":441543,"rawValue":443.0,"normalizedValue":100,"date":"2020-04-21","rank":32},{"country":"Djibouti","population":988000,"rawValue":945.0,"normalizedValue":96,"date":"2020-04-21","rank":33},{"country":"United Arab Emirates","population":9890402,"rawValue":7755.0,"normalizedValue":78,"date":"2020-04-21","rank":34},{"country":"Serbia","population":8737371,"rawValue":6630.0,"normalizedValue":76,"date":"2020-04-21","rank":35},{"country":"Finland","population":5540720,"rawValue":4014.0,"normalizedValue":72,"date":"2020-04-21","rank":36},{"country":"Belarus","population":9449323,"rawValue":6723.0,"normalizedValue":71,"date":"2020-04-21","rank":37},{"country":"Czech Republic (Czechia)","population":10708981,"rawValue":7033.0,"normalizedValue":66,"date":"2020-04-21","rank":38},{"country":"Cyprus","population":1207359,"rawValue":784.0,"normalizedValue":65,"date":"2020-04-21","rank":39},{"country":"Moldova","population":4033963,"rawValue":2614.0,"normalizedValue":65,"date":"2020-04-21","rank":40},{"country":"Slovenia","population":2078938,"rawValue":1344.0,"normalizedValue":65,"date":"2020-04-21","rank":41},{"country":"Ecuador","population":17643054,"rawValue":10398.0,"normalizedValue":59,"date":"2020-04-21","rank":42},{"country":"North Macedonia","population":2083374,"rawValue":1231.0,"normalizedValue":59,"date":"2020-04-21","rank":43},{"country":"Chile","population":19116201,"rawValue":10832.0,"normalizedValue":57,"date":"2020-04-21","rank":44},{"country":"Peru","population":32971854,"rawValue":17837.0,"normalizedValue":54,"date":"2020-04-21","rank":45},{"country":"Lithuania","population":2722289,"rawValue":1350.0,"normalizedValue":50,"date":"2020-04-21","rank":46},{"country":"Montenegro","population":628066,"rawValue":313.0,"normalizedValue":50,"date":"2020-04-21","rank":47},{"country":"Kuwait","population":4270571,"rawValue":2080.0,"normalizedValue":49,"date":"2020-04-21","rank":48},{"country":"Romania","population":19237691,"rawValue":9242.0,"normalizedValue":48,"date":"2020-04-21","rank":49},{"country":"Armenia","population":2963243,"rawValue":1401.0,"normalizedValue":47,"date":"2020-04-21","rank":50},{"country":"Croatia","population":4105267,"rawValue":1908.0,"normalizedValue":46,"date":"2020-04-21","rank":51},{"country":"Dominican Republic","population":10847910,"rawValue":5044.0,"normalizedValue":46,"date":"2020-04-21","rank":52},{"country":"Bosnia and Herzegovina","population":3280819,"rawValue":1342.0,"normalizedValue":41,"date":"2020-04-21","rank":53},{"country":"Latvia","population":1886198,"rawValue":748.0,"normalizedValue":40,"date":"2020-04-21","rank":54},{"country":"Russia","population":145934462,"rawValue":52763.0,"normalizedValue":36,"date":"2020-04-21","rank":55},{"country":"Saudi Arabia","population":34813871,"rawValue":11631.0,"normalizedValue":33,"date":"2020-04-21","rank":56},{"country":"Brunei","population":437479,"rawValue":138.0,"normalizedValue":32,"date":"2020-04-21","rank":57},{"country":"New Zealand","population":4822233,"rawValue":1445.0,"normalizedValue":30,"date":"2020-04-21","rank":58},{"country":"Oman","population":5106626,"rawValue":1508.0,"normalizedValue":30,"date":"2020-04-21","rank":59},{"country":"Saint Kitts & Nevis","population":53199,"rawValue":15.0,"normalizedValue":28,"date":"2020-04-21","rank":60},{"country":"Australia","population":25499884,"rawValue":6547.0,"normalizedValue":26,"date":"2020-04-21","rank":61},{"country":"Barbados","population":287375,"rawValue":75.0,"normalizedValue":26,"date":"2020-04-21","rank":62},{"country":"Mauritius","population":1271768,"rawValue":328.0,"normalizedValue":26,"date":"2020-04-21","rank":63},{"country":"Poland","population":37846611,"rawValue":9856.0,"normalizedValue":26,"date":"2020-04-21","rank":64},{"country":"Antigua and Barbuda","population":97929,"rawValue":23.0,"normalizedValue":23,"date":"2020-04-21","rank":65},{"country":"Greece","population":10423054,"rawValue":2401.0,"normalizedValue":23,"date":"2020-04-21","rank":66},{"country":"Hungary","population":9660351,"rawValue":2098.0,"normalizedValue":22,"date":"2020-04-21","rank":67},{"country":"Slovakia","population":5459642,"rawValue":1199.0,"normalizedValue":22,"date":"2020-04-21","rank":68},{"country":"Dominica","population":71986,"rawValue":16.0,"normalizedValue":22,"date":"2020-04-21","rank":69},{"country":"Albania","population":2877797,"rawValue":609.0,"normalizedValue":21,"date":"2020-04-21","rank":70},{"country":"South Korea","population":51269185,"rawValue":10683.0,"normalizedValue":21,"date":"2020-04-21","rank":71},{"country":"Brazil","population":212559417,"rawValue":43079.0,"normalizedValue":20,"date":"2020-04-21","rank":72},{"country":"Bahamas","population":393244,"rawValue":65.0,"normalizedValue":17,"date":"2020-04-21","rank":73},{"country":"Malaysia","population":32365999,"rawValue":5482.0,"normalizedValue":17,"date":"2020-04-21","rank":74},{"country":"Azerbaijan","population":10139177,"rawValue":1480.0,"normalizedValue":15,"date":"2020-04-21","rank":75},{"country":"Maldives","population":540544,"rawValue":83.0,"normalizedValue":15,"date":"2020-04-21","rank":76},{"country":"Uruguay","population":3473730,"rawValue":535.0,"normalizedValue":15,"date":"2020-04-21","rank":77},{"country":"Bulgaria","population":6948445,"rawValue":975.0,"normalizedValue":14,"date":"2020-04-21","rank":78},{"country":"Ukraine","population":43733762,"rawValue":6125.0,"normalizedValue":14,"date":"2020-04-21","rank":79},{"country":"Costa Rica","population":5094118,"rawValue":669.0,"normalizedValue":13,"date":"2020-04-21","rank":80},{"country":"Cabo Verde","population":555987,"rawValue":68.0,"normalizedValue":12,"date":"2020-04-21","rank":81},{"country":"Grenada","population":112523,"rawValue":14.0,"normalizedValue":12,"date":"2020-04-21","rank":82},{"country":"Kazakhstan","population":18776707,"rawValue":1995.0,"normalizedValue":11,"date":"2020-04-21","rank":83},{"country":"St. Vincent & Grenadines","population":110940,"rawValue":12.0,"normalizedValue":11,"date":"2020-04-21","rank":84},{"country":"Seychelles","population":98347,"rawValue":11.0,"normalizedValue":11,"date":"2020-04-21","rank":85},{"country":"Cuba","population":11326616,"rawValue":1137.0,"normalizedValue":10,"date":"2020-04-21","rank":86},{"country":"Georgia","population":3989167,"rawValue":408.0,"normalizedValue":10,"date":"2020-04-21","rank":87},{"country":"Lebanon","population":6825445,"rawValue":677.0,"normalizedValue":10,"date":"2020-04-21","rank":88},{"country":"Congo","population":5518087,"rawValue":515.0,"normalizedValue":9,"date":"2020-04-21","rank":89},{"country":"Japan","population":126476461,"rawValue":11135.0,"normalizedValue":9,"date":"2020-04-21","rank":90},{"country":"Kyrgyzstan","population":6524195,"rawValue":590.0,"normalizedValue":9,"date":"2020-04-21","rank":91},{"country":"Morocco","population":36910560,"rawValue":3209.0,"normalizedValue":9,"date":"2020-04-21","rank":92},{"country":"Palestine","population":5101414,"rawValue":466.0,"normalizedValue":9,"date":"2020-04-21","rank":93},{"country":"Colombia","population":50882891,"rawValue":4149.0,"normalizedValue":8,"date":"2020-04-21","rank":94},{"country":"Guyana","population":786552,"rawValue":66.0,"normalizedValue":8,"date":"2020-04-21","rank":95},{"country":"Jamaica","population":2961167,"rawValue":223.0,"normalizedValue":8,"date":"2020-04-21","rank":96},{"country":"Saint Lucia","population":183627,"rawValue":15.0,"normalizedValue":8,"date":"2020-04-21","rank":97},{"country":"Trinidad and Tobago","population":1399488,"rawValue":115.0,"normalizedValue":8,"date":"2020-04-21","rank":98},{"country":"Argentina","population":45195774,"rawValue":3031.0,"normalizedValue":7,"date":"2020-04-21","rank":99},{"country":"Gabon","population":2225734,"rawValue":156.0,"normalizedValue":7,"date":"2020-04-21","rank":100},{"country":"Mexico","population":128932753,"rawValue":8772.0,"normalizedValue":7,"date":"2020-04-21","rank":101},{"country":"Tunisia","population":11818619,"rawValue":884.0,"normalizedValue":7,"date":"2020-04-21","rank":102},{"country":"Algeria","population":43851044,"rawValue":2811.0,"normalizedValue":6,"date":"2020-04-21","rank":103},{"country":"China","population":1439323776,"rawValue":83853.0,"normalizedValue":6,"date":"2020-04-21","rank":104},{"country":"Equatorial Guinea","population":1402985,"rawValue":83.0,"normalizedValue":6,"date":"2020-04-21","rank":105},{"country":"Philippines","population":109581078,"rawValue":6599.0,"normalizedValue":6,"date":"2020-04-21","rank":106},{"country":"South Africa","population":59308690,"rawValue":3465.0,"normalizedValue":6,"date":"2020-04-21","rank":107},{"country":"Bolivia","population":11673021,"rawValue":598.0,"normalizedValue":5,"date":"2020-04-21","rank":108},{"country":"Guinea","population":13132795,"rawValue":688.0,"normalizedValue":5,"date":"2020-04-21","rank":109},{"country":"Honduras","population":9904607,"rawValue":494.0,"normalizedValue":5,"date":"2020-04-21","rank":110},{"country":"Uzbekistan","population":33469203,"rawValue":1678.0,"normalizedValue":5,"date":"2020-04-21","rank":111},{"country":"Belize","population":397628,"rawValue":18.0,"normalizedValue":5,"date":"2020-04-21","rank":112},{"country":"Cameroon","population":26545863,"rawValue":1163.0,"normalizedValue":4,"date":"2020-04-21","rank":113},{"country":"Iraq","population":40222493,"rawValue":1602.0,"normalizedValue":4,"date":"2020-04-21","rank":114},{"country":"Jordan","population":10203134,"rawValue":428.0,"normalizedValue":4,"date":"2020-04-21","rank":115},{"country":"Pakistan","population":220892340,"rawValue":9565.0,"normalizedValue":4,"date":"2020-04-21","rank":116},{"country":"Thailand","population":69799978,"rawValue":2811.0,"normalizedValue":4,"date":"2020-04-21","rank":117},{"country":"Afghanistan","population":38928346,"rawValue":1092.0,"normalizedValue":3,"date":"2020-04-21","rank":118},{"country":"Burkina Faso","population":20903273,"rawValue":600.0,"normalizedValue":3,"date":"2020-04-21","rank":119},{"country":"Côte d’Ivoire","population":26378274,"rawValue":916.0,"normalizedValue":3,"date":"2020-04-21","rank":120},{"country":"Egypt","population":102334404,"rawValue":3490.0,"normalizedValue":3,"date":"2020-04-21","rank":121},{"country":"El Salvador","population":6486205,"rawValue":225.0,"normalizedValue":3,"date":"2020-04-21","rank":122},{"country":"Eswatini","population":1160164,"rawValue":31.0,"normalizedValue":3,"date":"2020-04-21","rank":123},{"country":"Ghana","population":31072940,"rawValue":1042.0,"normalizedValue":3,"date":"2020-04-21","rank":124},{"country":"Indonesia","population":273523615,"rawValue":7135.0,"normalizedValue":3,"date":"2020-04-21","rank":125},{"country":"Niger","population":24206644,"rawValue":657.0,"normalizedValue":3,"date":"2020-04-21","rank":126},{"country":"Paraguay","population":7132538,"rawValue":208.0,"normalizedValue":3,"date":"2020-04-21","rank":127},{"country":"Guinea-Bissau","population":1968001,"rawValue":50.0,"normalizedValue":3,"date":"2020-04-21","rank":128},{"country":"Bangladesh","population":164689383,"rawValue":3382.0,"normalizedValue":2,"date":"2020-04-21","rank":129},{"country":"Fiji","population":896445,"rawValue":18.0,"normalizedValue":2,"date":"2020-04-21","rank":130},{"country":"Guatemala","population":17915568,"rawValue":294.0,"normalizedValue":2,"date":"2020-04-21","rank":131},{"country":"Liberia","population":5057681,"rawValue":101.0,"normalizedValue":2,"date":"2020-04-21","rank":132},{"country":"Senegal","population":16743927,"rawValue":412.0,"normalizedValue":2,"date":"2020-04-21","rank":133},{"country":"Somalia","population":15893222,"rawValue":286.0,"normalizedValue":2,"date":"2020-04-21","rank":134},{"country":"Suriname","population":586632,"rawValue":10.0,"normalizedValue":2,"date":"2020-04-21","rank":135},{"country":"Taiwan","population":23816775,"rawValue":425.0,"normalizedValue":2,"date":"2020-04-21","rank":136},{"country":"Timor-Leste","population":1318445,"rawValue":23.0,"normalizedValue":2,"date":"2020-04-21","rank":137},{"country":"Sao Tome and Principe","population":219159,"rawValue":4.0,"normalizedValue":2,"date":"2020-04-21","rank":138},{"country":"Bhutan","population":771608,"rawValue":6.0,"normalizedValue":1,"date":"2020-04-21","rank":139},{"country":"Cambodia","population":16718965,"rawValue":122.0,"normalizedValue":1,"date":"2020-04-21","rank":140},{"country":"Eritrea","population":3546421,"rawValue":39.0,"normalizedValue":1,"date":"2020-04-21","rank":141},{"country":"India","population":1380004385,"rawValue":20080.0,"normalizedValue":1,"date":"2020-04-21","rank":142},{"country":"Kenya","population":53771296,"rawValue":296.0,"normalizedValue":1,"date":"2020-04-21","rank":143},{"country":"Mongolia","population":3278290,"rawValue":34.0,"normalizedValue":1,"date":"2020-04-21","rank":144},{"country":"Namibia","population":2540905,"rawValue":16.0,"normalizedValue":1,"date":"2020-04-21","rank":145},{"country":"Rwanda","population":12952218,"rawValue":150.0,"normalizedValue":1,"date":"2020-04-21","rank":146},{"country":"Sri Lanka","population":21413249,"rawValue":310.0,"normalizedValue":1,"date":"2020-04-21","rank":147},{"country":"Togo","population":8278724,"rawValue":86.0,"normalizedValue":1,"date":"2020-04-21","rank":148},{"country":"Venezuela","population":28435940,"rawValue":285.0,"normalizedValue":1,"date":"2020-04-21","rank":149},{"country":"Libya","population":6871292,"rawValue":51.0,"normalizedValue":1,"date":"2020-04-21","rank":150},{"country":"Mali","population":20250833,"rawValue":258.0,"normalizedValue":1,"date":"2020-04-21","rank":151},{"country":"Botswana","population":2351627,"rawValue":20.0,"normalizedValue":1,"date":"2020-04-21","rank":152},{"country":"Sierra Leone","population":7976983,"rawValue":50.0,"normalizedValue":1,"date":"2020-04-21","rank":153},{"country":"Western Sahara","population":597339,"rawValue":6.0,"normalizedValue":1,"date":"2020-04-21","rank":154},{"country":"Angola","population":32866272,"rawValue":24.0,"normalizedValue":0,"date":"2020-04-21","rank":155},{"country":"Benin","population":12123200,"rawValue":54.0,"normalizedValue":0,"date":"2020-04-21","rank":156},{"country":"Central African Republic","population":4829767,"rawValue":14.0,"normalizedValue":0,"date":"2020-04-21","rank":157},{"country":"Chad","population":16425864,"rawValue":33.0,"normalizedValue":0,"date":"2020-04-21","rank":158},{"country":"Ethiopia","population":114963588,"rawValue":114.0,"normalizedValue":0,"date":"2020-04-21","rank":159},{"country":"Gambia","population":2416668,"rawValue":10.0,"normalizedValue":0,"date":"2020-04-21","rank":160},{"country":"Haiti","population":11402528,"rawValue":57.0,"normalizedValue":0,"date":"2020-04-21","rank":161},{"country":"Madagascar","population":27691018,"rawValue":121.0,"normalizedValue":0,"date":"2020-04-21","rank":162},{"country":"Mauritania","population":4649658,"rawValue":7.0,"normalizedValue":0,"date":"2020-04-21","rank":163},{"country":"Nepal","population":29136808,"rawValue":43.0,"normalizedValue":0,"date":"2020-04-21","rank":164},{"country":"Nicaragua","population":6624554,"rawValue":10.0,"normalizedValue":0,"date":"2020-04-21","rank":165},{"country":"Nigeria","population":206139589,"rawValue":665.0,"normalizedValue":0,"date":"2020-04-21","rank":166},{"country":"Papua New Guinea","population":8947024,"rawValue":7.0,"normalizedValue":0,"date":"2020-04-21","rank":167},{"country":"Sudan","population":43849260,"rawValue":107.0,"normalizedValue":0,"date":"2020-04-21","rank":168},{"country":"Tanzania","population":59734218,"rawValue":254.0,"normalizedValue":0,"date":"2020-04-21","rank":169},{"country":"Uganda","population":45741007,"rawValue":61.0,"normalizedValue":0,"date":"2020-04-21","rank":170},{"country":"Vietnam","population":97338579,"rawValue":268.0,"normalizedValue":0,"date":"2020-04-21","rank":171},{"country":"Zambia","population":18383955,"rawValue":70.0,"normalizedValue":0,"date":"2020-04-21","rank":172},{"country":"Zimbabwe","population":14862924,"rawValue":28.0,"normalizedValue":0,"date":"2020-04-21","rank":173},{"country":"Mozambique","population":31255435,"rawValue":39.0,"normalizedValue":0,"date":"2020-04-21","rank":174},{"country":"Syria","population":17500658,"rawValue":42.0,"normalizedValue":0,"date":"2020-04-21","rank":175},{"country":"Laos","population":7275560,"rawValue":19.0,"normalizedValue":0,"date":"2020-04-21","rank":176},{"country":"Myanmar","population":54409800,"rawValue":121.0,"normalizedValue":0,"date":"2020-04-21","rank":177},{"country":"Burundi","population":11890784,"rawValue":5.0,"normalizedValue":0,"date":"2020-04-21","rank":178},{"country":"Malawi","population":19129952,"rawValue":18.0,"normalizedValue":0,"date":"2020-04-21","rank":179},{"country":"South Sudan","population":11193725,"rawValue":4.0,"normalizedValue":0,"date":"2020-04-21","rank":180},{"country":"Yemen","population":29825964,"rawValue":1.0,"normalizedValue":0,"date":"2020-04-21","rank":181}]}
+{
+  "lastUpdated" : "2020-04-23T12:36:10.0184498Z",
+  "rows" : [ {
+    "region" : "San Marino",
+    "cases" : 488,
+    "casesNormalized" : 1438,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 33931,
+    "rank" : 1
+  }, {
+    "region" : "Holy See",
+    "cases" : 9,
+    "casesNormalized" : 1124,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 801,
+    "rank" : 2
+  }, {
+    "region" : "Andorra",
+    "cases" : 723,
+    "casesNormalized" : 936,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 77265,
+    "rank" : 3
+  }, {
+    "region" : "Luxembourg",
+    "cases" : 3654,
+    "casesNormalized" : 584,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 625978,
+    "rank" : 4
+  }, {
+    "region" : "Iceland",
+    "cases" : 1785,
+    "casesNormalized" : 523,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 341243,
+    "rank" : 5
+  }, {
+    "region" : "Spain",
+    "cases" : 208389,
+    "casesNormalized" : 446,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 46754778,
+    "rank" : 6
+  }, {
+    "region" : "Belgium",
+    "cases" : 41889,
+    "casesNormalized" : 361,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 11589623,
+    "rank" : 7
+  }, {
+    "region" : "Ireland",
+    "cases" : 16671,
+    "casesNormalized" : 338,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 4937786,
+    "rank" : 8
+  }, {
+    "region" : "Switzerland",
+    "cases" : 28268,
+    "casesNormalized" : 327,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 8654622,
+    "rank" : 9
+  }, {
+    "region" : "Italy",
+    "cases" : 187327,
+    "casesNormalized" : 310,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 60461826,
+    "rank" : 10
+  }, {
+    "region" : "United States",
+    "cases" : 839675,
+    "casesNormalized" : 254,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 331228985,
+    "rank" : 11
+  }, {
+    "region" : "Qatar",
+    "cases" : 7141,
+    "casesNormalized" : 248,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 2881053,
+    "rank" : 12
+  }, {
+    "region" : "Monaco",
+    "cases" : 94,
+    "casesNormalized" : 240,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 39242,
+    "rank" : 13
+  }, {
+    "region" : "France",
+    "cases" : 157125,
+    "casesNormalized" : 239,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 65839917,
+    "rank" : 14
+  }, {
+    "region" : "Portugal",
+    "cases" : 21982,
+    "casesNormalized" : 216,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 10196709,
+    "rank" : 15
+  }, {
+    "region" : "Liechtenstein",
+    "cases" : 81,
+    "casesNormalized" : 212,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 38128,
+    "rank" : 16
+  }, {
+    "region" : "Netherlands",
+    "cases" : 35041,
+    "casesNormalized" : 205,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 17134872,
+    "rank" : 17
+  }, {
+    "region" : "United Kingdom",
+    "cases" : 134638,
+    "casesNormalized" : 198,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 68004735,
+    "rank" : 18
+  }, {
+    "region" : "Germany",
+    "cases" : 150648,
+    "casesNormalized" : 180,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 83783942,
+    "rank" : 19
+  }, {
+    "region" : "Singapore",
+    "cases" : 10141,
+    "casesNormalized" : 173,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 5850342,
+    "rank" : 20
+  }, {
+    "region" : "Israel",
+    "cases" : 14498,
+    "casesNormalized" : 167,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 8655535,
+    "rank" : 21
+  }, {
+    "region" : "Austria",
+    "cases" : 14925,
+    "casesNormalized" : 166,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 9006398,
+    "rank" : 22
+  }, {
+    "region" : "Sweden",
+    "cases" : 16004,
+    "casesNormalized" : 158,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 10099265,
+    "rank" : 23
+  }, {
+    "region" : "Denmark",
+    "cases" : 8108,
+    "casesNormalized" : 140,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 5792202,
+    "rank" : 24
+  }, {
+    "region" : "Norway",
+    "cases" : 7338,
+    "casesNormalized" : 135,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 5421241,
+    "rank" : 25
+  }, {
+    "region" : "Bahrain",
+    "cases" : 2027,
+    "casesNormalized" : 119,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1701575,
+    "rank" : 26
+  }, {
+    "region" : "Estonia",
+    "cases" : 1559,
+    "casesNormalized" : 118,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1326535,
+    "rank" : 27
+  }, {
+    "region" : "Turkey",
+    "cases" : 98674,
+    "casesNormalized" : 117,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 84339067,
+    "rank" : 28
+  }, {
+    "region" : "Panama",
+    "cases" : 4821,
+    "casesNormalized" : 112,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 4314767,
+    "rank" : 29
+  }, {
+    "region" : "Canada",
+    "cases" : 41648,
+    "casesNormalized" : 110,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 37742154,
+    "rank" : 30
+  }, {
+    "region" : "Iran",
+    "cases" : 85996,
+    "casesNormalized" : 102,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 83992949,
+    "rank" : 31
+  }, {
+    "region" : "Malta",
+    "cases" : 444,
+    "casesNormalized" : 101,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 441543,
+    "rank" : 32
+  }, {
+    "region" : "Djibouti",
+    "cases" : 974,
+    "casesNormalized" : 99,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 988000,
+    "rank" : 33
+  }, {
+    "region" : "United Arab Emirates",
+    "cases" : 8238,
+    "casesNormalized" : 83,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 9890402,
+    "rank" : 34
+  }, {
+    "region" : "Belarus",
+    "cases" : 7281,
+    "casesNormalized" : 77,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 9449323,
+    "rank" : 35
+  }, {
+    "region" : "Serbia",
+    "cases" : 6630,
+    "casesNormalized" : 76,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 8737371,
+    "rank" : 36
+  }, {
+    "region" : "Finland",
+    "cases" : 4129,
+    "casesNormalized" : 75,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 5540720,
+    "rank" : 37
+  }, {
+    "region" : "Moldova",
+    "cases" : 2778,
+    "casesNormalized" : 69,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 4033963,
+    "rank" : 38
+  }, {
+    "region" : "Czech Republic (Czechia)",
+    "cases" : 7132,
+    "casesNormalized" : 67,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 10708981,
+    "rank" : 39
+  }, {
+    "region" : "Cyprus",
+    "cases" : 790,
+    "casesNormalized" : 65,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1207359,
+    "rank" : 40
+  }, {
+    "region" : "Slovenia",
+    "cases" : 1353,
+    "casesNormalized" : 65,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 2078938,
+    "rank" : 41
+  }, {
+    "region" : "Ecuador",
+    "cases" : 10850,
+    "casesNormalized" : 61,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 17643054,
+    "rank" : 42
+  }, {
+    "region" : "North Macedonia",
+    "cases" : 1259,
+    "casesNormalized" : 60,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 2083374,
+    "rank" : 43
+  }, {
+    "region" : "Chile",
+    "cases" : 11296,
+    "casesNormalized" : 59,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 19116201,
+    "rank" : 44
+  }, {
+    "region" : "Peru",
+    "cases" : 19250,
+    "casesNormalized" : 58,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 32971854,
+    "rank" : 45
+  }, {
+    "region" : "Kuwait",
+    "cases" : 2248,
+    "casesNormalized" : 53,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 4270571,
+    "rank" : 46
+  }, {
+    "region" : "Armenia",
+    "cases" : 1473,
+    "casesNormalized" : 50,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 2963243,
+    "rank" : 47
+  }, {
+    "region" : "Lithuania",
+    "cases" : 1370,
+    "casesNormalized" : 50,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 2722289,
+    "rank" : 48
+  }, {
+    "region" : "Montenegro",
+    "cases" : 315,
+    "casesNormalized" : 50,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 628066,
+    "rank" : 49
+  }, {
+    "region" : "Romania",
+    "cases" : 9710,
+    "casesNormalized" : 50,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 19237691,
+    "rank" : 50
+  }, {
+    "region" : "Dominican Republic",
+    "cases" : 5300,
+    "casesNormalized" : 49,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 10847910,
+    "rank" : 51
+  }, {
+    "region" : "Croatia",
+    "cases" : 1950,
+    "casesNormalized" : 47,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 4105267,
+    "rank" : 52
+  }, {
+    "region" : "Bosnia and Herzegovina",
+    "cases" : 1368,
+    "casesNormalized" : 42,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 3280819,
+    "rank" : 53
+  }, {
+    "region" : "Latvia",
+    "cases" : 761,
+    "casesNormalized" : 40,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1886198,
+    "rank" : 54
+  }, {
+    "region" : "Russia",
+    "cases" : 57999,
+    "casesNormalized" : 40,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 145934462,
+    "rank" : 55
+  }, {
+    "region" : "Saudi Arabia",
+    "cases" : 12772,
+    "casesNormalized" : 37,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 34813871,
+    "rank" : 56
+  }, {
+    "region" : "Brunei",
+    "cases" : 138,
+    "casesNormalized" : 32,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 437479,
+    "rank" : 57
+  }, {
+    "region" : "Oman",
+    "cases" : 1614,
+    "casesNormalized" : 32,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 5106626,
+    "rank" : 58
+  }, {
+    "region" : "New Zealand",
+    "cases" : 1451,
+    "casesNormalized" : 30,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 4822233,
+    "rank" : 59
+  }, {
+    "region" : "Saint Kitts & Nevis",
+    "cases" : 15,
+    "casesNormalized" : 28,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 53199,
+    "rank" : 60
+  }, {
+    "region" : "Poland",
+    "cases" : 10169,
+    "casesNormalized" : 27,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 37846611,
+    "rank" : 61
+  }, {
+    "region" : "Australia",
+    "cases" : 6547,
+    "casesNormalized" : 26,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 25499884,
+    "rank" : 62
+  }, {
+    "region" : "Barbados",
+    "cases" : 75,
+    "casesNormalized" : 26,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 287375,
+    "rank" : 63
+  }, {
+    "region" : "Mauritius",
+    "cases" : 329,
+    "casesNormalized" : 26,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1271768,
+    "rank" : 64
+  }, {
+    "region" : "Antigua and Barbuda",
+    "cases" : 24,
+    "casesNormalized" : 25,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 97929,
+    "rank" : 65
+  }, {
+    "region" : "Greece",
+    "cases" : 2408,
+    "casesNormalized" : 23,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 10423054,
+    "rank" : 66
+  }, {
+    "region" : "Slovakia",
+    "cases" : 1244,
+    "casesNormalized" : 23,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 5459642,
+    "rank" : 67
+  }, {
+    "region" : "Albania",
+    "cases" : 634,
+    "casesNormalized" : 22,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 2877797,
+    "rank" : 68
+  }, {
+    "region" : "Brazil",
+    "cases" : 45757,
+    "casesNormalized" : 22,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 212559417,
+    "rank" : 69
+  }, {
+    "region" : "Hungary",
+    "cases" : 2168,
+    "casesNormalized" : 22,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 9660351,
+    "rank" : 70
+  }, {
+    "region" : "Dominica",
+    "cases" : 16,
+    "casesNormalized" : 22,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 71986,
+    "rank" : 71
+  }, {
+    "region" : "South Korea",
+    "cases" : 10694,
+    "casesNormalized" : 21,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 51269185,
+    "rank" : 72
+  }, {
+    "region" : "Bahamas",
+    "cases" : 65,
+    "casesNormalized" : 17,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 393244,
+    "rank" : 73
+  }, {
+    "region" : "Malaysia",
+    "cases" : 5532,
+    "casesNormalized" : 17,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 32365999,
+    "rank" : 74
+  }, {
+    "region" : "Maldives",
+    "cases" : 86,
+    "casesNormalized" : 16,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 540544,
+    "rank" : 75
+  }, {
+    "region" : "Uruguay",
+    "cases" : 543,
+    "casesNormalized" : 16,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 3473730,
+    "rank" : 76
+  }, {
+    "region" : "Azerbaijan",
+    "cases" : 1518,
+    "casesNormalized" : 15,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 10139177,
+    "rank" : 77
+  }, {
+    "region" : "Bulgaria",
+    "cases" : 1024,
+    "casesNormalized" : 15,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 6948445,
+    "rank" : 78
+  }, {
+    "region" : "Ukraine",
+    "cases" : 6592,
+    "casesNormalized" : 15,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 43733762,
+    "rank" : 79
+  }, {
+    "region" : "Cabo Verde",
+    "cases" : 73,
+    "casesNormalized" : 13,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 555987,
+    "rank" : 80
+  }, {
+    "region" : "Costa Rica",
+    "cases" : 681,
+    "casesNormalized" : 13,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 5094118,
+    "rank" : 81
+  }, {
+    "region" : "Grenada",
+    "cases" : 15,
+    "casesNormalized" : 13,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 112523,
+    "rank" : 82
+  }, {
+    "region" : "St. Vincent & Grenadines",
+    "cases" : 13,
+    "casesNormalized" : 12,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 110940,
+    "rank" : 83
+  }, {
+    "region" : "Kazakhstan",
+    "cases" : 2135,
+    "casesNormalized" : 11,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 18776707,
+    "rank" : 84
+  }, {
+    "region" : "Seychelles",
+    "cases" : 11,
+    "casesNormalized" : 11,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 98347,
+    "rank" : 85
+  }, {
+    "region" : "Congo",
+    "cases" : 545,
+    "casesNormalized" : 10,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 5518087,
+    "rank" : 86
+  }, {
+    "region" : "Cuba",
+    "cases" : 1189,
+    "casesNormalized" : 10,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 11326616,
+    "rank" : 87
+  }, {
+    "region" : "Georgia",
+    "cases" : 416,
+    "casesNormalized" : 10,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 3989167,
+    "rank" : 88
+  }, {
+    "region" : "Lebanon",
+    "cases" : 682,
+    "casesNormalized" : 10,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 6825445,
+    "rank" : 89
+  }, {
+    "region" : "Colombia",
+    "cases" : 4356,
+    "casesNormalized" : 9,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 50882891,
+    "rank" : 90
+  }, {
+    "region" : "Guyana",
+    "cases" : 67,
+    "casesNormalized" : 9,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 786552,
+    "rank" : 91
+  }, {
+    "region" : "Japan",
+    "cases" : 11512,
+    "casesNormalized" : 9,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 126476461,
+    "rank" : 92
+  }, {
+    "region" : "Kyrgyzstan",
+    "cases" : 612,
+    "casesNormalized" : 9,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 6524195,
+    "rank" : 93
+  }, {
+    "region" : "Morocco",
+    "cases" : 3446,
+    "casesNormalized" : 9,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 36910560,
+    "rank" : 94
+  }, {
+    "region" : "Palestine",
+    "cases" : 474,
+    "casesNormalized" : 9,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 5101414,
+    "rank" : 95
+  }, {
+    "region" : "Jamaica",
+    "cases" : 233,
+    "casesNormalized" : 8,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 2961167,
+    "rank" : 96
+  }, {
+    "region" : "Saint Lucia",
+    "cases" : 15,
+    "casesNormalized" : 8,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 183627,
+    "rank" : 97
+  }, {
+    "region" : "Trinidad and Tobago",
+    "cases" : 115,
+    "casesNormalized" : 8,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1399488,
+    "rank" : 98
+  }, {
+    "region" : "Tunisia",
+    "cases" : 909,
+    "casesNormalized" : 8,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 11818619,
+    "rank" : 99
+  }, {
+    "region" : "Algeria",
+    "cases" : 2910,
+    "casesNormalized" : 7,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 43851044,
+    "rank" : 100
+  }, {
+    "region" : "Argentina",
+    "cases" : 3144,
+    "casesNormalized" : 7,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 45195774,
+    "rank" : 101
+  }, {
+    "region" : "Gabon",
+    "cases" : 166,
+    "casesNormalized" : 7,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 2225734,
+    "rank" : 102
+  }, {
+    "region" : "Mexico",
+    "cases" : 9501,
+    "casesNormalized" : 7,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 128932753,
+    "rank" : 103
+  }, {
+    "region" : "China",
+    "cases" : 83868,
+    "casesNormalized" : 6,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1439323776,
+    "rank" : 104
+  }, {
+    "region" : "Equatorial Guinea",
+    "cases" : 84,
+    "casesNormalized" : 6,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1402985,
+    "rank" : 105
+  }, {
+    "region" : "Guinea",
+    "cases" : 761,
+    "casesNormalized" : 6,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 13132795,
+    "rank" : 106
+  }, {
+    "region" : "Philippines",
+    "cases" : 6710,
+    "casesNormalized" : 6,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 109581078,
+    "rank" : 107
+  }, {
+    "region" : "South Africa",
+    "cases" : 3635,
+    "casesNormalized" : 6,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 59308690,
+    "rank" : 108
+  }, {
+    "region" : "Bolivia",
+    "cases" : 609,
+    "casesNormalized" : 5,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 11673021,
+    "rank" : 109
+  }, {
+    "region" : "Honduras",
+    "cases" : 510,
+    "casesNormalized" : 5,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 9904607,
+    "rank" : 110
+  }, {
+    "region" : "Pakistan",
+    "cases" : 10076,
+    "casesNormalized" : 5,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 220892340,
+    "rank" : 111
+  }, {
+    "region" : "Uzbekistan",
+    "cases" : 1716,
+    "casesNormalized" : 5,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 33469203,
+    "rank" : 112
+  }, {
+    "region" : "Belize",
+    "cases" : 18,
+    "casesNormalized" : 5,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 397628,
+    "rank" : 113
+  }, {
+    "region" : "Cameroon",
+    "cases" : 1163,
+    "casesNormalized" : 4,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 26545863,
+    "rank" : 114
+  }, {
+    "region" : "Côte d’Ivoire",
+    "cases" : 952,
+    "casesNormalized" : 4,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 26378274,
+    "rank" : 115
+  }, {
+    "region" : "Egypt",
+    "cases" : 3659,
+    "casesNormalized" : 4,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 102334404,
+    "rank" : 116
+  }, {
+    "region" : "El Salvador",
+    "cases" : 237,
+    "casesNormalized" : 4,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 6486205,
+    "rank" : 117
+  }, {
+    "region" : "Ghana",
+    "cases" : 1154,
+    "casesNormalized" : 4,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 31072940,
+    "rank" : 118
+  }, {
+    "region" : "Iraq",
+    "cases" : 1631,
+    "casesNormalized" : 4,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 40222493,
+    "rank" : 119
+  }, {
+    "region" : "Jordan",
+    "cases" : 435,
+    "casesNormalized" : 4,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 10203134,
+    "rank" : 120
+  }, {
+    "region" : "Thailand",
+    "cases" : 2826,
+    "casesNormalized" : 4,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 69799978,
+    "rank" : 121
+  }, {
+    "region" : "Afghanistan",
+    "cases" : 1176,
+    "casesNormalized" : 3,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 38928346,
+    "rank" : 122
+  }, {
+    "region" : "Burkina Faso",
+    "cases" : 609,
+    "casesNormalized" : 3,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 20903273,
+    "rank" : 123
+  }, {
+    "region" : "Eswatini",
+    "cases" : 31,
+    "casesNormalized" : 3,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1160164,
+    "rank" : 124
+  }, {
+    "region" : "Indonesia",
+    "cases" : 7418,
+    "casesNormalized" : 3,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 273523615,
+    "rank" : 125
+  }, {
+    "region" : "Niger",
+    "cases" : 662,
+    "casesNormalized" : 3,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 24206644,
+    "rank" : 126
+  }, {
+    "region" : "Paraguay",
+    "cases" : 213,
+    "casesNormalized" : 3,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 7132538,
+    "rank" : 127
+  }, {
+    "region" : "Senegal",
+    "cases" : 442,
+    "casesNormalized" : 3,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 16743927,
+    "rank" : 128
+  }, {
+    "region" : "Guinea-Bissau",
+    "cases" : 50,
+    "casesNormalized" : 3,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1968001,
+    "rank" : 129
+  }, {
+    "region" : "Bangladesh",
+    "cases" : 3772,
+    "casesNormalized" : 2,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 164689383,
+    "rank" : 130
+  }, {
+    "region" : "Fiji",
+    "cases" : 18,
+    "casesNormalized" : 2,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 896445,
+    "rank" : 131
+  }, {
+    "region" : "Guatemala",
+    "cases" : 316,
+    "casesNormalized" : 2,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 17915568,
+    "rank" : 132
+  }, {
+    "region" : "India",
+    "cases" : 21370,
+    "casesNormalized" : 2,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1380004385,
+    "rank" : 133
+  }, {
+    "region" : "Liberia",
+    "cases" : 101,
+    "casesNormalized" : 2,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 5057681,
+    "rank" : 134
+  }, {
+    "region" : "Somalia",
+    "cases" : 286,
+    "casesNormalized" : 2,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 15893222,
+    "rank" : 135
+  }, {
+    "region" : "Sri Lanka",
+    "cases" : 330,
+    "casesNormalized" : 2,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 21413249,
+    "rank" : 136
+  }, {
+    "region" : "Suriname",
+    "cases" : 10,
+    "casesNormalized" : 2,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 586632,
+    "rank" : 137
+  }, {
+    "region" : "Taiwan",
+    "cases" : 426,
+    "casesNormalized" : 2,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 23816775,
+    "rank" : 138
+  }, {
+    "region" : "Timor-Leste",
+    "cases" : 23,
+    "casesNormalized" : 2,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 1318445,
+    "rank" : 139
+  }, {
+    "region" : "Sao Tome and Principe",
+    "cases" : 4,
+    "casesNormalized" : 2,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 219159,
+    "rank" : 140
+  }, {
+    "region" : "Bhutan",
+    "cases" : 6,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 771608,
+    "rank" : 141
+  }, {
+    "region" : "Cambodia",
+    "cases" : 122,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 16718965,
+    "rank" : 142
+  }, {
+    "region" : "Eritrea",
+    "cases" : 39,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 3546421,
+    "rank" : 143
+  }, {
+    "region" : "Haiti",
+    "cases" : 62,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 11402528,
+    "rank" : 144
+  }, {
+    "region" : "Kenya",
+    "cases" : 303,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 53771296,
+    "rank" : 145
+  }, {
+    "region" : "Mongolia",
+    "cases" : 35,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 3278290,
+    "rank" : 146
+  }, {
+    "region" : "Namibia",
+    "cases" : 16,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 2540905,
+    "rank" : 147
+  }, {
+    "region" : "Rwanda",
+    "cases" : 153,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 12952218,
+    "rank" : 148
+  }, {
+    "region" : "Togo",
+    "cases" : 88,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 8278724,
+    "rank" : 149
+  }, {
+    "region" : "Venezuela",
+    "cases" : 288,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 28435940,
+    "rank" : 150
+  }, {
+    "region" : "Libya",
+    "cases" : 59,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 6871292,
+    "rank" : 151
+  }, {
+    "region" : "Mali",
+    "cases" : 293,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 20250833,
+    "rank" : 152
+  }, {
+    "region" : "Botswana",
+    "cases" : 22,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 2351627,
+    "rank" : 153
+  }, {
+    "region" : "Sierra Leone",
+    "cases" : 61,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 7976983,
+    "rank" : 154
+  }, {
+    "region" : "Western Sahara",
+    "cases" : 6,
+    "casesNormalized" : 1,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 597339,
+    "rank" : 155
+  }, {
+    "region" : "Angola",
+    "cases" : 25,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 32866272,
+    "rank" : 156
+  }, {
+    "region" : "Benin",
+    "cases" : 54,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 12123200,
+    "rank" : 157
+  }, {
+    "region" : "Central African Republic",
+    "cases" : 14,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 4829767,
+    "rank" : 158
+  }, {
+    "region" : "Chad",
+    "cases" : 33,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 16425864,
+    "rank" : 159
+  }, {
+    "region" : "Ethiopia",
+    "cases" : 116,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 114963588,
+    "rank" : 160
+  }, {
+    "region" : "Gambia",
+    "cases" : 10,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 2416668,
+    "rank" : 161
+  }, {
+    "region" : "Madagascar",
+    "cases" : 121,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 27691018,
+    "rank" : 162
+  }, {
+    "region" : "Mauritania",
+    "cases" : 7,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 4649658,
+    "rank" : 163
+  }, {
+    "region" : "Nepal",
+    "cases" : 45,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 29136808,
+    "rank" : 164
+  }, {
+    "region" : "Nicaragua",
+    "cases" : 10,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 6624554,
+    "rank" : 165
+  }, {
+    "region" : "Nigeria",
+    "cases" : 873,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 206139589,
+    "rank" : 166
+  }, {
+    "region" : "Papua New Guinea",
+    "cases" : 8,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 8947024,
+    "rank" : 167
+  }, {
+    "region" : "Sudan",
+    "cases" : 140,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 43849260,
+    "rank" : 168
+  }, {
+    "region" : "Tanzania",
+    "cases" : 284,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 59734218,
+    "rank" : 169
+  }, {
+    "region" : "Uganda",
+    "cases" : 63,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 45741007,
+    "rank" : 170
+  }, {
+    "region" : "Vietnam",
+    "cases" : 268,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 97338579,
+    "rank" : 171
+  }, {
+    "region" : "Zambia",
+    "cases" : 74,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 18383955,
+    "rank" : 172
+  }, {
+    "region" : "Zimbabwe",
+    "cases" : 28,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 14862924,
+    "rank" : 173
+  }, {
+    "region" : "Mozambique",
+    "cases" : 41,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 31255435,
+    "rank" : 174
+  }, {
+    "region" : "Syria",
+    "cases" : 42,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 17500658,
+    "rank" : 175
+  }, {
+    "region" : "Laos",
+    "cases" : 19,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 7275560,
+    "rank" : 176
+  }, {
+    "region" : "Myanmar",
+    "cases" : 123,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 54409800,
+    "rank" : 177
+  }, {
+    "region" : "Burundi",
+    "cases" : 11,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 11890784,
+    "rank" : 178
+  }, {
+    "region" : "Malawi",
+    "cases" : 23,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 19129952,
+    "rank" : 179
+  }, {
+    "region" : "South Sudan",
+    "cases" : 4,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 11193725,
+    "rank" : 180
+  }, {
+    "region" : "Yemen",
+    "cases" : 1,
+    "casesNormalized" : 0,
+    "deaths" : 0,
+    "deathsNormalized" : 0,
+    "population" : 29825964,
+    "rank" : 181
+  } ]
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CssBaseline, Tooltip } from '@material-ui/core';
 import { CellProps, Column } from 'react-table';
-import { EnhancedTable, Point } from './components/EnhancedTable';
+import { EnhancedTable, TableRow } from './components/EnhancedTable';
 import data from './results.json';
 
 const Header = ({
@@ -24,7 +24,7 @@ const Header = ({
   </Tooltip>
 );
 
-const columns: Column<Point>[] = [
+const columns: Column<TableRow>[] = [
   {
     Header: (
       <Header tooltip='Rank (Normalized per 100,000 people)'>Rank (N)</Header>
@@ -33,7 +33,7 @@ const columns: Column<Point>[] = [
   },
   {
     Header: <Header tooltip='Region'>Region</Header>,
-    accessor: 'country',
+    accessor: 'region',
   },
   {
     Header: (
@@ -41,11 +41,11 @@ const columns: Column<Point>[] = [
         Cases (N)
       </Header>
     ),
-    accessor: 'normalizedValue',
+    accessor: 'casesNormalized',
   },
   {
     Header: <Header tooltip='Confirmed Cases'>Cases</Header>,
-    accessor: 'rawValue',
+    accessor: 'cases',
   },
   {
     Header: <Header tooltip='Population'>Pop</Header>,
@@ -60,10 +60,10 @@ const App = () => {
       <EnhancedTable
         columns={columns}
         data={data}
-        getCellProps={(cellInfo: CellProps<Point>) => ({
+        getCellProps={(cellInfo: CellProps<TableRow>) => ({
           style: {
             fontWeight:
-              cellInfo.row.original.country === 'United States'
+              cellInfo.row.original.region === 'United States'
                 ? 'bold'
                 : 'normal',
           },

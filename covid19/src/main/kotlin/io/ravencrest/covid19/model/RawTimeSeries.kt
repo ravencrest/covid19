@@ -5,16 +5,14 @@ import kotlin.math.roundToInt
 
 const val NORMALIZER = 100_000
 
-data class RawTimeSeries(val country: String, val population: Long, val points: List<Double?>) {
+data class RawTimeSeries(val country: String, val population: Long, val points: List<Long?>) {
   fun toTimeSeries(headers: List<LocalDate>): TimeSeries {
     val points = points.mapIndexed { index, item ->
       if (item != null) {
         Point(
           country = this.country,
           date = headers[index],
-          rawValue = item,
-          normalizedValue = ((item / this.population) * NORMALIZER).roundToInt(),
-          population = this.population
+          value = item
         )
       } else {
         null
