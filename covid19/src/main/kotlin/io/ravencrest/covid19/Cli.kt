@@ -7,10 +7,13 @@ import com.fasterxml.jackson.module.kotlin.KotlinModule
 import io.ravencrest.covid19.model.Results
 import io.ravencrest.covid19.model.TableRow
 import io.ravencrest.covid19.parse.*
+import java.math.RoundingMode
 import java.nio.file.Files
 import java.nio.file.Paths
+import java.text.DecimalFormat
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
+
 
 fun main() {
   val jsonMapper = ObjectMapper()
@@ -25,17 +28,25 @@ fun main() {
   val deathsIndex = parseCsseDeaths(countriesIndex).associateBy { it.country }
   val recoveredIndex = parseCsseRecovered(countriesIndex).associateBy { it.country }
 
+  val df = DecimalFormat("#.##")
+  df.roundingMode = RoundingMode.CEILING
+
   val sortedCases = casesIndex.mapNotNull {
     it.last()?.let { p ->
+      val secondToLast = it.secondToLast()
+      val change = secondToLast?.value?.let { lastValue -> (p.value - lastValue) / p.value.toDouble()}
       val country = p.country
       val population = populationIndex[country] ?: error("Missing population data for $country")
       val deaths = deathsIndex[country]?.last()?.value ?: 0
       val recovered = recoveredIndex[country]?.last()?.value ?: 0
 
+
+
       TableRow(
         region = country,
         cases = p.value,
         casesNormalized = normalize(p.value, population),
+        change = change?.let {c -> df.format(c).toDouble() },
         deaths = deaths,
         deathsNormalized = normalize(deaths, population),
         recovered = recovered,

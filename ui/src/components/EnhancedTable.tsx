@@ -23,6 +23,7 @@ import {
 import { parseJSON, formatRelative as format } from 'date-fns';
 import { TableToolbar } from './TableToolbar';
 import clsx from 'clsx';
+import './EnhancedTable.module.css';
 
 const useLastUpdatedStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +39,7 @@ export type TableRow = {
   region: string;
   cases: number;
   casesNormalized: number;
+  change: number;
   deaths: number;
   deathsNormalized: number;
   recovered: number;
@@ -82,7 +84,7 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
         setGlobalFilter={setGlobalFilter}
         globalFilter={globalFilter}
       />
-      <Table {...getTableProps()}>
+      <Table {...getTableProps()} size='small'>
         <TableHead>
           {headerGroups.map((headerGroup) => (
             <MuiTableRow {...headerGroup.getHeaderGroupProps()}>

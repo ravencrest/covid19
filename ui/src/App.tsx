@@ -32,6 +32,21 @@ const columns: Column<TableRow>[] = [
     accessor: 'rank',
   },
   {
+    Header: <Header tooltip='Change'>Change</Header>,
+    accessor: 'change',
+    id: 'change',
+    Cell: ({ row }) => {
+      const { change } = row.original;
+      if (!change) {
+        return '--';
+      } else if (change > 0) {
+        return `+${change}`;
+      } else {
+        return change;
+      }
+    },
+  },
+  {
     Header: <Header tooltip='Region'>Region</Header>,
     accessor: 'region',
   },
@@ -115,6 +130,14 @@ const App = () => {
               cellInfo.row.original.region === 'United States'
                 ? 'bold'
                 : 'normal',
+            color:
+              cellInfo.column.id !== 'change'
+                ? undefined
+                : !cellInfo.row.original.change
+                ? undefined
+                : cellInfo.row.original.change > 0
+                ? 'red'
+                : 'green',
           },
         })}
       />
