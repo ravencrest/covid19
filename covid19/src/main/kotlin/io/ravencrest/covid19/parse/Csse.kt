@@ -58,7 +58,6 @@ fun parse(url: String, countryOffSet: Int, timeSeriesOffset: Int): Set<TimeSerie
   val populations = loadPopulations(countries = countries)
 
   val csvIterator = loadTimeSeries(url)
-  // We're not  doing anything with header data yet. This will be used for graphing the data
   val parser = DateTimeFormatterBuilder()
     .appendPattern("M/d/y")
     .toFormatter()

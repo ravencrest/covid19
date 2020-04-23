@@ -7,6 +7,9 @@ import {
   TableHead,
   TableRow,
   TableSortLabel,
+  Chip,
+  makeStyles,
+  lighten,
 } from '@material-ui/core';
 import {
   Column,
@@ -18,7 +21,18 @@ import {
   TableInstance,
   CellProps,
 } from 'react-table';
+import { parseJSON, formatRelative as format } from 'date-fns';
 import { TableToolbar } from './TableToolbar';
+import clsx from 'clsx';
+
+const useLastUpdatedStyles = makeStyles((theme) => ({
+  root: {
+    marginLeft: theme.spacing(2),
+    paddingRight: theme.spacing(1),
+  },
+}));
+
+export type Results = { lastUpdated: string; rows: Array<Point> };
 
 export type Point = {
   country: string;
@@ -31,7 +45,7 @@ export type Point = {
 
 type Props = {
   columns: Column<Point>[];
-  data: Point[];
+  data: Results;
   getCellProps: (cell: CellProps<any, Point>) => {};
 };
 
@@ -46,7 +60,7 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
   } = useTable(
     {
       columns,
-      data,
+      data: data.rows,
     },
     useGlobalFilter,
     useSortBy,
@@ -55,9 +69,13 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
     }
   ) as UseGlobalFiltersInstanceProps<any> &
     TableInstance<any> & { state: UseGlobalFiltersState<any> };
-
+  const date = parseJSON(data.lastUpdated);
   return (
     <TableContainer>
+      <Chip
+        label={`Last updated ${format(date, new Date())}`}
+        className={clsx(useLastUpdatedStyles().root)}
+      />
       <TableToolbar
         setGlobalFilter={setGlobalFilter}
         globalFilter={globalFilter}
