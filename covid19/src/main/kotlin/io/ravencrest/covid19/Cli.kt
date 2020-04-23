@@ -12,7 +12,6 @@ import java.nio.file.Paths
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
 
-
 fun main() {
   val jsonMapper = ObjectMapper()
     .registerModule(JavaTimeModule())
@@ -22,11 +21,19 @@ fun main() {
   val countriesIndex = loadCountries()
   val populationIndex = loadPopulations(countriesIndex)
 
-  val casesIndex = parseCsseCases(countriesIndex)
+  val rawCases = parseCsseCases(countriesIndex)
   val deathsIndex = parseCsseDeaths(countriesIndex).associateBy { it.country }
   val recoveredIndex = parseCsseRecovered(countriesIndex).associateBy { it.country }
 
-  val sortedCases = casesIndex.mapNotNull {
+  val changes = rawCases.mapNotNull {
+    val recovered = recoveredIndex[it.country]?.points?.associateBy { point -> point.date }
+    val points = it.points.map { point ->
+      point.copy(value = point.value - (recovered?.get(point.date)?.value ?: 0 ))
+    }
+    it.copy(points = points.toSet())
+  }
+
+  val sortedCases = rawCases.mapNotNull {
     it.last()?.let { p ->
       val secondToLast = it.secondToLast()
       val change = secondToLast?.value?.let { lastValue -> (p.value - lastValue) / p.value.toDouble()}
@@ -52,7 +59,8 @@ fun main() {
     .let {
       Results(
         lastUpdated = OffsetDateTime.now(ZoneOffset.UTC),
-        rows = it
+        rows = it,
+        graph = changes
       )
     }
   val path = Paths.get(if (isDev) "./ui/src" else ".", "results.json").toAbsolutePath()

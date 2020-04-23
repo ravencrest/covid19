@@ -20,10 +20,11 @@ import {
   TableInstance,
   CellProps,
 } from 'react-table';
-import { parseJSON, formatRelative as format } from 'date-fns';
+import { formatRelative as format } from 'date-fns';
 import { TableToolbar } from './TableToolbar';
 import clsx from 'clsx';
 import './SimpleTable.module.css';
+import { TableRow } from '../types';
 
 const useLastUpdatedStyles = makeStyles((theme) => ({
   root: {
@@ -32,28 +33,19 @@ const useLastUpdatedStyles = makeStyles((theme) => ({
   },
 }));
 
-export type Results = { lastUpdated: string; rows: Array<TableRow> };
-
-export type TableRow = {
-  rank: number;
-  region: string;
-  cases: number;
-  casesNormalized: number;
-  change?: number;
-  deaths: number;
-  deathsNormalized: number;
-  recovered: number;
-  recoveredNormalized: number;
-  population: number;
-};
-
 type Props = {
   columns: Column<TableRow>[];
-  data: Results;
+  data: TableRow[];
   getCellProps: (cell: CellProps<any, TableRow>) => {};
+  lastUpdated: Date;
 };
 
-export const SimpleTable = ({ columns, data, getCellProps }: Props) => {
+export const SimpleTable = ({
+  columns,
+  data,
+  getCellProps,
+  lastUpdated,
+}: Props) => {
   const {
     getTableProps,
     headerGroups,
@@ -64,7 +56,7 @@ export const SimpleTable = ({ columns, data, getCellProps }: Props) => {
   } = useTable(
     {
       columns,
-      data: data.rows,
+      data,
     },
     useGlobalFilter,
     useSortBy,
@@ -73,7 +65,7 @@ export const SimpleTable = ({ columns, data, getCellProps }: Props) => {
     }
   ) as UseGlobalFiltersInstanceProps<any> &
     TableInstance<any> & { state: UseGlobalFiltersState<any> };
-  const date = parseJSON(data.lastUpdated);
+  const date = lastUpdated;
   return (
     <TableContainer>
       <Chip
@@ -88,7 +80,7 @@ export const SimpleTable = ({ columns, data, getCellProps }: Props) => {
         <TableHead>
           {headerGroups.map((headerGroup) => (
             <MuiTableRow {...headerGroup.getHeaderGroupProps()}>
-              <TableCell></TableCell>
+              <TableCell />
               {headerGroup.headers.map((column: any) => (
                 <TableCell
                   key={column.id}

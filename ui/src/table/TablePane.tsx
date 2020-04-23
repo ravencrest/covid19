@@ -1,7 +1,8 @@
 import React from 'react';
 import { CssBaseline, Tooltip } from '@material-ui/core';
 import { CellProps, Column } from 'react-table';
-import { Results, SimpleTable, TableRow } from './SimpleTable';
+import { SimpleTable } from './SimpleTable';
+import { TableRow } from '../types';
 
 const Header = ({
   children,
@@ -109,13 +110,20 @@ const columns: Column<TableRow>[] = [
   },
 ];
 
-export const TablePane = ({ data }: { data: Results }) => {
+export const TablePane = ({
+  data,
+  lastUpdated,
+}: {
+  data: TableRow[];
+  lastUpdated: Date;
+}) => {
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>
       <CssBaseline />
       <SimpleTable
         columns={columns}
         data={data}
+        lastUpdated={lastUpdated}
         getCellProps={(cellInfo: CellProps<TableRow>) => ({
           style: {
             fontWeight:
