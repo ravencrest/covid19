@@ -1,11 +1,13 @@
 {
-  "lastUpdated" : "2020-04-23T12:50:41.159763Z",
+  "lastUpdated" : "2020-04-23T14:23:54.4607452Z",
   "rows" : [ {
     "region" : "San Marino",
     "cases" : 488,
     "casesNormalized" : 1438,
     "deaths" : 40,
     "deathsNormalized" : 118,
+    "recovered" : 62,
+    "recoveredNormalized" : 183,
     "population" : 33931,
     "rank" : 1
   }, {
@@ -14,6 +16,8 @@
     "casesNormalized" : 1124,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 2,
+    "recoveredNormalized" : 250,
     "population" : 801,
     "rank" : 2
   }, {
@@ -22,6 +26,8 @@
     "casesNormalized" : 936,
     "deaths" : 37,
     "deathsNormalized" : 48,
+    "recovered" : 309,
+    "recoveredNormalized" : 400,
     "population" : 77265,
     "rank" : 3
   }, {
@@ -30,6 +36,8 @@
     "casesNormalized" : 584,
     "deaths" : 80,
     "deathsNormalized" : 13,
+    "recovered" : 711,
+    "recoveredNormalized" : 114,
     "population" : 625978,
     "rank" : 4
   }, {
@@ -38,6 +46,8 @@
     "casesNormalized" : 523,
     "deaths" : 10,
     "deathsNormalized" : 3,
+    "recovered" : 1462,
+    "recoveredNormalized" : 428,
     "population" : 341243,
     "rank" : 5
   }, {
@@ -46,6 +56,8 @@
     "casesNormalized" : 446,
     "deaths" : 21717,
     "deathsNormalized" : 46,
+    "recovered" : 85915,
+    "recoveredNormalized" : 184,
     "population" : 46754778,
     "rank" : 6
   }, {
@@ -54,6 +66,8 @@
     "casesNormalized" : 361,
     "deaths" : 6262,
     "deathsNormalized" : 54,
+    "recovered" : 9433,
+    "recoveredNormalized" : 81,
     "population" : 11589623,
     "rank" : 7
   }, {
@@ -62,6 +76,8 @@
     "casesNormalized" : 338,
     "deaths" : 769,
     "deathsNormalized" : 16,
+    "recovered" : 9233,
+    "recoveredNormalized" : 187,
     "population" : 4937786,
     "rank" : 8
   }, {
@@ -70,6 +86,8 @@
     "casesNormalized" : 327,
     "deaths" : 1509,
     "deathsNormalized" : 17,
+    "recovered" : 19900,
+    "recoveredNormalized" : 230,
     "population" : 8654622,
     "rank" : 9
   }, {
@@ -78,6 +96,8 @@
     "casesNormalized" : 310,
     "deaths" : 25085,
     "deathsNormalized" : 41,
+    "recovered" : 54543,
+    "recoveredNormalized" : 90,
     "population" : 60461826,
     "rank" : 10
   }, {
@@ -86,6 +106,8 @@
     "casesNormalized" : 254,
     "deaths" : 46583,
     "deathsNormalized" : 14,
+    "recovered" : 77366,
+    "recoveredNormalized" : 23,
     "population" : 331228985,
     "rank" : 11
   }, {
@@ -94,6 +116,8 @@
     "casesNormalized" : 248,
     "deaths" : 10,
     "deathsNormalized" : 0,
+    "recovered" : 689,
+    "recoveredNormalized" : 24,
     "population" : 2881053,
     "rank" : 12
   }, {
@@ -102,6 +126,8 @@
     "casesNormalized" : 240,
     "deaths" : 3,
     "deathsNormalized" : 8,
+    "recovered" : 26,
+    "recoveredNormalized" : 66,
     "population" : 39242,
     "rank" : 13
   }, {
@@ -110,6 +136,8 @@
     "casesNormalized" : 239,
     "deaths" : 21373,
     "deathsNormalized" : 32,
+    "recovered" : 41326,
+    "recoveredNormalized" : 63,
     "population" : 65839917,
     "rank" : 14
   }, {
@@ -118,6 +146,8 @@
     "casesNormalized" : 216,
     "deaths" : 785,
     "deathsNormalized" : 8,
+    "recovered" : 1143,
+    "recoveredNormalized" : 11,
     "population" : 10196709,
     "rank" : 15
   }, {
@@ -126,6 +156,8 @@
     "casesNormalized" : 212,
     "deaths" : 1,
     "deathsNormalized" : 3,
+    "recovered" : 55,
+    "recoveredNormalized" : 144,
     "population" : 38128,
     "rank" : 16
   }, {
@@ -134,6 +166,8 @@
     "casesNormalized" : 205,
     "deaths" : 4070,
     "deathsNormalized" : 24,
+    "recovered" : 101,
+    "recoveredNormalized" : 1,
     "population" : 17134872,
     "rank" : 17
   }, {
@@ -142,6 +176,8 @@
     "casesNormalized" : 198,
     "deaths" : 18151,
     "deathsNormalized" : 27,
+    "recovered" : 683,
+    "recoveredNormalized" : 1,
     "population" : 68004735,
     "rank" : 18
   }, {
@@ -150,6 +186,8 @@
     "casesNormalized" : 180,
     "deaths" : 5279,
     "deathsNormalized" : 6,
+    "recovered" : 99400,
+    "recoveredNormalized" : 119,
     "population" : 83783942,
     "rank" : 19
   }, {
@@ -158,6 +196,8 @@
     "casesNormalized" : 173,
     "deaths" : 12,
     "deathsNormalized" : 0,
+    "recovered" : 896,
+    "recoveredNormalized" : 15,
     "population" : 5850342,
     "rank" : 20
   }, {
@@ -166,6 +206,8 @@
     "casesNormalized" : 167,
     "deaths" : 189,
     "deathsNormalized" : 2,
+    "recovered" : 5215,
+    "recoveredNormalized" : 60,
     "population" : 8655535,
     "rank" : 21
   }, {
@@ -174,6 +216,8 @@
     "casesNormalized" : 166,
     "deaths" : 510,
     "deathsNormalized" : 6,
+    "recovered" : 11328,
+    "recoveredNormalized" : 126,
     "population" : 9006398,
     "rank" : 22
   }, {
@@ -182,6 +226,8 @@
     "casesNormalized" : 158,
     "deaths" : 1937,
     "deathsNormalized" : 19,
+    "recovered" : 550,
+    "recoveredNormalized" : 5,
     "population" : 10099265,
     "rank" : 23
   }, {
@@ -190,6 +236,8 @@
     "casesNormalized" : 140,
     "deaths" : 384,
     "deathsNormalized" : 7,
+    "recovered" : 5276,
+    "recoveredNormalized" : 91,
     "population" : 5792202,
     "rank" : 24
   }, {
@@ -198,6 +246,8 @@
     "casesNormalized" : 135,
     "deaths" : 187,
     "deathsNormalized" : 3,
+    "recovered" : 32,
+    "recoveredNormalized" : 1,
     "population" : 5421241,
     "rank" : 25
   }, {
@@ -206,6 +256,8 @@
     "casesNormalized" : 119,
     "deaths" : 7,
     "deathsNormalized" : 0,
+    "recovered" : 1026,
+    "recoveredNormalized" : 60,
     "population" : 1701575,
     "rank" : 26
   }, {
@@ -214,6 +266,8 @@
     "casesNormalized" : 118,
     "deaths" : 44,
     "deathsNormalized" : 3,
+    "recovered" : 184,
+    "recoveredNormalized" : 14,
     "population" : 1326535,
     "rank" : 27
   }, {
@@ -222,6 +276,8 @@
     "casesNormalized" : 117,
     "deaths" : 2376,
     "deathsNormalized" : 3,
+    "recovered" : 16477,
+    "recoveredNormalized" : 20,
     "population" : 84339067,
     "rank" : 28
   }, {
@@ -230,6 +286,8 @@
     "casesNormalized" : 112,
     "deaths" : 141,
     "deathsNormalized" : 3,
+    "recovered" : 231,
+    "recoveredNormalized" : 5,
     "population" : 4314767,
     "rank" : 29
   }, {
@@ -238,6 +296,8 @@
     "casesNormalized" : 110,
     "deaths" : 2075,
     "deathsNormalized" : 5,
+    "recovered" : 14454,
+    "recoveredNormalized" : 38,
     "population" : 37742154,
     "rank" : 30
   }, {
@@ -246,6 +306,8 @@
     "casesNormalized" : 102,
     "deaths" : 5391,
     "deathsNormalized" : 6,
+    "recovered" : 63113,
+    "recoveredNormalized" : 75,
     "population" : 83992949,
     "rank" : 31
   }, {
@@ -254,6 +316,8 @@
     "casesNormalized" : 101,
     "deaths" : 3,
     "deathsNormalized" : 1,
+    "recovered" : 165,
+    "recoveredNormalized" : 37,
     "population" : 441543,
     "rank" : 32
   }, {
@@ -262,6 +326,8 @@
     "casesNormalized" : 99,
     "deaths" : 2,
     "deathsNormalized" : 0,
+    "recovered" : 183,
+    "recoveredNormalized" : 19,
     "population" : 988000,
     "rank" : 33
   }, {
@@ -270,6 +336,8 @@
     "casesNormalized" : 83,
     "deaths" : 52,
     "deathsNormalized" : 1,
+    "recovered" : 1546,
+    "recoveredNormalized" : 16,
     "population" : 9890402,
     "rank" : 34
   }, {
@@ -278,6 +346,8 @@
     "casesNormalized" : 77,
     "deaths" : 58,
     "deathsNormalized" : 1,
+    "recovered" : 769,
+    "recoveredNormalized" : 8,
     "population" : 9449323,
     "rank" : 35
   }, {
@@ -286,6 +356,8 @@
     "casesNormalized" : 76,
     "deaths" : 125,
     "deathsNormalized" : 1,
+    "recovered" : 870,
+    "recoveredNormalized" : 10,
     "population" : 8737371,
     "rank" : 36
   }, {
@@ -294,6 +366,8 @@
     "casesNormalized" : 75,
     "deaths" : 149,
     "deathsNormalized" : 3,
+    "recovered" : 2000,
+    "recoveredNormalized" : 36,
     "population" : 5540720,
     "rank" : 37
   }, {
@@ -302,6 +376,8 @@
     "casesNormalized" : 69,
     "deaths" : 75,
     "deathsNormalized" : 2,
+    "recovered" : 560,
+    "recoveredNormalized" : 14,
     "population" : 4033963,
     "rank" : 38
   }, {
@@ -310,6 +386,8 @@
     "casesNormalized" : 67,
     "deaths" : 208,
     "deathsNormalized" : 2,
+    "recovered" : 1989,
+    "recoveredNormalized" : 19,
     "population" : 10708981,
     "rank" : 39
   }, {
@@ -318,6 +396,8 @@
     "casesNormalized" : 65,
     "deaths" : 13,
     "deathsNormalized" : 1,
+    "recovered" : 98,
+    "recoveredNormalized" : 8,
     "population" : 1207359,
     "rank" : 40
   }, {
@@ -326,6 +406,8 @@
     "casesNormalized" : 65,
     "deaths" : 79,
     "deathsNormalized" : 4,
+    "recovered" : 205,
+    "recoveredNormalized" : 10,
     "population" : 2078938,
     "rank" : 41
   }, {
@@ -334,6 +416,8 @@
     "casesNormalized" : 61,
     "deaths" : 537,
     "deathsNormalized" : 3,
+    "recovered" : 1262,
+    "recoveredNormalized" : 7,
     "population" : 17643054,
     "rank" : 42
   }, {
@@ -342,6 +426,8 @@
     "casesNormalized" : 60,
     "deaths" : 56,
     "deathsNormalized" : 3,
+    "recovered" : 272,
+    "recoveredNormalized" : 13,
     "population" : 2083374,
     "rank" : 43
   }, {
@@ -350,6 +436,8 @@
     "casesNormalized" : 59,
     "deaths" : 160,
     "deathsNormalized" : 1,
+    "recovered" : 5386,
+    "recoveredNormalized" : 28,
     "population" : 19116201,
     "rank" : 44
   }, {
@@ -358,6 +446,8 @@
     "casesNormalized" : 58,
     "deaths" : 530,
     "deathsNormalized" : 2,
+    "recovered" : 7027,
+    "recoveredNormalized" : 21,
     "population" : 32971854,
     "rank" : 45
   }, {
@@ -366,6 +456,8 @@
     "casesNormalized" : 53,
     "deaths" : 13,
     "deathsNormalized" : 0,
+    "recovered" : 443,
+    "recoveredNormalized" : 10,
     "population" : 4270571,
     "rank" : 46
   }, {
@@ -374,6 +466,8 @@
     "casesNormalized" : 50,
     "deaths" : 24,
     "deathsNormalized" : 1,
+    "recovered" : 633,
+    "recoveredNormalized" : 21,
     "population" : 2963243,
     "rank" : 47
   }, {
@@ -382,6 +476,8 @@
     "casesNormalized" : 50,
     "deaths" : 38,
     "deathsNormalized" : 1,
+    "recovered" : 357,
+    "recoveredNormalized" : 13,
     "population" : 2722289,
     "rank" : 48
   }, {
@@ -390,6 +486,8 @@
     "casesNormalized" : 50,
     "deaths" : 5,
     "deathsNormalized" : 1,
+    "recovered" : 116,
+    "recoveredNormalized" : 18,
     "population" : 628066,
     "rank" : 49
   }, {
@@ -398,6 +496,8 @@
     "casesNormalized" : 50,
     "deaths" : 524,
     "deathsNormalized" : 3,
+    "recovered" : 2406,
+    "recoveredNormalized" : 13,
     "population" : 19237691,
     "rank" : 50
   }, {
@@ -406,6 +506,8 @@
     "casesNormalized" : 49,
     "deaths" : 260,
     "deathsNormalized" : 2,
+    "recovered" : 581,
+    "recoveredNormalized" : 5,
     "population" : 10847910,
     "rank" : 51
   }, {
@@ -414,6 +516,8 @@
     "casesNormalized" : 47,
     "deaths" : 48,
     "deathsNormalized" : 1,
+    "recovered" : 869,
+    "recoveredNormalized" : 21,
     "population" : 4105267,
     "rank" : 52
   }, {
@@ -422,6 +526,8 @@
     "casesNormalized" : 42,
     "deaths" : 53,
     "deathsNormalized" : 2,
+    "recovered" : 460,
+    "recoveredNormalized" : 14,
     "population" : 3280819,
     "rank" : 53
   }, {
@@ -430,6 +536,8 @@
     "casesNormalized" : 40,
     "deaths" : 11,
     "deathsNormalized" : 1,
+    "recovered" : 133,
+    "recoveredNormalized" : 7,
     "population" : 1886198,
     "rank" : 54
   }, {
@@ -438,6 +546,8 @@
     "casesNormalized" : 40,
     "deaths" : 513,
     "deathsNormalized" : 0,
+    "recovered" : 4420,
+    "recoveredNormalized" : 3,
     "population" : 145934462,
     "rank" : 55
   }, {
@@ -446,6 +556,8 @@
     "casesNormalized" : 37,
     "deaths" : 114,
     "deathsNormalized" : 0,
+    "recovered" : 1812,
+    "recoveredNormalized" : 5,
     "population" : 34813871,
     "rank" : 56
   }, {
@@ -454,6 +566,8 @@
     "casesNormalized" : 32,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 117,
+    "recoveredNormalized" : 27,
     "population" : 437479,
     "rank" : 57
   }, {
@@ -462,6 +576,8 @@
     "casesNormalized" : 32,
     "deaths" : 8,
     "deathsNormalized" : 0,
+    "recovered" : 238,
+    "recoveredNormalized" : 5,
     "population" : 5106626,
     "rank" : 58
   }, {
@@ -470,6 +586,8 @@
     "casesNormalized" : 30,
     "deaths" : 14,
     "deathsNormalized" : 0,
+    "recovered" : 1036,
+    "recoveredNormalized" : 21,
     "population" : 4822233,
     "rank" : 59
   }, {
@@ -478,6 +596,8 @@
     "casesNormalized" : 28,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 1,
+    "recoveredNormalized" : 2,
     "population" : 53199,
     "rank" : 60
   }, {
@@ -486,6 +606,8 @@
     "casesNormalized" : 27,
     "deaths" : 426,
     "deathsNormalized" : 1,
+    "recovered" : 1513,
+    "recoveredNormalized" : 4,
     "population" : 37846611,
     "rank" : 61
   }, {
@@ -494,6 +616,8 @@
     "casesNormalized" : 26,
     "deaths" : 67,
     "deathsNormalized" : 0,
+    "recovered" : 4124,
+    "recoveredNormalized" : 16,
     "population" : 25499884,
     "rank" : 62
   }, {
@@ -502,6 +626,8 @@
     "casesNormalized" : 26,
     "deaths" : 5,
     "deathsNormalized" : 2,
+    "recovered" : 25,
+    "recoveredNormalized" : 9,
     "population" : 287375,
     "rank" : 63
   }, {
@@ -510,6 +636,8 @@
     "casesNormalized" : 26,
     "deaths" : 9,
     "deathsNormalized" : 1,
+    "recovered" : 261,
+    "recoveredNormalized" : 21,
     "population" : 1271768,
     "rank" : 64
   }, {
@@ -518,6 +646,8 @@
     "casesNormalized" : 25,
     "deaths" : 3,
     "deathsNormalized" : 3,
+    "recovered" : 10,
+    "recoveredNormalized" : 10,
     "population" : 97929,
     "rank" : 65
   }, {
@@ -526,6 +656,8 @@
     "casesNormalized" : 23,
     "deaths" : 121,
     "deathsNormalized" : 1,
+    "recovered" : 577,
+    "recoveredNormalized" : 6,
     "population" : 10423054,
     "rank" : 66
   }, {
@@ -534,6 +666,8 @@
     "casesNormalized" : 23,
     "deaths" : 14,
     "deathsNormalized" : 0,
+    "recovered" : 284,
+    "recoveredNormalized" : 5,
     "population" : 5459642,
     "rank" : 67
   }, {
@@ -542,6 +676,8 @@
     "casesNormalized" : 22,
     "deaths" : 27,
     "deathsNormalized" : 1,
+    "recovered" : 356,
+    "recoveredNormalized" : 12,
     "population" : 2877797,
     "rank" : 68
   }, {
@@ -550,6 +686,8 @@
     "casesNormalized" : 22,
     "deaths" : 2906,
     "deathsNormalized" : 1,
+    "recovered" : 25318,
+    "recoveredNormalized" : 12,
     "population" : 212559417,
     "rank" : 69
   }, {
@@ -558,6 +696,8 @@
     "casesNormalized" : 22,
     "deaths" : 225,
     "deathsNormalized" : 2,
+    "recovered" : 295,
+    "recoveredNormalized" : 3,
     "population" : 9660351,
     "rank" : 70
   }, {
@@ -566,6 +706,8 @@
     "casesNormalized" : 22,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 9,
+    "recoveredNormalized" : 13,
     "population" : 71986,
     "rank" : 71
   }, {
@@ -574,6 +716,8 @@
     "casesNormalized" : 21,
     "deaths" : 238,
     "deathsNormalized" : 0,
+    "recovered" : 8277,
+    "recoveredNormalized" : 16,
     "population" : 51269185,
     "rank" : 72
   }, {
@@ -582,6 +726,8 @@
     "casesNormalized" : 17,
     "deaths" : 9,
     "deathsNormalized" : 2,
+    "recovered" : 12,
+    "recoveredNormalized" : 3,
     "population" : 393244,
     "rank" : 73
   }, {
@@ -590,6 +736,8 @@
     "casesNormalized" : 17,
     "deaths" : 93,
     "deathsNormalized" : 0,
+    "recovered" : 3452,
+    "recoveredNormalized" : 11,
     "population" : 32365999,
     "rank" : 74
   }, {
@@ -598,6 +746,8 @@
     "casesNormalized" : 16,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 16,
+    "recoveredNormalized" : 3,
     "population" : 540544,
     "rank" : 75
   }, {
@@ -606,6 +756,8 @@
     "casesNormalized" : 16,
     "deaths" : 12,
     "deathsNormalized" : 0,
+    "recovered" : 324,
+    "recoveredNormalized" : 9,
     "population" : 3473730,
     "rank" : 76
   }, {
@@ -614,6 +766,8 @@
     "casesNormalized" : 15,
     "deaths" : 20,
     "deathsNormalized" : 0,
+    "recovered" : 907,
+    "recoveredNormalized" : 9,
     "population" : 10139177,
     "rank" : 77
   }, {
@@ -622,6 +776,8 @@
     "casesNormalized" : 15,
     "deaths" : 49,
     "deathsNormalized" : 1,
+    "recovered" : 174,
+    "recoveredNormalized" : 3,
     "population" : 6948445,
     "rank" : 78
   }, {
@@ -630,6 +786,8 @@
     "casesNormalized" : 15,
     "deaths" : 174,
     "deathsNormalized" : 0,
+    "recovered" : 424,
+    "recoveredNormalized" : 1,
     "population" : 43733762,
     "rank" : 79
   }, {
@@ -638,6 +796,8 @@
     "casesNormalized" : 13,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 1,
+    "recoveredNormalized" : 0,
     "population" : 555987,
     "rank" : 80
   }, {
@@ -646,6 +806,8 @@
     "casesNormalized" : 13,
     "deaths" : 6,
     "deathsNormalized" : 0,
+    "recovered" : 180,
+    "recoveredNormalized" : 4,
     "population" : 5094118,
     "rank" : 81
   }, {
@@ -654,6 +816,8 @@
     "casesNormalized" : 13,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 6,
+    "recoveredNormalized" : 5,
     "population" : 112523,
     "rank" : 82
   }, {
@@ -662,6 +826,8 @@
     "casesNormalized" : 12,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 3,
+    "recoveredNormalized" : 3,
     "population" : 110940,
     "rank" : 83
   }, {
@@ -670,6 +836,8 @@
     "casesNormalized" : 11,
     "deaths" : 19,
     "deathsNormalized" : 0,
+    "recovered" : 515,
+    "recoveredNormalized" : 3,
     "population" : 18776707,
     "rank" : 84
   }, {
@@ -678,6 +846,8 @@
     "casesNormalized" : 11,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 5,
+    "recoveredNormalized" : 5,
     "population" : 98347,
     "rank" : 85
   }, {
@@ -686,6 +856,8 @@
     "casesNormalized" : 10,
     "deaths" : 31,
     "deathsNormalized" : 1,
+    "recovered" : 61,
+    "recoveredNormalized" : 1,
     "population" : 5518087,
     "rank" : 86
   }, {
@@ -694,6 +866,8 @@
     "casesNormalized" : 10,
     "deaths" : 40,
     "deathsNormalized" : 0,
+    "recovered" : 341,
+    "recoveredNormalized" : 3,
     "population" : 11326616,
     "rank" : 87
   }, {
@@ -702,6 +876,8 @@
     "casesNormalized" : 10,
     "deaths" : 5,
     "deathsNormalized" : 0,
+    "recovered" : 107,
+    "recoveredNormalized" : 3,
     "population" : 3989167,
     "rank" : 88
   }, {
@@ -710,6 +886,8 @@
     "casesNormalized" : 10,
     "deaths" : 22,
     "deathsNormalized" : 0,
+    "recovered" : 113,
+    "recoveredNormalized" : 2,
     "population" : 6825445,
     "rank" : 89
   }, {
@@ -718,6 +896,8 @@
     "casesNormalized" : 9,
     "deaths" : 206,
     "deathsNormalized" : 0,
+    "recovered" : 870,
+    "recoveredNormalized" : 2,
     "population" : 50882891,
     "rank" : 90
   }, {
@@ -726,6 +906,8 @@
     "casesNormalized" : 9,
     "deaths" : 7,
     "deathsNormalized" : 1,
+    "recovered" : 9,
+    "recoveredNormalized" : 1,
     "population" : 786552,
     "rank" : 91
   }, {
@@ -734,6 +916,8 @@
     "casesNormalized" : 9,
     "deaths" : 281,
     "deathsNormalized" : 0,
+    "recovered" : 1356,
+    "recoveredNormalized" : 1,
     "population" : 126476461,
     "rank" : 92
   }, {
@@ -742,6 +926,8 @@
     "casesNormalized" : 9,
     "deaths" : 7,
     "deathsNormalized" : 0,
+    "recovered" : 254,
+    "recoveredNormalized" : 4,
     "population" : 6524195,
     "rank" : 93
   }, {
@@ -750,6 +936,8 @@
     "casesNormalized" : 9,
     "deaths" : 149,
     "deathsNormalized" : 0,
+    "recovered" : 417,
+    "recoveredNormalized" : 1,
     "population" : 36910560,
     "rank" : 94
   }, {
@@ -758,6 +946,8 @@
     "casesNormalized" : 9,
     "deaths" : 4,
     "deathsNormalized" : 0,
+    "recovered" : 71,
+    "recoveredNormalized" : 1,
     "population" : 5101414,
     "rank" : 95
   }, {
@@ -766,6 +956,8 @@
     "casesNormalized" : 8,
     "deaths" : 6,
     "deathsNormalized" : 0,
+    "recovered" : 27,
+    "recoveredNormalized" : 1,
     "population" : 2961167,
     "rank" : 96
   }, {
@@ -774,6 +966,8 @@
     "casesNormalized" : 8,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 15,
+    "recoveredNormalized" : 8,
     "population" : 183627,
     "rank" : 97
   }, {
@@ -782,6 +976,8 @@
     "casesNormalized" : 8,
     "deaths" : 8,
     "deathsNormalized" : 1,
+    "recovered" : 37,
+    "recoveredNormalized" : 3,
     "population" : 1399488,
     "rank" : 98
   }, {
@@ -790,6 +986,8 @@
     "casesNormalized" : 8,
     "deaths" : 38,
     "deathsNormalized" : 0,
+    "recovered" : 190,
+    "recoveredNormalized" : 2,
     "population" : 11818619,
     "rank" : 99
   }, {
@@ -798,6 +996,8 @@
     "casesNormalized" : 7,
     "deaths" : 402,
     "deathsNormalized" : 1,
+    "recovered" : 1204,
+    "recoveredNormalized" : 3,
     "population" : 43851044,
     "rank" : 100
   }, {
@@ -806,6 +1006,8 @@
     "casesNormalized" : 7,
     "deaths" : 152,
     "deathsNormalized" : 0,
+    "recovered" : 872,
+    "recoveredNormalized" : 2,
     "population" : 45195774,
     "rank" : 101
   }, {
@@ -814,6 +1016,8 @@
     "casesNormalized" : 7,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 24,
+    "recoveredNormalized" : 1,
     "population" : 2225734,
     "rank" : 102
   }, {
@@ -822,6 +1026,8 @@
     "casesNormalized" : 7,
     "deaths" : 857,
     "deathsNormalized" : 1,
+    "recovered" : 2627,
+    "recoveredNormalized" : 2,
     "population" : 128932753,
     "rank" : 103
   }, {
@@ -830,6 +1036,8 @@
     "casesNormalized" : 6,
     "deaths" : 4636,
     "deathsNormalized" : 0,
+    "recovered" : 77861,
+    "recoveredNormalized" : 5,
     "population" : 1439323776,
     "rank" : 104
   }, {
@@ -838,6 +1046,8 @@
     "casesNormalized" : 6,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 7,
+    "recoveredNormalized" : 0,
     "population" : 1402985,
     "rank" : 105
   }, {
@@ -846,6 +1056,8 @@
     "casesNormalized" : 6,
     "deaths" : 6,
     "deathsNormalized" : 0,
+    "recovered" : 164,
+    "recoveredNormalized" : 1,
     "population" : 13132795,
     "rank" : 106
   }, {
@@ -854,6 +1066,8 @@
     "casesNormalized" : 6,
     "deaths" : 446,
     "deathsNormalized" : 0,
+    "recovered" : 693,
+    "recoveredNormalized" : 1,
     "population" : 109581078,
     "rank" : 107
   }, {
@@ -862,6 +1076,8 @@
     "casesNormalized" : 6,
     "deaths" : 65,
     "deathsNormalized" : 0,
+    "recovered" : 1055,
+    "recoveredNormalized" : 2,
     "population" : 59308690,
     "rank" : 108
   }, {
@@ -870,6 +1086,8 @@
     "casesNormalized" : 5,
     "deaths" : 37,
     "deathsNormalized" : 0,
+    "recovered" : 44,
+    "recoveredNormalized" : 0,
     "population" : 11673021,
     "rank" : 109
   }, {
@@ -878,6 +1096,8 @@
     "casesNormalized" : 5,
     "deaths" : 46,
     "deathsNormalized" : 0,
+    "recovered" : 30,
+    "recoveredNormalized" : 0,
     "population" : 9904607,
     "rank" : 110
   }, {
@@ -886,6 +1106,8 @@
     "casesNormalized" : 5,
     "deaths" : 212,
     "deathsNormalized" : 0,
+    "recovered" : 2156,
+    "recoveredNormalized" : 1,
     "population" : 220892340,
     "rank" : 111
   }, {
@@ -894,6 +1116,8 @@
     "casesNormalized" : 5,
     "deaths" : 7,
     "deathsNormalized" : 0,
+    "recovered" : 450,
+    "recoveredNormalized" : 1,
     "population" : 33469203,
     "rank" : 112
   }, {
@@ -902,6 +1126,8 @@
     "casesNormalized" : 5,
     "deaths" : 2,
     "deathsNormalized" : 1,
+    "recovered" : 2,
+    "recoveredNormalized" : 1,
     "population" : 397628,
     "rank" : 113
   }, {
@@ -910,6 +1136,8 @@
     "casesNormalized" : 4,
     "deaths" : 43,
     "deathsNormalized" : 0,
+    "recovered" : 397,
+    "recoveredNormalized" : 1,
     "population" : 26545863,
     "rank" : 114
   }, {
@@ -918,6 +1146,8 @@
     "casesNormalized" : 4,
     "deaths" : 14,
     "deathsNormalized" : 0,
+    "recovered" : 310,
+    "recoveredNormalized" : 1,
     "population" : 26378274,
     "rank" : 115
   }, {
@@ -926,6 +1156,8 @@
     "casesNormalized" : 4,
     "deaths" : 276,
     "deathsNormalized" : 0,
+    "recovered" : 935,
+    "recoveredNormalized" : 1,
     "population" : 102334404,
     "rank" : 116
   }, {
@@ -934,6 +1166,8 @@
     "casesNormalized" : 4,
     "deaths" : 7,
     "deathsNormalized" : 0,
+    "recovered" : 63,
+    "recoveredNormalized" : 1,
     "population" : 6486205,
     "rank" : 117
   }, {
@@ -942,6 +1176,8 @@
     "casesNormalized" : 4,
     "deaths" : 9,
     "deathsNormalized" : 0,
+    "recovered" : 99,
+    "recoveredNormalized" : 0,
     "population" : 31072940,
     "rank" : 118
   }, {
@@ -950,6 +1186,8 @@
     "casesNormalized" : 4,
     "deaths" : 83,
     "deathsNormalized" : 0,
+    "recovered" : 1146,
+    "recoveredNormalized" : 3,
     "population" : 40222493,
     "rank" : 119
   }, {
@@ -958,6 +1196,8 @@
     "casesNormalized" : 4,
     "deaths" : 7,
     "deathsNormalized" : 0,
+    "recovered" : 315,
+    "recoveredNormalized" : 3,
     "population" : 10203134,
     "rank" : 120
   }, {
@@ -966,6 +1206,8 @@
     "casesNormalized" : 4,
     "deaths" : 49,
     "deathsNormalized" : 0,
+    "recovered" : 2352,
+    "recoveredNormalized" : 3,
     "population" : 69799978,
     "rank" : 121
   }, {
@@ -974,6 +1216,8 @@
     "casesNormalized" : 3,
     "deaths" : 40,
     "deathsNormalized" : 0,
+    "recovered" : 166,
+    "recoveredNormalized" : 0,
     "population" : 38928346,
     "rank" : 122
   }, {
@@ -982,6 +1226,8 @@
     "casesNormalized" : 3,
     "deaths" : 39,
     "deathsNormalized" : 0,
+    "recovered" : 389,
+    "recoveredNormalized" : 2,
     "population" : 20903273,
     "rank" : 123
   }, {
@@ -990,6 +1236,8 @@
     "casesNormalized" : 3,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 8,
+    "recoveredNormalized" : 1,
     "population" : 1160164,
     "rank" : 124
   }, {
@@ -998,6 +1246,8 @@
     "casesNormalized" : 3,
     "deaths" : 635,
     "deathsNormalized" : 0,
+    "recovered" : 913,
+    "recoveredNormalized" : 0,
     "population" : 273523615,
     "rank" : 125
   }, {
@@ -1006,6 +1256,8 @@
     "casesNormalized" : 3,
     "deaths" : 22,
     "deathsNormalized" : 0,
+    "recovered" : 193,
+    "recoveredNormalized" : 1,
     "population" : 24206644,
     "rank" : 126
   }, {
@@ -1014,6 +1266,8 @@
     "casesNormalized" : 3,
     "deaths" : 9,
     "deathsNormalized" : 0,
+    "recovered" : 62,
+    "recoveredNormalized" : 1,
     "population" : 7132538,
     "rank" : 127
   }, {
@@ -1022,6 +1276,8 @@
     "casesNormalized" : 3,
     "deaths" : 6,
     "deathsNormalized" : 0,
+    "recovered" : 253,
+    "recoveredNormalized" : 2,
     "population" : 16743927,
     "rank" : 128
   }, {
@@ -1030,6 +1286,8 @@
     "casesNormalized" : 3,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 3,
+    "recoveredNormalized" : 0,
     "population" : 1968001,
     "rank" : 129
   }, {
@@ -1038,6 +1296,8 @@
     "casesNormalized" : 2,
     "deaths" : 120,
     "deathsNormalized" : 0,
+    "recovered" : 92,
+    "recoveredNormalized" : 0,
     "population" : 164689383,
     "rank" : 130
   }, {
@@ -1046,6 +1306,8 @@
     "casesNormalized" : 2,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 8,
+    "recoveredNormalized" : 1,
     "population" : 896445,
     "rank" : 131
   }, {
@@ -1054,6 +1316,8 @@
     "casesNormalized" : 2,
     "deaths" : 8,
     "deathsNormalized" : 0,
+    "recovered" : 24,
+    "recoveredNormalized" : 0,
     "population" : 17915568,
     "rank" : 132
   }, {
@@ -1062,6 +1326,8 @@
     "casesNormalized" : 2,
     "deaths" : 681,
     "deathsNormalized" : 0,
+    "recovered" : 4370,
+    "recoveredNormalized" : 0,
     "population" : 1380004385,
     "rank" : 133
   }, {
@@ -1070,6 +1336,8 @@
     "casesNormalized" : 2,
     "deaths" : 8,
     "deathsNormalized" : 0,
+    "recovered" : 20,
+    "recoveredNormalized" : 0,
     "population" : 5057681,
     "rank" : 134
   }, {
@@ -1078,6 +1346,8 @@
     "casesNormalized" : 2,
     "deaths" : 8,
     "deathsNormalized" : 0,
+    "recovered" : 4,
+    "recoveredNormalized" : 0,
     "population" : 15893222,
     "rank" : 135
   }, {
@@ -1086,6 +1356,8 @@
     "casesNormalized" : 2,
     "deaths" : 7,
     "deathsNormalized" : 0,
+    "recovered" : 105,
+    "recoveredNormalized" : 0,
     "population" : 21413249,
     "rank" : 136
   }, {
@@ -1094,6 +1366,8 @@
     "casesNormalized" : 2,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 6,
+    "recoveredNormalized" : 1,
     "population" : 586632,
     "rank" : 137
   }, {
@@ -1102,6 +1376,8 @@
     "casesNormalized" : 2,
     "deaths" : 6,
     "deathsNormalized" : 0,
+    "recovered" : 236,
+    "recoveredNormalized" : 1,
     "population" : 23816775,
     "rank" : 138
   }, {
@@ -1110,6 +1386,8 @@
     "casesNormalized" : 2,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 1,
+    "recoveredNormalized" : 0,
     "population" : 1318445,
     "rank" : 139
   }, {
@@ -1118,6 +1396,8 @@
     "casesNormalized" : 2,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 0,
+    "recoveredNormalized" : 0,
     "population" : 219159,
     "rank" : 140
   }, {
@@ -1126,6 +1406,8 @@
     "casesNormalized" : 1,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 2,
+    "recoveredNormalized" : 0,
     "population" : 771608,
     "rank" : 141
   }, {
@@ -1134,6 +1416,8 @@
     "casesNormalized" : 1,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 110,
+    "recoveredNormalized" : 1,
     "population" : 16718965,
     "rank" : 142
   }, {
@@ -1142,6 +1426,8 @@
     "casesNormalized" : 1,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 6,
+    "recoveredNormalized" : 0,
     "population" : 3546421,
     "rank" : 143
   }, {
@@ -1150,6 +1436,8 @@
     "casesNormalized" : 1,
     "deaths" : 4,
     "deathsNormalized" : 0,
+    "recovered" : 2,
+    "recoveredNormalized" : 0,
     "population" : 11402528,
     "rank" : 144
   }, {
@@ -1158,6 +1446,8 @@
     "casesNormalized" : 1,
     "deaths" : 14,
     "deathsNormalized" : 0,
+    "recovered" : 74,
+    "recoveredNormalized" : 0,
     "population" : 53771296,
     "rank" : 145
   }, {
@@ -1166,6 +1456,8 @@
     "casesNormalized" : 1,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 8,
+    "recoveredNormalized" : 0,
     "population" : 3278290,
     "rank" : 146
   }, {
@@ -1174,6 +1466,8 @@
     "casesNormalized" : 1,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 6,
+    "recoveredNormalized" : 0,
     "population" : 2540905,
     "rank" : 147
   }, {
@@ -1182,6 +1476,8 @@
     "casesNormalized" : 1,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 84,
+    "recoveredNormalized" : 1,
     "population" : 12952218,
     "rank" : 148
   }, {
@@ -1190,6 +1486,8 @@
     "casesNormalized" : 1,
     "deaths" : 6,
     "deathsNormalized" : 0,
+    "recovered" : 56,
+    "recoveredNormalized" : 1,
     "population" : 8278724,
     "rank" : 149
   }, {
@@ -1198,6 +1496,8 @@
     "casesNormalized" : 1,
     "deaths" : 10,
     "deathsNormalized" : 0,
+    "recovered" : 122,
+    "recoveredNormalized" : 0,
     "population" : 28435940,
     "rank" : 150
   }, {
@@ -1206,6 +1506,8 @@
     "casesNormalized" : 1,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 15,
+    "recoveredNormalized" : 0,
     "population" : 6871292,
     "rank" : 151
   }, {
@@ -1214,6 +1516,8 @@
     "casesNormalized" : 1,
     "deaths" : 17,
     "deathsNormalized" : 0,
+    "recovered" : 73,
+    "recoveredNormalized" : 0,
     "population" : 20250833,
     "rank" : 152
   }, {
@@ -1222,6 +1526,8 @@
     "casesNormalized" : 1,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 0,
+    "recoveredNormalized" : 0,
     "population" : 2351627,
     "rank" : 153
   }, {
@@ -1230,6 +1536,8 @@
     "casesNormalized" : 1,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 6,
+    "recoveredNormalized" : 0,
     "population" : 7976983,
     "rank" : 154
   }, {
@@ -1238,6 +1546,8 @@
     "casesNormalized" : 1,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 0,
+    "recoveredNormalized" : 0,
     "population" : 597339,
     "rank" : 155
   }, {
@@ -1246,6 +1556,8 @@
     "casesNormalized" : 0,
     "deaths" : 2,
     "deathsNormalized" : 0,
+    "recovered" : 6,
+    "recoveredNormalized" : 0,
     "population" : 32866272,
     "rank" : 156
   }, {
@@ -1254,6 +1566,8 @@
     "casesNormalized" : 0,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 27,
+    "recoveredNormalized" : 0,
     "population" : 12123200,
     "rank" : 157
   }, {
@@ -1262,6 +1576,8 @@
     "casesNormalized" : 0,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 10,
+    "recoveredNormalized" : 0,
     "population" : 4829767,
     "rank" : 158
   }, {
@@ -1270,6 +1586,8 @@
     "casesNormalized" : 0,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 8,
+    "recoveredNormalized" : 0,
     "population" : 16425864,
     "rank" : 159
   }, {
@@ -1278,6 +1596,8 @@
     "casesNormalized" : 0,
     "deaths" : 3,
     "deathsNormalized" : 0,
+    "recovered" : 21,
+    "recoveredNormalized" : 0,
     "population" : 114963588,
     "rank" : 160
   }, {
@@ -1286,6 +1606,8 @@
     "casesNormalized" : 0,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 2,
+    "recoveredNormalized" : 0,
     "population" : 2416668,
     "rank" : 161
   }, {
@@ -1294,6 +1616,8 @@
     "casesNormalized" : 0,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 52,
+    "recoveredNormalized" : 0,
     "population" : 27691018,
     "rank" : 162
   }, {
@@ -1302,6 +1626,8 @@
     "casesNormalized" : 0,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 6,
+    "recoveredNormalized" : 0,
     "population" : 4649658,
     "rank" : 163
   }, {
@@ -1310,6 +1636,8 @@
     "casesNormalized" : 0,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 7,
+    "recoveredNormalized" : 0,
     "population" : 29136808,
     "rank" : 164
   }, {
@@ -1318,6 +1646,8 @@
     "casesNormalized" : 0,
     "deaths" : 2,
     "deathsNormalized" : 0,
+    "recovered" : 7,
+    "recoveredNormalized" : 0,
     "population" : 6624554,
     "rank" : 165
   }, {
@@ -1326,6 +1656,8 @@
     "casesNormalized" : 0,
     "deaths" : 28,
     "deathsNormalized" : 0,
+    "recovered" : 197,
+    "recoveredNormalized" : 0,
     "population" : 206139589,
     "rank" : 166
   }, {
@@ -1334,6 +1666,8 @@
     "casesNormalized" : 0,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 0,
+    "recoveredNormalized" : 0,
     "population" : 8947024,
     "rank" : 167
   }, {
@@ -1342,6 +1676,8 @@
     "casesNormalized" : 0,
     "deaths" : 13,
     "deathsNormalized" : 0,
+    "recovered" : 12,
+    "recoveredNormalized" : 0,
     "population" : 43849260,
     "rank" : 168
   }, {
@@ -1350,6 +1686,8 @@
     "casesNormalized" : 0,
     "deaths" : 10,
     "deathsNormalized" : 0,
+    "recovered" : 11,
+    "recoveredNormalized" : 0,
     "population" : 59734218,
     "rank" : 169
   }, {
@@ -1358,6 +1696,8 @@
     "casesNormalized" : 0,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 45,
+    "recoveredNormalized" : 0,
     "population" : 45741007,
     "rank" : 170
   }, {
@@ -1366,6 +1706,8 @@
     "casesNormalized" : 0,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 223,
+    "recoveredNormalized" : 0,
     "population" : 97338579,
     "rank" : 171
   }, {
@@ -1374,6 +1716,8 @@
     "casesNormalized" : 0,
     "deaths" : 3,
     "deathsNormalized" : 0,
+    "recovered" : 35,
+    "recoveredNormalized" : 0,
     "population" : 18383955,
     "rank" : 172
   }, {
@@ -1382,6 +1726,8 @@
     "casesNormalized" : 0,
     "deaths" : 4,
     "deathsNormalized" : 0,
+    "recovered" : 2,
+    "recoveredNormalized" : 0,
     "population" : 14862924,
     "rank" : 173
   }, {
@@ -1390,6 +1736,8 @@
     "casesNormalized" : 0,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 8,
+    "recoveredNormalized" : 0,
     "population" : 31255435,
     "rank" : 174
   }, {
@@ -1398,6 +1746,8 @@
     "casesNormalized" : 0,
     "deaths" : 3,
     "deathsNormalized" : 0,
+    "recovered" : 6,
+    "recoveredNormalized" : 0,
     "population" : 17500658,
     "rank" : 175
   }, {
@@ -1406,6 +1756,8 @@
     "casesNormalized" : 0,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 4,
+    "recoveredNormalized" : 0,
     "population" : 7275560,
     "rank" : 176
   }, {
@@ -1414,6 +1766,8 @@
     "casesNormalized" : 0,
     "deaths" : 5,
     "deathsNormalized" : 0,
+    "recovered" : 7,
+    "recoveredNormalized" : 0,
     "population" : 54409800,
     "rank" : 177
   }, {
@@ -1422,6 +1776,8 @@
     "casesNormalized" : 0,
     "deaths" : 1,
     "deathsNormalized" : 0,
+    "recovered" : 4,
+    "recoveredNormalized" : 0,
     "population" : 11890784,
     "rank" : 178
   }, {
@@ -1430,6 +1786,8 @@
     "casesNormalized" : 0,
     "deaths" : 3,
     "deathsNormalized" : 0,
+    "recovered" : 3,
+    "recoveredNormalized" : 0,
     "population" : 19129952,
     "rank" : 179
   }, {
@@ -1438,6 +1796,8 @@
     "casesNormalized" : 0,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 0,
+    "recoveredNormalized" : 0,
     "population" : 11193725,
     "rank" : 180
   }, {
@@ -1446,6 +1806,8 @@
     "casesNormalized" : 0,
     "deaths" : 0,
     "deathsNormalized" : 0,
+    "recovered" : 0,
+    "recoveredNormalized" : 0,
     "population" : 29825964,
     "rank" : 181
   } ]

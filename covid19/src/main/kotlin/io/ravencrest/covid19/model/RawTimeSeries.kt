@@ -1,11 +1,8 @@
 package io.ravencrest.covid19.model
 
 import java.time.LocalDate
-import kotlin.math.roundToInt
 
-const val NORMALIZER = 100_000
-
-data class RawTimeSeries(val country: String, val population: Long, val points: List<Long?>) {
+data class RawTimeSeries(val country: String, val points: List<Long?>) {
   fun toTimeSeries(headers: List<LocalDate>): TimeSeries {
     val points = points.mapIndexed { index, item ->
       if (item != null) {
@@ -20,7 +17,6 @@ data class RawTimeSeries(val country: String, val population: Long, val points: 
     }.filterNotNull().toSet()
     return TimeSeries(
       country = this.country,
-      population = population,
       points = points
     )
   }

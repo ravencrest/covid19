@@ -6,6 +6,8 @@ data class TableRow(
   val casesNormalized: Long,
   val deaths: Long,
   val deathsNormalized: Long,
+  val recovered: Long,
+  val recoveredNormalized: Long,
   val population: Long,
   val rank: Int
 )

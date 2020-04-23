@@ -5,6 +5,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvMapper
 import com.fasterxml.jackson.dataformat.csv.CsvParser
 import java.nio.file.Files
 import java.nio.file.Path
+import kotlin.math.roundToLong
 import kotlin.system.exitProcess
 
 // Originally, we used POJOs, but string arrays allows us to re-use code and simplifies a few things
@@ -22,4 +23,8 @@ fun deleteStaleData(path: Path) {
     println("Failed to remove stale data at $path. Exiting.")
     exitProcess(1)
   }
+}
+
+fun normalize(value: Number, population: Long, normalizer: Int = 100_000): Long {
+  return (value.toDouble() / population * normalizer).roundToLong()
 }

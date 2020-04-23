@@ -3,9 +3,11 @@ package io.ravencrest.covid19.parse
 import com.fasterxml.jackson.databind.MappingIterator
 import io.ravencrest.covid19.model.RawTimeSeries
 import io.ravencrest.covid19.model.TimeSeries
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.FileOutputStream
+import java.net.SocketTimeoutException
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -20,44 +22,49 @@ const val CSSE_CASES_GLOBAL_URL =
 const val CSSE_CASES_US_URL =
   "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv"
 const val CSSE_DEATHS_GLOBAL_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+const val CSSE_RECOVERED_GLOBAL_URL = "https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv"
 
 val baseTimeSeriesPath: Path = Paths.get(if (isDev) "tmp" else ".").toAbsolutePath()
 
 fun loadTimeSeries(name: String, url: String): MappingIterator<Array<String>> {
-  val timeSeriesPath = baseTimeSeriesPath.resolve("$name.csv").toAbsolutePath()
-  val timeSeriesFile = timeSeriesPath.toFile()
+  @Suppress("NAME_SHADOWING")
+  val url = url.toHttpUrlOrNull()!!
+  val ingestDataPath = baseTimeSeriesPath.resolve("$name.csv").toAbsolutePath()
+  val ingestDataFile = ingestDataPath.toFile()
   val purgeIfOlder = LocalDateTime.now().toInstant(ZoneOffset.UTC) - Duration.ofHours(8)
-  if (timeSeriesFile.exists() && timeSeriesFile.lastModified() > purgeIfOlder.toEpochMilli()) {
-      println("Recent timeseries data already exists on disk. Using that to generate results.")
-      println("If you'd like fresh data, delete $timeSeriesPath and run the tool again.")
+  if (ingestDataFile.exists() && ingestDataFile.lastModified() > purgeIfOlder.toEpochMilli()) {
+      println("Recent $name data already exists on disk. Using that to generate results.")
+      println("If you'd like fresh data, delete $ingestDataPath and run the tool again.\n")
   }
   else {
-    deleteStaleData(timeSeriesPath)
+    deleteStaleData(ingestDataPath)
     try {
-      println("Fetching data from GitHub...")
-      Files.createDirectories(timeSeriesPath.parent)
+      println("Fetching $name data from $url")
+      Files.createDirectories(ingestDataPath.parent)
       val client = OkHttpClient()
       val request = Request.Builder().url(url).get().build()
 
       client.newCall(request).execute().use {
         val body = it.body ?: return@use
-        FileOutputStream(timeSeriesFile).use { writer ->
+        FileOutputStream(ingestDataFile).use { writer ->
           body.byteStream().copyTo(writer)
         }
       }
-    } catch (e: Exception) {
-      println("Failed to load data from GitHub. Exiting.")
+    } catch (ste: SocketTimeoutException) {
+      println("Connecting to ${url.host} timed out. Please try later. Exiting.")
+      exitProcess(1)
+    }
+    catch (e: Exception) {
+      println("Failed to retrieve data from ${url.host}. Exiting.")
       e.printStackTrace()
       exitProcess(1)
     }
   }
-  return readCsvToStringArray(timeSeriesPath)
+  return readCsvToStringArray(ingestDataPath)
 }
 
-fun parse(name: String, url: String, countryOffSet: Int, timeSeriesOffset: Int): Set<TimeSeries> {
+fun parse(name: String, url: String, countryOffSet: Int, timeSeriesOffset: Int, countries: Map<String, String>): Set<TimeSeries> {
   val blacklist = loadBlacklist()
-  val countries = loadCountries()
-  val populations = loadPopulations(countries = countries)
 
   val csvIterator = loadTimeSeries(name, url)
   val parser = DateTimeFormatterBuilder()
@@ -75,12 +82,6 @@ fun parse(name: String, url: String, countryOffSet: Int, timeSeriesOffset: Int):
     if (blacklist.contains(country)) {
       continue
     }
-    val popCountry = countries[country] ?: country
-    val population = populations[popCountry]
-    if (population == null) {
-      println("Failed to find an appropriate country for $country. Most likely, we're missing a mapping `countries.csv`.")
-      continue
-    }
     val newSeries = row.slice(timeSeriesOffset until row.size).map { it.toLongOrNull() }
     val previousSeries = dataMap[country]?.points
 
@@ -92,8 +93,7 @@ fun parse(name: String, url: String, countryOffSet: Int, timeSeriesOffset: Int):
 
     val newRow = RawTimeSeries(
       country = country,
-      points = mergedSeries,
-      population = population
+      points = mergedSeries
     )
     dataMap[country] = newRow
   }
@@ -103,14 +103,18 @@ fun parse(name: String, url: String, countryOffSet: Int, timeSeriesOffset: Int):
   return sortedSeries
 }
 
-fun parseWho(): Set<TimeSeries> {
-  return parse("who_cases", WHO_CASES_URL, 1, 3)
+fun parseWho(countries: Map<String, String>): Set<TimeSeries> {
+  return parse("who_cases", WHO_CASES_URL, 1, 3, countries)
 }
 
-fun parseCsseCases(): Set<TimeSeries> {
-  return parse("csse_cases", CSSE_CASES_GLOBAL_URL, 1, 4)
+fun parseCsseCases(countries: Map<String, String>): Set<TimeSeries> {
+  return parse("csse_cases", CSSE_CASES_GLOBAL_URL, 1, 4, countries)
 }
 
-fun parseCsseDeaths(): Set<TimeSeries> {
-  return parse("csse_deaths", CSSE_DEATHS_GLOBAL_URL, 1, 4)
+fun parseCsseDeaths(countries: Map<String, String>): Set<TimeSeries> {
+  return parse("csse_deaths", CSSE_DEATHS_GLOBAL_URL, 1, 4, countries)
+}
+
+fun parseCsseRecovered(countries: Map<String, String>): Set<TimeSeries> {
+  return parse("csse_recovered", CSSE_RECOVERED_GLOBAL_URL, 1, 4, countries)
 }

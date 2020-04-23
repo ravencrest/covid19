@@ -40,6 +40,8 @@ export type TableRow = {
   casesNormalized: number;
   deaths: number;
   deathsNormalized: number;
+  recovered: number;
+  recoveredNormalized: number;
   population: number;
 };
 

@@ -8,7 +8,7 @@ const Header = ({
   children,
   tooltip,
 }: {
-  children: string;
+  children: React.ReactChild;
   tooltip: string;
 }) => (
   <Tooltip title={tooltip}>
@@ -52,6 +52,26 @@ const columns: Column<TableRow>[] = [
     accessor: 'deathsNormalized',
   },
   {
+    Header: (
+      <Header tooltip='Confirmed Recoveries (Normalized per 100,000 people)'>
+        <div style={{ display: 'flex' }}>
+          <span
+            style={{
+              maxWidth: '3rem',
+              textOverflow: 'ellipsis',
+              display: 'inline-block',
+              overflow: 'hidden',
+            }}
+          >
+            Recoveries
+          </span>
+          (N)
+        </div>
+      </Header>
+    ),
+    accessor: 'recoveredNormalized',
+  },
+  {
     Header: <Header tooltip='Confirmed Cases'>Cases</Header>,
     accessor: 'cases',
   },
@@ -60,14 +80,31 @@ const columns: Column<TableRow>[] = [
     accessor: 'deaths',
   },
   {
-    Header: <Header tooltip='Population'>Pop</Header>,
+    Header: (
+      <Header tooltip='Confirmed Recoveries'>
+        <span
+          style={{
+            maxWidth: '3rem',
+            textOverflow: 'ellipsis',
+            display: 'inline-block',
+            overflow: 'hidden',
+          }}
+        >
+          Recoveries
+        </span>
+      </Header>
+    ),
+    accessor: 'recovered',
+  },
+  {
+    Header: <Header tooltip='Population'>Pop.</Header>,
     accessor: 'population',
   },
 ];
 
 const App = () => {
   return (
-    <div style={{ maxWidth: 1024, margin: 'auto' }}>
+    <div style={{ maxWidth: 1048, margin: 'auto' }}>
       <CssBaseline />
       <EnhancedTable
         columns={columns}
