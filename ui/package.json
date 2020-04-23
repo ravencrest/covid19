@@ -1,5 +1,6 @@
 {
   "private": true,
+  "homepage":".",
   "scripts": {
     "start": "rescripts start",
     "build": "rescripts build",
