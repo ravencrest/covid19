@@ -7,10 +7,8 @@ import com.fasterxml.jackson.module.kotlin.KotlinModule
 import io.ravencrest.covid19.model.Results
 import io.ravencrest.covid19.model.TableRow
 import io.ravencrest.covid19.parse.*
-import java.math.RoundingMode
 import java.nio.file.Files
 import java.nio.file.Paths
-import java.text.DecimalFormat
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
 
@@ -28,9 +26,6 @@ fun main() {
   val deathsIndex = parseCsseDeaths(countriesIndex).associateBy { it.country }
   val recoveredIndex = parseCsseRecovered(countriesIndex).associateBy { it.country }
 
-  val df = DecimalFormat("#.##")
-  df.roundingMode = RoundingMode.CEILING
-
   val sortedCases = casesIndex.mapNotNull {
     it.last()?.let { p ->
       val secondToLast = it.secondToLast()
@@ -40,24 +35,20 @@ fun main() {
       val deaths = deathsIndex[country]?.last()?.value ?: 0
       val recovered = recoveredIndex[country]?.last()?.value ?: 0
 
-
-
       TableRow(
         region = country,
         cases = p.value,
         casesNormalized = normalize(p.value, population),
-        change = change?.let {c -> df.format(c).toDouble() },
+        change = change,
         deaths = deaths,
         deathsNormalized = normalize(deaths, population),
         recovered = recovered,
         recoveredNormalized = normalize(recovered, population),
-        population = population,
-        rank = 0
+        population = population
       )
     }
   }
     .sortedWith(compareByDescending { v -> v.casesNormalized })
-    .mapIndexed { index, tableRow ->  tableRow.copy(rank = index + 1)}
     .let {
       Results(
         lastUpdated = OffsetDateTime.now(ZoneOffset.UTC),

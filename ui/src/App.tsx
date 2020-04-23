@@ -26,24 +26,17 @@ const Header = ({
 
 const columns: Column<TableRow>[] = [
   {
-    Header: (
-      <Header tooltip='Rank (Normalized per 100,000 people)'>Rank (N)</Header>
-    ),
-    accessor: 'rank',
-  },
-  {
     Header: <Header tooltip='Change'>Change</Header>,
     accessor: 'change',
     id: 'change',
     Cell: ({ row }) => {
-      const { change } = row.original;
+      let { change } = row.original;
+      change =
+        typeof change === 'number' ? Math.round(change * 100) : undefined;
       if (!change) {
         return '--';
-      } else if (change > 0) {
-        return `+${change}`;
-      } else {
-        return change;
       }
+      return `${change > 0 ? '+' : ''}${change}%`;
     },
   },
   {

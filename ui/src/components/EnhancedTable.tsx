@@ -39,7 +39,7 @@ export type TableRow = {
   region: string;
   cases: number;
   casesNormalized: number;
-  change: number;
+  change?: number;
   deaths: number;
   deathsNormalized: number;
   recovered: number;
@@ -69,7 +69,15 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
     useGlobalFilter,
     useSortBy,
     (hooks) => {
-      hooks.allColumns.push((columns) => [...columns]);
+      hooks.allColumns.push((columns) => [
+        {
+          id: 'rank',
+          Header: () => '',
+          groupByBoundary: true,
+          Cell: ({ row }: any) => row.index,
+        },
+        ...columns,
+      ]);
     }
   ) as UseGlobalFiltersInstanceProps<any> &
     TableInstance<any> & { state: UseGlobalFiltersState<any> };
@@ -98,7 +106,7 @@ export const EnhancedTable = ({ columns, data, getCellProps }: Props) => {
                 >
                   <div style={{ display: 'inline-flex' }}>
                     {column.render('Header')}
-                    {column.id !== 'selection' ? (
+                    {column.id !== 'rank' ? (
                       <TableSortLabel
                         active={column.isSorted}
                         // react-table has a unsorted state which is not treated here
