@@ -12,6 +12,7 @@ import {
   Theme,
   createStyles,
   IconButton,
+  CircularProgress,
 } from '@material-ui/core';
 import {
   Column,
@@ -29,7 +30,9 @@ import './SimpleTable.module.css';
 import { TableRow } from '../types';
 import { ExpandMore } from '@material-ui/icons';
 import clsx from 'clsx';
-import { CalendarChart } from '../calendar-chart/CalendarChart';
+const CalendarChart = React.lazy(() =>
+  import('../calendar-chart/CalendarChart')
+);
 
 type Props = {
   columns: Column<TableRow>[];
@@ -114,10 +117,12 @@ export const ExpandableTableRow = React.memo(
                 unmountOnExit
                 style={{ width: '100%' }}
               >
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  New cases (normalized per 100k)
-                </div>
-                <CalendarChart data={changeNormalizedSeries} />
+                <React.Suspense fallback={<CircularProgress />}>
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    New cases (normalized per 100k)
+                  </div>
+                  <CalendarChart data={changeNormalizedSeries} />
+                </React.Suspense>
               </Collapse>
             </TableCell>
           </MuiTableRow>
