@@ -8,6 +8,7 @@ import {
   IconButton,
   TableCell,
   TableRow as MuiTableRow,
+  Paper,
 } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
 import clsx from 'clsx';
@@ -27,6 +28,8 @@ type Props = {
   i: number;
   getCellProps: (cell: CellProps<any, TableRow>) => {};
 };
+
+type ExpandState = 'OPEN' | 'CLOSED' | 'CLOSING';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -52,8 +55,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const ExpandableTableRow = React.memo(
   ({ row: data, rtRow: row, i, getCellProps }: Props) => {
-    const [expanded, setExpanded] = React.useState(false);
-    const handleExpandClick = () => setExpanded(!expanded);
+    const [expandedState, setExpandedState] = React.useState<ExpandState>(
+      'CLOSED'
+    );
+    const expanded = expandedState === 'OPEN';
+    const handleExpandClick = () =>
+      setExpandedState(expanded ? 'CLOSING' : 'OPEN');
     const classes = useStyles();
     const changeNormalizedSeries = data.changeNormalizedSeries;
     const rowProps = row.getRowProps();
@@ -86,30 +93,32 @@ export const ExpandableTableRow = React.memo(
             );
           })}
         </MuiTableRow>
-        {changeNormalizedSeries && (
+        {changeNormalizedSeries && expandedState !== 'CLOSED' && (
           <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
-            <TableCell
-              colSpan={row.cells.length + 2}
-              style={{ display: expanded ? undefined : 'none' }}
-            >
+            <TableCell colSpan={row.cells.length + 2}>
               <Collapse
                 in={expanded}
                 timeout='auto'
                 unmountOnExit
+                onExited={() => {
+                  setExpandedState('CLOSED');
+                }}
                 style={{ width: '100%' }}
               >
                 <React.Suspense fallback={<CircularProgress />}>
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    New cases (normalized per 100k)
-                  </div>
-                  <CalendarChart data={changeNormalizedSeries} />
-                  <LineChart
-                    data={changeNormalizedSeries}
-                    leftAxisLabel='change'
-                    hideLegend
-                    marginTop={0}
-                    marginRight={40}
-                  />
+                  <Paper>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                      New cases (normalized per 100k)
+                    </div>
+                    <CalendarChart data={changeNormalizedSeries} />
+                    <LineChart
+                      data={changeNormalizedSeries}
+                      leftAxisLabel='change'
+                      hideLegend
+                      marginTop={0}
+                      marginRight={40}
+                    />
+                  </Paper>
                 </React.Suspense>
               </Collapse>
             </TableCell>

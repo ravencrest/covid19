@@ -61,6 +61,7 @@ export const SimpleTable = ({ columns, data, getCellProps }: Props) => {
           {headerGroups.map((headerGroup) => (
             <MuiTableRow {...headerGroup.getHeaderGroupProps()}>
               <TableCell />
+              <TableCell />
               {headerGroup.headers.map((column: any) => (
                 <TableCell
                   key={column.id}

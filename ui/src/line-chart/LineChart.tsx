@@ -1,6 +1,5 @@
 import React from 'react';
 import { LegendProps } from '@nivo/legends';
-import { Box } from '@nivo/core';
 import { Datum, ResponsiveLine, Serie } from '@nivo/line';
 import { Point, TimeSeries } from '../types';
 import { LineChartTooltip } from './LineChartTooltip';
@@ -39,7 +38,7 @@ export const LineChart = React.memo(
       return Array.isArray(data)
         ? data.map(seriesToData)
         : [seriesToData(data)];
-    }, []);
+    }, [data]);
 
     const legends: LegendProps[] | undefined = hideLegend
       ? undefined
