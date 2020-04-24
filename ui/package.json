@@ -8,6 +8,7 @@
     "eject": "rescripts eject"
   },
   "dependencies": {
+    "@nivo/calendar": "^0.61.1",
     "@nivo/line": "^0.61.1",
     "date-fns": "^2.12.0",
     "react": "^16.13.1",

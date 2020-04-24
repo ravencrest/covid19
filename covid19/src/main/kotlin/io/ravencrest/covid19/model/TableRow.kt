@@ -9,5 +9,6 @@ data class TableRow(
   val deathsNormalized: Long,
   val recovered: Long,
   val recoveredNormalized: Long,
-  val population: Long
+  val population: Long,
+  val changeNormalizedSeries: TimeSeries
 )
