@@ -92,7 +92,7 @@ fun parse(name: String, url: String, countryOffSet: Int, timeSeriesOffset: Int, 
     } ?: newSeries
 
     val newRow = RawTimeSeries(
-      country = country,
+      region = country,
       points = mergedSeries
     )
     dataMap[country] = newRow

@@ -27,13 +27,12 @@ const pointToDatum = (point: Point): Datum => {
   return {
     x: point.date,
     y: point.value,
-    country: point.country,
-    id: point.country,
   };
 };
 
 const seriesToData = (data: TimeSeries): Serie => {
-  return { id: data.country, data: data.points.map(pointToDatum) };
+  const { region } = data;
+  return { id: region, data: data.points.map(pointToDatum) };
 };
 
 export const LineChart = React.memo(({ data, leftAxisLabel }: Props) => (

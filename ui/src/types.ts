@@ -12,13 +12,12 @@ export type TableRow = {
 };
 
 export type Point = {
-  country: string;
   date: string;
   value: number;
 };
 
 export type TimeSeries = {
-  country: string;
+  region: string;
   points: Point[];
 };
 

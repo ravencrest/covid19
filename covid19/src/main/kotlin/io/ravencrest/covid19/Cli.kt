@@ -7,15 +7,12 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import io.ravencrest.covid19.model.Results
 import io.ravencrest.covid19.model.TableRow
-import io.ravencrest.covid19.model.TimeSeries
 import io.ravencrest.covid19.parse.*
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
-import kotlin.math.min
-import kotlin.math.roundToLong
 
 fun main() {
   val jsonMapper = ObjectMapper()
@@ -27,12 +24,13 @@ fun main() {
   val countriesIndex = loadCountries()
   val populationIndex = loadPopulations(countriesIndex)
 
-  val rawCases = parseCsseCases(countriesIndex).associateBy { it.country }
-  val deathsIndex = parseCsseDeaths(countriesIndex).associateBy { it.country }
-  val recoveredIndex = parseCsseRecovered(countriesIndex).associateBy { it.country }
+  val rawCases = parseCsseCases(countriesIndex).associateBy { it.region }
+  val deathsIndex = parseCsseDeaths(countriesIndex).associateBy { it.region }
+  val recoveredIndex = parseCsseRecovered(countriesIndex).associateBy { it.region }
   val startDate = LocalDate.of(2020, 3, 17)
 
   val sortedCases = rawCases.values.mapNotNull { series ->
+    val country = series.region
     series.last()?.let { point ->
       val latestValue = point.value
       val secondToLast = series.secondToLast()
@@ -40,7 +38,6 @@ fun main() {
         secondToLast?.value?.let { previousValue -> (latestValue - previousValue) / previousValue.toDouble() }
       //val change = normalize(secondToLast?.value?.let { previousValue -> (latestValue - previousValue) / previousValue.toDouble()}?: 0.0, populationIndex[series.country]!!)
 
-      val country = point.country
       val population = populationIndex[country] ?: error("Missing population data for $country")
       val deaths = deathsIndex[country]?.last()?.value ?: 0
       val recovered = recoveredIndex[country]?.last()?.value ?: 0
@@ -73,11 +70,10 @@ fun main() {
     }
   }.sortedWith(compareByDescending { v -> v.casesNormalized })
 
-  val results =
-    Results(
-      lastUpdated = OffsetDateTime.now(ZoneOffset.UTC),
-      rows = sortedCases
-    )
+  val results = Results(
+    lastUpdated = OffsetDateTime.now(ZoneOffset.UTC),
+    rows = sortedCases
+  )
 
   val path = Paths.get(if (isDev) "./ui/src" else ".", "results.json").toAbsolutePath()
   deleteStaleData(path)
