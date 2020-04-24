@@ -5,6 +5,7 @@ import { setDayOfYear } from 'date-fns';
 
 type Props = {
   data: TimeSeries;
+  height?: string;
 };
 
 const pointToDatum = (point: Point): Datum => {
@@ -14,7 +15,7 @@ const pointToDatum = (point: Point): Datum => {
   };
 };
 
-const CalendarChart = React.memo(({ data }: Props) => {
+const CalendarChart = React.memo(({ data, height = '15em' }: Props) => {
   const from = setDayOfYear(new Date(), 1);
   const points = data.points;
   const pointsLength = points && points.length;

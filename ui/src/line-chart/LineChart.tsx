@@ -1,4 +1,6 @@
 import React from 'react';
+import { LegendProps } from '@nivo/legends';
+import { Box } from '@nivo/core';
 import { Datum, ResponsiveLine, Serie } from '@nivo/line';
 import { Point, TimeSeries } from '../types';
 import { LineChartTooltip } from './LineChartTooltip';
@@ -16,62 +18,32 @@ const seriesToData = (data: TimeSeries): Serie => {
 };
 
 type Props = {
-  data: TimeSeries[];
+  data: TimeSeries[] | TimeSeries;
   leftAxisLabel: string;
   height?: string;
+  hideLegend?: boolean;
+  marginTop?: number;
+  marginRight?: number;
 };
 
 export const LineChart = React.memo(
-  ({ data, leftAxisLabel, height = '22em' }: Props) => (
-    <div style={{ height }}>
-      <ResponsiveLine
-        xScale={{
-          type: 'time',
-          format: '%Y-%m-%d',
-          precision: 'day',
-        }}
-        data={data.map(seriesToData)}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-        enablePoints={false}
-        yScale={{
-          type: 'linear',
-          min: 'auto',
-          max: 'auto',
-          stacked: false,
-          reverse: false,
-        }}
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          orient: 'bottom',
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 60,
-          legendOffset: 45,
-          legendPosition: 'middle',
-          format: '%b %d',
-        }}
-        tooltip={LineChartTooltip}
-        axisLeft={{
-          orient: 'left',
+  ({
+    data,
+    leftAxisLabel,
+    height = '15em',
+    hideLegend,
+    marginTop = 50,
+    marginRight = 110,
+  }: Props) => {
+    const mappedData = React.useMemo(() => {
+      return Array.isArray(data)
+        ? data.map(seriesToData)
+        : [seriesToData(data)];
+    }, []);
 
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: leftAxisLabel,
-          legendOffset: -40,
-          legendPosition: 'middle',
-        }}
-        colors={{ scheme: 'category10' }}
-        pointSize={10}
-        pointColor={{ theme: 'background' }}
-        pointBorderWidth={2}
-        pointBorderColor={{ from: 'serieColor' }}
-        pointLabel='y'
-        xFormat='time:%Y-%m-%d'
-        pointLabelYOffset={-12}
-        useMesh={true}
-        legends={[
+    const legends: LegendProps[] | undefined = hideLegend
+      ? undefined
+      : [
           {
             anchor: 'bottom-right',
             direction: 'column',
@@ -96,8 +68,62 @@ export const LineChart = React.memo(
               },
             ],
           },
-        ]}
-      />
-    </div>
-  )
+        ];
+    return (
+      <div style={{ height }}>
+        <ResponsiveLine
+          xScale={{
+            type: 'time',
+            format: '%Y-%m-%d',
+            precision: 'day',
+          }}
+          data={mappedData}
+          margin={{ top: marginTop, right: marginRight, bottom: 50, left: 60 }}
+          enablePoints={false}
+          yScale={{
+            type: 'linear',
+            min: 'auto',
+            max: 'auto',
+            stacked: false,
+            reverse: false,
+          }}
+          axisTop={null}
+          axisRight={null}
+          axisBottom={{
+            orient: 'bottom',
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 60,
+            legendOffset: 45,
+            legendPosition: 'middle',
+            format: '%b %d',
+          }}
+          tooltip={LineChartTooltip}
+          axisLeft={
+            hideLegend
+              ? undefined
+              : {
+                  orient: 'left',
+                  tickSize: 5,
+                  tickPadding: 5,
+                  tickRotation: 0,
+                  legend: leftAxisLabel,
+                  legendOffset: -40,
+                  legendPosition: 'middle',
+                }
+          }
+          colors={{ scheme: 'category10' }}
+          pointSize={10}
+          pointColor={{ theme: 'background' }}
+          pointBorderWidth={2}
+          pointBorderColor={{ from: 'serieColor' }}
+          pointLabel='y'
+          xFormat='time:%Y-%m-%d'
+          pointLabelYOffset={-12}
+          useMesh={true}
+          legends={legends}
+        />
+      </div>
+    );
+  }
 );

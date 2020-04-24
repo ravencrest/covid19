@@ -15,6 +15,7 @@ import clsx from 'clsx';
 import { CellProps, Row } from 'react-table';
 import './SimpleTable.module.css';
 import { TableRow } from '../types';
+import { LineChart } from '../line-chart/LineChart';
 
 const CalendarChart = React.lazy(() =>
   import('../calendar-chart/CalendarChart')
@@ -74,7 +75,6 @@ export const ExpandableTableRow = React.memo(
             )}
           </TableCell>
           <TableCell>{i + 1}</TableCell>
-
           {row.cells.map((cell) => {
             return (
               <TableCell
@@ -103,6 +103,13 @@ export const ExpandableTableRow = React.memo(
                     New cases (normalized per 100k)
                   </div>
                   <CalendarChart data={changeNormalizedSeries} />
+                  <LineChart
+                    data={changeNormalizedSeries}
+                    leftAxisLabel='change'
+                    hideLegend
+                    marginTop={0}
+                    marginRight={40}
+                  />
                 </React.Suspense>
               </Collapse>
             </TableCell>

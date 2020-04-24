@@ -33,7 +33,11 @@ const App = () => {
         label={`Last updated ${format(lastUpdated, new Date())}`}
         className={clsx(useLastUpdatedStyles().root)}
       />
-      <LineChart data={changeSeries} leftAxisLabel='New Cases (N)' />
+      <LineChart
+        data={changeSeries}
+        leftAxisLabel='New Cases (N)'
+        height='22em'
+      />
       <TablePane data={rows} />
     </div>
   );
