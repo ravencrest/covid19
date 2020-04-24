@@ -14,9 +14,13 @@ const pointToDatum = (point: Point): Datum => {
   };
 };
 
-export const CalendarChart = ({ data }: Props) => {
+export const CalendarChart = React.memo(({ data }: Props) => {
   const from = setDayOfYear(new Date(), 1);
-  const to = data.points[data.points.length - 1].date;
+  const points = data.points;
+  const pointsLength = points && points.length;
+  const to = pointsLength
+    ? points[points.length - 1].date
+    : setDayOfYear(new Date(), 365);
 
   return (
     <div style={{ height: '15em' }}>
@@ -46,4 +50,4 @@ export const CalendarChart = ({ data }: Props) => {
       />
     </div>
   );
-};
+});

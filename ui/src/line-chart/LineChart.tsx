@@ -36,7 +36,7 @@ const seriesToData = (data: TimeSeries): Serie => {
   return { id: data.country, data: data.points.map(pointToDatum) };
 };
 
-export const LineChart = ({ data, leftAxisLabel }: Props) => (
+export const LineChart = React.memo(({ data, leftAxisLabel }: Props) => (
   <div style={{ height: '22em' }}>
     <ResponsiveLine
       xScale={{
@@ -113,4 +113,4 @@ export const LineChart = ({ data, leftAxisLabel }: Props) => (
       ]}
     />
   </div>
-);
+));

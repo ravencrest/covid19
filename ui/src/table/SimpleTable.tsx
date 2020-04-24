@@ -65,67 +65,67 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
-export const ExpandableTableRow = ({
-  row: data,
-  rtRow: row,
-  i,
-  getCellProps,
-}: TableRowProps) => {
-  const [expanded, setExpanded] = React.useState(false);
-  const handleExpandClick = () => setExpanded(!expanded);
-  const classes = useStyles();
-  const changeNormalizedSeries = data.changeNormalizedSeries;
-  const rowProps = row.getRowProps();
-  return (
-    <>
-      <MuiTableRow {...rowProps}>
-        <TableCell>
-          {changeNormalizedSeries && (
-            <IconButton
-              className={clsx(classes.expand, {
-                [classes.expandOpen]: expanded,
-              })}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label='show more'
-            >
-              <ExpandMore />
-            </IconButton>
-          )}
-        </TableCell>
-        <TableCell>{i + 1}</TableCell>
-
-        {row.cells.map((cell) => {
-          return (
-            <TableCell {...cell.getCellProps()} {...getCellProps(cell as any)}>
-              {cell.render('Cell')}
-            </TableCell>
-          );
-        })}
-      </MuiTableRow>
-      {changeNormalizedSeries && (
-        <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
-          <TableCell
-            colSpan={row.cells.length + 2}
-            style={{ display: expanded ? undefined : 'none' }}
-          >
-            <Collapse
-              in={expanded}
-              timeout='auto'
-              unmountOnExit
-              style={{ width: '100%' }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
-                New cases (normalized per 100k)
-              </div>
-              <CalendarChart data={changeNormalizedSeries} />
-            </Collapse>
+export const ExpandableTableRow = React.memo(
+  ({ row: data, rtRow: row, i, getCellProps }: TableRowProps) => {
+    const [expanded, setExpanded] = React.useState(false);
+    const handleExpandClick = () => setExpanded(!expanded);
+    const classes = useStyles();
+    const changeNormalizedSeries = data.changeNormalizedSeries;
+    const rowProps = row.getRowProps();
+    return (
+      <>
+        <MuiTableRow {...rowProps}>
+          <TableCell>
+            {changeNormalizedSeries && (
+              <IconButton
+                className={clsx(classes.expand, {
+                  [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label='show more'
+              >
+                <ExpandMore />
+              </IconButton>
+            )}
           </TableCell>
+          <TableCell>{i + 1}</TableCell>
+
+          {row.cells.map((cell) => {
+            return (
+              <TableCell
+                {...cell.getCellProps()}
+                {...getCellProps(cell as any)}
+              >
+                {cell.render('Cell')}
+              </TableCell>
+            );
+          })}
         </MuiTableRow>
-      )}
-    </>
-  );
-};
+        {changeNormalizedSeries && (
+          <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
+            <TableCell
+              colSpan={row.cells.length + 2}
+              style={{ display: expanded ? undefined : 'none' }}
+            >
+              <Collapse
+                in={expanded}
+                timeout='auto'
+                unmountOnExit
+                style={{ width: '100%' }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  New cases (normalized per 100k)
+                </div>
+                <CalendarChart data={changeNormalizedSeries} />
+              </Collapse>
+            </TableCell>
+          </MuiTableRow>
+        )}
+      </>
+    );
+  }
+);
 
 export const SimpleTable = ({ columns, data, getCellProps }: Props) => {
   const {
@@ -185,7 +185,7 @@ export const SimpleTable = ({ columns, data, getCellProps }: Props) => {
             prepareRow(row);
             return (
               <ExpandableTableRow
-                key={i}
+                {...row.getRowProps()}
                 row={row.original}
                 rtRow={row}
                 i={i}
