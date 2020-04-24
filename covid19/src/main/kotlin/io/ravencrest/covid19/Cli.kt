@@ -62,14 +62,17 @@ fun main() {
     case
   }.filter { case -> populationIndex.getOrDefault(case.country, 0) > 10_000_000}
 
-  /*
-  val growthRate = countriesToGraph.map { series ->
+  /*val growthRate = countriesToGraph.map { series ->
     val pointList = series.points.filter { point -> point.value > 0}.toList()
-    val points = pointList
-      .mapIndexedNotNull { index, point ->
-        val previous = if (index == 0) null else pointList[index - 1]
+    val subpoints = pointList.filter { point -> point.value > 0}.filter { point -> point.date > LocalDate.now().minusWeeks(2)}.sortedBy { point -> point.date }
+      val points = subpoints.mapIndexedNotNull { index, point ->
+        val previous = if (index == 0) null else subpoints[index - 1]
         val previousValue = previous?.value ?: point.value
+
         val change = ((point.value - previousValue) / previousValue.toDouble() * 1000).roundToLong()
+        if (point.country == "United States") {
+          println("${point.value} $previousValue $change")
+        }
         if (change == 0L) {
           return@mapIndexedNotNull null
         }

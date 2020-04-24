@@ -5,6 +5,7 @@ import { TimeSeries, Point } from '../types';
 
 type Props = {
   data: TimeSeries[];
+  leftAxisLabel: string;
 };
 
 const LinePointTooltip = ({ point }: PointTooltipProps) => {
@@ -35,7 +36,7 @@ const seriesToData = (data: TimeSeries): Serie => {
   return { id: data.country, data: data.points.map(pointToDatum) };
 };
 
-export const MyResponsiveLine = ({ data }: Props) => (
+export const MyResponsiveLine = ({ data, leftAxisLabel }: Props) => (
   <div style={{ height: '22em' }}>
     <ResponsiveLine
       xScale={{
@@ -45,6 +46,7 @@ export const MyResponsiveLine = ({ data }: Props) => (
       }}
       data={data.map(seriesToData)}
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+      enablePoints={false}
       yScale={{
         type: 'linear',
         min: 'auto',
@@ -59,7 +61,6 @@ export const MyResponsiveLine = ({ data }: Props) => (
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 60,
-        legend: 'Date',
         legendOffset: 45,
         legendPosition: 'middle',
         format: '%b %d',
@@ -71,7 +72,7 @@ export const MyResponsiveLine = ({ data }: Props) => (
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: 'count',
+        legend: leftAxisLabel,
         legendOffset: -40,
         legendPosition: 'middle',
       }}

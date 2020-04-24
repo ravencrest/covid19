@@ -14,7 +14,7 @@ const useLastUpdatedStyles = makeStyles((theme) => ({
 }));
 
 const App = () => {
-  const { rows, lastUpdated: lastUpdatedRaw, change } = data;
+  const { rows, lastUpdated: lastUpdatedRaw, change, growth } = data;
   const lastUpdated: Date = parseJSON(lastUpdatedRaw);
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>
@@ -22,7 +22,7 @@ const App = () => {
         label={`Last updated ${format(lastUpdated, new Date())}`}
         className={clsx(useLastUpdatedStyles().root)}
       />
-      <MyResponsiveLine data={change} />
+      <MyResponsiveLine data={change} leftAxisLabel='New Cases (N)' />
       <TablePane data={rows} />
     </div>
   );

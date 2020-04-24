@@ -1,5 +1,5 @@
 {
-  "lastUpdated" : "2020-04-24T12:18:28.4922852Z",
+  "lastUpdated" : "2020-04-24T13:25:45.7963858Z",
   "rows" : [ {
     "region" : "San Marino",
     "cases" : 501,
@@ -1811,7 +1811,211 @@
     "recoveredNormalized" : 0,
     "population" : 29825964
   } ],
-  "growth" : [ ],
+  "growth" : [ {
+    "country" : "Spain",
+    "points" : [ {
+      "country" : "Spain",
+      "value" : 23,
+      "date" : "2020-04-12"
+    }, {
+      "country" : "Spain",
+      "value" : 20,
+      "date" : "2020-04-13"
+    }, {
+      "country" : "Spain",
+      "value" : 14,
+      "date" : "2020-04-14"
+    }, {
+      "country" : "Spain",
+      "value" : 30,
+      "date" : "2020-04-15"
+    }, {
+      "country" : "Spain",
+      "value" : 41,
+      "date" : "2020-04-16"
+    }, {
+      "country" : "Spain",
+      "value" : 32,
+      "date" : "2020-04-17"
+    }, {
+      "country" : "Spain",
+      "value" : 5,
+      "date" : "2020-04-18"
+    }, {
+      "country" : "Spain",
+      "value" : 36,
+      "date" : "2020-04-19"
+    }, {
+      "country" : "Spain",
+      "value" : 8,
+      "date" : "2020-04-20"
+    }, {
+      "country" : "Spain",
+      "value" : 20,
+      "date" : "2020-04-21"
+    }, {
+      "country" : "Spain",
+      "value" : 21,
+      "date" : "2020-04-22"
+    }, {
+      "country" : "Spain",
+      "value" : 22,
+      "date" : "2020-04-23"
+    } ]
+  }, {
+    "country" : "Belgium",
+    "points" : [ {
+      "country" : "Belgium",
+      "value" : 58,
+      "date" : "2020-04-12"
+    }, {
+      "country" : "Belgium",
+      "value" : 32,
+      "date" : "2020-04-13"
+    }, {
+      "country" : "Belgium",
+      "value" : 17,
+      "date" : "2020-04-14"
+    }, {
+      "country" : "Belgium",
+      "value" : 79,
+      "date" : "2020-04-15"
+    }, {
+      "country" : "Belgium",
+      "value" : 37,
+      "date" : "2020-04-16"
+    }, {
+      "country" : "Belgium",
+      "value" : 38,
+      "date" : "2020-04-17"
+    }, {
+      "country" : "Belgium",
+      "value" : 29,
+      "date" : "2020-04-18"
+    }, {
+      "country" : "Belgium",
+      "value" : 35,
+      "date" : "2020-04-19"
+    }, {
+      "country" : "Belgium",
+      "value" : 39,
+      "date" : "2020-04-20"
+    }, {
+      "country" : "Belgium",
+      "value" : 24,
+      "date" : "2020-04-21"
+    }, {
+      "country" : "Belgium",
+      "value" : 23,
+      "date" : "2020-04-22"
+    }, {
+      "country" : "Belgium",
+      "value" : 22,
+      "date" : "2020-04-23"
+    } ]
+  }, {
+    "country" : "Italy",
+    "points" : [ {
+      "country" : "Italy",
+      "value" : 27,
+      "date" : "2020-04-12"
+    }, {
+      "country" : "Italy",
+      "value" : 20,
+      "date" : "2020-04-13"
+    }, {
+      "country" : "Italy",
+      "value" : 19,
+      "date" : "2020-04-14"
+    }, {
+      "country" : "Italy",
+      "value" : 16,
+      "date" : "2020-04-15"
+    }, {
+      "country" : "Italy",
+      "value" : 23,
+      "date" : "2020-04-16"
+    }, {
+      "country" : "Italy",
+      "value" : 21,
+      "date" : "2020-04-17"
+    }, {
+      "country" : "Italy",
+      "value" : 20,
+      "date" : "2020-04-18"
+    }, {
+      "country" : "Italy",
+      "value" : 17,
+      "date" : "2020-04-19"
+    }, {
+      "country" : "Italy",
+      "value" : 13,
+      "date" : "2020-04-20"
+    }, {
+      "country" : "Italy",
+      "value" : 15,
+      "date" : "2020-04-21"
+    }, {
+      "country" : "Italy",
+      "value" : 18,
+      "date" : "2020-04-22"
+    }, {
+      "country" : "Italy",
+      "value" : 14,
+      "date" : "2020-04-23"
+    } ]
+  }, {
+    "country" : "United States",
+    "points" : [ {
+      "country" : "United States",
+      "value" : 55,
+      "date" : "2020-04-12"
+    }, {
+      "country" : "United States",
+      "value" : 46,
+      "date" : "2020-04-13"
+    }, {
+      "country" : "United States",
+      "value" : 47,
+      "date" : "2020-04-14"
+    }, {
+      "country" : "United States",
+      "value" : 47,
+      "date" : "2020-04-15"
+    }, {
+      "country" : "United States",
+      "value" : 49,
+      "date" : "2020-04-16"
+    }, {
+      "country" : "United States",
+      "value" : 48,
+      "date" : "2020-04-17"
+    }, {
+      "country" : "United States",
+      "value" : 46,
+      "date" : "2020-04-18"
+    }, {
+      "country" : "United States",
+      "value" : 36,
+      "date" : "2020-04-19"
+    }, {
+      "country" : "United States",
+      "value" : 34,
+      "date" : "2020-04-20"
+    }, {
+      "country" : "United States",
+      "value" : 35,
+      "date" : "2020-04-21"
+    }, {
+      "country" : "United States",
+      "value" : 35,
+      "date" : "2020-04-22"
+    }, {
+      "country" : "United States",
+      "value" : 34,
+      "date" : "2020-04-23"
+    } ]
+  } ],
   "change" : [ {
     "country" : "Spain",
     "points" : [ {
