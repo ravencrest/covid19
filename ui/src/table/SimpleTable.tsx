@@ -7,8 +7,6 @@ import {
   TableHead,
   TableRow as MuiTableRow,
   TableSortLabel,
-  Chip,
-  makeStyles,
 } from '@material-ui/core';
 import {
   Column,
@@ -20,32 +18,17 @@ import {
   TableInstance,
   CellProps,
 } from 'react-table';
-import { formatRelative as format } from 'date-fns';
 import { TableToolbar } from './TableToolbar';
-import clsx from 'clsx';
 import './SimpleTable.module.css';
 import { TableRow } from '../types';
-
-const useLastUpdatedStyles = makeStyles((theme) => ({
-  root: {
-    marginLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1),
-  },
-}));
 
 type Props = {
   columns: Column<TableRow>[];
   data: TableRow[];
   getCellProps: (cell: CellProps<any, TableRow>) => {};
-  lastUpdated: Date;
 };
 
-export const SimpleTable = ({
-  columns,
-  data,
-  getCellProps,
-  lastUpdated,
-}: Props) => {
+export const SimpleTable = ({ columns, data, getCellProps }: Props) => {
   const {
     getTableProps,
     headerGroups,
@@ -65,13 +48,8 @@ export const SimpleTable = ({
     }
   ) as UseGlobalFiltersInstanceProps<any> &
     TableInstance<any> & { state: UseGlobalFiltersState<any> };
-  const date = lastUpdated;
   return (
     <TableContainer>
-      <Chip
-        label={`Last updated ${format(date, new Date())}`}
-        className={clsx(useLastUpdatedStyles().root)}
-      />
       <TableToolbar
         setGlobalFilter={setGlobalFilter}
         globalFilter={globalFilter}

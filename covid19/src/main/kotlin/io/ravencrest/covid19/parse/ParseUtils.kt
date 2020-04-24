@@ -25,6 +25,6 @@ fun deleteStaleData(path: Path) {
   }
 }
 
-fun normalize(value: Number, population: Long, normalizer: Int = 100_000): Long {
+fun normalize(value: Number, population: Long, normalizer: Int = 1_000_000): Long {
   return (value.toDouble() / population * normalizer).roundToLong()
 }

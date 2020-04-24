@@ -45,7 +45,7 @@ const columns: Column<TableRow>[] = [
   },
   {
     Header: (
-      <Header tooltip='Confirmed Cases (Normalized per 100,000 people)'>
+      <Header tooltip='Confirmed Cases (Normalized per 1,000,000 people)'>
         Cases (N)
       </Header>
     ),
@@ -53,7 +53,7 @@ const columns: Column<TableRow>[] = [
   },
   {
     Header: (
-      <Header tooltip='Confirmed Deaths (Normalized per 100,000 people)'>
+      <Header tooltip='Confirmed Deaths (Normalized per 1,000,000 people)'>
         Deaths (N)
       </Header>
     ),
@@ -61,7 +61,7 @@ const columns: Column<TableRow>[] = [
   },
   {
     Header: (
-      <Header tooltip='Confirmed Recoveries (Normalized per 100,000 people)'>
+      <Header tooltip='Confirmed Recoveries (Normalized per 1,000,000 people)'>
         <div style={{ display: 'flex' }}>
           <span
             style={{
@@ -110,20 +110,13 @@ const columns: Column<TableRow>[] = [
   },
 ];
 
-export const TablePane = ({
-  data,
-  lastUpdated,
-}: {
-  data: TableRow[];
-  lastUpdated: Date;
-}) => {
+export const TablePane = ({ data }: { data: TableRow[] }) => {
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>
       <CssBaseline />
       <SimpleTable
         columns={columns}
         data={data}
-        lastUpdated={lastUpdated}
         getCellProps={(cellInfo: CellProps<TableRow>) => ({
           style: {
             fontWeight:

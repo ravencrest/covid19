@@ -14,10 +14,10 @@ data class RawTimeSeries(val country: String, val points: List<Long?>) {
       } else {
         null
       }
-    }.filterNotNull().toSet()
+    }.filterNotNull()
     return TimeSeries(
       country = this.country,
-      points = points
+      points = points.sortedBy { it.date }
     )
   }
 }

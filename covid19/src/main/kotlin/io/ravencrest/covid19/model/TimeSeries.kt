@@ -1,6 +1,6 @@
 package io.ravencrest.covid19.model
 
-data class TimeSeries(val country: String, val points: Set<Point>) {
+data class TimeSeries(val country: String, val points: List<Point>) {
   fun last(): Point? {
     return this.points.lastOrNull()
   }
@@ -9,6 +9,6 @@ data class TimeSeries(val country: String, val points: Set<Point>) {
     if (points.size < 2) {
       return null
     }
-    return this.points.toList()[points.size - 2]
+    return this.points[points.size - 2]
   }
 }

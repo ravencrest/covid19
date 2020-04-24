@@ -17,7 +17,7 @@ export type Point = {
 };
 
 export type TimeSeries = {
-  country: String;
+  country: string;
   points: Point[];
 };
 
