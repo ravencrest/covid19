@@ -5,8 +5,8 @@ import { GlobalFilter } from './GlobalFilter';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1),
+    paddingLeft: theme.spacing(0),
+    paddingRight: theme.spacing(0),
   },
   highlight:
     theme.palette.type === 'light'

@@ -4,7 +4,7 @@ import { TablePane } from './table/TablePane';
 import { parseJSON } from 'date-fns';
 import { LineChart } from './line-chart/LineChart';
 import { InfoMenuBar } from './info-menubar/InfoMenuBar';
-
+import { Divider } from '@material-ui/core';
 const changeSeries = (function () {
   const change = data.rows.filter((row) => row.population > 1000000);
   const indexOfUs = change.findIndex((row) => row.region === 'United States');
@@ -28,6 +28,7 @@ const App = () => {
         height='22em'
         marginTop={0}
       />
+      <Divider />
       <TablePane data={rows} />
     </div>
   );

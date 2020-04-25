@@ -97,7 +97,7 @@ export const ExpandableTableRow = React.memo(
         </MuiTableRow>
         {changeNormalizedSeries && expandedState !== 'CLOSED' && (
           <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
-            <TableCell colSpan={row.cells.length + 2}>
+            <TableCell colSpan={row.cells.length + 1}>
               <Collapse
                 in={expanded}
                 timeout='auto'
@@ -110,7 +110,7 @@ export const ExpandableTableRow = React.memo(
                 <React.Suspense fallback={<CircularProgress />}>
                   <Paper>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
-                      New cases (normalized per 100k)
+                      New cases (normalized per 1mil)
                     </div>
                     <CalendarChart data={changeNormalizedSeries} />
                     <LineChart
