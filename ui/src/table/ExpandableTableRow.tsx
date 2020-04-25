@@ -97,7 +97,7 @@ export const ExpandableTableRow = React.memo(
         </MuiTableRow>
         {changeNormalizedSeries && expandedState !== 'CLOSED' && (
           <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
-            <TableCell colSpan={row.cells.length + 1}>
+            <TableCell colSpan={row.cells.length + 2}>
               <Collapse
                 in={expanded}
                 timeout='auto'

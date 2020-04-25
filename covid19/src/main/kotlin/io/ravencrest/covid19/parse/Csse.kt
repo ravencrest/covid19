@@ -21,6 +21,8 @@ const val CSSE_CASES_GLOBAL_URL =
   "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
 const val CSSE_CASES_US_URL =
   "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_US.csv"
+const val CSSE_DEATHS_US_URL =
+  "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_US.csv"
 const val CSSE_DEATHS_GLOBAL_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
 const val CSSE_RECOVERED_GLOBAL_URL = "https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv"
 
@@ -107,14 +109,22 @@ fun parseWho(countries: Map<String, String>): Set<TimeSeries> {
   return parse("who_cases", WHO_CASES_URL, 1, 3, countries)
 }
 
-fun parseCsseCases(countries: Map<String, String>): Set<TimeSeries> {
+fun parseCsseCasesGlobal(countries: Map<String, String>): Set<TimeSeries> {
   return parse("csse_cases", CSSE_CASES_GLOBAL_URL, 1, 4, countries)
 }
 
-fun parseCsseDeaths(countries: Map<String, String>): Set<TimeSeries> {
+fun parseCsseDeathsGlobal(countries: Map<String, String>): Set<TimeSeries> {
   return parse("csse_deaths", CSSE_DEATHS_GLOBAL_URL, 1, 4, countries)
 }
 
-fun parseCsseRecovered(countries: Map<String, String>): Set<TimeSeries> {
+fun parseCsseRecoveredGlobal(countries: Map<String, String>): Set<TimeSeries> {
   return parse("csse_recovered", CSSE_RECOVERED_GLOBAL_URL, 1, 4, countries)
+}
+
+fun parseCsseCasesUS(countries: Map<String, String>): Set<TimeSeries> {
+  return parse("csse_cases_us", CSSE_CASES_US_URL, 6, 11, countries)
+}
+
+fun parseCsseDeathsUS(countries: Map<String, String>): Set<TimeSeries> {
+  return parse("csse_deaths_us", CSSE_DEATHS_US_URL, 6, 12, countries)
 }

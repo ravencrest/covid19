@@ -110,12 +110,24 @@ const columns: Column<TableRow>[] = [
   },
 ];
 
-export const TablePane = ({ data }: { data: TableRow[] }) => {
+export const TablePane = ({
+  data,
+  hideRecovered,
+}: {
+  data: TableRow[];
+  hideRecovered?: boolean;
+}) => {
+  let filteredColumns = hideRecovered
+    ? columns.filter(
+        (f) =>
+          f.accessor !== 'recovered' && f.accessor !== 'recoveredNormalized'
+      )
+    : columns;
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>
       <CssBaseline />
       <SimpleTable
-        columns={columns}
+        columns={filteredColumns}
         data={data}
         getCellProps={(cellInfo: CellProps<TableRow>) => ({
           style: {

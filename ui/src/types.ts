@@ -5,8 +5,8 @@ export type TableRow = {
   change?: number;
   deaths: number;
   deathsNormalized: number;
-  recovered: number;
-  recoveredNormalized: number;
+  recovered?: number;
+  recoveredNormalized?: number;
   population: number;
   changeNormalizedSeries: TimeSeries;
 };

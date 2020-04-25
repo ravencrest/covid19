@@ -7,8 +7,8 @@ data class TableRow(
   val change: Double?,
   val deaths: Long,
   val deathsNormalized: Long,
-  val recovered: Long,
-  val recoveredNormalized: Long,
+  val recovered: Long?,
+  val recoveredNormalized: Long?,
   val population: Long,
   val changeNormalizedSeries: TimeSeries
 )

@@ -69,15 +69,16 @@ const DialogTitle = (props: {
 
 const now = new Date();
 
-type Props = { lastUpdated: Date };
+type Props = { lastUpdated: Date; children: React.ReactChild };
 
-export const InfoMenuBar = ({ lastUpdated }: Props) => {
+export const InfoMenuBar = ({ lastUpdated, children }: Props) => {
   const [open, setOpen] = React.useState(false);
   const styles = useStyles();
   const onClose = () => setOpen(false);
   const onOpen = () => setOpen(true);
   return (
     <div className={styles.bar}>
+      {children}
       <Chip
         label={`Last updated ${format(lastUpdated, now)}`}
         deleteIcon={<Help />}

@@ -8,7 +8,9 @@ val isDev = Paths.get("./build.gradle").toAbsolutePath().toFile().exists()
 val rootPath = if (isDev) "data" else ".."
 
 // Population data is manually scraped from https://www.worldometers.info/world-population/population-by-country/ It'd be nice to find a better source
-val populationPath: Path = Paths.get(rootPath, "population.csv").toAbsolutePath()
+val globalPopulationPath: Path = Paths.get(rootPath, "population.csv").toAbsolutePath()
+val usPopulationPath: Path = Paths.get(rootPath, "us_population.csv").toAbsolutePath()
+
 
 // Manually generated list that maps the country labels in the population data to the COVID-19 time series country labels
 val countriesPath: Path = Paths.get(rootPath, "countries.csv").toAbsolutePath()
@@ -28,13 +30,13 @@ fun loadCountries(): Map<String, String> {
   return map.toMap()
 }
 
-fun loadPopulations(countries: Map<String, String>): Map<String, Long> {
+private fun loadPopulations(countries: Map<String, String>?, path: Path): Map<String, Long> {
   val csvIterator =
-    readCsvToStringArray(populationPath)
+    readCsvToStringArray(path)
   return csvIterator.asSequence().associateBy({ row -> row[0] }, { row -> row[1].toLong() }).toMutableMap()
     .let { populations ->
       // Combine territory populations with their sovereign state population
-      countries.forEach { (rawState, normalizedState) ->
+      countries?.forEach { (rawState, normalizedState) ->
         // Look up the territory and state names and map them to the appropriate key for the population data
         val normalizedPop = populations[normalizedState] ?: 0
         val rawPop = populations[rawState] ?: 0
@@ -46,6 +48,14 @@ fun loadPopulations(countries: Map<String, String>): Map<String, Long> {
       }
       populations.toMap()
     }
+}
+
+fun loadGlobalPopulations(countries: Map<String, String>): Map<String, Long> {
+  return loadPopulations(countries, globalPopulationPath)
+}
+
+fun loadUsPopulations(): Map<String, Long> {
+  return loadPopulations(null, usPopulationPath)
 }
 
 fun loadBlacklist(): Set<String> {
