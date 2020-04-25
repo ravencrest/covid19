@@ -1,6 +1,6 @@
+import React from 'react';
 import { PointTooltipProps } from '@nivo/line';
 import { BasicTooltip } from '@nivo/tooltip';
-import React from 'react';
 
 export const LineChartTooltip = ({ point }: PointTooltipProps) => {
   return (

@@ -1,17 +1,9 @@
 import React from 'react';
 import data from './results.json';
 import { TablePane } from './table/TablePane';
-import { formatRelative as format, parseJSON } from 'date-fns';
+import { parseJSON } from 'date-fns';
 import { LineChart } from './line-chart/LineChart';
-import clsx from 'clsx';
-import { Chip, makeStyles } from '@material-ui/core';
-
-const useLastUpdatedStyles = makeStyles((theme) => ({
-  root: {
-    marginLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1),
-  },
-}));
+import { InfoMenuBar } from './info-menubar/InfoMenuBar';
 
 const changeSeries = (function () {
   const change = data.rows.filter((row) => row.population > 1000000);
@@ -29,14 +21,12 @@ const App = () => {
 
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>
-      <Chip
-        label={`Last updated ${format(lastUpdated, new Date())}`}
-        className={clsx(useLastUpdatedStyles().root)}
-      />
+      <InfoMenuBar lastUpdated={lastUpdated} />
       <LineChart
         data={changeSeries}
         leftAxisLabel='New Cases (N)'
         height='22em'
+        marginTop={0}
       />
       <TablePane data={rows} />
     </div>

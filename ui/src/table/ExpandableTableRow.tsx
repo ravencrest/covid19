@@ -12,12 +12,9 @@ import {
 } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
 import clsx from 'clsx';
-
 import { CellProps, Row } from 'react-table';
-import './SimpleTable.module.css';
 import { TableRow } from '../types';
 import { LineChart } from '../line-chart/LineChart';
-
 const CalendarChart = React.lazy(() =>
   import('../calendar-chart/CalendarChart')
 );
@@ -50,6 +47,9 @@ const useStyles = makeStyles((theme: Theme) =>
     expandOpen: {
       transform: 'rotate(180deg)',
     },
+    cell: {
+      padding: '6px 6px 6px 16px',
+    },
   })
 );
 
@@ -67,9 +67,10 @@ export const ExpandableTableRow = React.memo(
     return (
       <>
         <MuiTableRow {...rowProps}>
-          <TableCell>
+          <TableCell className={classes.cell}>
             {changeNormalizedSeries && (
               <IconButton
+                size='small'
                 className={clsx(classes.expand, {
                   [classes.expandOpen]: expanded,
                 })}
@@ -81,10 +82,11 @@ export const ExpandableTableRow = React.memo(
               </IconButton>
             )}
           </TableCell>
-          <TableCell>{i + 1}</TableCell>
+          <TableCell className={classes.cell}>{i + 1}</TableCell>
           {row.cells.map((cell) => {
             return (
               <TableCell
+                className={classes.cell}
                 {...cell.getCellProps()}
                 {...getCellProps(cell as any)}
               >

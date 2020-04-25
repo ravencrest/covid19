@@ -1,7 +1,6 @@
 import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
-import { IconButton, TextField } from '@material-ui/core';
+import { Search as SearchIcon } from '@material-ui/icons';
+import { IconButton, TextField, fade, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   search: {

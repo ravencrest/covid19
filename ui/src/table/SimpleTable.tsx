@@ -18,9 +18,8 @@ import {
   useSortBy,
   useTable,
 } from 'react-table';
-import { TableToolbar } from './TableToolbar';
-import './SimpleTable.module.css';
 import { TableRow } from '../types';
+import { TableToolbar } from './TableToolbar';
 import { ExpandableTableRow } from './ExpandableTableRow';
 
 type Props = {
@@ -49,7 +48,6 @@ export const SimpleTable = ({ columns, data, getCellProps }: Props) => {
     }
   ) as UseGlobalFiltersInstanceProps<any> &
     TableInstance<any> & { state: UseGlobalFiltersState<any> };
-
   return (
     <TableContainer>
       <TableToolbar

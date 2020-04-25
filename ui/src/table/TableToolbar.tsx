@@ -2,9 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 import { Toolbar, lighten, makeStyles } from '@material-ui/core';
 import { GlobalFilter } from './GlobalFilter';
-import { InfoDialog } from './InfoDialog';
 
-const useToolbarStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(1),
@@ -30,7 +29,7 @@ type Props = {
 };
 
 export const TableToolbar = (props: Props) => {
-  const classes = useToolbarStyles();
+  const classes = useStyles();
   const { setGlobalFilter, globalFilter } = props;
   return (
     <Toolbar className={clsx(classes.root)}>
@@ -38,7 +37,6 @@ export const TableToolbar = (props: Props) => {
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
       />
-      <InfoDialog />
     </Toolbar>
   );
 };
