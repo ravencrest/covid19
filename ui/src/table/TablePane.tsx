@@ -26,7 +26,7 @@ const Header = ({
 
 const columns: Column<TableRow>[] = [
   {
-    Header: <Header tooltip='Change'>Change</Header>,
+    Header: <Header tooltip='Increase in new cases'>Change</Header>,
     accessor: 'change',
     id: 'change',
     Cell: ({ row }) => {
