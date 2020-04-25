@@ -62,7 +62,7 @@ const useResults = (dataset: DataSets): FilteredResults | undefined => {
 
 //test
 const App = React.memo(() => {
-  const [dataset, setDataSet] = React.useState<DataSets>('us');
+  const [dataset, setDataSet] = React.useState<DataSets>('global');
   const global = dataset === 'global';
   const { rows, lastUpdated = undefined, series = [] } =
     useResults(dataset) || {};

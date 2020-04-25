@@ -28,7 +28,7 @@ type Props = {
 
 type ExpandState = 'OPEN' | 'CLOSED' | 'CLOSING';
 
-const useStyles = makeStyles((theme: Theme) =>
+export const useCellStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       maxWidth: 345,
@@ -48,85 +48,88 @@ const useStyles = makeStyles((theme: Theme) =>
       transform: 'rotate(180deg)',
     },
     cell: {
-      padding: '6px 6px 6px 16px',
+      padding: '6px 6px 6px 0px !important',
     },
   })
 );
 
-export const ExpandableTableRow = React.memo(
-  ({ row: data, rtRow: row, i, getCellProps }: Props) => {
-    const [expandedState, setExpandedState] = React.useState<ExpandState>(
-      'CLOSED'
-    );
-    const expanded = expandedState === 'OPEN';
-    const handleExpandClick = () =>
-      setExpandedState(expanded ? 'CLOSING' : 'OPEN');
-    const classes = useStyles();
-    const changeNormalizedSeries = data.changeNormalizedSeries;
-    const rowProps = row.getRowProps();
-    return (
-      <>
-        <MuiTableRow {...rowProps}>
-          <TableCell className={classes.cell}>
-            {changeNormalizedSeries && (
-              <IconButton
-                size='small'
-                className={clsx(classes.expand, {
-                  [classes.expandOpen]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label='show more'
-              >
-                <ExpandMore />
-              </IconButton>
-            )}
-          </TableCell>
-          <TableCell className={classes.cell}>{i + 1}</TableCell>
-          {row.cells.map((cell) => {
-            return (
-              <TableCell
-                className={classes.cell}
-                {...cell.getCellProps()}
-                {...getCellProps(cell as any)}
-              >
-                {cell.render('Cell')}
-              </TableCell>
-            );
-          })}
-        </MuiTableRow>
-        {changeNormalizedSeries && expandedState !== 'CLOSED' && (
-          <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
-            <TableCell colSpan={row.cells.length + 2}>
-              <Collapse
-                in={expanded}
-                timeout='auto'
-                unmountOnExit
-                onExited={() => {
-                  setExpandedState('CLOSED');
-                }}
-                style={{ width: '100%' }}
-              >
-                <React.Suspense fallback={<CircularProgress />}>
-                  <Paper>
-                    <div style={{ display: 'flex', justifyContent: 'center' }}>
-                      New cases (normalized per 1mil)
-                    </div>
-                    <CalendarChart data={changeNormalizedSeries} />
-                    <LineChart
-                      data={changeNormalizedSeries}
-                      leftAxisLabel='change'
-                      hideLegend
-                      marginTop={0}
-                      marginRight={40}
-                    />
-                  </Paper>
-                </React.Suspense>
-              </Collapse>
+export const ExpandableTableRow = ({
+  row: data,
+  rtRow: row,
+  i,
+  getCellProps,
+}: Props) => {
+  const [expandedState, setExpandedState] = React.useState<ExpandState>(
+    'CLOSED'
+  );
+  const expanded = expandedState === 'OPEN';
+  const handleExpandClick = () =>
+    setExpandedState(expanded ? 'CLOSING' : 'OPEN');
+  const classes = useCellStyles();
+  const changeNormalizedSeries = data.changeNormalizedSeries;
+  const rowProps = row.getRowProps();
+  return (
+    <>
+      <MuiTableRow {...rowProps}>
+        <TableCell className={classes.cell}>
+          {changeNormalizedSeries && (
+            <IconButton
+              size='small'
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded,
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label='show more'
+            >
+              <ExpandMore />
+            </IconButton>
+          )}
+        </TableCell>
+        <TableCell className={classes.cell}>{i + 1}</TableCell>
+        {row.cells.map((cell) => {
+          return (
+            <TableCell
+              className={classes.cell}
+              {...cell.getCellProps()}
+              {...getCellProps(cell as any)}
+            >
+              {cell.render('Cell')}
             </TableCell>
-          </MuiTableRow>
-        )}
-      </>
-    );
-  }
-);
+          );
+        })}
+      </MuiTableRow>
+      {changeNormalizedSeries && expandedState !== 'CLOSED' && (
+        <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
+          <TableCell colSpan={row.cells.length + 2}>
+            <Collapse
+              in={expanded}
+              timeout='auto'
+              unmountOnExit
+              onExited={() => {
+                setExpandedState('CLOSED');
+              }}
+              style={{ width: '100%' }}
+            >
+              <React.Suspense fallback={<CircularProgress />}>
+                <Paper>
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    New cases (normalized per 1mil)
+                  </div>
+                  <CalendarChart data={changeNormalizedSeries} />
+                  <LineChart
+                    data={changeNormalizedSeries}
+                    leftAxisLabel='change'
+                    hideLegend
+                    marginTop={0}
+                    marginRight={40}
+                  />
+                </Paper>
+              </React.Suspense>
+            </Collapse>
+          </TableCell>
+        </MuiTableRow>
+      )}
+    </>
+  );
+};
