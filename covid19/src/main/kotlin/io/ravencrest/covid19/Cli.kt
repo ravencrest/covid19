@@ -3,7 +3,6 @@ package io.ravencrest.covid19
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
-import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import io.ravencrest.covid19.model.Results
@@ -11,7 +10,6 @@ import io.ravencrest.covid19.model.TableRow
 import io.ravencrest.covid19.model.TimeSeries
 import io.ravencrest.covid19.parse.*
 import java.nio.file.Files
-import java.nio.file.Path
 import java.nio.file.Paths
 import java.time.LocalDate
 import java.time.OffsetDateTime
@@ -26,15 +24,17 @@ fun parseGlobal(countries: () -> Map<String, String>, populationIndex: Map<Strin
   val recoveredIndex = parseRecovered?.let { it(countriesIndex) }?.associateBy { it.region } ?: emptyMap()
   val startDate = LocalDate.of(2020, 3, 17)
 
-  val sortedCases = rawCases.values.mapNotNull { series ->
+  val sortedCases = rawCases.values.map { series ->
     val country = series.region
-    series.last()?.let { point ->
-      val latestValue = point.value
-      val secondToLast = series.secondToLast()
-      val change =
-        secondToLast?.value?.let { previousValue -> (latestValue - previousValue) / previousValue.toDouble() }?.takeUnless { it.isNaN() }
+    val newCases = series.points.mapIndexed {index, point ->
+      val previous = if (index == 0) 0L else series.points[index - 1].value
+      point.copy(value = point.value - previous)
+    }
 
-      //val change = normalize(secondToLast?.value?.let { previousValue -> (latestValue - previousValue) / previousValue.toDouble()}?: 0.0, populationIndex[series.country]!!)
+    val totalCases = series.last()?.value ?: 0L
+    val newCases0 = newCases.last().value
+    val newCases1 = newCases[newCases.size - 2].value
+    val changePercent = if (newCases0 == newCases1 || newCases1 == 0L) 0.0 else ((newCases0 - newCases1) / newCases1.toDouble())
 
       val population = populationIndex[country] ?: error("Missing population data for $country")
       val deaths = deathsIndex[country]?.last()?.value ?: 0
@@ -55,9 +55,9 @@ fun parseGlobal(countries: () -> Map<String, String>, populationIndex: Map<Strin
 
       TableRow(
         region = country,
-        cases = latestValue,
-        casesNormalized = normalize(latestValue, population),
-        change = change,
+        cases = totalCases,
+        casesNormalized = normalize(totalCases, population),
+        change = changePercent,
         deaths = deaths,
         deathsNormalized = normalize(deaths, population),
         recovered = recovered,
@@ -65,7 +65,6 @@ fun parseGlobal(countries: () -> Map<String, String>, populationIndex: Map<Strin
         population = population,
         changeNormalizedSeries = series.copy(points = points)
       )
-    }
   }.sortedWith(compareByDescending { v -> v.casesNormalized })
 
   return Results(
