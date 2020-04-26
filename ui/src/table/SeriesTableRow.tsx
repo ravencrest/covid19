@@ -13,18 +13,17 @@ import {
 import { ExpandMore } from '@material-ui/icons';
 import clsx from 'clsx';
 import { CellProps, Row } from 'react-table';
-import { TableRow } from '../types';
+import { TableRow, TimeSeries } from '../types';
 import { LineChart } from '../line-chart/LineChart';
 const CalendarChart = React.lazy(() =>
   import('../calendar-chart/CalendarChart')
 );
 
 type Props = {
-  row: TableRow;
   rtRow: Row<any>;
-  i: number;
+  rowNumber: number;
   getCellProps: (cell: CellProps<any, TableRow>) => {};
-  normalized: boolean;
+  series: TimeSeries | undefined;
 };
 
 type ExpandState = 'OPEN' | 'CLOSED' | 'CLOSING';
@@ -54,12 +53,11 @@ export const useCellStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const ExpandableTableRow = ({
-  row: data,
+export const SeriesTableRow = ({
   rtRow: row,
-  i,
+  rowNumber,
   getCellProps,
-  normalized,
+  series,
 }: Props) => {
   const [expandedState, setExpandedState] = React.useState<ExpandState>(
     'CLOSED'
@@ -68,7 +66,6 @@ export const ExpandableTableRow = ({
   const handleExpandClick = () =>
     setExpandedState(expanded ? 'CLOSING' : 'OPEN');
   const classes = useCellStyles();
-  const series = normalized ? data.changeNormalizedSeries : data.changeSeries;
   const rowProps = row.getRowProps();
   const cells = row.cells;
   return (
@@ -89,7 +86,7 @@ export const ExpandableTableRow = ({
             </IconButton>
           )}
         </TableCell>
-        <TableCell className={classes.cell}>{i + 1}</TableCell>
+        <TableCell className={classes.cell}>{rowNumber + 1}</TableCell>
         {cells.map((cell) => {
           return (
             <TableCell

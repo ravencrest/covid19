@@ -9,7 +9,6 @@ import {
   TableSortLabel,
 } from '@material-ui/core';
 import {
-  CellProps,
   Column,
   TableInstance,
   useGlobalFilter,
@@ -17,20 +16,20 @@ import {
   UseGlobalFiltersState,
   useSortBy,
   useTable,
+  Row,
 } from 'react-table';
 import { TableRow } from '../types';
 import { TableToolbar } from './TableToolbar';
-import { ExpandableTableRow, useCellStyles } from './ExpandableTableRow';
+import { useCellStyles } from './SeriesTableRow';
 
 type Props = {
   columns: Column<TableRow>[];
   data: TableRow[];
-  getCellProps: (cell: CellProps<any, TableRow>) => {};
-  normalized: boolean;
+  rowBuilder: (row: Row<TableRow>, i: number) => React.ReactNode;
 };
 
 export const SimpleTable = React.memo(
-  ({ columns, data, getCellProps, normalized }: Props) => {
+  ({ columns, data, rowBuilder }: Props) => {
     const {
       getTableProps,
       headerGroups,
@@ -88,16 +87,7 @@ export const SimpleTable = React.memo(
           <TableBody>
             {rows.map((row, i) => {
               prepareRow(row);
-              return (
-                <ExpandableTableRow
-                  {...row.getRowProps()}
-                  row={row.original}
-                  rtRow={row}
-                  i={i}
-                  getCellProps={getCellProps}
-                  normalized={normalized}
-                />
-              );
+              return rowBuilder(row, i);
             })}
           </TableBody>
         </Table>

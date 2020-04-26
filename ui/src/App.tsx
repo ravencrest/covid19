@@ -12,7 +12,7 @@ import {
   Switch,
 } from '@material-ui/core';
 import memoizeOne from 'memoize-one';
-import { TableRow, DataSets } from './types';
+import { TableRow, DataSets, TimeSeries } from './types';
 
 type FilteredResults = {
   lastUpdated: Date;
@@ -52,7 +52,7 @@ const App = React.memo(() => {
   const [dataset, setDataSet] = React.useState<DataSets>('global');
   const [normalized, setNormalized] = React.useState(true);
   const global = dataset === 'global';
-  const { rows, lastUpdated = undefined } = useResults(dataset) ?? {};
+  const { rows, lastUpdated } = useResults(dataset) ?? {};
   const populationLimit = global ? 1000000 : 6073116;
   const indexToSlice = global
     ? (it: TableRow) => it.region === 'United States'
@@ -61,10 +61,11 @@ const App = React.memo(() => {
     ? (row: TableRow) => row.changeNormalizedSeries
     : (row: TableRow) => row.changeSeries;
   const indexOfMd = rows?.findIndex(indexToSlice) ?? 0;
-  const series = rows
+  const series: TimeSeries[] | undefined = rows
     ?.filter((row) => row.population > populationLimit)
     .map(changeMapper)
-    .slice(0, Math.min(indexOfMd + 1, rows?.length - 1));
+    .filter((s) => s != null)
+    .slice(0, Math.min(indexOfMd + 1, rows?.length - 1)) as TimeSeries[];
 
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>
@@ -97,19 +98,17 @@ const App = React.memo(() => {
             />
           </RadioGroup>
         </InfoMenuBar>
-        <LineChart
-          data={series ?? []}
-          leftAxisLabel='New Cases (N)'
-          height='22em'
-          marginTop={0}
-        />
+        {series && (
+          <LineChart
+            data={series}
+            leftAxisLabel='New Cases (N)'
+            height='22em'
+            marginTop={0}
+          />
+        )}
         <Divider />
         {rows && (
-          <TablePane
-            data={rows}
-            hideRecovered={dataset}
-            normalized={normalized}
-          />
+          <TablePane data={rows} datasetKey={dataset} normalized={normalized} />
         )}
         {!rows && <CircularProgress />}
       </React.Suspense>
