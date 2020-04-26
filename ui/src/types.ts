@@ -1,3 +1,5 @@
+export type DataSets = 'global' | 'us';
+
 export type TableRow = {
   region: string;
   cases: number;

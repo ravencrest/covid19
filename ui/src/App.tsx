@@ -12,7 +12,7 @@ import {
   Switch,
 } from '@material-ui/core';
 import memoizeOne from 'memoize-one';
-import { TableRow } from './types';
+import { TableRow, DataSets } from './types';
 
 type FilteredResults = {
   lastUpdated: Date;
@@ -32,8 +32,6 @@ const getUsResults = memoizeOne(async function (): Promise<FilteredResults> {
   const lastUpdated = parseJSON(results.lastUpdated);
   return { lastUpdated, rows: results.rows };
 });
-
-type DataSets = 'global' | 'us';
 
 const useResults = (dataset: DataSets): FilteredResults | undefined => {
   const [results, setResults] = React.useState<FilteredResults | undefined>(
@@ -114,7 +112,7 @@ const App = React.memo(() => {
         {rows && (
           <TablePane
             data={rows}
-            hideRecovered={!global}
+            hideRecovered={dataset}
             normalized={normalized}
           />
         )}
