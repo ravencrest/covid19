@@ -52,24 +52,19 @@ const App = React.memo(() => {
   const [dataset, setDataSet] = React.useState<DataSets>('global');
   const [normalized, setNormalized] = React.useState(true);
   const global = dataset === 'global';
-  const { rows, lastUpdated = undefined } = useResults(dataset) || {};
+  const { rows, lastUpdated = undefined } = useResults(dataset) ?? {};
   const populationLimit = global ? 1000000 : 6073116;
   const indexToSlice = global
     ? (it: TableRow) => it.region === 'United States'
     : (it: TableRow) => it.region === 'Maryland';
-  const changeMapper =
-    rows &&
-    (normalized
-      ? (row: TableRow) => row.changeNormalizedSeries
-      : (row: TableRow) => row.changeSeries);
-  const indexOfMd = rows ? rows.findIndex(indexToSlice) : 0;
-  const series =
-    rows &&
-    changeMapper &&
-    rows
-      .filter((row) => row.population > populationLimit)
-      .map(changeMapper)
-      .slice(0, Math.min(indexOfMd + 1, rows.length - 1));
+  const changeMapper = normalized
+    ? (row: TableRow) => row.changeNormalizedSeries
+    : (row: TableRow) => row.changeSeries;
+  const indexOfMd = rows?.findIndex(indexToSlice) ?? 0;
+  const series = rows
+    ?.filter((row) => row.population > populationLimit)
+    .map(changeMapper)
+    .slice(0, Math.min(indexOfMd + 1, rows?.length - 1));
 
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>
@@ -103,7 +98,7 @@ const App = React.memo(() => {
           </RadioGroup>
         </InfoMenuBar>
         <LineChart
-          data={series || []}
+          data={series ?? []}
           leftAxisLabel='New Cases (N)'
           height='22em'
           marginTop={0}

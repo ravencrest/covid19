@@ -70,6 +70,7 @@ export const ExpandableTableRow = ({
   const classes = useCellStyles();
   const series = normalized ? data.changeNormalizedSeries : data.changeSeries;
   const rowProps = row.getRowProps();
+  const cells = row.cells;
   return (
     <>
       <MuiTableRow {...rowProps}>
@@ -89,7 +90,7 @@ export const ExpandableTableRow = ({
           )}
         </TableCell>
         <TableCell className={classes.cell}>{i + 1}</TableCell>
-        {row.cells.map((cell) => {
+        {cells.map((cell) => {
           return (
             <TableCell
               className={classes.cell}
@@ -103,7 +104,7 @@ export const ExpandableTableRow = ({
       </MuiTableRow>
       {series && expandedState !== 'CLOSED' && (
         <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
-          <TableCell colSpan={row.cells.length + 2}>
+          <TableCell colSpan={cells.length + 2}>
             <Collapse
               in={expanded}
               timeout='auto'

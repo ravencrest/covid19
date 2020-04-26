@@ -11,8 +11,8 @@ export type TableRow = {
   recovered?: number;
   recoveredNormalized?: number;
   population: number;
-  changeNormalizedSeries: TimeSeries;
-  changeSeries: TimeSeries;
+  changeNormalizedSeries?: TimeSeries;
+  changeSeries?: TimeSeries;
 };
 
 export type Point = {
