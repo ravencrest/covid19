@@ -3,6 +3,7 @@ export type TableRow = {
   cases: number;
   casesNormalized: number;
   change?: number;
+  weeklyChange?: number;
   deaths: number;
   deathsNormalized: number;
   recovered?: number;

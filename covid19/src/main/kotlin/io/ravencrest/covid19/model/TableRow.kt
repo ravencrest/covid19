@@ -5,6 +5,7 @@ data class TableRow(
   val cases: Long,
   val casesNormalized: Long,
   val change: Double?,
+  val weeklyChange: Double?,
   val deaths: Long,
   val deathsNormalized: Long,
   val recovered: Long?,

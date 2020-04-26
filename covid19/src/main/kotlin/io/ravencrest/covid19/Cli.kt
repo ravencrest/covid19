@@ -14,6 +14,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.time.LocalDate
 import java.time.OffsetDateTime
+import java.time.Period
 import java.time.ZoneOffset
 
 typealias TimeSeriesParser = (countries: Map<String, String>) -> List<TimeSeries>
@@ -31,8 +32,20 @@ fun parseGlobal(
   val recoveredIndex = parseRecovered?.let { it(countriesIndex) }?.associateBy { it.region } ?: emptyMap()
   val startDate = LocalDate.of(2020, 3, 17)
 
+  val sevenDaysAgo = LocalDate.now().minusWeeks(1)
+  val fourteenDaysAgo = LocalDate.now().minusWeeks(2)
+
+
   val sortedCases = rawCases.values.map { series ->
     val country = series.region
+
+    val thisWeek = series.points.filter { point -> point.date >= sevenDaysAgo}
+    val lastWeek = series.points.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo}
+
+    val twa = thisWeek.map {it.value}.average()
+    val lwa = lastWeek.map {it.value}.average()
+    val weeklyChange = ((twa - lwa) / lwa.toDouble()).takeUnless { it.isInfinite() || it.isNaN() }
+
     val newCases = series.points.mapIndexed { index, point ->
       val previous = if (index == 0) 0L else series.points[index - 1].value
       point.copy(value = point.value - previous)
@@ -61,8 +74,9 @@ fun parseGlobal(
       val date = point.first
       val value = point.second
       val previous = point.third
-      val change = value - previous
-      Point(date = date, value = change)
+      val dailyChange = value - previous
+
+      Point(date = date, value = dailyChange)
     }
 
     val normalizedChangeSeries = changeSeries.map { point ->
@@ -74,6 +88,7 @@ fun parseGlobal(
       cases = totalCases,
       casesNormalized = normalize(totalCases, population),
       change = changePercent,
+      weeklyChange = weeklyChange,
       deaths = deaths,
       deathsNormalized = normalize(deaths, population),
       recovered = recovered,

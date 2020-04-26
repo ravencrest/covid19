@@ -24,20 +24,30 @@ const Header = ({
   </Tooltip>
 );
 
+function formatChange(change: number | undefined | null) {
+  change = typeof change === 'number' ? Math.round(change * 100) : undefined;
+  if (!change) {
+    return '--';
+  }
+  return `${change > 0 ? '+' : ''}${change}%`;
+}
+
 const normalizedColumns: Column<TableRow>[] = [
   {
-    Header: <Header tooltip='Increase in new cases'>Change</Header>,
+    Header: (
+      <Header tooltip='Increase in new cases since last data'>Change</Header>
+    ),
     accessor: 'change',
     id: 'change',
-    Cell: ({ row }) => {
-      let { change } = row.original;
-      change =
-        typeof change === 'number' ? Math.round(change * 100) : undefined;
-      if (!change) {
-        return '--';
-      }
-      return `${change > 0 ? '+' : ''}${change}%`;
-    },
+    Cell: ({ row }) => formatChange(row.original.change),
+  },
+  {
+    Header: (
+      <Header tooltip='Average weekly increase in new cases'>Change (W)</Header>
+    ),
+    accessor: 'weeklyChange',
+    id: 'weeklyChange',
+    Cell: ({ row }) => formatChange(row.original.weeklyChange),
   },
   {
     Header: <Header tooltip='Region'>Region</Header>,
@@ -151,22 +161,28 @@ export const TablePane = ({
         normalized={normalized}
         columns={filteredColumns}
         data={data}
-        getCellProps={(cellInfo: CellProps<TableRow>) => ({
-          style: {
-            fontWeight:
-              cellInfo.row.original.region === 'United States'
-                ? 'bold'
-                : 'normal',
-            color:
-              cellInfo.column.id !== 'change'
-                ? undefined
-                : !cellInfo.row.original.change
-                ? undefined
-                : cellInfo.row.original.change > 0
-                ? 'red'
-                : 'green',
-          },
-        })}
+        getCellProps={(cellInfo: CellProps<TableRow>) => {
+          const value = cellInfo.value;
+          const region = cellInfo.row.original.region;
+          const columnId = cellInfo.column.id;
+          const isChange = columnId === 'change' || columnId === 'weeklyChange';
+          const shouldBold =
+            region === 'United States' || region === 'Maryland';
+          const color = !isChange
+            ? undefined
+            : !value
+            ? undefined
+            : value > 0
+            ? 'red'
+            : 'green';
+          const fontWeight = shouldBold ? 'bold' : 'normal';
+          return {
+            style: {
+              fontWeight,
+              color,
+            },
+          };
+        }}
       />
     </div>
   );
