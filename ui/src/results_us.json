@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2020-04-25T23:10:11.7705802Z",
+  "lastUpdated": "2020-04-26T00:25:09.7798615Z",
   "rows": [
     {
       "region": "New York",
       "cases": 271590,
       "casesNormalized": 13970,
-      "change": 47.392857142857146,
-      "deaths": 21411,
-      "deathsNormalized": 1101,
+      "change": 0.5521191294387171,
+      "deaths": 4765,
+      "deathsNormalized": 245,
       "population": 19440469,
       "changeNormalizedSeries": {
         "region": "New York",
@@ -133,27 +133,27 @@
             "date": "2020-04-17"
           },
           {
-            "value": 572,
+            "value": 354,
             "date": "2020-04-18"
           },
           {
-            "value": 314,
+            "value": 304,
             "date": "2020-04-19"
           },
           {
-            "value": 270,
+            "value": 259,
             "date": "2020-04-20"
           },
           {
-            "value": 273,
+            "value": 262,
             "date": "2020-04-21"
           },
           {
-            "value": 254,
+            "value": 242,
             "date": "2020-04-22"
           },
           {
-            "value": 9,
+            "value": 269,
             "date": "2020-04-23"
           },
           {

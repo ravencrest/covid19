@@ -15,7 +15,7 @@ import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
 
-typealias TimeSeriesParser = (countries: Map<String, String>) -> Set<TimeSeries>
+typealias TimeSeriesParser = (countries: Map<String, String>) -> List<TimeSeries>
 
 fun parseGlobal(countries: () -> Map<String, String>, populationIndex: Map<String, Long>, parseConfirmed: TimeSeriesParser, parseDeaths: TimeSeriesParser, parseRecovered: TimeSeriesParser?): Results {
   val countriesIndex = countries()
@@ -28,6 +28,9 @@ fun parseGlobal(countries: () -> Map<String, String>, populationIndex: Map<Strin
     val country = series.region
     val newCases = series.points.mapIndexed {index, point ->
       val previous = if (index == 0) 0L else series.points[index - 1].value
+      if (series.region == "New York") {
+        println("${point.value - previous} ${point} ${if(index != 0) series.points[index - 1] else ""}")
+      }
       point.copy(value = point.value - previous)
     }
 
