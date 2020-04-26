@@ -51,7 +51,7 @@ task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
     main = "com.pinterest.ktlint.Main"
     classpath = configurations.ktlint
-    args "src/**/*.kt"
+    args "-F", "src/**/*.kt"
 }
 check.dependsOn ktlint
 

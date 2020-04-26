@@ -8,7 +8,10 @@ import java.net.SocketTimeoutException
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
-import java.time.*
+import java.time.Duration
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import java.time.format.DateTimeFormatterBuilder
 import kotlin.system.exitProcess
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
@@ -35,8 +38,8 @@ fun loadTimeSeries(name: String, url: String): MappingIterator<Array<String>> {
   val ingestDataFile = ingestDataPath.toFile()
   val purgeIfOlder = LocalDateTime.now().toInstant(ZoneOffset.UTC) - Duration.ofHours(8)
   if (ingestDataFile.exists() && ingestDataFile.lastModified() > purgeIfOlder.toEpochMilli()) {
-      println("Recent $name data already exists on disk. Using that to generate results.")
-      println("If you'd like fresh data, delete $ingestDataPath and run the tool again.\n")
+    println("Recent $name data already exists on disk. Using that to generate results.")
+    println("If you'd like fresh data, delete $ingestDataPath and run the tool again.\n")
   } else {
     deleteStaleData(ingestDataPath)
     try {

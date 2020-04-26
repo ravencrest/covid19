@@ -13,5 +13,4 @@ data class TableRow(
   val population: Long,
   val changeNormalizedSeries: TimeSeries,
   val changeSeries: TimeSeries
-
 )
