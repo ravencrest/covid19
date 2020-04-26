@@ -1,6 +1,6 @@
 import React from 'react';
 import { CssBaseline, Tooltip } from '@material-ui/core';
-import { CellProps, Column, Row } from 'react-table';
+import { Column, Row } from 'react-table';
 import { SimpleTable } from './SimpleTable';
 import { TableRow, DataSets } from '../types';
 import { SeriesTableRow } from './SeriesTableRow';
@@ -98,23 +98,6 @@ const buildColumns = (
   return columns;
 };
 
-const getCellStyle = (cellInfo: CellProps<TableRow>) => {
-  const value = cellInfo.value;
-  const region = cellInfo.row.original.region;
-  const columnId = cellInfo.column.id;
-  const isChange = columnId === 'change' || columnId === 'weeklyChange';
-  const shouldBold = region === 'United States' || region === 'Maryland';
-  const color = !isChange
-    ? undefined
-    : !value
-    ? undefined
-    : value > 0
-    ? 'red'
-    : 'green';
-  const fontWeight = shouldBold ? 'bold' : 'normal';
-  return { fontWeight, color };
-};
-
 export const TablePane = ({
   data,
   datasetKey,
@@ -132,9 +115,8 @@ export const TablePane = ({
     <SeriesTableRow
       {...row.getRowProps()}
       key={`${i}-${datasetKey}`}
-      rtRow={row}
+      row={row}
       rowNumber={i}
-      getCellProps={getCellStyle}
       series={
         normalized
           ? row.original.changeNormalizedSeries

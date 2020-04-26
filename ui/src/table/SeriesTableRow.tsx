@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
 import clsx from 'clsx';
-import { CellProps, Row } from 'react-table';
+import { Cell, Row } from 'react-table';
 import { TableRow, TimeSeries } from '../types';
 import { LineChart } from '../line-chart/LineChart';
 const CalendarChart = React.lazy(() =>
@@ -20,9 +20,8 @@ const CalendarChart = React.lazy(() =>
 );
 
 type Props = {
-  rtRow: Row<any>;
+  row: Row<TableRow>;
   rowNumber: number;
-  getCellProps: (cell: CellProps<any, TableRow>) => {};
   series: TimeSeries | undefined;
 };
 
@@ -50,15 +49,45 @@ export const useCellStyles = makeStyles((theme: Theme) =>
     cell: {
       padding: '6px 6px 6px 0px !important',
     },
+    bold: {
+      fontWeight: 'bold',
+    },
+    positiveChange: {
+      color: 'green',
+    },
+    negativeChange: {
+      color: 'red',
+    },
   })
 );
 
-export const SeriesTableRow = ({
-  rtRow: row,
-  rowNumber,
-  getCellProps,
-  series,
-}: Props) => {
+const getCellClasses = (
+  styles: ReturnType<typeof useCellStyles>,
+  cell: Cell<TableRow>,
+  row: Row<TableRow>
+) => {
+  const region = row.original.region;
+  const id = cell.column.id;
+  const value: unknown = cell.value;
+
+  let classes: string[] = [];
+  if (region === 'United States' || region === 'Maryland') {
+    classes = [styles.bold];
+  }
+  switch (id) {
+    case 'change':
+    case 'weeklyChange':
+      if (typeof value == 'number' && value !== 0) {
+        const className =
+          value > 0 ? styles.negativeChange : styles.positiveChange;
+        classes.push(className);
+      }
+      break;
+  }
+  return classes;
+};
+
+export const SeriesTableRow = ({ row, rowNumber, series }: Props) => {
   const [expandedState, setExpandedState] = React.useState<ExpandState>(
     'CLOSED'
   );
@@ -90,9 +119,11 @@ export const SeriesTableRow = ({
         {cells.map((cell) => {
           return (
             <TableCell
-              className={classes.cell}
+              className={clsx(
+                classes.cell,
+                ...getCellClasses(classes, cell, row)
+              )}
               {...cell.getCellProps()}
-              {...getCellProps(cell as any)}
             >
               {cell.render('Cell')}
             </TableCell>

@@ -8,16 +8,7 @@ import {
   TableRow as MuiTableRow,
   TableSortLabel,
 } from '@material-ui/core';
-import {
-  Column,
-  TableInstance,
-  useGlobalFilter,
-  UseGlobalFiltersInstanceProps,
-  UseGlobalFiltersState,
-  useSortBy,
-  useTable,
-  Row,
-} from 'react-table';
+import { Column, useGlobalFilter, useSortBy, useTable, Row } from 'react-table';
 import { TableRow } from '../types';
 import { TableToolbar } from './TableToolbar';
 import { useCellStyles } from './SeriesTableRow';
@@ -43,12 +34,8 @@ export const SimpleTable = React.memo(
         data,
       },
       useGlobalFilter,
-      useSortBy,
-      (hooks) => {
-        hooks.allColumns.push((columns) => columns);
-      }
-    ) as UseGlobalFiltersInstanceProps<any> &
-      TableInstance<any> & { state: UseGlobalFiltersState<any> };
+      useSortBy
+    );
     const styles = useCellStyles();
     return (
       <TableContainer>
@@ -62,13 +49,12 @@ export const SimpleTable = React.memo(
               <MuiTableRow {...headerGroup.getHeaderGroupProps()}>
                 <TableCell className={styles.cell} />
                 <TableCell className={styles.cell} />
-                {headerGroup.headers.map((column: any) => (
+                {headerGroup.headers.map((column) => (
                   <TableCell
                     className={styles.cell}
                     key={column.id}
                     {...column.getHeaderProps({
                       ...column.getSortByToggleProps(),
-                      title: undefined,
                     })}
                   >
                     <div style={{ display: 'inline-flex' }}>
