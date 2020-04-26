@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   bar: {
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'center',
     flexDirection: 'row',
     alignItems: 'center',
