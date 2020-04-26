@@ -47,6 +47,35 @@ test {
     useJUnitPlatform()
 }
 
+task cleanDeployment(type: Delete) {
+    delete '../../ravencrest-github-io/public/static'
+}
+
+task buildUi(type: Exec) {
+    workingDir '../ui'
+    commandLine 'cmd', '/c', 'git', 'checkout', 'rvn', '&&', 'git', 'rebase', 'master', '&&', 'yarn', 'build', '&&', 'git', 'checkout', 'master'
+}
+buildUi.dependsOn cleanDeployment
+
+task copyUiStatic(type: Copy) {
+    from '../ui/build/static'
+    into '../../ravencrest-github-io/public/static'
+}
+copyUiStatic.dependsOn buildUi
+
+task copyUiIndex(type: Copy) {
+    from ('../ui/build') {
+        include 'index.html'
+        rename 'index.html', 'covid19.html'
+    }
+    into '../../ravencrest-github-io/public'
+}
+copyUiIndex.dependsOn buildUi
+
+task deployUi(type: Task) {}
+deployUi.dependsOn = [copyUiIndex, copyUiStatic]
+
+
 task ktlint(type: JavaExec, group: "verification") {
     description = "Check Kotlin code style."
     main = "com.pinterest.ktlint.Main"
