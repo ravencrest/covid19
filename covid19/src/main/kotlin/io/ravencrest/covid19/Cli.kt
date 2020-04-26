@@ -14,7 +14,6 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.time.LocalDate
 import java.time.OffsetDateTime
-import java.time.Period
 import java.time.ZoneOffset
 
 typealias TimeSeriesParser = (countries: Map<String, String>) -> List<TimeSeries>
@@ -35,15 +34,14 @@ fun parseGlobal(
   val sevenDaysAgo = LocalDate.now().minusWeeks(1)
   val fourteenDaysAgo = LocalDate.now().minusWeeks(2)
 
-
   val sortedCases = rawCases.values.map { series ->
     val country = series.region
 
-    val thisWeek = series.points.filter { point -> point.date >= sevenDaysAgo}
-    val lastWeek = series.points.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo}
+    val thisWeek = series.points.filter { point -> point.date >= sevenDaysAgo }
+    val lastWeek = series.points.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
 
-    val twa = thisWeek.map {it.value}.average()
-    val lwa = lastWeek.map {it.value}.average()
+    val twa = thisWeek.map { it.value }.average()
+    val lwa = lastWeek.map { it.value }.average()
     val weeklyChange = ((twa - lwa) / lwa.toDouble()).takeUnless { it.isInfinite() || it.isNaN() }
 
     val newCases = series.points.mapIndexed { index, point ->
@@ -112,7 +110,7 @@ fun writeResults(filename: String, results: Results) {
     .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
     .setSerializationInclusion(JsonInclude.Include.NON_NULL)
 
-  val path = Paths.get(if (isDev) "./ui/src" else ".", "${filename}.json").toAbsolutePath()
+  val path = Paths.get(if (isDev) "./ui/src" else ".", "$filename.json").toAbsolutePath()
   deleteStaleData(path)
   val exportBytes = jsonMapper.writerWithDefaultPrettyPrinter().writeValueAsString(results)
   Files.write(path, exportBytes.toByteArray())
@@ -132,5 +130,4 @@ fun main() {
 
   writeResults("results_us", usResults)
   writeResults("results_global", globalResults)
-
 }

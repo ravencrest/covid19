@@ -11,7 +11,6 @@ val rootPath = if (isDev) "data" else ".."
 val globalPopulationPath: Path = Paths.get(rootPath, "population.csv").toAbsolutePath()
 val usPopulationPath: Path = Paths.get(rootPath, "us_population.csv").toAbsolutePath()
 
-
 // Manually generated list that maps the country labels in the population data to the COVID-19 time series country labels
 val countriesPath: Path = Paths.get(rootPath, "countries.csv").toAbsolutePath()
 

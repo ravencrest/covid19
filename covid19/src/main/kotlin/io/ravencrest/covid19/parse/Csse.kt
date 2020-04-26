@@ -3,9 +3,6 @@ package io.ravencrest.covid19.parse
 import com.fasterxml.jackson.databind.MappingIterator
 import io.ravencrest.covid19.model.RawTimeSeries
 import io.ravencrest.covid19.model.TimeSeries
-import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
-import okhttp3.OkHttpClient
-import okhttp3.Request
 import java.io.FileOutputStream
 import java.net.SocketTimeoutException
 import java.nio.file.Files
@@ -14,6 +11,9 @@ import java.nio.file.Paths
 import java.time.*
 import java.time.format.DateTimeFormatterBuilder
 import kotlin.system.exitProcess
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
+import okhttp3.OkHttpClient
+import okhttp3.Request
 
 const val WHO_CASES_URL =
   "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/who_covid_19_situation_reports/who_covid_19_sit_rep_time_series/who_covid_19_sit_rep_time_series.csv"
@@ -37,8 +37,7 @@ fun loadTimeSeries(name: String, url: String): MappingIterator<Array<String>> {
   if (ingestDataFile.exists() && ingestDataFile.lastModified() > purgeIfOlder.toEpochMilli()) {
       println("Recent $name data already exists on disk. Using that to generate results.")
       println("If you'd like fresh data, delete $ingestDataPath and run the tool again.\n")
-  }
-  else {
+  } else {
     deleteStaleData(ingestDataPath)
     try {
       println("Fetching $name data from $url")
@@ -55,8 +54,7 @@ fun loadTimeSeries(name: String, url: String): MappingIterator<Array<String>> {
     } catch (ste: SocketTimeoutException) {
       println("Connecting to ${url.host} timed out. Please try later. Exiting.")
       exitProcess(1)
-    }
-    catch (e: Exception) {
+    } catch (e: Exception) {
       println("Failed to retrieve data from ${url.host}. Exiting.")
       e.printStackTrace()
       exitProcess(1)
