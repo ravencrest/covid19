@@ -9,13 +9,13 @@ import {
   Radio,
   FormControlLabel,
   CircularProgress,
+  Switch,
 } from '@material-ui/core';
 import memoizeOne from 'memoize-one';
-import { TableRow, TimeSeries } from './types';
+import { TableRow } from './types';
 
 type FilteredResults = {
   lastUpdated: Date;
-  series: TimeSeries[];
   rows: TableRow[];
 };
 
@@ -23,24 +23,14 @@ const getGlobalResults = memoizeOne(async function (): Promise<
   FilteredResults
 > {
   const results = await import('./results_global.json');
-  const change = results.rows.filter((row) => row.population > 1000000);
-  const indexOfUs = change.findIndex((row) => row.region === 'United States');
-  const changeSeries = change
-    .slice(0, Math.min(indexOfUs + 1, change.length - 1))
-    .map((change) => change.changeNormalizedSeries);
   const lastUpdated = parseJSON(results.lastUpdated);
-  return { lastUpdated, series: changeSeries, rows: results.rows };
+  return { lastUpdated, rows: results.rows };
 });
 
 const getUsResults = memoizeOne(async function (): Promise<FilteredResults> {
   const results = await import('./results_us.json');
-  const change = results.rows.filter((row) => row.population > 6073116);
-  const indexOfMd = change.findIndex((row) => row.region === 'Maryland');
-  const changeSeries = change
-    .slice(0, Math.min(indexOfMd + 1, change.length - 1))
-    .map((change) => change.changeNormalizedSeries);
   const lastUpdated = parseJSON(results.lastUpdated);
-  return { lastUpdated, series: changeSeries, rows: results.rows };
+  return { lastUpdated, rows: results.rows };
 });
 
 type DataSets = 'global' | 'us';
@@ -60,16 +50,45 @@ const useResults = (dataset: DataSets): FilteredResults | undefined => {
   return results;
 };
 
-//test
 const App = React.memo(() => {
   const [dataset, setDataSet] = React.useState<DataSets>('global');
+  const [normalized, setNormalized] = React.useState(true);
   const global = dataset === 'global';
-  const { rows, lastUpdated = undefined, series = [] } =
-    useResults(dataset) || {};
+  const { rows, lastUpdated = undefined } = useResults(dataset) || {};
+  const populationLimit = global ? 1000000 : 6073116;
+  const indexToSlice = global
+    ? (it: TableRow) => it.region === 'United States'
+    : (it: TableRow) => it.region === 'Maryland';
+  const changeMapper =
+    rows &&
+    (normalized
+      ? (row: TableRow) => row.changeNormalizedSeries
+      : (row: TableRow) => row.changeSeries);
+  const indexOfMd = rows ? rows.findIndex(indexToSlice) : 0;
+  const series =
+    rows &&
+    changeMapper &&
+    rows
+      .filter((row) => row.population > populationLimit)
+      .map(changeMapper)
+      .slice(0, Math.min(indexOfMd + 1, rows.length - 1));
+
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>
       <React.Suspense fallback={<CircularProgress />}>
         <InfoMenuBar lastUpdated={lastUpdated}>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={normalized}
+                onChange={(event, value) => {
+                  setNormalized(value);
+                }}
+                name='normalized'
+              />
+            }
+            label='Normalized'
+          />
           <RadioGroup
             row
             value={dataset}
@@ -86,13 +105,19 @@ const App = React.memo(() => {
           </RadioGroup>
         </InfoMenuBar>
         <LineChart
-          data={series}
+          data={series || []}
           leftAxisLabel='New Cases (N)'
           height='22em'
           marginTop={0}
         />
         <Divider />
-        {rows && <TablePane data={rows} hideRecovered={!global} />}
+        {rows && (
+          <TablePane
+            data={rows}
+            hideRecovered={!global}
+            normalized={normalized}
+          />
+        )}
         {!rows && <CircularProgress />}
       </React.Suspense>
     </div>

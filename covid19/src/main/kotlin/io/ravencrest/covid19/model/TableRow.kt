@@ -10,5 +10,7 @@ data class TableRow(
   val recovered: Long?,
   val recoveredNormalized: Long?,
   val population: Long,
-  val changeNormalizedSeries: TimeSeries
+  val changeNormalizedSeries: TimeSeries,
+  val changeSeries: TimeSeries
+
 )

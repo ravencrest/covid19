@@ -92,7 +92,6 @@ fun parse(csvIterator: MappingIterator<Array<String>>, countryOffSet: Int, timeS
       (oldValue ?: 0) + newValue
     } ?: newSeries
 
-
     val newRow = RawTimeSeries(
       region = country,
       points = mergedSeries

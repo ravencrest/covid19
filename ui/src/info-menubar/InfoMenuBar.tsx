@@ -69,7 +69,7 @@ const DialogTitle = (props: {
 
 const now = new Date();
 
-type Props = { lastUpdated: Date | undefined; children: React.ReactChild };
+type Props = { lastUpdated: Date | undefined; children: React.ReactNode };
 
 export const InfoMenuBar = ({ lastUpdated, children }: Props) => {
   const [open, setOpen] = React.useState(false);

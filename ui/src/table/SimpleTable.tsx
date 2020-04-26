@@ -26,10 +26,11 @@ type Props = {
   columns: Column<TableRow>[];
   data: TableRow[];
   getCellProps: (cell: CellProps<any, TableRow>) => {};
+  normalized: boolean;
 };
 
 export const SimpleTable = React.memo(
-  ({ columns, data, getCellProps }: Props) => {
+  ({ columns, data, getCellProps, normalized }: Props) => {
     const {
       getTableProps,
       headerGroups,
@@ -94,6 +95,7 @@ export const SimpleTable = React.memo(
                   rtRow={row}
                   i={i}
                   getCellProps={getCellProps}
+                  normalized={normalized}
                 />
               );
             })}

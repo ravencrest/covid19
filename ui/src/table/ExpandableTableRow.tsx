@@ -24,6 +24,7 @@ type Props = {
   rtRow: Row<any>;
   i: number;
   getCellProps: (cell: CellProps<any, TableRow>) => {};
+  normalized: boolean;
 };
 
 type ExpandState = 'OPEN' | 'CLOSED' | 'CLOSING';
@@ -58,6 +59,7 @@ export const ExpandableTableRow = ({
   rtRow: row,
   i,
   getCellProps,
+  normalized,
 }: Props) => {
   const [expandedState, setExpandedState] = React.useState<ExpandState>(
     'CLOSED'
@@ -66,13 +68,13 @@ export const ExpandableTableRow = ({
   const handleExpandClick = () =>
     setExpandedState(expanded ? 'CLOSING' : 'OPEN');
   const classes = useCellStyles();
-  const changeNormalizedSeries = data.changeNormalizedSeries;
+  const series = normalized ? data.changeNormalizedSeries : data.changeSeries;
   const rowProps = row.getRowProps();
   return (
     <>
       <MuiTableRow {...rowProps}>
         <TableCell className={classes.cell}>
-          {changeNormalizedSeries && (
+          {series && (
             <IconButton
               size='small'
               className={clsx(classes.expand, {
@@ -99,7 +101,7 @@ export const ExpandableTableRow = ({
           );
         })}
       </MuiTableRow>
-      {changeNormalizedSeries && expandedState !== 'CLOSED' && (
+      {series && expandedState !== 'CLOSED' && (
         <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
           <TableCell colSpan={row.cells.length + 2}>
             <Collapse
@@ -114,11 +116,11 @@ export const ExpandableTableRow = ({
               <React.Suspense fallback={<CircularProgress />}>
                 <Paper>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    New cases (normalized per 1mil)
+                    New cases
                   </div>
-                  <CalendarChart data={changeNormalizedSeries} />
+                  <CalendarChart data={series} />
                   <LineChart
-                    data={changeNormalizedSeries}
+                    data={series}
                     leftAxisLabel='change'
                     hideLegend
                     marginTop={0}

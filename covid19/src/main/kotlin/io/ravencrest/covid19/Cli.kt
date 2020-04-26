@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import io.ravencrest.covid19.model.Point
 import io.ravencrest.covid19.model.Results
 import io.ravencrest.covid19.model.TableRow
 import io.ravencrest.covid19.model.TimeSeries
@@ -17,7 +18,13 @@ import java.time.ZoneOffset
 
 typealias TimeSeriesParser = (countries: Map<String, String>) -> List<TimeSeries>
 
-fun parseGlobal(countries: () -> Map<String, String>, populationIndex: Map<String, Long>, parseConfirmed: TimeSeriesParser, parseDeaths: TimeSeriesParser, parseRecovered: TimeSeriesParser?): Results {
+fun parseGlobal(
+  countries: () -> Map<String, String>,
+  populationIndex: Map<String, Long>,
+  parseConfirmed: TimeSeriesParser,
+  parseDeaths: TimeSeriesParser,
+  parseRecovered: TimeSeriesParser?
+): Results {
   val countriesIndex = countries()
   val rawCases = parseConfirmed(countriesIndex).associateBy { it.region }
   val deathsIndex = parseDeaths(countriesIndex).associateBy { it.region }
@@ -26,48 +33,55 @@ fun parseGlobal(countries: () -> Map<String, String>, populationIndex: Map<Strin
 
   val sortedCases = rawCases.values.map { series ->
     val country = series.region
-    val newCases = series.points.mapIndexed {index, point ->
+    val newCases = series.points.mapIndexed { index, point ->
       val previous = if (index == 0) 0L else series.points[index - 1].value
-      if (series.region == "New York") {
-        println("${point.value - previous} ${point} ${if(index != 0) series.points[index - 1] else ""}")
-      }
       point.copy(value = point.value - previous)
     }
 
     val totalCases = series.last()?.value ?: 0L
     val newCases0 = newCases.last().value
     val newCases1 = newCases[newCases.size - 2].value
-    val changePercent = if (newCases0 == newCases1 || newCases1 == 0L) 0.0 else ((newCases0 - newCases1) / newCases1.toDouble())
+    val changePercent =
+      if (newCases0 == newCases1 || newCases1 == 0L) 0.0 else ((newCases0 - newCases1) / newCases1.toDouble())
 
-      val population = populationIndex[country] ?: error("Missing population data for $country")
-      val deaths = deathsIndex[country]?.last()?.value ?: 0
-      val recovered = recoveredIndex[country]?.last()?.value
+    val population = populationIndex[country] ?: error("Missing population data for $country")
+    val deaths = deathsIndex[country]?.last()?.value ?: 0
+    val recovered = recoveredIndex[country]?.last()?.value
 
-      val pointList = series.points.filter { point -> point.value > 0 }.filter { point -> point.date > startDate }
-        .sortedBy { point -> point.date }
-      val points = pointList.sortedBy { p -> p.date }
-        .mapIndexedNotNull { index, point ->
-          val previous = if (index == 0) null else pointList[index - 1]
-          val previousValue = previous?.value ?: point.value
-          val change = normalize(point.value - previousValue, population)
-          if (change == 0L) {
-            return@mapIndexedNotNull null
-          }
-          point.copy(value = change)
-        }
+    val pointList = series.points.filter { point -> point.value > 0 }.filter { point -> point.date > startDate }
+      .sortedBy { point -> point.date }
 
-      TableRow(
-        region = country,
-        cases = totalCases,
-        casesNormalized = normalize(totalCases, population),
-        change = changePercent,
-        deaths = deaths,
-        deathsNormalized = normalize(deaths, population),
-        recovered = recovered,
-        recoveredNormalized = recovered?.let {normalize(it, population)},
-        population = population,
-        changeNormalizedSeries = series.copy(points = points)
-      )
+    val changeSet = pointList.mapIndexedNotNull { index, point ->
+      val previous = if (index == 0) null else pointList[index - 1]
+      val previousValue = previous?.value ?: point.value
+      Triple(point.date, point.value, previousValue)
+    }
+
+    val changeSeries = changeSet.map { point ->
+      val date = point.first
+      val value = point.second
+      val previous = point.third
+      val change = value - previous
+      Point(date = date, value = change)
+    }
+
+    val normalizedChangeSeries = changeSeries.map { point ->
+      point.copy(value = normalize(point.value, population))
+    }
+
+    TableRow(
+      region = country,
+      cases = totalCases,
+      casesNormalized = normalize(totalCases, population),
+      change = changePercent,
+      deaths = deaths,
+      deathsNormalized = normalize(deaths, population),
+      recovered = recovered,
+      recoveredNormalized = recovered?.let { normalize(it, population) },
+      population = population,
+      changeNormalizedSeries = series.copy(points = normalizedChangeSeries),
+      changeSeries = series.copy(points = changeSeries)
+    )
   }.sortedWith(compareByDescending { v -> v.casesNormalized })
 
   return Results(
@@ -92,7 +106,13 @@ fun writeResults(filename: String, results: Results) {
 
 fun main() {
   val countries = loadCountries()
-  val globalResults = parseGlobal(::loadCountries, loadGlobalPopulations(countries), ::parseCsseCasesGlobal, ::parseCsseDeathsGlobal, ::parseCsseRecoveredGlobal)
+  val globalResults = parseGlobal(
+    ::loadCountries,
+    loadGlobalPopulations(countries),
+    ::parseCsseCasesGlobal,
+    ::parseCsseDeathsGlobal,
+    ::parseCsseRecoveredGlobal
+  )
   val usResults = parseGlobal({ emptyMap() }, loadUsPopulations(), ::parseCsseCasesUS, ::parseCsseDeathsUS, null)
 
   writeResults("results_us", usResults)
