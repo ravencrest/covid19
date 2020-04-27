@@ -2,6 +2,7 @@
   "private": true,
   "homepage": ".",
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "rescripts start",
     "build": "rescripts build",
     "test": "rescripts test",
@@ -37,6 +38,7 @@
     "lint-staged": "^10.1.7",
     "prettier": "2.0.5",
     "react-scripts": "3.4.1",
+    "source-map-explorer": "^2.4.2",
     "typescript": "^3.8.3"
   },
   "browserslist": {
