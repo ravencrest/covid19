@@ -48,24 +48,52 @@ const useResults = (dataset: DataSets): FilteredResults | undefined => {
   return results;
 };
 
+/*
+function useAsyncMemo<T, R>(processor: () => R, deps: DependencyList): [R | undefined, (d: R | undefined) => void] {
+  const [data, setData] = React.useState<R | undefined>(undefined);
+  const callback = React.useCallback(processor, deps);
+  React.useEffect(() => {
+    const newData = callback();
+    newData != data && setData(newData)
+  }, [callback]);
+
+  return [data, setData];
+}
+
+const usePromise = <T extends {}>(processor: () => Promise<T>, deps: any[]): [T | undefined, (d: T | undefined) => void] => {
+  const [data, setData] = React.useState<T | undefined>(undefined);
+  const callback = React.useCallback(processor, deps);
+  React.useEffect(() => {
+    callback().then(newData => {
+      newData != data && setData(newData);
+    });
+  }, [callback]);
+  return [data, setData];
+};*/
+
+const getUsIndex = (it: TableRow) => it.region === 'United States';
+const getMdIndex = (it: TableRow) => it.region === 'Maryland';
+const getNormalizedSeries = (row: TableRow) => row.changeNormalizedSeries;
+const getSeries = (row: TableRow) => row.changeSeries;
+
 const App = React.memo(() => {
   const [dataset, setDataSet] = React.useState<DataSets>('global');
   const [normalized, setNormalized] = React.useState(true);
-  const global = dataset === 'global';
   const { rows, lastUpdated } = useResults(dataset) ?? {};
-  const populationLimit = global ? 1000000 : 6073116;
-  const indexToSlice = global
-    ? (it: TableRow) => it.region === 'United States'
-    : (it: TableRow) => it.region === 'Maryland';
-  const changeMapper = normalized
-    ? (row: TableRow) => row.changeNormalizedSeries
-    : (row: TableRow) => row.changeSeries;
-  const indexOfMd = rows?.findIndex(indexToSlice) ?? 0;
-  const series: TimeSeries[] | undefined = rows
-    ?.filter((row) => row.population > populationLimit)
-    .map(changeMapper)
-    .filter((s) => s != null)
-    .slice(0, Math.min(indexOfMd + 1, rows?.length - 1)) as TimeSeries[];
+  const series: TimeSeries[] | undefined = React.useMemo(() => {
+    const global = dataset === 'global';
+
+    const populationLimit = global ? 1000000 : 6073116;
+    const indexToSlice = global ? getUsIndex : getMdIndex;
+    const changeMapper = normalized ? getNormalizedSeries : getSeries;
+    const indexOfMd = rows?.findIndex(indexToSlice) ?? 0;
+
+    return rows
+      ?.filter((row) => row.population > populationLimit)
+      .map(changeMapper)
+      .filter((s) => s != null)
+      .slice(0, Math.min(indexOfMd + 1, rows?.length - 1)) as TimeSeries[];
+  }, [rows, dataset, normalized]);
 
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>

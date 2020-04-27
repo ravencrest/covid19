@@ -98,40 +98,45 @@ const buildColumns = (
   return columns;
 };
 
-export const TablePane = ({
-  data,
-  datasetKey,
-  normalized,
-}: {
-  data: TableRow[];
-  datasetKey: DataSets;
-  normalized: boolean;
-}) => {
-  const filteredColumns = React.useMemo(
-    () => buildColumns(normalized, datasetKey),
-    [normalized, datasetKey]
-  );
-  const rowBuilder = (row: Row<TableRow>, i: number) => (
-    <SeriesTableRow
-      {...row.getRowProps()}
-      key={`${i}-${datasetKey}`}
-      row={row}
-      rowNumber={i}
-      series={
-        normalized
-          ? row.original.changeNormalizedSeries
-          : row.original.changeSeries
-      }
-    />
-  );
-  return (
-    <div style={{ maxWidth: 1048, margin: 'auto' }}>
-      <CssBaseline />
-      <SimpleTable
-        rowBuilder={rowBuilder}
-        columns={filteredColumns}
-        data={data}
-      />
-    </div>
-  );
-};
+export const TablePane = React.memo(
+  ({
+    data,
+    datasetKey,
+    normalized,
+  }: {
+    data: TableRow[];
+    datasetKey: DataSets;
+    normalized: boolean;
+  }) => {
+    const filteredColumns = React.useMemo(
+      () => buildColumns(normalized, datasetKey),
+      [normalized, datasetKey]
+    );
+    const rowBuilder = React.useCallback(
+      (row: Row<TableRow>, i: number) => (
+        <SeriesTableRow
+          {...row.getRowProps()}
+          key={`${i}-${datasetKey}`}
+          row={row}
+          rowNumber={i}
+          series={
+            normalized
+              ? row.original.changeNormalizedSeries
+              : row.original.changeSeries
+          }
+        />
+      ),
+      [normalized, datasetKey]
+    );
+    return (
+      <div style={{ maxWidth: 1048, margin: 'auto' }}>
+        <CssBaseline />
+        <SimpleTable
+          rowBuilder={rowBuilder}
+          columns={filteredColumns}
+          data={data}
+        />
+      </div>
+    );
+  }
+);
