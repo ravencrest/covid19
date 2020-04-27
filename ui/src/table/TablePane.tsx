@@ -98,7 +98,7 @@ const buildColumns = (
   return columns;
 };
 
-export const TablePane = React.memo(
+export default React.memo(
   ({
     data,
     datasetKey,

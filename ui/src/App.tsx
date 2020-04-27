@@ -1,8 +1,5 @@
 import React from 'react';
-import { TablePane } from './table/TablePane';
 import { parseJSON } from 'date-fns';
-import { LineChart } from './line-chart/LineChart';
-import { InfoMenuBar } from './info-menubar/InfoMenuBar';
 import {
   Divider,
   RadioGroup,
@@ -14,6 +11,9 @@ import {
 import memoizeOne from 'memoize-one';
 import { TableRow, DataSets, TimeSeries } from './types';
 import { useImmer } from 'use-immer';
+const LineChart = React.lazy(() => import('./line-chart/LineChart'));
+const InfoMenuBar = React.lazy(() => import('./info-menubar/InfoMenuBar'));
+const TablePane = React.lazy(() => import('./table/TablePane'));
 
 type FilteredResults = {
   lastUpdated: Date;
@@ -157,12 +157,14 @@ const App = React.memo(() => {
             />
           </RadioGroup>
         </InfoMenuBar>
-        <LineChart
-          data={series}
-          leftAxisLabel='New Cases'
-          height='22em'
-          marginTop={0}
-        />
+        <React.Suspense fallback={<CircularProgress />}>
+          <LineChart
+            data={series}
+            leftAxisLabel='New Cases'
+            height='22em'
+            marginTop={0}
+          />
+        </React.Suspense>
         <Divider />
         {rows && (
           <TablePane data={rows} datasetKey={dataset} normalized={normalized} />

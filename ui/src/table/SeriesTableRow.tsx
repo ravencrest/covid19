@@ -14,7 +14,7 @@ import { ExpandMore } from '@material-ui/icons';
 import clsx from 'clsx';
 import { Cell, Row } from 'react-table';
 import { TableRow, TimeSeries } from '../types';
-import { LineChart } from '../line-chart/LineChart';
+const LineChart = React.lazy(() => import('../line-chart/LineChart'));
 const CalendarChart = React.lazy(() =>
   import('../calendar-chart/CalendarChart')
 );

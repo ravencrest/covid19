@@ -72,7 +72,7 @@ const now = new Date();
 
 type Props = { lastUpdated: Date | undefined; children: React.ReactNode };
 
-export const InfoMenuBar = ({ lastUpdated, children }: Props) => {
+export default ({ lastUpdated, children }: Props) => {
   const [open, setOpen] = React.useState(false);
   const styles = useStyles();
   const onClose = () => setOpen(false);

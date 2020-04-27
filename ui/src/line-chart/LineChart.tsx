@@ -25,7 +25,7 @@ type Props = {
   marginRight?: number;
 };
 
-export const LineChart = React.memo(
+export default React.memo(
   ({
     data,
     leftAxisLabel,
