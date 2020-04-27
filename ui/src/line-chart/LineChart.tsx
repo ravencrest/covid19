@@ -17,7 +17,7 @@ const seriesToData = (data: TimeSeries): Serie => {
 };
 
 type Props = {
-  data: TimeSeries[] | TimeSeries;
+  data: TimeSeries[] | TimeSeries | undefined;
   leftAxisLabel: string;
   height?: string;
   hideLegend?: boolean;
@@ -35,6 +35,9 @@ export const LineChart = React.memo(
     marginRight = 110,
   }: Props) => {
     const mappedData = React.useMemo(() => {
+      if (!data) {
+        return [];
+      }
       return Array.isArray(data)
         ? data.map(seriesToData)
         : [seriesToData(data)];
