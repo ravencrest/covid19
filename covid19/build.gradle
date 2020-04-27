@@ -55,7 +55,6 @@ task buildUi(type: Exec) {
     workingDir '../ui'
     commandLine 'cmd', '/c', 'git', 'checkout', 'rvn', '&&', 'git', 'rebase', 'master', '&&', 'yarn', 'build', '&&', 'git', 'checkout', 'master'
 }
-buildUi.dependsOn cleanDeployment
 
 task copyUiStatic(type: Copy) {
     from '../ui/build/static'
