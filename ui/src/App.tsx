@@ -7,13 +7,21 @@ import {
   FormControlLabel,
   CircularProgress,
   Switch,
+  Typography,
+  ExpansionPanel,
+  ExpansionPanelSummary,
 } from '@material-ui/core';
+import { ExpandMore } from '@material-ui/icons';
 import memoizeOne from 'memoize-one';
 import { TableRow, DataSets, TimeSeries } from './types';
 import { useImmer } from 'use-immer';
+
 const LineChart = React.lazy(() => import('./line-chart/LineChart'));
 const InfoMenuBar = React.lazy(() => import('./info-menubar/InfoMenuBar'));
 const TablePane = React.lazy(() => import('./table/TablePane'));
+const ChoroplethChart = React.lazy(() =>
+  import('./choropleth-chart/ChoroplethChart')
+);
 
 type FilteredResults = {
   lastUpdated: Date;
@@ -45,34 +53,13 @@ const useResults = (
   }, [global, handler]);
 };
 
-/*
-function useAsyncMemo<T, R>(processor: () => R, deps: DependencyList): [R | undefined, (d: R | undefined) => void] {
-  const [data, setData] = React.useState<R | undefined>(undefined);
-  const callback = React.useCallback(processor, deps);
-  React.useEffect(() => {
-    const newData = callback();
-    newData != data && setData(newData)
-  }, [callback]);
-
-  return [data, setData];
-}
-
-const usePromise = <T extends {}>(processor: () => Promise<T>, deps: any[]): [T | undefined, (d: T | undefined) => void] => {
-  const [data, setData] = React.useState<T | undefined>(undefined);
-  const callback = React.useCallback(processor, deps);
-  React.useEffect(() => {
-    callback().then(newData => {
-      newData != data && setData(newData);
-    });
-  }, [callback]);
-  return [data, setData];
-};*/
-//test
-
 const getUsIndex = (it: TableRow) => it.region === 'United States';
 const getMdIndex = (it: TableRow) => it.region === 'Maryland';
 const getNormalizedSeries = (row: TableRow) => row.changeNormalizedSeries;
 const getSeries = (row: TableRow) => row.changeSeries;
+
+const rowToNormalizedCases = (row: TableRow) => row.casesNormalized;
+const rowToCases = (row: TableRow) => row.cases;
 
 const App = React.memo(() => {
   const [state, updateState] = useImmer<{
@@ -100,6 +87,13 @@ const App = React.memo(() => {
       [updateState]
     )
   );
+  let min = 80;
+  let max = 500;
+
+  if (!normalized) {
+    min = 2000;
+    max = 200000;
+  }
 
   React.useEffect(() => {
     const global = dataset === 'global';
@@ -118,7 +112,7 @@ const App = React.memo(() => {
       draft.series = r;
     });
   }, [rows, normalized, dataset, updateState]);
-
+  const worldAccessor = normalized ? rowToNormalizedCases : rowToCases;
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>
       <React.Suspense fallback={<CircularProgress />}>
@@ -158,12 +152,35 @@ const App = React.memo(() => {
           </RadioGroup>
         </InfoMenuBar>
         <React.Suspense fallback={<CircularProgress />}>
-          <LineChart
-            data={series}
-            leftAxisLabel='New Cases'
-            height='22em'
-            marginTop={0}
-          />
+          {dataset === 'global' && rows && (
+            <ExpansionPanel defaultExpanded>
+              <ExpansionPanelSummary expandIcon={<ExpandMore />}>
+                <Typography variant='h6' display='block' gutterBottom>
+                  Total Cases
+                </Typography>
+              </ExpansionPanelSummary>
+              <ChoroplethChart
+                data={rows}
+                accessor={worldAccessor}
+                min={min}
+                max={max}
+              />
+            </ExpansionPanel>
+          )}
+          <ExpansionPanel defaultExpanded>
+            <ExpansionPanelSummary expandIcon={<ExpandMore />}>
+              <Typography variant='h6' display='block' gutterBottom>
+                New Cases Over Time
+              </Typography>
+            </ExpansionPanelSummary>
+            <LineChart
+              data={series}
+              leftAxisLabel='New Cases'
+              height='22em'
+              marginTop={0}
+              marginRight={200}
+            />
+          </ExpansionPanel>
         </React.Suspense>
         <Divider />
         {rows && (

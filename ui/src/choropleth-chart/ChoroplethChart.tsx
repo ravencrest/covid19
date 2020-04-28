@@ -1,51 +1,60 @@
-import { ResponsiveChoropleth } from '@nivo/geo';
+import React from 'react';
+import { ChoroplethBoundFeature, ResponsiveChoropleth } from '@nivo/geo';
+import { TableRow } from '../types';
+import { CircularProgress } from '@material-ui/core';
 
-//test
-type Props = {};
-/*
-const ChoroplethChart = ({data }) => {
-    return (
+type Props = {
+  data: TableRow[];
+  accessor: (row: TableRow) => number;
+  min: number;
+  max: number;
+};
+
+export default ({ data, accessor, min, max }: Props) => {
+  const results = React.useMemo(() => {
+    return data.map((row) => ({ id: row.code, value: accessor(row) }));
+  }, [data, accessor]);
+
+  const [features, setFeatures] = React.useState<ChoroplethBoundFeature[]>([]);
+
+  React.useEffect(() => {
+    import('../world_countries.json').then((f) => {
+      setFeatures(f.features as any);
+    });
+  }, []);
+
+  return (
+    <div
+      style={{
+        height: '30em',
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      {!features.length && (
+        <>
+          Loading map features...
+          <CircularProgress />
+        </>
+      )}
+      {!!features.length && (
         <ResponsiveChoropleth
-            data={data}
-            features={[]}
-            margin={{top: 0, right: 0, bottom: 0, left: 0}}
-            colors='nivo'
-            domain={[0, 1000000]}
-            unknownColor='#666666'
-            label='properties.name'
-            valueFormat='.2s'
-            projectionType='equalEarth'
-            projectionTranslation={[0.5, 0.5]}
-            projectionRotation={[0, 0, 0]}
-            enableGraticule={true}
-            graticuleLineColor='#dddddd'
-            borderWidth={0.5}
-            borderColor='#152538'
-            legends={[
-                {
-                    anchor: 'bottom-left',
-                    direction: 'column',
-                    justify: true,
-                    translateX: 20,
-                    translateY: -100,
-                    itemsSpacing: 0,
-                    itemWidth: 94,
-                    itemHeight: 18,
-                    itemDirection: 'left-to-right',
-                    itemTextColor: '#444444',
-                    itemOpacity: 0.85,
-                    symbolSize: 18,
-                    effects: [
-                        {
-                            on: 'hover',
-                            style: {
-                                itemTextColor: '#000000',
-                                itemOpacity: 1
-                            }
-                        }
-                    ]
-                }
-            ]}
+          projectionScale={130}
+          data={results}
+          features={features}
+          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+          colors='reds'
+          domain={[min, max]}
+          unknownColor='grey'
+          label='properties.name'
+          projectionType='equalEarth'
+          enableGraticule
+          graticuleLineColor='#dddddd'
+          borderWidth={0.5}
+          borderColor='#152538'
         />
-    );
-};*/
+      )}
+    </div>
+  );
+};

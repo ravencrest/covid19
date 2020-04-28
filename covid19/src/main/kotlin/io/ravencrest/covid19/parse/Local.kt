@@ -12,21 +12,32 @@ val globalPopulationPath: Path = Paths.get(rootPath, "population.csv").toAbsolut
 val usPopulationPath: Path = Paths.get(rootPath, "us_population.csv").toAbsolutePath()
 
 // Manually generated list that maps the country labels in the population data to the COVID-19 time series country labels
-val countriesPath: Path = Paths.get(rootPath, "countries.csv").toAbsolutePath()
+val countriesPath: Path = Paths.get(rootPath, "country_codes_b.csv").toAbsolutePath()
 
 // Manually generated list for data we don't want to io.ravencrest.covid19.io.ravencrest.covid19.parse.parse
 val blacklistPath: Path = Paths.get(rootPath, "blacklist.txt").toAbsolutePath()
 
-fun loadCountries(): Map<String, String> {
+fun loadCountries(): Pair<Map<String, String>, Map<String, String>> {
   val map = mutableMapOf<String, String>()
+  val countryCodes = mutableMapOf<String, String>()
   readCsvToStringArray(countriesPath).forEach {
-    val normalizedValue = it[0]
-    for (i in 1 until it.size) {
+    val prefValue = it[0]
+    val isoValue = it[1]
+    val code = it[2]
+    val normalizedValue = if (prefValue.isNullOrEmpty()) {
+      isoValue
+    } else {
+      map[isoValue] = prefValue
+      prefValue
+    }
+    countryCodes[normalizedValue] = code
+
+    for (i in 3 until it.size) {
       val key = it[i]
       map[key] = normalizedValue
     }
   }
-  return map.toMap()
+  return Pair(map.toMap(), countryCodes.toMap())
 }
 
 private fun loadPopulations(countries: Map<String, String>?, path: Path): Map<String, Long> {

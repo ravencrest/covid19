@@ -29,13 +29,13 @@ import java.time.ZoneOffset
 typealias TimeSeriesParser = (countries: Map<String, String>) -> List<TimeSeries>
 
 fun parseGlobal(
-  countries: () -> Map<String, String>,
+  countriesIndex: Map<String, String>,
+  countryCodeIndex: Map<String, String>,
   populationIndex: Map<String, Long>,
   parseConfirmed: TimeSeriesParser,
   parseDeaths: TimeSeriesParser,
   parseRecovered: TimeSeriesParser?
 ): Results {
-  val countriesIndex = countries()
   val rawCases = parseConfirmed(countriesIndex).associateBy { it.region }
   val deathsIndex = parseDeaths(countriesIndex).associateBy { it.region }
   val recoveredIndex = parseRecovered?.let { it(countriesIndex) }?.associateBy { it.region } ?: emptyMap()
@@ -46,13 +46,14 @@ fun parseGlobal(
 
   val sortedCases = rawCases.values.map { series ->
     val country = series.region
+    val countryCode = countryCodeIndex[country]
 
     val thisWeek = series.points.filter { point -> point.date >= sevenDaysAgo }
     val lastWeek = series.points.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
 
     val twa = thisWeek.map { it.value }.average()
     val lwa = lastWeek.map { it.value }.average()
-    val weeklyChange = ((twa - lwa) / lwa.toDouble()).takeUnless { it.isInfinite() || it.isNaN() }
+    val weeklyChange = ((twa - lwa) / lwa).takeUnless { it.isInfinite() || it.isNaN() }
 
     val newCases = series.points.mapIndexed { index, point ->
       val previous = if (index == 0) 0L else series.points[index - 1].value
@@ -60,8 +61,8 @@ fun parseGlobal(
     }
 
     val totalCases = series.last()?.value ?: 0L
-    val newCases0 = newCases.last().value
-    val newCases1 = newCases[newCases.size - 2].value
+    val newCases0 = if (newCases.size > 2) newCases[newCases.size - 1].value else 0L
+    val newCases1 = if (newCases.size > 2) newCases[newCases.size - 2].value else 0L
     val changePercent =
       if (newCases0 == newCases1 || newCases1 == 0L) 0.0 else ((newCases0 - newCases1) / newCases1.toDouble())
 
@@ -88,11 +89,15 @@ fun parseGlobal(
     }
 
     val normalizedChangeSeries = changeSeries.map { point ->
-      point.copy(value = normalize(point.value, population))
+      try { point.copy(value = normalize(point.value, population)) } catch (e: Exception) {
+        println("failed to normalize $country")
+        throw e
+      }
     }
 
     TableRow(
       region = country,
+      code = countryCode,
       cases = totalCases,
       casesNormalized = normalize(totalCases, population),
       change = changePercent,
@@ -128,15 +133,16 @@ fun writeResults(filename: String, results: Results) {
 }
 
 fun main() {
-  val countries = loadCountries()
+  val (countries, codes) = loadCountries()
   val globalResults = parseGlobal(
-    ::loadCountries,
+    countries,
+    codes,
     loadGlobalPopulations(countries),
     ::parseCsseCasesGlobal,
     ::parseCsseDeathsGlobal,
     ::parseCsseRecoveredGlobal
   )
-  val usResults = parseGlobal({ emptyMap() }, loadUsPopulations(), ::parseCsseCasesUS, ::parseCsseDeathsUS, null)
+  val usResults = parseGlobal(emptyMap(), emptyMap(), loadUsPopulations(), ::parseCsseCasesUS, ::parseCsseDeathsUS, null)
 
   writeResults("results_us", usResults)
   writeResults("results_global", globalResults)
