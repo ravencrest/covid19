@@ -9,10 +9,18 @@ import {
   Link as MuiLink,
   Chip,
   makeStyles,
+  Button,
 } from '@material-ui/core';
-import { Help, Close, GitHub } from '@material-ui/icons';
+import {
+  Help,
+  Close,
+  GitHub,
+  Share,
+  Link as LinkIcon,
+} from '@material-ui/icons';
 import { githubUrl } from '../constants';
 import { formatRelative as format } from 'date-fns';
+import { DataSets } from '../types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,31 +78,61 @@ const DialogTitle = (props: {
 
 const now = new Date();
 
-type Props = { lastUpdated: Date | undefined; children: React.ReactNode };
+type Props = {
+  lastUpdated: Date | undefined;
+  dataset: DataSets;
+  normalized: boolean;
+  children: React.ReactNode;
+};
 
-export default ({ lastUpdated, children }: Props) => {
-  const [open, setOpen] = React.useState(false);
+export default ({ lastUpdated, children, normalized, dataset }: Props) => {
+  const [open, setOpen] = React.useState<'link' | 'info' | undefined>(
+    undefined
+  );
   const styles = useStyles();
-  const onClose = () => setOpen(false);
-  const onOpen = () => setOpen(true);
+  const onClose = () => setOpen(undefined);
+  const onOpenLink = () => setOpen('link');
+  const onOpenInfo = () => setOpen('info');
+
   return (
     <div className={styles.bar}>
       {children}
       <Chip
         label={lastUpdated ? `Last updated ${format(lastUpdated, now)}` : '...'}
         deleteIcon={<Help />}
-        onDelete={onOpen}
-        onClick={onOpen}
+        onDelete={onOpenInfo}
+        onClick={onOpenInfo}
       />
       <Link href={githubUrl}>
         <IconButton>
           <GitHub />
         </IconButton>
       </Link>
+      <a href='#' onClick={onOpenLink}>
+        <Button
+          endIcon={<Share />}
+          color='primary'
+          style={{ textTransform: 'unset' }}
+        >
+          Share
+        </Button>
+      </a>
       <Dialog
         onClose={onClose}
         aria-labelledby='simple-dialog-title'
-        open={open}
+        open={open == 'link'}
+      >
+        <DialogTitle onClose={onClose}>Direct Link</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            {`${window.location.protocol}//${window.location.host}?norm=${normalized}&ds=${dataset}`}
+          </DialogContentText>
+        </DialogContent>
+      </Dialog>
+      <Dialog
+        onClose={onClose}
+        aria-labelledby='simple-dialog-title'
+        open={open == 'info'}
       >
         <DialogTitle onClose={onClose}>About</DialogTitle>
         <DialogContent>

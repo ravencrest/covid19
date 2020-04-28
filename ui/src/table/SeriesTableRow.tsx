@@ -23,6 +23,7 @@ type Props = {
   row: Row<TableRow>;
   rowNumber: number;
   series: TimeSeries | undefined;
+  defaultExpanded?: boolean;
 };
 
 type ExpandState = 'OPEN' | 'CLOSED' | 'CLOSING';
@@ -100,7 +101,7 @@ export const SeriesTableRow = ({ row, rowNumber, series }: Props) => {
   return (
     <>
       <MuiTableRow {...rowProps}>
-        <TableCell className={classes.cell}>
+        <TableCell className={classes.cell} id={`${row.original.region}`}>
           {series && (
             <IconButton
               size='small'

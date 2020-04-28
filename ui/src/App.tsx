@@ -1,5 +1,4 @@
 import React from 'react';
-import { parseJSON } from 'date-fns';
 import {
   Divider,
   RadioGroup,
@@ -12,9 +11,7 @@ import {
   ExpansionPanelSummary,
 } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
-import memoizeOne from 'memoize-one';
 import { TableRow, DataSets, TimeSeries } from './types';
-import { useImmer } from 'use-immer';
 
 const LineChart = React.lazy(() => import('./line-chart/LineChart'));
 const InfoMenuBar = React.lazy(() => import('./info-menubar/InfoMenuBar'));
@@ -22,36 +19,6 @@ const TablePane = React.lazy(() => import('./table/TablePane'));
 const ChoroplethChart = React.lazy(() =>
   import('./choropleth-chart/ChoroplethChart')
 );
-
-type FilteredResults = {
-  lastUpdated: Date;
-  rows: TableRow[];
-};
-
-const getGlobalResults = memoizeOne(async function (): Promise<
-  FilteredResults
-> {
-  const results = await import('./results_global.json');
-  const lastUpdated = parseJSON(results.lastUpdated);
-  return { lastUpdated, rows: results.rows };
-});
-
-const getUsResults = memoizeOne(async function (): Promise<FilteredResults> {
-  const results = await import('./results_us.json');
-  const lastUpdated = parseJSON(results.lastUpdated);
-  return { lastUpdated, rows: results.rows };
-});
-
-const useResults = (
-  dataset: DataSets,
-  handler: (r: FilteredResults | undefined) => void
-) => {
-  const global = dataset === 'global';
-  React.useEffect(() => {
-    const promise = global ? getGlobalResults : getUsResults;
-    promise().then(handler);
-  }, [global, handler]);
-};
 
 const getUsIndex = (it: TableRow) => it.region === 'United States';
 const getMdIndex = (it: TableRow) => it.region === 'Maryland';
@@ -61,32 +28,23 @@ const getSeries = (row: TableRow) => row.changeSeries;
 const rowToNormalizedCases = (row: TableRow) => row.casesNormalized;
 const rowToCases = (row: TableRow) => row.cases;
 
-const App = React.memo(() => {
-  const [state, updateState] = useImmer<{
-    dataset: DataSets;
-    series?: TimeSeries[];
-    rows?: TableRow[];
-    normalized: boolean;
-    lastUpdated?: Date;
-  }>({
-    dataset: 'global',
-    series: undefined,
-    rows: undefined,
-    normalized: true,
-  });
-  const { dataset, series, rows, normalized, lastUpdated } = state;
-  useResults(
-    dataset,
-    React.useCallback(
-      (r) => {
-        updateState((draft) => {
-          draft.lastUpdated = r?.lastUpdated;
-          draft.rows = r?.rows;
-        });
-      },
-      [updateState]
-    )
-  );
+type Props = {
+  dataset: DataSets;
+  rows: TableRow[];
+  normalized: boolean;
+  lastUpdated: Date | undefined;
+  onDatasetChange: (ds: DataSets) => void;
+  onNormalizedChange: (normalized: boolean) => void;
+};
+
+export default function App({
+  dataset,
+  rows,
+  normalized,
+  lastUpdated,
+  onDatasetChange,
+  onNormalizedChange,
+}: Props) {
   let min = 80;
   let max = 500;
 
@@ -94,6 +52,9 @@ const App = React.memo(() => {
     min = 2000;
     max = 200000;
   }
+  const [series, setSeries] = React.useState<TimeSeries[] | undefined>(
+    undefined
+  );
 
   React.useEffect(() => {
     const global = dataset === 'global';
@@ -103,29 +64,30 @@ const App = React.memo(() => {
     const changeMapper = normalized ? getNormalizedSeries : getSeries;
     const indexOfMd = rows?.findIndex(indexToSlice) ?? 0;
 
-    const r = rows
+    const newSeries = rows
       ?.filter((row) => row.population > populationLimit)
       .map(changeMapper)
       .filter((s) => s != null)
       .slice(0, Math.min(indexOfMd + 1, rows?.length - 1)) as TimeSeries[];
-    updateState((draft) => {
-      draft.series = r;
-    });
-  }, [rows, normalized, dataset, updateState]);
+    setSeries(newSeries);
+  }, [rows, normalized, dataset, setSeries]);
+
   const worldAccessor = normalized ? rowToNormalizedCases : rowToCases;
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>
       <React.Suspense fallback={<CircularProgress />}>
-        <InfoMenuBar lastUpdated={lastUpdated}>
+        <InfoMenuBar
+          lastUpdated={lastUpdated}
+          normalized={normalized}
+          dataset={dataset}
+        >
           <FormControlLabel
             control={
               <Switch
                 checked={normalized}
                 onChange={(event, value) => {
                   event.stopPropagation();
-                  updateState((draft) => {
-                    draft.normalized = value;
-                  });
+                  onNormalizedChange(value);
                 }}
                 name='normalized'
               />
@@ -137,10 +99,7 @@ const App = React.memo(() => {
             value={dataset}
             onChange={(event, value) => {
               event.stopPropagation();
-              updateState((draft) => {
-                draft.dataset = value as DataSets;
-                draft.series = undefined;
-              });
+              onDatasetChange(value as DataSets);
             }}
           >
             <FormControlLabel value='us' control={<Radio />} label='US' />
@@ -190,6 +149,4 @@ const App = React.memo(() => {
       </React.Suspense>
     </div>
   );
-});
-
-export default App;
+}

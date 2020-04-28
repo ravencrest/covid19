@@ -77,10 +77,12 @@ export const SimpleTable = React.memo(
 
     return (
       <TableContainer>
-        <TableToolbar
-          setGlobalFilter={setGlobalFilter}
-          globalFilter={globalFilter}
-        />
+        {rows.length > 1 && (
+          <TableToolbar
+            setGlobalFilter={setGlobalFilter}
+            globalFilter={globalFilter}
+          />
+        )}
         <Table {...getTableProps()} size='small'>
           <TableHead>{headers}</TableHead>
           <TableBody>{rowCells}</TableBody>
