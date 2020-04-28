@@ -5,6 +5,7 @@ import {
   UseSortByInstanceProps,
   UseSortByOptions,
   UseSortByColumnProps,
+  UseSortByState,
 } from 'react-table';
 
 declare module 'react-table' {
@@ -16,7 +17,8 @@ declare module 'react-table' {
     extends UseGlobalFiltersInstanceProps<D>,
       UseSortByInstanceProps<D> {}
   interface TableState<D extends object = {}>
-    extends UseGlobalFiltersState<D> {}
+    extends UseGlobalFiltersState<D>,
+      UseSortByState<D> {}
 
   interface ColumnInstance<D extends object = {}>
     extends UseSortByColumnProps<D> {}
