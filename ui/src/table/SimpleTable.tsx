@@ -63,6 +63,7 @@ export const SimpleTable = React.memo(
             </div>
           </TableCell>
         ))}
+        <TableCell className={styles.cell} />
       </MuiTableRow>
     ));
 

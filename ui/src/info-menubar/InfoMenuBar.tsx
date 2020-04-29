@@ -90,6 +90,25 @@ export const getDirectLink = (
   }?norm=${normalized}`;
 };
 
+export const ShareDialog = ({
+  onClose,
+  open,
+  href,
+}: {
+  onClose: () => void;
+  open: boolean;
+  href: string;
+}) => {
+  return (
+    <Dialog onClose={onClose} aria-labelledby='simple-dialog-title' open={open}>
+      <DialogTitle onClose={onClose}>Direct Link</DialogTitle>
+      <DialogContent>
+        <DialogContentText>{href}</DialogContentText>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 export default ({
   lastUpdated,
   children,
@@ -127,18 +146,11 @@ export default ({
       >
         Share
       </Button>
-      <Dialog
+      <ShareDialog
         onClose={onClose}
-        aria-labelledby='simple-dialog-title'
         open={open === 'link'}
-      >
-        <DialogTitle onClose={onClose}>Direct Link</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            {getDirectLink(dataset, normalized, region)}
-          </DialogContentText>
-        </DialogContent>
-      </Dialog>
+        href={getDirectLink(dataset, normalized, region)}
+      />
       <Dialog
         onClose={onClose}
         aria-labelledby='simple-dialog-title'

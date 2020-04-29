@@ -5,7 +5,6 @@ import { TableRow, DataSets } from '../types';
 import { SeriesTableRow } from './SeriesTableRow';
 import SingleRegionTable from './SingleRegionTable';
 import { buildColumns } from './TablePane';
-
 export default React.memo(function RegionPane({
   data,
   normalized,
@@ -22,7 +21,7 @@ export default React.memo(function RegionPane({
   const rowBuilder = React.useCallback(
     (row: Row<TableRow>, i: number) => (
       <SeriesTableRow
-        hideIndex
+        embedded
         {...row.getRowProps()}
         key={`${i}`}
         row={row}
@@ -32,9 +31,11 @@ export default React.memo(function RegionPane({
             ? row.original.changeNormalizedSeries
             : row.original.changeSeries
         }
+        normalized={normalized}
+        dataset={dataset}
       />
     ),
-    [normalized]
+    [normalized, dataset]
   );
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>

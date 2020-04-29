@@ -10,10 +10,11 @@ import {
   TableRow as MuiTableRow,
   Paper,
 } from '@material-ui/core';
-import { ExpandMore } from '@material-ui/icons';
+import { ExpandMore, Share } from '@material-ui/icons';
 import clsx from 'clsx';
 import { Cell, Row } from 'react-table';
-import { TableRow, TimeSeries } from '../types';
+import { DataSets, TableRow, TimeSeries } from '../types';
+import { getDirectLink, ShareDialog } from '../info-menubar/InfoMenuBar';
 const LineChart = React.lazy(() => import('../line-chart/LineChart'));
 const CalendarChart = React.lazy(() =>
   import('../calendar-chart/CalendarChart')
@@ -23,8 +24,9 @@ type Props = {
   row: Row<TableRow>;
   rowNumber: number;
   series: TimeSeries | undefined;
-  collapsible?: boolean;
-  hideIndex?: boolean;
+  embedded?: boolean;
+  dataset: DataSets;
+  normalized: boolean;
 };
 
 type ExpandState = 'OPEN' | 'CLOSED' | 'CLOSING';
@@ -109,22 +111,32 @@ export const SeriesTableRow = ({
   row,
   rowNumber,
   series,
-  collapsible,
-  hideIndex,
+  embedded,
+  dataset,
+  normalized,
 }: Props) => {
   const [expandedState, setExpandedState] = React.useState<ExpandState>(
-    collapsible ? 'CLOSED' : 'OPEN'
+    embedded ? 'OPEN' : 'CLOSED'
   );
+  const [showLinkDialog, setShowLinkDialog] = React.useState<boolean>(false);
   const expanded = expandedState === 'OPEN';
   const handleExpandClick = () =>
     setExpandedState(expanded ? 'CLOSING' : 'OPEN');
   const classes = useCellStyles();
   const rowProps = row.getRowProps();
   const cells = row.cells;
+  const handleLinkClick = () => {
+    setShowLinkDialog(true);
+  };
+
+  const closeLinkDialog = () => {
+    setShowLinkDialog(false);
+  };
+
   return (
     <>
       <MuiTableRow {...rowProps}>
-        {collapsible && (
+        {!embedded && (
           <TableCell className={classes.cell} id={`${row.original.region}`}>
             {series && (
               <IconButton
@@ -141,7 +153,7 @@ export const SeriesTableRow = ({
             )}
           </TableCell>
         )}
-        {!hideIndex && (
+        {!embedded && (
           <TableCell className={classes.cell}>{rowNumber + 1}</TableCell>
         )}
         {cells.map((cell) => {
@@ -157,12 +169,30 @@ export const SeriesTableRow = ({
             </TableCell>
           );
         })}
+        {!embedded && (
+          <TableCell className={classes.cell} id={`${row.original.region}`}>
+            {series && (
+              <>
+                <IconButton
+                  size='small'
+                  onClick={handleLinkClick}
+                  aria-label='share'
+                >
+                  <Share />
+                </IconButton>
+                <ShareDialog
+                  onClose={closeLinkDialog}
+                  open={showLinkDialog}
+                  href={getDirectLink(dataset, normalized, row.original.region)}
+                />
+              </>
+            )}
+          </TableCell>
+        )}
       </MuiTableRow>
       {series && expandedState !== 'CLOSED' && (
         <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
-          <TableCell
-            colSpan={cells.length + (hideIndex ? 0 : 1) + (collapsible ? 1 : 0)}
-          >
+          <TableCell colSpan={cells.length + (embedded ? 0 : 3)}>
             <Collapse
               in={expanded}
               timeout='auto'

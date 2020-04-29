@@ -123,7 +123,8 @@ export default React.memo(function TablePane({
             ? row.original.changeNormalizedSeries
             : row.original.changeSeries
         }
-        collapsible
+        normalized={normalized}
+        dataset={datasetKey}
       />
     ),
     [normalized, datasetKey]
