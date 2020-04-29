@@ -1,14 +1,14 @@
 {
-  "lastUpdated": "2020-04-28T22:53:54.709711Z",
+  "lastUpdated": "2020-04-29T15:15:52.9839617Z",
   "rows": [
     {
       "region": "New York",
-      "cases": 291996,
-      "casesNormalized": 15020,
-      "change": -0.33056590986106404,
-      "weeklyChange": 0.19233882603367555,
-      "deaths": 22668,
-      "deathsNormalized": 1166,
+      "cases": 295106,
+      "casesNormalized": 15180,
+      "change": -0.2128575044292584,
+      "weeklyChange": 0.18106147439984538,
+      "deaths": 22912,
+      "deathsNormalized": 1179,
       "population": 19440469,
       "changeNormalizedSeries": {
         "region": "New York",
@@ -176,6 +176,10 @@
           {
             "value": 203,
             "date": "2020-04-27"
+          },
+          {
+            "value": 160,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -345,18 +349,22 @@
           {
             "value": 3951,
             "date": "2020-04-27"
+          },
+          {
+            "value": 3110,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "New Jersey",
-      "cases": 111188,
-      "casesNormalized": 12442,
-      "change": -0.3926553672316384,
-      "weeklyChange": 0.3044450636609171,
-      "deaths": 6044,
-      "deathsNormalized": 676,
+      "cases": 113856,
+      "casesNormalized": 12740,
+      "change": 0.24093023255813953,
+      "weeklyChange": 0.28826111860073633,
+      "deaths": 6442,
+      "deathsNormalized": 721,
       "population": 8936574,
       "changeNormalizedSeries": {
         "region": "New Jersey",
@@ -524,6 +532,10 @@
           {
             "value": 241,
             "date": "2020-04-27"
+          },
+          {
+            "value": 299,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -693,18 +705,22 @@
           {
             "value": 2150,
             "date": "2020-04-27"
+          },
+          {
+            "value": 2668,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Massachusetts",
-      "cases": 56462,
-      "casesNormalized": 8093,
-      "change": -0.04150943396226415,
-      "weeklyChange": 0.45824672942902556,
-      "deaths": 3003,
-      "deathsNormalized": 430,
+      "cases": 58302,
+      "casesNormalized": 8357,
+      "change": 0.2073490813648294,
+      "weeklyChange": 0.4506326281041938,
+      "deaths": 3153,
+      "deathsNormalized": 452,
       "population": 6976597,
       "changeNormalizedSeries": {
         "region": "Massachusetts",
@@ -872,6 +888,10 @@
           {
             "value": 218,
             "date": "2020-04-27"
+          },
+          {
+            "value": 264,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -1041,18 +1061,22 @@
           {
             "value": 1524,
             "date": "2020-04-27"
+          },
+          {
+            "value": 1840,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Rhode Island",
-      "cases": 7708,
-      "casesNormalized": 7298,
-      "change": -0.13225806451612904,
-      "weeklyChange": 0.6343919985962448,
-      "deaths": 233,
-      "deathsNormalized": 221,
+      "cases": 7927,
+      "casesNormalized": 7505,
+      "change": -0.18587360594795538,
+      "weeklyChange": 0.5937743950039033,
+      "deaths": 239,
+      "deathsNormalized": 226,
       "population": 1056161,
       "changeNormalizedSeries": {
         "region": "Rhode Island",
@@ -1220,6 +1244,10 @@
           {
             "value": 255,
             "date": "2020-04-27"
+          },
+          {
+            "value": 207,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -1389,18 +1417,22 @@
           {
             "value": 269,
             "date": "2020-04-27"
+          },
+          {
+            "value": 219,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Connecticut",
-      "cases": 25997,
-      "casesNormalized": 7296,
-      "change": 0.061224489795918366,
-      "weeklyChange": 0.4192216779144258,
-      "deaths": 2012,
-      "deathsNormalized": 565,
+      "cases": 26312,
+      "casesNormalized": 7385,
+      "change": -0.5673076923076923,
+      "weeklyChange": 0.3941283956632964,
+      "deaths": 2087,
+      "deathsNormalized": 586,
       "population": 3563077,
       "changeNormalizedSeries": {
         "region": "Connecticut",
@@ -1568,6 +1600,10 @@
           {
             "value": 204,
             "date": "2020-04-27"
+          },
+          {
+            "value": 88,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -1737,18 +1773,22 @@
           {
             "value": 728,
             "date": "2020-04-27"
+          },
+          {
+            "value": 315,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Louisiana",
-      "cases": 27068,
-      "casesNormalized": 5827,
-      "change": 0.13026819923371646,
-      "weeklyChange": 0.13151721998138383,
-      "deaths": 1740,
-      "deathsNormalized": 375,
+      "cases": 27286,
+      "casesNormalized": 5874,
+      "change": -0.26101694915254237,
+      "weeklyChange": 0.1233539632552314,
+      "deaths": 1801,
+      "deathsNormalized": 388,
       "population": 4645184,
       "changeNormalizedSeries": {
         "region": "Louisiana",
@@ -1916,6 +1956,10 @@
           {
             "value": 64,
             "date": "2020-04-27"
+          },
+          {
+            "value": 47,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -2085,18 +2129,22 @@
           {
             "value": 295,
             "date": "2020-04-27"
+          },
+          {
+            "value": 218,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "District of Columbia",
-      "cases": 3892,
-      "casesNormalized": 5400,
-      "change": -0.6408450704225352,
-      "weeklyChange": 0.40980133966909027,
-      "deaths": 185,
-      "deathsNormalized": 257,
+      "cases": 3994,
+      "casesNormalized": 5542,
+      "change": 1.0,
+      "weeklyChange": 0.3789917328578376,
+      "deaths": 190,
+      "deathsNormalized": 264,
       "population": 720687,
       "changeNormalizedSeries": {
         "region": "District of Columbia",
@@ -2264,6 +2312,10 @@
           {
             "value": 71,
             "date": "2020-04-27"
+          },
+          {
+            "value": 142,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -2433,18 +2485,22 @@
           {
             "value": 51,
             "date": "2020-04-27"
+          },
+          {
+            "value": 102,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Delaware",
-      "cases": 4162,
-      "casesNormalized": 4234,
-      "change": -0.7205240174672489,
-      "weeklyChange": 0.5266906118404756,
-      "deaths": 125,
-      "deathsNormalized": 127,
+      "cases": 4575,
+      "casesNormalized": 4655,
+      "change": 2.2265625,
+      "weeklyChange": 0.5330845916166268,
+      "deaths": 137,
+      "deathsNormalized": 139,
       "population": 982895,
       "changeNormalizedSeries": {
         "region": "Delaware",
@@ -2612,6 +2668,10 @@
           {
             "value": 130,
             "date": "2020-04-27"
+          },
+          {
+            "value": 420,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -2781,18 +2841,22 @@
           {
             "value": 128,
             "date": "2020-04-27"
+          },
+          {
+            "value": 413,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Michigan",
-      "cases": 38210,
-      "casesNormalized": 3804,
-      "change": -0.38636363636363635,
-      "weeklyChange": 0.2092673480469182,
-      "deaths": 3407,
-      "deathsNormalized": 339,
+      "cases": 39262,
+      "casesNormalized": 3909,
+      "change": 1.4351851851851851,
+      "weeklyChange": 0.2080665004467355,
+      "deaths": 3568,
+      "deathsNormalized": 355,
       "population": 10045029,
       "changeNormalizedSeries": {
         "region": "Michigan",
@@ -2960,6 +3024,10 @@
           {
             "value": 43,
             "date": "2020-04-27"
+          },
+          {
+            "value": 105,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -3129,18 +3197,22 @@
           {
             "value": 432,
             "date": "2020-04-27"
+          },
+          {
+            "value": 1052,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Illinois",
-      "cases": 45883,
-      "casesNormalized": 3624,
-      "change": -0.06867356538099718,
-      "weeklyChange": 0.43781708059505786,
-      "deaths": 1983,
-      "deathsNormalized": 157,
+      "cases": 48102,
+      "casesNormalized": 3800,
+      "change": 0.12070707070707071,
+      "weeklyChange": 0.44245373624959167,
+      "deaths": 2125,
+      "deathsNormalized": 168,
       "population": 12659682,
       "changeNormalizedSeries": {
         "region": "Illinois",
@@ -3308,6 +3380,10 @@
           {
             "value": 156,
             "date": "2020-04-27"
+          },
+          {
+            "value": 175,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -3477,18 +3553,22 @@
           {
             "value": 1980,
             "date": "2020-04-27"
+          },
+          {
+            "value": 2219,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Pennsylvania",
-      "cases": 43558,
-      "casesNormalized": 3397,
-      "change": -0.35611756664388244,
-      "weeklyChange": 0.327598260802942,
-      "deaths": 1886,
-      "deathsNormalized": 147,
+      "cases": 45137,
+      "casesNormalized": 3521,
+      "change": 0.6762208067940552,
+      "weeklyChange": 0.313412559007575,
+      "deaths": 2046,
+      "deathsNormalized": 160,
       "population": 12820878,
       "changeNormalizedSeries": {
         "region": "Pennsylvania",
@@ -3656,6 +3736,10 @@
           {
             "value": 73,
             "date": "2020-04-27"
+          },
+          {
+            "value": 123,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -3825,18 +3909,22 @@
           {
             "value": 942,
             "date": "2020-04-27"
+          },
+          {
+            "value": 1579,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Maryland",
-      "cases": 19487,
-      "casesNormalized": 3203,
-      "change": 0.1116564417177914,
-      "weeklyChange": 0.451429066987128,
-      "deaths": 945,
-      "deathsNormalized": 155,
+      "cases": 20113,
+      "casesNormalized": 3306,
+      "change": -0.3090507726269316,
+      "weeklyChange": 0.44051827055876797,
+      "deaths": 1016,
+      "deathsNormalized": 167,
       "population": 6083116,
       "changeNormalizedSeries": {
         "region": "Maryland",
@@ -4004,6 +4092,10 @@
           {
             "value": 149,
             "date": "2020-04-27"
+          },
+          {
+            "value": 103,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -4173,16 +4265,20 @@
           {
             "value": 906,
             "date": "2020-04-27"
+          },
+          {
+            "value": 626,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "South Dakota",
-      "cases": 2244,
-      "casesNormalized": 2485,
-      "change": -0.5076923076923077,
-      "weeklyChange": 0.45913757700205343,
+      "cases": 2313,
+      "casesNormalized": 2561,
+      "change": 1.15625,
+      "weeklyChange": 0.4057295136575616,
       "deaths": 11,
       "deathsNormalized": 12,
       "population": 903027,
@@ -4352,6 +4448,10 @@
           {
             "value": 35,
             "date": "2020-04-27"
+          },
+          {
+            "value": 76,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -4521,366 +4621,22 @@
           {
             "value": 32,
             "date": "2020-04-27"
-          }
-        ]
-      }
-    },
-    {
-      "region": "Colorado",
-      "cases": 13879,
-      "casesNormalized": 2374,
-      "change": -0.07399577167019028,
-      "weeklyChange": 0.38762013357224295,
-      "deaths": 706,
-      "deathsNormalized": 121,
-      "population": 5845526,
-      "changeNormalizedSeries": {
-        "region": "Colorado",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 10,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 15,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 19,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 20,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 19,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 3,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 51,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 70,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 1,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 53,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 97,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 1,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 112,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 3,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 62,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 68,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 76,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 130,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 40,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 42,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 39,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-09"
-          },
-          {
-            "value": 94,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 53,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 136,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 66,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 44,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 1,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 56,
-            "date": "2020-04-16"
           },
           {
             "value": 69,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 61,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 117,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 127,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 72,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 66,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 167,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 122,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 81,
-            "date": "2020-04-26"
-          },
-          {
-            "value": 75,
-            "date": "2020-04-27"
-          }
-        ]
-      },
-      "changeSeries": {
-        "region": "Colorado",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 59,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 86,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 112,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 116,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 113,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 19,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 298,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 409,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 3,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 307,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 567,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 4,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 655,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 16,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 360,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 400,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 446,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 762,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 233,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 246,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 226,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-09"
-          },
-          {
-            "value": 547,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 311,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 794,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 384,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 259,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 6,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 330,
-            "date": "2020-04-16"
-          },
-          {
-            "value": 405,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 356,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 683,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 743,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 418,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 387,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 978,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 712,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 473,
-            "date": "2020-04-26"
-          },
-          {
-            "value": 438,
-            "date": "2020-04-27"
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Indiana",
-      "cases": 15961,
-      "casesNormalized": 2366,
-      "change": 0.5481239804241436,
-      "weeklyChange": 0.3662740551164403,
-      "deaths": 844,
-      "deathsNormalized": 125,
+      "cases": 16588,
+      "casesNormalized": 2459,
+      "change": -0.339304531085353,
+      "weeklyChange": 0.3610703565611834,
+      "deaths": 901,
+      "deathsNormalized": 134,
       "population": 6745354,
       "changeNormalizedSeries": {
         "region": "Indiana",
@@ -5048,6 +4804,10 @@
           {
             "value": 141,
             "date": "2020-04-27"
+          },
+          {
+            "value": 93,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -5217,18 +4977,378 @@
           {
             "value": 949,
             "date": "2020-04-27"
+          },
+          {
+            "value": 627,
+            "date": "2020-04-28"
+          }
+        ]
+      }
+    },
+    {
+      "region": "Colorado",
+      "cases": 14316,
+      "casesNormalized": 2449,
+      "change": -0.00228310502283105,
+      "weeklyChange": 0.3929716958991129,
+      "deaths": 736,
+      "deathsNormalized": 126,
+      "population": 5845526,
+      "changeNormalizedSeries": {
+        "region": "Colorado",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 10,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 15,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 19,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 20,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 19,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 3,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 51,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 70,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 1,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 53,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 97,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 1,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 112,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 3,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 62,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 68,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 76,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 130,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 40,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 42,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 39,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 94,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 53,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 136,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 66,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 44,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 1,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 56,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 69,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 61,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 117,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 127,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 72,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 66,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 167,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 122,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 81,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 75,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 75,
+            "date": "2020-04-28"
+          }
+        ]
+      },
+      "changeSeries": {
+        "region": "Colorado",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 59,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 86,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 112,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 116,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 113,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 19,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 298,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 409,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 3,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 307,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 567,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 4,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 655,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 16,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 360,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 400,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 446,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 762,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 233,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 246,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 226,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 547,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 311,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 794,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 384,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 259,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 6,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 330,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 405,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 356,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 683,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 743,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 418,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 387,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 978,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 712,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 473,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 438,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 437,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Georgia",
-      "cases": 24302,
-      "casesNormalized": 2264,
-      "change": 2.090909090909091,
-      "weeklyChange": 0.3282882729935063,
-      "deaths": 995,
-      "deathsNormalized": 93,
+      "cases": 24922,
+      "casesNormalized": 2321,
+      "change": -0.24019607843137256,
+      "weeklyChange": 0.3120187152743933,
+      "deaths": 1036,
+      "deathsNormalized": 96,
       "population": 10736059,
       "changeNormalizedSeries": {
         "region": "Georgia",
@@ -5396,6 +5516,10 @@
           {
             "value": 76,
             "date": "2020-04-27"
+          },
+          {
+            "value": 58,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -5565,18 +5689,22 @@
           {
             "value": 816,
             "date": "2020-04-27"
+          },
+          {
+            "value": 620,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Mississippi",
-      "cases": 6094,
-      "casesNormalized": 2039,
-      "change": -0.05181347150259067,
-      "weeklyChange": 0.42427884615384603,
-      "deaths": 229,
-      "deathsNormalized": 77,
+      "cases": 6342,
+      "casesNormalized": 2122,
+      "change": 0.3551912568306011,
+      "weeklyChange": 0.3997097653346547,
+      "deaths": 239,
+      "deathsNormalized": 80,
       "population": 2989260,
       "changeNormalizedSeries": {
         "region": "Mississippi",
@@ -5744,6 +5872,10 @@
           {
             "value": 61,
             "date": "2020-04-27"
+          },
+          {
+            "value": 83,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -5913,18 +6045,22 @@
           {
             "value": 183,
             "date": "2020-04-27"
+          },
+          {
+            "value": 248,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Iowa",
-      "cases": 5868,
-      "casesNormalized": 1845,
-      "change": 0.020833333333333332,
-      "weeklyChange": 0.9003600731952066,
-      "deaths": 127,
-      "deathsNormalized": 40,
+      "cases": 6376,
+      "casesNormalized": 2005,
+      "change": 0.29591836734693877,
+      "weeklyChange": 0.8695605630787347,
+      "deaths": 136,
+      "deathsNormalized": 43,
       "population": 3179849,
       "changeNormalizedSeries": {
         "region": "Iowa",
@@ -6092,6 +6228,10 @@
           {
             "value": 123,
             "date": "2020-04-27"
+          },
+          {
+            "value": 160,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -6261,364 +6401,20 @@
           {
             "value": 392,
             "date": "2020-04-27"
-          }
-        ]
-      }
-    },
-    {
-      "region": "Washington",
-      "cases": 13686,
-      "casesNormalized": 1755,
-      "change": -0.18316831683168316,
-      "weeklyChange": 0.13794694636020102,
-      "deaths": 764,
-      "deathsNormalized": 98,
-      "population": 7797095,
-      "changeNormalizedSeries": {
-        "region": "Washington",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 45,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 19,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 35,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 26,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 29,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 14,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 34,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 79,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 35,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 71,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 56,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 59,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 65,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 23,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 100,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 59,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 51,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 74,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 62,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 49,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 75,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 47,
-            "date": "2020-04-09"
-          },
-          {
-            "value": 62,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 40,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 22,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 3,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 21,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 18,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 15,
-            "date": "2020-04-16"
-          },
-          {
-            "value": 59,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 33,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 26,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 17,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 36,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 26,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 20,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 29,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 44,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 26,
-            "date": "2020-04-26"
-          },
-          {
-            "value": 21,
-            "date": "2020-04-27"
-          }
-        ]
-      },
-      "changeSeries": {
-        "region": "Washington",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 352,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 150,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 269,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 204,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 224,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 107,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 263,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 616,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 270,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 553,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 435,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 458,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 509,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 176,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 781,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 457,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 401,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 578,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 486,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 381,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 584,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 363,
-            "date": "2020-04-09"
-          },
-          {
-            "value": 480,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 315,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 175,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 26,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 164,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 143,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 115,
-            "date": "2020-04-16"
-          },
-          {
-            "value": 460,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 259,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 202,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 136,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 278,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 204,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 157,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 224,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 342,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 202,
-            "date": "2020-04-26"
           },
           {
-            "value": 165,
-            "date": "2020-04-27"
+            "value": 508,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Nebraska",
-      "cases": 3358,
-      "casesNormalized": 1720,
-      "change": 0.05466237942122187,
-      "weeklyChange": 1.1046781482838643,
+      "cases": 3517,
+      "casesNormalized": 1801,
+      "change": -0.5152439024390244,
+      "weeklyChange": 1.1240111420612813,
       "deaths": 56,
       "deathsNormalized": 29,
       "population": 1952570,
@@ -6788,6 +6584,10 @@
           {
             "value": 168,
             "date": "2020-04-27"
+          },
+          {
+            "value": 81,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -6957,18 +6757,378 @@
           {
             "value": 328,
             "date": "2020-04-27"
+          },
+          {
+            "value": 159,
+            "date": "2020-04-28"
+          }
+        ]
+      }
+    },
+    {
+      "region": "Washington",
+      "cases": 13842,
+      "casesNormalized": 1775,
+      "change": -0.05454545454545454,
+      "weeklyChange": 0.13351105458814327,
+      "deaths": 786,
+      "deathsNormalized": 101,
+      "population": 7797095,
+      "changeNormalizedSeries": {
+        "region": "Washington",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 45,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 19,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 35,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 26,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 29,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 14,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 34,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 79,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 35,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 71,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 56,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 59,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 65,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 23,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 100,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 59,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 51,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 74,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 62,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 49,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 75,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 47,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 62,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 40,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 22,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 3,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 21,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 18,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 15,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 59,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 33,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 26,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 17,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 36,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 26,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 20,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 29,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 44,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 26,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 21,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 20,
+            "date": "2020-04-28"
+          }
+        ]
+      },
+      "changeSeries": {
+        "region": "Washington",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 352,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 150,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 269,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 204,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 224,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 107,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 263,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 616,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 270,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 553,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 435,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 458,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 509,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 176,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 781,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 457,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 401,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 578,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 486,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 381,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 584,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 363,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 480,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 315,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 175,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 26,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 164,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 143,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 115,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 460,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 259,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 202,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 136,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 278,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 204,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 157,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 224,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 342,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 202,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 165,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 156,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Virginia",
-      "cases": 13538,
-      "casesNormalized": 1569,
-      "change": -0.059602649006622516,
-      "weeklyChange": 0.5454251904192071,
-      "deaths": 460,
-      "deathsNormalized": 53,
+      "cases": 14339,
+      "casesNormalized": 1662,
+      "change": 0.4102112676056338,
+      "weeklyChange": 0.5343791781798735,
+      "deaths": 492,
+      "deathsNormalized": 57,
       "population": 8626207,
       "changeNormalizedSeries": {
         "region": "Virginia",
@@ -7136,6 +7296,10 @@
           {
             "value": 66,
             "date": "2020-04-27"
+          },
+          {
+            "value": 93,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -7305,18 +7469,22 @@
           {
             "value": 568,
             "date": "2020-04-27"
+          },
+          {
+            "value": 801,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Nevada",
-      "cases": 4700,
-      "casesNormalized": 1497,
-      "change": -1.1743589743589744,
-      "weeklyChange": 0.26084806527382864,
-      "deaths": 206,
-      "deathsNormalized": 66,
+      "cases": 4821,
+      "casesNormalized": 1536,
+      "change": -4.5588235294117645,
+      "weeklyChange": 0.2557239728759474,
+      "deaths": 219,
+      "deathsNormalized": 70,
       "population": 3139658,
       "changeNormalizedSeries": {
         "region": "Nevada",
@@ -7484,6 +7652,10 @@
           {
             "value": -11,
             "date": "2020-04-27"
+          },
+          {
+            "value": 39,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -7653,18 +7825,22 @@
           {
             "value": -34,
             "date": "2020-04-27"
+          },
+          {
+            "value": 121,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Florida",
-      "cases": 32138,
-      "casesNormalized": 1461,
-      "change": -0.12554112554112554,
-      "weeklyChange": 0.2323822659637885,
-      "deaths": 1088,
-      "deathsNormalized": 49,
+      "cases": 32848,
+      "casesNormalized": 1494,
+      "change": 0.1716171617161716,
+      "weeklyChange": 0.21708853265067918,
+      "deaths": 1171,
+      "deathsNormalized": 53,
       "population": 21992985,
       "changeNormalizedSeries": {
         "region": "Florida",
@@ -7832,6 +8008,10 @@
           {
             "value": 28,
             "date": "2020-04-27"
+          },
+          {
+            "value": 32,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -8001,364 +8181,20 @@
           {
             "value": 606,
             "date": "2020-04-27"
-          }
-        ]
-      }
-    },
-    {
-      "region": "Tennessee",
-      "cases": 9918,
-      "casesNormalized": 1438,
-      "change": -0.47489539748953974,
-      "weeklyChange": 0.34628723877278805,
-      "deaths": 184,
-      "deathsNormalized": 27,
-      "population": 6897576,
-      "changeNormalizedSeries": {
-        "region": "Tennessee",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 8,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 10,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 12,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 13,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 32,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 23,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 21,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 26,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 32,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 28,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 30,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 29,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 69,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 79,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 12,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 8,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 37,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 45,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 25,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 49,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 32,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 39,
-            "date": "2020-04-09"
-          },
-          {
-            "value": 37,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 35,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 55,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 15,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 31,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 49,
-            "date": "2020-04-16"
-          },
-          {
-            "value": 14,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 47,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 70,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 24,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 23,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 126,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 67,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 67,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 69,
-            "date": "2020-04-26"
-          },
-          {
-            "value": 36,
-            "date": "2020-04-27"
-          }
-        ]
-      },
-      "changeSeries": {
-        "region": "Tennessee",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 54,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 69,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 81,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 89,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 221,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 158,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 144,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 181,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 221,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 193,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 209,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 197,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 474,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 542,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 80,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 54,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 255,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 311,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 169,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 337,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 224,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 271,
-            "date": "2020-04-09"
-          },
-          {
-            "value": 257,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 241,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 376,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 102,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 217,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 339,
-            "date": "2020-04-16"
-          },
-          {
-            "value": 97,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 326,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 481,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 168,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 156,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 872,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 462,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 461,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 478,
-            "date": "2020-04-26"
           },
           {
-            "value": 251,
-            "date": "2020-04-27"
+            "value": 710,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "New Hampshire",
-      "cases": 1938,
-      "casesNormalized": 1413,
-      "change": 0.1044776119402985,
-      "weeklyChange": 0.39245326563581817,
+      "cases": 2010,
+      "casesNormalized": 1466,
+      "change": -0.02702702702702703,
+      "weeklyChange": 0.36311457656486895,
       "deaths": 60,
       "deathsNormalized": 44,
       "population": 1371246,
@@ -8528,6 +8364,10 @@
           {
             "value": 54,
             "date": "2020-04-27"
+          },
+          {
+            "value": 53,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -8697,18 +8537,378 @@
           {
             "value": 74,
             "date": "2020-04-27"
+          },
+          {
+            "value": 72,
+            "date": "2020-04-28"
+          }
+        ]
+      }
+    },
+    {
+      "region": "Tennessee",
+      "cases": 10052,
+      "casesNormalized": 1457,
+      "change": -0.46613545816733065,
+      "weeklyChange": 0.35806818914215754,
+      "deaths": 188,
+      "deathsNormalized": 27,
+      "population": 6897576,
+      "changeNormalizedSeries": {
+        "region": "Tennessee",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 8,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 10,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 12,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 13,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 32,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 23,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 21,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 26,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 32,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 28,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 30,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 29,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 69,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 79,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 12,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 8,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 37,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 45,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 25,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 49,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 32,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 39,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 37,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 35,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 55,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 15,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 31,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 49,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 14,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 47,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 70,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 24,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 23,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 126,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 67,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 67,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 69,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 36,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 19,
+            "date": "2020-04-28"
+          }
+        ]
+      },
+      "changeSeries": {
+        "region": "Tennessee",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 54,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 69,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 81,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 89,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 221,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 158,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 144,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 181,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 221,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 193,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 209,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 197,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 474,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 542,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 80,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 54,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 255,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 311,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 169,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 337,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 224,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 271,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 257,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 241,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 376,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 102,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 217,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 339,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 97,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 326,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 481,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 168,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 156,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 872,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 462,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 461,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 478,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 251,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 134,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Ohio",
-      "cases": 16325,
-      "casesNormalized": 1390,
-      "change": -0.08311688311688312,
-      "weeklyChange": 0.5679283667196294,
-      "deaths": 753,
-      "deathsNormalized": 64,
+      "cases": 16769,
+      "casesNormalized": 1427,
+      "change": 0.2577903682719547,
+      "weeklyChange": 0.4723310247618016,
+      "deaths": 799,
+      "deathsNormalized": 68,
       "population": 11747694,
       "changeNormalizedSeries": {
         "region": "Ohio",
@@ -8876,6 +9076,10 @@
           {
             "value": 30,
             "date": "2020-04-27"
+          },
+          {
+            "value": 38,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -9045,366 +9249,22 @@
           {
             "value": 353,
             "date": "2020-04-27"
-          }
-        ]
-      }
-    },
-    {
-      "region": "Vermont",
-      "cases": 855,
-      "casesNormalized": 1361,
-      "change": -0.5,
-      "weeklyChange": 0.06295487627365359,
-      "deaths": 47,
-      "deathsNormalized": 75,
-      "population": 628061,
-      "changeNormalizedSeries": {
-        "region": "Vermont",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 14,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 11,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 32,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 5,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 37,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 32,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 48,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 53,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 41,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 43,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 38,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 33,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 59,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 45,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 27,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 81,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 115,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 81,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 49,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 51,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 48,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 37,
-            "date": "2020-04-09"
-          },
-          {
-            "value": 81,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 51,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 25,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 33,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 6,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 11,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 24,
-            "date": "2020-04-16"
-          },
-          {
-            "value": 8,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 38,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 16,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 5,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 3,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 8,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 3,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 3,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 25,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 13,
-            "date": "2020-04-26"
-          },
-          {
-            "value": 6,
-            "date": "2020-04-27"
-          }
-        ]
-      },
-      "changeSeries": {
-        "region": "Vermont",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 9,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 7,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 20,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 3,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 23,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 20,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 30,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 33,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 26,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 27,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 24,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 21,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 37,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 28,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 17,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 51,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 72,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 51,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 31,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 32,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 30,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 23,
-            "date": "2020-04-09"
-          },
-          {
-            "value": 51,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 32,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 16,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 21,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 4,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 7,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 15,
-            "date": "2020-04-16"
-          },
-          {
-            "value": 5,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 24,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 10,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 3,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 2,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 5,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 2,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 2,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 16,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 8,
-            "date": "2020-04-26"
           },
           {
-            "value": 4,
-            "date": "2020-04-27"
+            "value": 444,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "New Mexico",
-      "cases": 2825,
-      "casesNormalized": 1347,
-      "change": 0.5,
-      "weeklyChange": 0.5005206525511975,
-      "deaths": 99,
-      "deathsNormalized": 47,
+      "cases": 2974,
+      "casesNormalized": 1418,
+      "change": 0.5050505050505051,
+      "weeklyChange": 0.5057613168724279,
+      "deaths": 105,
+      "deathsNormalized": 50,
       "population": 2096640,
       "changeNormalizedSeries": {
         "region": "New Mexico",
@@ -9572,6 +9432,10 @@
           {
             "value": 47,
             "date": "2020-04-27"
+          },
+          {
+            "value": 71,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -9741,18 +9605,22 @@
           {
             "value": 99,
             "date": "2020-04-27"
+          },
+          {
+            "value": 149,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Alabama",
-      "cases": 6539,
-      "casesNormalized": 1332,
-      "change": -0.7012658227848101,
-      "weeklyChange": 0.32036808651930565,
-      "deaths": 228,
-      "deathsNormalized": 46,
+      "cases": 6750,
+      "casesNormalized": 1375,
+      "change": 0.788135593220339,
+      "weeklyChange": 0.3092127201624882,
+      "deaths": 242,
+      "deathsNormalized": 49,
       "population": 4908621,
       "changeNormalizedSeries": {
         "region": "Alabama",
@@ -9920,6 +9788,10 @@
           {
             "value": 24,
             "date": "2020-04-27"
+          },
+          {
+            "value": 43,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -10089,16 +9961,376 @@
           {
             "value": 118,
             "date": "2020-04-27"
+          },
+          {
+            "value": 211,
+            "date": "2020-04-28"
+          }
+        ]
+      }
+    },
+    {
+      "region": "Vermont",
+      "cases": 862,
+      "casesNormalized": 1372,
+      "change": 0.75,
+      "weeklyChange": 0.058252427184466084,
+      "deaths": 47,
+      "deathsNormalized": 75,
+      "population": 628061,
+      "changeNormalizedSeries": {
+        "region": "Vermont",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 14,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 11,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 32,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 5,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 37,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 32,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 48,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 53,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 41,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 43,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 38,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 33,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 59,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 45,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 27,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 81,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 115,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 81,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 49,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 51,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 48,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 37,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 81,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 51,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 25,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 33,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 6,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 11,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 24,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 8,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 38,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 16,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 5,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 3,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 8,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 3,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 3,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 25,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 13,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 6,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 11,
+            "date": "2020-04-28"
+          }
+        ]
+      },
+      "changeSeries": {
+        "region": "Vermont",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 9,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 7,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 20,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 3,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 23,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 20,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 30,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 33,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 26,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 27,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 24,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 21,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 37,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 28,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 17,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 51,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 72,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 51,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 31,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 32,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 30,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 23,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 51,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 32,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 16,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 21,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 4,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 7,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 15,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 5,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 24,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 10,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 3,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 2,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 5,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 2,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 2,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 16,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 8,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 4,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 7,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Utah",
-      "cases": 4236,
-      "casesNormalized": 1291,
-      "change": -0.35428571428571426,
-      "weeklyChange": 0.3463849287169042,
+      "cases": 4345,
+      "casesNormalized": 1324,
+      "change": -0.035398230088495575,
+      "weeklyChange": 0.33971734892787514,
       "deaths": 41,
       "deathsNormalized": 12,
       "population": 3282115,
@@ -10268,6 +10500,10 @@
           {
             "value": 34,
             "date": "2020-04-27"
+          },
+          {
+            "value": 33,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -10437,16 +10673,20 @@
           {
             "value": 113,
             "date": "2020-04-27"
+          },
+          {
+            "value": 109,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "North Dakota",
-      "cases": 942,
-      "casesNormalized": 1237,
-      "change": 0.171875,
-      "weeklyChange": 0.6683168316831684,
+      "cases": 991,
+      "casesNormalized": 1301,
+      "change": -0.3466666666666667,
+      "weeklyChange": 0.6234794908062236,
       "deaths": 19,
       "deathsNormalized": 25,
       "population": 761723,
@@ -10616,6 +10856,10 @@
           {
             "value": 98,
             "date": "2020-04-27"
+          },
+          {
+            "value": 64,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -10785,18 +11029,22 @@
           {
             "value": 75,
             "date": "2020-04-27"
+          },
+          {
+            "value": 49,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Kansas",
-      "cases": 3473,
-      "casesNormalized": 1193,
-      "change": 0.38028169014084506,
-      "weeklyChange": 0.6627984084880638,
-      "deaths": 126,
-      "deathsNormalized": 43,
+      "cases": 3652,
+      "casesNormalized": 1255,
+      "change": -0.08673469387755102,
+      "weeklyChange": 0.6851489794322357,
+      "deaths": 127,
+      "deathsNormalized": 44,
       "population": 2910357,
       "changeNormalizedSeries": {
         "region": "Kansas",
@@ -10964,6 +11212,10 @@
           {
             "value": 67,
             "date": "2020-04-27"
+          },
+          {
+            "value": 62,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -11133,18 +11385,22 @@
           {
             "value": 196,
             "date": "2020-04-27"
+          },
+          {
+            "value": 179,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Missouri",
-      "cases": 7305,
-      "casesNormalized": 1184,
-      "change": 0.0,
-      "weeklyChange": 0.2601758996085163,
-      "deaths": 343,
-      "deathsNormalized": 56,
+      "cases": 7450,
+      "casesNormalized": 1208,
+      "change": -0.21621621621621623,
+      "weeklyChange": 0.2529393484228517,
+      "deaths": 330,
+      "deathsNormalized": 53,
       "population": 6169270,
       "changeNormalizedSeries": {
         "region": "Missouri",
@@ -11312,6 +11568,10 @@
           {
             "value": 30,
             "date": "2020-04-27"
+          },
+          {
+            "value": 24,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -11481,18 +11741,22 @@
           {
             "value": 185,
             "date": "2020-04-27"
+          },
+          {
+            "value": 145,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "California",
-      "cases": 44966,
-      "casesNormalized": 1126,
-      "change": 0.18319327731092436,
-      "weeklyChange": 0.39187907122317633,
-      "deaths": 1779,
-      "deathsNormalized": 45,
+      "cases": 46164,
+      "casesNormalized": 1156,
+      "change": -0.14914772727272727,
+      "weeklyChange": 0.376167908552469,
+      "deaths": 1864,
+      "deathsNormalized": 47,
       "population": 39937489,
       "changeNormalizedSeries": {
         "region": "California",
@@ -11660,6 +11924,10 @@
           {
             "value": 35,
             "date": "2020-04-27"
+          },
+          {
+            "value": 30,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -11829,18 +12097,22 @@
           {
             "value": 1408,
             "date": "2020-04-27"
+          },
+          {
+            "value": 1198,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "South Carolina",
-      "cases": 5613,
-      "casesNormalized": 1077,
-      "change": -0.5306122448979592,
-      "weeklyChange": 0.25577534440127153,
-      "deaths": 177,
-      "deathsNormalized": 34,
+      "cases": 5735,
+      "casesNormalized": 1101,
+      "change": 0.06086956521739131,
+      "weeklyChange": 0.26205644608850526,
+      "deaths": 192,
+      "deathsNormalized": 37,
       "population": 5210095,
       "changeNormalizedSeries": {
         "region": "South Carolina",
@@ -12008,6 +12280,10 @@
           {
             "value": 22,
             "date": "2020-04-27"
+          },
+          {
+            "value": 23,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -12177,366 +12453,22 @@
           {
             "value": 115,
             "date": "2020-04-27"
-          }
-        ]
-      }
-    },
-    {
-      "region": "Idaho",
-      "cases": 1897,
-      "casesNormalized": 1039,
-      "change": -1.0,
-      "weeklyChange": 0.15824946081955418,
-      "deaths": 56,
-      "deathsNormalized": 31,
-      "population": 1826156,
-      "changeNormalizedSeries": {
-        "region": "Idaho",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 8,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 7,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 3,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 0,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 14,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 7,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 5,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 30,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 32,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 16,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 26,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 32,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 96,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 28,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 115,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 63,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 72,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 31,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 13,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 38,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 22,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 12,
-            "date": "2020-04-09"
-          },
-          {
-            "value": 67,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 23,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 6,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 10,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 21,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 5,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 62,
-            "date": "2020-04-16"
-          },
-          {
-            "value": 12,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 25,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 7,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 2,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 35,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 16,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 38,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 19,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 9,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 5,
-            "date": "2020-04-26"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-27"
-          }
-        ]
-      },
-      "changeSeries": {
-        "region": "Idaho",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 14,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 13,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 6,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 0,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 26,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 13,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 10,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 55,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 59,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 29,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 47,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 59,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 175,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 51,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 210,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 115,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 131,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 56,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 23,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 69,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 40,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 22,
-            "date": "2020-04-09"
           },
           {
             "value": 122,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 42,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 11,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 19,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 38,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 9,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 114,
-            "date": "2020-04-16"
-          },
-          {
-            "value": 22,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 46,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 13,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 4,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 64,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 30,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 70,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 34,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 17,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 10,
-            "date": "2020-04-26"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-27"
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Wisconsin",
-      "cases": 6081,
-      "casesNormalized": 1039,
-      "change": -0.24888888888888888,
-      "weeklyChange": 0.3295808552817899,
-      "deaths": 281,
-      "deathsNormalized": 48,
+      "cases": 6289,
+      "casesNormalized": 1075,
+      "change": 0.23076923076923078,
+      "weeklyChange": 0.3378129476771947,
+      "deaths": 300,
+      "deathsNormalized": 51,
       "population": 5851754,
       "changeNormalizedSeries": {
         "region": "Wisconsin",
@@ -12704,6 +12636,10 @@
           {
             "value": 29,
             "date": "2020-04-27"
+          },
+          {
+            "value": 36,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -12873,18 +12809,378 @@
           {
             "value": 169,
             "date": "2020-04-27"
+          },
+          {
+            "value": 208,
+            "date": "2020-04-28"
+          }
+        ]
+      }
+    },
+    {
+      "region": "Idaho",
+      "cases": 1952,
+      "casesNormalized": 1069,
+      "change": 0.0,
+      "weeklyChange": 0.14956140350877184,
+      "deaths": 60,
+      "deathsNormalized": 33,
+      "population": 1826156,
+      "changeNormalizedSeries": {
+        "region": "Idaho",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 8,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 7,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 3,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 0,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 14,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 7,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 5,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 30,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 32,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 16,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 26,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 32,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 96,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 28,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 115,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 63,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 72,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 31,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 13,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 38,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 22,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 12,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 67,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 23,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 6,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 10,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 21,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 5,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 62,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 12,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 25,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 7,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 2,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 35,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 16,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 38,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 19,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 9,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 5,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 30,
+            "date": "2020-04-28"
+          }
+        ]
+      },
+      "changeSeries": {
+        "region": "Idaho",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 14,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 13,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 6,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 0,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 26,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 13,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 10,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 55,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 59,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 29,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 47,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 59,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 175,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 51,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 210,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 115,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 131,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 56,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 23,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 69,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 40,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 22,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 122,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 42,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 11,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 19,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 38,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 9,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 114,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 22,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 46,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 13,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 4,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 64,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 30,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 70,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 34,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 17,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 10,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 55,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Arkansas",
-      "cases": 3069,
-      "casesNormalized": 1010,
-      "change": -0.24444444444444444,
-      "weeklyChange": 0.5703703703703705,
-      "deaths": 51,
-      "deathsNormalized": 17,
+      "cases": 3127,
+      "casesNormalized": 1029,
+      "change": -0.14705882352941177,
+      "weeklyChange": 0.5998221791141287,
+      "deaths": 57,
+      "deathsNormalized": 19,
       "population": 3038999,
       "changeNormalizedSeries": {
         "region": "Arkansas",
@@ -13052,6 +13348,10 @@
           {
             "value": 22,
             "date": "2020-04-27"
+          },
+          {
+            "value": 19,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -13221,18 +13521,22 @@
           {
             "value": 68,
             "date": "2020-04-27"
+          },
+          {
+            "value": 58,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Kentucky",
-      "cases": 4156,
-      "casesNormalized": 924,
-      "change": -0.5823529411764706,
-      "weeklyChange": 0.44969886236894935,
-      "deaths": 213,
-      "deathsNormalized": 47,
+      "cases": 4375,
+      "casesNormalized": 972,
+      "change": 2.084507042253521,
+      "weeklyChange": 0.42325020955574194,
+      "deaths": 225,
+      "deathsNormalized": 50,
       "population": 4499692,
       "changeNormalizedSeries": {
         "region": "Kentucky",
@@ -13400,6 +13704,10 @@
           {
             "value": 16,
             "date": "2020-04-27"
+          },
+          {
+            "value": 49,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -13569,16 +13877,20 @@
           {
             "value": 71,
             "date": "2020-04-27"
+          },
+          {
+            "value": 219,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Wyoming",
-      "cases": 520,
-      "casesNormalized": 917,
-      "change": 0.6363636363636364,
-      "weeklyChange": 0.5784732100521575,
+      "cases": 536,
+      "casesNormalized": 945,
+      "change": -0.1111111111111111,
+      "weeklyChange": 0.5074889867841409,
       "deaths": 7,
       "deathsNormalized": 12,
       "population": 567025,
@@ -13748,6 +14060,10 @@
           {
             "value": 32,
             "date": "2020-04-27"
+          },
+          {
+            "value": 28,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -13917,16 +14233,20 @@
           {
             "value": 18,
             "date": "2020-04-27"
+          },
+          {
+            "value": 16,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Arizona",
-      "cases": 6725,
-      "casesNormalized": 911,
-      "change": -0.22983870967741934,
-      "weeklyChange": 0.3470844268066314,
+      "cases": 6955,
+      "casesNormalized": 943,
+      "change": 0.20418848167539266,
+      "weeklyChange": 0.3394304591196891,
       "deaths": 275,
       "deathsNormalized": 37,
       "population": 7378494,
@@ -14096,6 +14416,10 @@
           {
             "value": 26,
             "date": "2020-04-27"
+          },
+          {
+            "value": 31,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -14265,18 +14589,22 @@
           {
             "value": 191,
             "date": "2020-04-27"
+          },
+          {
+            "value": 230,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "North Carolina",
-      "cases": 9428,
-      "casesNormalized": 888,
-      "change": 0.8820960698689956,
-      "weeklyChange": 0.38061533328567,
-      "deaths": 340,
-      "deathsNormalized": 32,
+      "cases": 9755,
+      "casesNormalized": 919,
+      "change": -0.24129930394431554,
+      "weeklyChange": 0.37676776863262235,
+      "deaths": 363,
+      "deathsNormalized": 34,
       "population": 10611862,
       "changeNormalizedSeries": {
         "region": "North Carolina",
@@ -14444,6 +14772,10 @@
           {
             "value": 41,
             "date": "2020-04-27"
+          },
+          {
+            "value": 31,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -14613,18 +14945,22 @@
           {
             "value": 431,
             "date": "2020-04-27"
+          },
+          {
+            "value": 327,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Texas",
-      "cases": 25321,
-      "casesNormalized": 859,
-      "change": -0.5651105651105651,
-      "weeklyChange": 0.3183951748234741,
-      "deaths": 666,
-      "deathsNormalized": 23,
+      "cases": 26357,
+      "casesNormalized": 894,
+      "change": 1.926553672316384,
+      "weeklyChange": 0.3063116171919238,
+      "deaths": 719,
+      "deathsNormalized": 24,
       "population": 29472295,
       "changeNormalizedSeries": {
         "region": "Texas",
@@ -14792,6 +15128,10 @@
           {
             "value": 12,
             "date": "2020-04-27"
+          },
+          {
+            "value": 35,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -14961,366 +15301,22 @@
           {
             "value": 354,
             "date": "2020-04-27"
-          }
-        ]
-      }
-    },
-    {
-      "region": "Guam",
-      "cases": 141,
-      "casesNormalized": 835,
-      "change": 0.0,
-      "weeklyChange": 0.029567053854276666,
-      "deaths": 5,
-      "deathsNormalized": 30,
-      "population": 168775,
-      "changeNormalizedSeries": {
-        "region": "Guam",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 41,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 12,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 6,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 71,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 12,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 18,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 30,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 47,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 36,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 24,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 6,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 12,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 65,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 47,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 30,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 12,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 53,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 113,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 6,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 47,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 41,
-            "date": "2020-04-09"
-          },
-          {
-            "value": 12,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 18,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 12,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-16"
-          },
-          {
-            "value": 6,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 18,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 12,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-26"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-27"
-          }
-        ]
-      },
-      "changeSeries": {
-        "region": "Guam",
-        "points": [
-          {
-            "value": 0,
-            "date": "2020-03-18"
-          },
-          {
-            "value": 7,
-            "date": "2020-03-19"
-          },
-          {
-            "value": 2,
-            "date": "2020-03-20"
-          },
-          {
-            "value": 1,
-            "date": "2020-03-21"
-          },
-          {
-            "value": 12,
-            "date": "2020-03-22"
-          },
-          {
-            "value": 2,
-            "date": "2020-03-23"
-          },
-          {
-            "value": 3,
-            "date": "2020-03-24"
-          },
-          {
-            "value": 5,
-            "date": "2020-03-25"
-          },
-          {
-            "value": 8,
-            "date": "2020-03-26"
-          },
-          {
-            "value": 6,
-            "date": "2020-03-27"
-          },
-          {
-            "value": 4,
-            "date": "2020-03-28"
-          },
-          {
-            "value": 1,
-            "date": "2020-03-29"
-          },
-          {
-            "value": 2,
-            "date": "2020-03-30"
-          },
-          {
-            "value": 11,
-            "date": "2020-03-31"
-          },
-          {
-            "value": 8,
-            "date": "2020-04-01"
-          },
-          {
-            "value": 5,
-            "date": "2020-04-02"
-          },
-          {
-            "value": 2,
-            "date": "2020-04-03"
-          },
-          {
-            "value": 9,
-            "date": "2020-04-04"
-          },
-          {
-            "value": 19,
-            "date": "2020-04-05"
-          },
-          {
-            "value": 1,
-            "date": "2020-04-06"
-          },
-          {
-            "value": 8,
-            "date": "2020-04-07"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-08"
-          },
-          {
-            "value": 7,
-            "date": "2020-04-09"
-          },
-          {
-            "value": 2,
-            "date": "2020-04-10"
-          },
-          {
-            "value": 3,
-            "date": "2020-04-11"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-12"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-13"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-14"
-          },
-          {
-            "value": 2,
-            "date": "2020-04-15"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-16"
-          },
-          {
-            "value": 1,
-            "date": "2020-04-17"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-18"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-19"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-20"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-21"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-22"
-          },
-          {
-            "value": 3,
-            "date": "2020-04-23"
-          },
-          {
-            "value": 2,
-            "date": "2020-04-24"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-25"
-          },
-          {
-            "value": 0,
-            "date": "2020-04-26"
           },
           {
-            "value": 0,
-            "date": "2020-04-27"
+            "value": 1036,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Oklahoma",
-      "cases": 3281,
-      "casesNormalized": 830,
-      "change": -0.55,
-      "weeklyChange": 0.2701254343089337,
-      "deaths": 197,
-      "deathsNormalized": 50,
+      "cases": 3410,
+      "casesNormalized": 862,
+      "change": 3.7777777777777777,
+      "weeklyChange": 0.2594296750738469,
+      "deaths": 207,
+      "deathsNormalized": 52,
       "population": 3954821,
       "changeNormalizedSeries": {
         "region": "Oklahoma",
@@ -15488,6 +15484,10 @@
           {
             "value": 7,
             "date": "2020-04-27"
+          },
+          {
+            "value": 33,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -15657,16 +15657,376 @@
           {
             "value": 27,
             "date": "2020-04-27"
+          },
+          {
+            "value": 129,
+            "date": "2020-04-28"
+          }
+        ]
+      }
+    },
+    {
+      "region": "Guam",
+      "cases": 141,
+      "casesNormalized": 835,
+      "change": 0.0,
+      "weeklyChange": 0.03157894736842099,
+      "deaths": 5,
+      "deathsNormalized": 30,
+      "population": 168775,
+      "changeNormalizedSeries": {
+        "region": "Guam",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 41,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 12,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 6,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 71,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 12,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 18,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 30,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 47,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 36,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 24,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 6,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 12,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 65,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 47,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 30,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 12,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 53,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 113,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 6,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 47,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 41,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 12,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 18,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 12,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 6,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 18,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 12,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-28"
+          }
+        ]
+      },
+      "changeSeries": {
+        "region": "Guam",
+        "points": [
+          {
+            "value": 0,
+            "date": "2020-03-18"
+          },
+          {
+            "value": 7,
+            "date": "2020-03-19"
+          },
+          {
+            "value": 2,
+            "date": "2020-03-20"
+          },
+          {
+            "value": 1,
+            "date": "2020-03-21"
+          },
+          {
+            "value": 12,
+            "date": "2020-03-22"
+          },
+          {
+            "value": 2,
+            "date": "2020-03-23"
+          },
+          {
+            "value": 3,
+            "date": "2020-03-24"
+          },
+          {
+            "value": 5,
+            "date": "2020-03-25"
+          },
+          {
+            "value": 8,
+            "date": "2020-03-26"
+          },
+          {
+            "value": 6,
+            "date": "2020-03-27"
+          },
+          {
+            "value": 4,
+            "date": "2020-03-28"
+          },
+          {
+            "value": 1,
+            "date": "2020-03-29"
+          },
+          {
+            "value": 2,
+            "date": "2020-03-30"
+          },
+          {
+            "value": 11,
+            "date": "2020-03-31"
+          },
+          {
+            "value": 8,
+            "date": "2020-04-01"
+          },
+          {
+            "value": 5,
+            "date": "2020-04-02"
+          },
+          {
+            "value": 2,
+            "date": "2020-04-03"
+          },
+          {
+            "value": 9,
+            "date": "2020-04-04"
+          },
+          {
+            "value": 19,
+            "date": "2020-04-05"
+          },
+          {
+            "value": 1,
+            "date": "2020-04-06"
+          },
+          {
+            "value": 8,
+            "date": "2020-04-07"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-08"
+          },
+          {
+            "value": 7,
+            "date": "2020-04-09"
+          },
+          {
+            "value": 2,
+            "date": "2020-04-10"
+          },
+          {
+            "value": 3,
+            "date": "2020-04-11"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-12"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-13"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-14"
+          },
+          {
+            "value": 2,
+            "date": "2020-04-15"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-16"
+          },
+          {
+            "value": 1,
+            "date": "2020-04-17"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-18"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-19"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-20"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-21"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-22"
+          },
+          {
+            "value": 3,
+            "date": "2020-04-23"
+          },
+          {
+            "value": 2,
+            "date": "2020-04-24"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-25"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-26"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-27"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Maine",
-      "cases": 1023,
-      "casesNormalized": 760,
-      "change": -0.84,
-      "weeklyChange": 0.17194332691971317,
+      "cases": 1040,
+      "casesNormalized": 773,
+      "change": 1.125,
+      "weeklyChange": 0.1672913117546849,
       "deaths": 51,
       "deathsNormalized": 38,
       "population": 1345790,
@@ -15836,6 +16196,10 @@
           {
             "value": 6,
             "date": "2020-04-27"
+          },
+          {
+            "value": 13,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -16005,18 +16369,22 @@
           {
             "value": 8,
             "date": "2020-04-27"
+          },
+          {
+            "value": 17,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Minnesota",
-      "cases": 3811,
-      "casesNormalized": 669,
-      "change": 0.33974358974358976,
-      "weeklyChange": 0.5449438202247191,
-      "deaths": 286,
-      "deathsNormalized": 50,
+      "cases": 4181,
+      "casesNormalized": 733,
+      "change": 0.7703349282296651,
+      "weeklyChange": 0.5623937213865272,
+      "deaths": 301,
+      "deathsNormalized": 53,
       "population": 5700671,
       "changeNormalizedSeries": {
         "region": "Minnesota",
@@ -16184,6 +16552,10 @@
           {
             "value": 37,
             "date": "2020-04-27"
+          },
+          {
+            "value": 65,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -16353,18 +16725,22 @@
           {
             "value": 209,
             "date": "2020-04-27"
+          },
+          {
+            "value": 370,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "West Virginia",
-      "cases": 1063,
-      "casesNormalized": 598,
-      "change": -0.8222222222222222,
-      "weeklyChange": 0.28476576908889706,
-      "deaths": 34,
-      "deathsNormalized": 19,
+      "cases": 1095,
+      "casesNormalized": 616,
+      "change": 3.0,
+      "weeklyChange": 0.2571177504393673,
+      "deaths": 38,
+      "deathsNormalized": 21,
       "population": 1778070,
       "changeNormalizedSeries": {
         "region": "West Virginia",
@@ -16532,6 +16908,10 @@
           {
             "value": 4,
             "date": "2020-04-27"
+          },
+          {
+            "value": 18,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -16701,18 +17081,22 @@
           {
             "value": 8,
             "date": "2020-04-27"
+          },
+          {
+            "value": 32,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Oregon",
-      "cases": 2354,
-      "casesNormalized": 547,
-      "change": -0.25862068965517243,
-      "weeklyChange": 0.220067049808429,
-      "deaths": 92,
-      "deathsNormalized": 21,
+      "cases": 2385,
+      "casesNormalized": 555,
+      "change": -0.27906976744186046,
+      "weeklyChange": 0.21451275292658342,
+      "deaths": 99,
+      "deathsNormalized": 23,
       "population": 4301089,
       "changeNormalizedSeries": {
         "region": "Oregon",
@@ -16880,6 +17264,10 @@
           {
             "value": 10,
             "date": "2020-04-27"
+          },
+          {
+            "value": 7,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -17049,6 +17437,10 @@
           {
             "value": 43,
             "date": "2020-04-27"
+          },
+          {
+            "value": 31,
+            "date": "2020-04-28"
           }
         ]
       }
@@ -17057,8 +17449,8 @@
       "region": "Virgin Islands",
       "cases": 57,
       "casesNormalized": 546,
-      "change": -1.0,
-      "weeklyChange": 0.05785123966942149,
+      "change": 0.0,
+      "weeklyChange": 0.06301369863013696,
       "deaths": 4,
       "deathsNormalized": 38,
       "population": 104425,
@@ -17228,6 +17620,10 @@
           {
             "value": 0,
             "date": "2020-04-27"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -17397,16 +17793,20 @@
           {
             "value": 0,
             "date": "2020-04-27"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Alaska",
-      "cases": 345,
-      "casesNormalized": 470,
-      "change": 4.0,
-      "weeklyChange": 0.10415693601120983,
+      "cases": 351,
+      "casesNormalized": 478,
+      "change": 0.2,
+      "weeklyChange": 0.09199084668192203,
       "deaths": 9,
       "deathsNormalized": 12,
       "population": 734002,
@@ -17576,6 +17976,10 @@
           {
             "value": 7,
             "date": "2020-04-27"
+          },
+          {
+            "value": 8,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -17745,17 +18149,21 @@
           {
             "value": 5,
             "date": "2020-04-27"
+          },
+          {
+            "value": 6,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Puerto Rico",
-      "cases": 1389,
-      "casesNormalized": 458,
-      "change": -0.71875,
-      "weeklyChange": 0.22632064286655262,
-      "deaths": 84,
+      "cases": 1400,
+      "casesNormalized": 462,
+      "change": -0.3888888888888889,
+      "weeklyChange": 0.18139593271403456,
+      "deaths": 86,
       "deathsNormalized": 28,
       "population": 3032165,
       "changeNormalizedSeries": {
@@ -17924,6 +18332,10 @@
           {
             "value": 6,
             "date": "2020-04-27"
+          },
+          {
+            "value": 4,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -18093,16 +18505,20 @@
           {
             "value": 18,
             "date": "2020-04-27"
+          },
+          {
+            "value": 11,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Hawaii",
-      "cases": 607,
-      "casesNormalized": 430,
-      "change": 0.0,
-      "weeklyChange": 0.09079084287200839,
+      "cases": 609,
+      "casesNormalized": 431,
+      "change": 1.0,
+      "weeklyChange": 0.07578463893850475,
       "deaths": 16,
       "deathsNormalized": 11,
       "population": 1412687,
@@ -18272,6 +18688,10 @@
           {
             "value": 1,
             "date": "2020-04-27"
+          },
+          {
+            "value": 1,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -18441,18 +18861,22 @@
           {
             "value": 1,
             "date": "2020-04-27"
+          },
+          {
+            "value": 2,
+            "date": "2020-04-28"
           }
         ]
       }
     },
     {
       "region": "Montana",
-      "cases": 449,
-      "casesNormalized": 413,
-      "change": -0.6666666666666666,
-      "weeklyChange": 0.05866302864938618,
-      "deaths": 14,
-      "deathsNormalized": 13,
+      "cases": 451,
+      "casesNormalized": 415,
+      "change": 1.0,
+      "weeklyChange": 0.049831649831649893,
+      "deaths": 15,
+      "deathsNormalized": 14,
       "population": 1086759,
       "changeNormalizedSeries": {
         "region": "Montana",
@@ -18620,6 +19044,10 @@
           {
             "value": 1,
             "date": "2020-04-27"
+          },
+          {
+            "value": 2,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -18789,6 +19217,10 @@
           {
             "value": 1,
             "date": "2020-04-27"
+          },
+          {
+            "value": 2,
+            "date": "2020-04-28"
           }
         ]
       }
@@ -18798,7 +19230,7 @@
       "cases": 14,
       "casesNormalized": 243,
       "change": 0.0,
-      "weeklyChange": 0.06521739130434787,
+      "weeklyChange": 0.031578947368421074,
       "deaths": 2,
       "deathsNormalized": 35,
       "population": 57559,
@@ -18916,6 +19348,10 @@
           {
             "value": 0,
             "date": "2020-04-27"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-28"
           }
         ]
       },
@@ -19033,6 +19469,10 @@
           {
             "value": 0,
             "date": "2020-04-27"
+          },
+          {
+            "value": 0,
+            "date": "2020-04-28"
           }
         ]
       }
