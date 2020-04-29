@@ -23,7 +23,8 @@ type Props = {
   row: Row<TableRow>;
   rowNumber: number;
   series: TimeSeries | undefined;
-  defaultExpanded?: boolean;
+  collapsible?: boolean;
+  hideIndex?: boolean;
 };
 
 type ExpandState = 'OPEN' | 'CLOSED' | 'CLOSING';
@@ -88,9 +89,31 @@ const getCellClasses = (
   return classes;
 };
 
-export const SeriesTableRow = ({ row, rowNumber, series }: Props) => {
+export const SeriesPanel = ({ series }: { series: TimeSeries }) => {
+  return (
+    <Paper>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>New cases</div>
+      <CalendarChart data={series} />
+      <LineChart
+        data={series}
+        leftAxisLabel='change'
+        hideLegend
+        marginTop={0}
+        marginRight={40}
+      />
+    </Paper>
+  );
+};
+
+export const SeriesTableRow = ({
+  row,
+  rowNumber,
+  series,
+  collapsible,
+  hideIndex,
+}: Props) => {
   const [expandedState, setExpandedState] = React.useState<ExpandState>(
-    'CLOSED'
+    collapsible ? 'CLOSED' : 'OPEN'
   );
   const expanded = expandedState === 'OPEN';
   const handleExpandClick = () =>
@@ -101,22 +124,26 @@ export const SeriesTableRow = ({ row, rowNumber, series }: Props) => {
   return (
     <>
       <MuiTableRow {...rowProps}>
-        <TableCell className={classes.cell} id={`${row.original.region}`}>
-          {series && (
-            <IconButton
-              size='small'
-              className={clsx(classes.expand, {
-                [classes.expandOpen]: expanded,
-              })}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label='show more'
-            >
-              <ExpandMore />
-            </IconButton>
-          )}
-        </TableCell>
-        <TableCell className={classes.cell}>{rowNumber + 1}</TableCell>
+        {collapsible && (
+          <TableCell className={classes.cell} id={`${row.original.region}`}>
+            {series && (
+              <IconButton
+                size='small'
+                className={clsx(classes.expand, {
+                  [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label='show more'
+              >
+                <ExpandMore />
+              </IconButton>
+            )}
+          </TableCell>
+        )}
+        {!hideIndex && (
+          <TableCell className={classes.cell}>{rowNumber + 1}</TableCell>
+        )}
         {cells.map((cell) => {
           return (
             <TableCell
@@ -133,7 +160,9 @@ export const SeriesTableRow = ({ row, rowNumber, series }: Props) => {
       </MuiTableRow>
       {series && expandedState !== 'CLOSED' && (
         <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
-          <TableCell colSpan={cells.length + 2}>
+          <TableCell
+            colSpan={cells.length + (hideIndex ? 0 : 1) + (collapsible ? 1 : 0)}
+          >
             <Collapse
               in={expanded}
               timeout='auto'
@@ -144,19 +173,7 @@ export const SeriesTableRow = ({ row, rowNumber, series }: Props) => {
               style={{ width: '100%' }}
             >
               <React.Suspense fallback={<CircularProgress />}>
-                <Paper>
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    New cases
-                  </div>
-                  <CalendarChart data={series} />
-                  <LineChart
-                    data={series}
-                    leftAxisLabel='change'
-                    hideLegend
-                    marginTop={0}
-                    marginRight={40}
-                  />
-                </Paper>
+                <SeriesPanel series={series} />
               </React.Suspense>
             </Collapse>
           </TableCell>

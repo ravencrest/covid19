@@ -5,7 +5,7 @@ import { SimpleTable } from './SimpleTable';
 import { TableRow, DataSets } from '../types';
 import { SeriesTableRow } from './SeriesTableRow';
 
-const Header = ({
+export const Header = ({
   children,
   tooltip,
 }: {
@@ -25,7 +25,7 @@ const Header = ({
   </Tooltip>
 );
 
-function formatChange(change: number | undefined | null) {
+export function formatChange(change: number | undefined | null) {
   change = typeof change === 'number' ? Math.round(change * 100) : undefined;
   if (!change) {
     return '--';
@@ -33,7 +33,7 @@ function formatChange(change: number | undefined | null) {
   return `${change > 0 ? '+' : ''}${change}%`;
 }
 
-const buildColumns = (
+export const buildColumns = (
   normalized: boolean,
   dataset: DataSets
 ): Column<TableRow>[] => {
@@ -123,6 +123,7 @@ export default React.memo(function TablePane({
             ? row.original.changeNormalizedSeries
             : row.original.changeSeries
         }
+        collapsible
       />
     ),
     [normalized, datasetKey]

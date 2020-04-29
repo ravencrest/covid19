@@ -4,9 +4,15 @@ import { Divider, CircularProgress } from '@material-ui/core';
 import memoizeOne from 'memoize-one';
 import { TableRow, DataSets } from './types';
 import { useImmer } from 'use-immer';
-import { Switch as SwitchRoute, Route, useLocation } from 'react-router-dom';
+import {
+  Switch as SwitchRoute,
+  Route,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import qs from 'qs';
 import App from './App';
+import RegionView from './RegionView';
 
 type FilteredResults = {
   lastUpdated: Date;
@@ -41,23 +47,24 @@ const useResults = (
 const Context = React.createContext({});
 
 function GlobalContext() {
+  const pathParams = useParams<{ dataset: string }>();
+  const pathDataset = pathParams.dataset ?? 'global';
+
   const a = useLocation();
   const search = a.search;
-  const params: { norm?: string; ds?: string; region?: string } =
-    search[0] == '?' ? qs.parse(search.slice(1)) : {};
+  const params: { norm?: string } =
+    search[0] === '?' ? qs.parse(search.slice(1)) : {};
   const [state, updateState] = useImmer<{
     dataset: DataSets;
     rows?: TableRow[];
     normalized: boolean;
     lastUpdated?: Date;
-    region?: string;
   }>({
-    dataset: params.ds == 'us' ? 'us' : 'global',
+    dataset: pathDataset === 'us' ? 'us' : 'global',
     rows: undefined,
-    normalized: params.norm != 'false',
-    region: params.region,
+    normalized: params.norm !== 'false',
   });
-  const { dataset, rows, normalized, lastUpdated, region } = state;
+  const { dataset, rows, normalized, lastUpdated } = state;
 
   useResults(
     dataset,
@@ -65,7 +72,8 @@ function GlobalContext() {
       (results) => {
         updateState((draft) => {
           draft.lastUpdated = results?.lastUpdated;
-          //draft.rows = region ? r?.rows.filter(rr => rr.region == region) : r?.rows;
+          //const rows = results?.rows
+          //draft.rows = region ? rows?.filter(rr => rr.region == region) : rows;
           draft.rows = results?.rows;
         });
       },
@@ -92,24 +100,35 @@ function GlobalContext() {
 
   return (
     <Context.Provider value={{}}>
-      <Route>
-        <SwitchRoute>
-          <Route path='/'>
-            <Divider />
-            {rows && (
-              <App
-                rows={rows}
-                dataset={dataset}
-                normalized={normalized}
-                lastUpdated={lastUpdated}
-                onDatasetChange={onDatasetChange}
-                onNormalizedChange={onNormalizedChange}
-              />
-            )}
-            {!rows && <CircularProgress />}
-          </Route>
-        </SwitchRoute>
-      </Route>
+      <SwitchRoute>
+        <Route path='/:dataset/:region'>
+          <Divider />
+          {rows && (
+            <RegionView
+              rows={rows}
+              dataset={dataset}
+              normalized={normalized}
+              lastUpdated={lastUpdated}
+              onNormalizedChange={onNormalizedChange}
+            />
+          )}
+          {!rows && <CircularProgress />}
+        </Route>
+        <Route path='/'>
+          <Divider />
+          {rows && (
+            <App
+              rows={rows}
+              dataset={dataset}
+              normalized={normalized}
+              lastUpdated={lastUpdated}
+              onDatasetChange={onDatasetChange}
+              onNormalizedChange={onNormalizedChange}
+            />
+          )}
+          {!rows && <CircularProgress />}
+        </Route>
+      </SwitchRoute>
     </Context.Provider>
   );
 }

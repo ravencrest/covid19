@@ -48,7 +48,7 @@ export const GlobalFilter = ({ globalFilter, setGlobalFilter }: Props) => {
         variant='outlined'
         value={globalFilter || ''}
         onChange={(e) => {
-          setGlobalFilter(e.target.value || undefined); // Set undefined to remove the filter entirely
+          setGlobalFilter(e.target.value || undefined);
         }}
         placeholder='Search...'
         inputProps={{ 'aria-label': 'search' }}

@@ -11,13 +11,7 @@ import {
   makeStyles,
   Button,
 } from '@material-ui/core';
-import {
-  Help,
-  Close,
-  GitHub,
-  Share,
-  Link as LinkIcon,
-} from '@material-ui/icons';
+import { Help, Close, GitHub, Share } from '@material-ui/icons';
 import { githubUrl } from '../constants';
 import { formatRelative as format } from 'date-fns';
 import { DataSets } from '../types';
@@ -83,9 +77,26 @@ type Props = {
   dataset: DataSets;
   normalized: boolean;
   children: React.ReactNode;
+  region?: string;
 };
 
-export default ({ lastUpdated, children, normalized, dataset }: Props) => {
+export const getDirectLink = (
+  dataset: DataSets,
+  normalized: boolean,
+  region?: string
+) => {
+  return `${window.location.protocol}//${window.location.host}/${dataset}${
+    region ? `/${region}` : ''
+  }?norm=${normalized}`;
+};
+
+export default ({
+  lastUpdated,
+  children,
+  normalized,
+  dataset,
+  region,
+}: Props) => {
   const [open, setOpen] = React.useState<'link' | 'info' | undefined>(
     undefined
   );
@@ -108,31 +119,30 @@ export default ({ lastUpdated, children, normalized, dataset }: Props) => {
           <GitHub />
         </IconButton>
       </Link>
-      <a href='#' onClick={onOpenLink}>
-        <Button
-          endIcon={<Share />}
-          color='primary'
-          style={{ textTransform: 'unset' }}
-        >
-          Share
-        </Button>
-      </a>
+      <Button
+        endIcon={<Share />}
+        color='primary'
+        style={{ textTransform: 'unset' }}
+        onClick={onOpenLink}
+      >
+        Share
+      </Button>
       <Dialog
         onClose={onClose}
         aria-labelledby='simple-dialog-title'
-        open={open == 'link'}
+        open={open === 'link'}
       >
         <DialogTitle onClose={onClose}>Direct Link</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            {`${window.location.protocol}//${window.location.host}?norm=${normalized}&ds=${dataset}`}
+            {getDirectLink(dataset, normalized, region)}
           </DialogContentText>
         </DialogContent>
       </Dialog>
       <Dialog
         onClose={onClose}
         aria-labelledby='simple-dialog-title'
-        open={open == 'info'}
+        open={open === 'info'}
       >
         <DialogTitle onClose={onClose}>About</DialogTitle>
         <DialogContent>

@@ -68,7 +68,7 @@ export default function App({
       ?.filter((row) => row.population > populationLimit)
       .map(changeMapper)
       .filter((s) => s != null)
-      .slice(0, Math.min(indexOfMd + 1, rows?.length - 1)) as TimeSeries[];
+      .slice(0, Math.min(indexOfMd + 1, rows?.length)) as TimeSeries[];
     setSeries(newSeries);
   }, [rows, normalized, dataset, setSeries]);
 
