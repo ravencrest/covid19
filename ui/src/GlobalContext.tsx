@@ -83,6 +83,7 @@ function GlobalContext() {
 
   const onDatasetChange = React.useCallback(
     (ds) => {
+      window.location.hash = `/${ds}?norm=${normalized}`;
       updateState((draft) => {
         draft.dataset = ds;
       });
@@ -91,6 +92,7 @@ function GlobalContext() {
   );
   const onNormalizedChange = React.useCallback(
     (norm) => {
+      window.location.hash = `/${dataset}?norm=${norm}`;
       updateState((draft) => {
         draft.normalized = norm;
       });
