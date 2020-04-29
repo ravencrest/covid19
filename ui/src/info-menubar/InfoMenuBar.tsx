@@ -85,9 +85,9 @@ export const getDirectLink = (
   normalized: boolean,
   region?: string
 ) => {
-  return `${window.location.protocol}//${window.location.host}#/${dataset}${
-    region ? `/${region}` : ''
-  }?norm=${normalized}`;
+  return `${window.location.protocol}//${window.location.host}${
+    window.location.pathname
+  }#/${dataset}${region ? `/${region}` : ''}?norm=${normalized}`;
 };
 
 export const ShareDialog = ({
