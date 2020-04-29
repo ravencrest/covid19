@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, Redirect } from 'react-router-dom';
 import GlobalContext from './GlobalContext';
 import { Switch } from 'react-router';
 

@@ -85,7 +85,7 @@ export const getDirectLink = (
   normalized: boolean,
   region?: string
 ) => {
-  return `${window.location.protocol}//${window.location.host}/${dataset}${
+  return `${window.location.protocol}//${window.location.host}#/${dataset}${
     region ? `/${region}` : ''
   }?norm=${normalized}`;
 };
