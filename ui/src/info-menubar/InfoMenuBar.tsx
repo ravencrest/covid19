@@ -10,6 +10,7 @@ import {
   Chip,
   makeStyles,
   Button,
+  Tooltip,
 } from '@material-ui/core';
 import { Help, Close, GitHub, Share } from '@material-ui/icons';
 import { githubUrl } from '../constants';
@@ -133,19 +134,25 @@ export default ({
         onDelete={onOpenInfo}
         onClick={onOpenInfo}
       />
+
       <Link href={githubUrl}>
-        <IconButton>
-          <GitHub />
-        </IconButton>
+        <Tooltip title='Fork on GitHub'>
+          <IconButton aria-label='Fork on GitHub'>
+            <GitHub />
+          </IconButton>
+        </Tooltip>
       </Link>
-      <Button
-        endIcon={<Share />}
-        color='primary'
-        style={{ textTransform: 'unset' }}
-        onClick={onOpenLink}
-      >
-        Share
-      </Button>
+      <Tooltip title='Share'>
+        <Button
+          aria-label='Share'
+          endIcon={<Share />}
+          color='primary'
+          style={{ textTransform: 'unset' }}
+          onClick={onOpenLink}
+        >
+          Share
+        </Button>
+      </Tooltip>
       <ShareDialog
         onClose={onClose}
         open={open === 'link'}

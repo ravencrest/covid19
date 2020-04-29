@@ -9,6 +9,7 @@ import {
   TableCell,
   TableRow as MuiTableRow,
   Paper,
+  Tooltip,
 } from '@material-ui/core';
 import { ExpandMore, Share } from '@material-ui/icons';
 import clsx from 'clsx';
@@ -176,15 +177,21 @@ export const SeriesTableRow = ({
                 <IconButton
                   size='small'
                   onClick={handleLinkClick}
-                  aria-label='share'
+                  aria-label='Share'
                 >
                   <Share />
                 </IconButton>
-                <ShareDialog
-                  onClose={closeLinkDialog}
-                  open={showLinkDialog}
-                  href={getDirectLink(dataset, normalized, row.original.region)}
-                />
+                <Tooltip title='Share'>
+                  <ShareDialog
+                    onClose={closeLinkDialog}
+                    open={showLinkDialog}
+                    href={getDirectLink(
+                      dataset,
+                      normalized,
+                      row.original.region
+                    )}
+                  />
+                </Tooltip>
               </>
             )}
           </TableCell>
