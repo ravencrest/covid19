@@ -23,7 +23,7 @@ export default ({ data, accessor, min, max }: Props) => {
     });
   }, []);
 
-  const isSmallScreen = document.documentElement.clientWidth;
+  const isSmallScreen = document.documentElement.clientWidth < 600;
   return (
     <div
       style={{
@@ -41,7 +41,7 @@ export default ({ data, accessor, min, max }: Props) => {
       )}
       {!!features.length && (
         <ResponsiveChoropleth
-          projectionScale={isSmallScreen < 600 ? 60 : 130}
+          projectionScale={isSmallScreen ? 60 : 130}
           data={results}
           features={features}
           margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
