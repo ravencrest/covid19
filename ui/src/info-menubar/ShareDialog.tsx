@@ -27,7 +27,9 @@ export const ShareDialog = ({
       }}
     >
       <DialogTitle onClose={onClose}>Direct Link</DialogTitle>
-      <DialogContent style={{ width: `${href.length / 1.5}em` }}>
+      <DialogContent
+        style={{ width: `${href.length / 1.5}em`, maxWidth: '80vw' }}
+      >
         <DialogContentText>
           <TextField
             value={href}
