@@ -15,7 +15,8 @@ import { ExpandMore, Share } from '@material-ui/icons';
 import clsx from 'clsx';
 import { Cell, Row } from 'react-table';
 import { DataSets, TableRow, TimeSeries } from '../types';
-import { getDirectLink, ShareDialog } from '../info-menubar/InfoMenuBar';
+import { getDirectLink } from '../info-menubar/InfoMenuBar';
+import { ShareDialog } from '../info-menubar/ShareDialog';
 const LineChart = React.lazy(() => import('../line-chart/LineChart'));
 const CalendarChart = React.lazy(() =>
   import('../calendar-chart/CalendarChart')

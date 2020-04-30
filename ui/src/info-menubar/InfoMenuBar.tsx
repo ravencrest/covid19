@@ -1,20 +1,20 @@
 import React from 'react';
 import {
+  Button,
+  Chip,
   Dialog,
-  DialogTitle as MuiDialogTitle,
-  IconButton,
   DialogContent,
   DialogContentText,
-  Typography,
+  IconButton,
   Link as MuiLink,
-  Chip,
   makeStyles,
-  Button,
   Tooltip,
 } from '@material-ui/core';
-import { Help, Close, GitHub, Share } from '@material-ui/icons';
+import { GitHub, Help, Share } from '@material-ui/icons';
 import { githubUrl } from '../constants';
 import { formatRelative as format } from 'date-fns';
+import { ShareDialog } from './ShareDialog';
+import { DialogTitle } from '../dialog/DialogTitle';
 import { DataSets } from '../types';
 
 const useStyles = makeStyles((theme) => ({
@@ -29,12 +29,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  closeButton: {
-    position: 'absolute',
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-    color: theme.palette.grey[500],
-  },
 }));
 
 const Link = ({
@@ -48,28 +42,6 @@ const Link = ({
     {children}
   </MuiLink>
 );
-
-const DialogTitle = (props: {
-  onClose: () => void;
-  children: React.ReactChild;
-}) => {
-  const { children, onClose } = props;
-  const styles = useStyles();
-  return (
-    <MuiDialogTitle disableTypography>
-      <Typography variant='h6'>{children}</Typography>
-      {onClose ? (
-        <IconButton
-          aria-label='close'
-          className={styles.closeButton}
-          onClick={onClose}
-        >
-          <Close />
-        </IconButton>
-      ) : null}
-    </MuiDialogTitle>
-  );
-};
 
 const now = new Date();
 
@@ -89,25 +61,6 @@ export const getDirectLink = (
   return `${window.location.protocol}//${window.location.host}${
     window.location.pathname
   }#/${dataset}${region ? `/${region}` : ''}?norm=${normalized}`.toLowerCase();
-};
-
-export const ShareDialog = ({
-  onClose,
-  open,
-  href,
-}: {
-  onClose: () => void;
-  open: boolean;
-  href: string;
-}) => {
-  return (
-    <Dialog onClose={onClose} aria-labelledby='simple-dialog-title' open={open}>
-      <DialogTitle onClose={onClose}>Direct Link</DialogTitle>
-      <DialogContent>
-        <DialogContentText>{href}</DialogContentText>
-      </DialogContent>
-    </Dialog>
-  );
 };
 
 export default ({
