@@ -57,8 +57,8 @@ function SingleRegionTable({ columns, data, rowBuilder }: Props) {
   );
 
   return (
-    <TableContainer style={{ overflowX: 'hidden' }}>
-      <Table {...getTableProps()} size='small'>
+    <TableContainer>
+      <Table {...getTableProps()} size='small' style={{ overflow: 'hidden' }}>
         <TableHead>{headers}</TableHead>
         <TableBody>{rowCells}</TableBody>
       </Table>
