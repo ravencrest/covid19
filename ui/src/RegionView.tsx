@@ -4,11 +4,14 @@ import {
   FormControlLabel,
   CircularProgress,
   Switch,
+  Button,
 } from '@material-ui/core';
+import { ArrowBack } from '@material-ui/icons';
 import { TableRow, DataSets, TimeSeries } from './types';
 import RegionPane from './table/RegionPane';
 import { useParams } from 'react-router-dom';
 import { useImmer } from 'use-immer';
+import { setLocation } from './GlobalContext';
 
 const InfoMenuBar = React.lazy(() => import('./info-menubar/InfoMenuBar'));
 
@@ -65,6 +68,17 @@ export default function RegionView({
   return (
     <div style={{ maxWidth: 1048, margin: 'auto' }}>
       <React.Suspense fallback={<CircularProgress />}>
+        <Button
+          fullWidth
+          color='primary'
+          variant='contained'
+          startIcon={<ArrowBack />}
+          onClick={() => {
+            setLocation(dataset, normalized);
+          }}
+        >
+          Back to all results
+        </Button>
         <InfoMenuBar
           lastUpdated={lastUpdated}
           normalized={normalized}
