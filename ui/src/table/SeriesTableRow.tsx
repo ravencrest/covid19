@@ -185,11 +185,7 @@ export const SeriesTableRow = ({
                   <ShareDialog
                     onClose={closeLinkDialog}
                     open={showLinkDialog}
-                    href={getDirectLink(
-                      dataset,
-                      normalized,
-                      row.original.region
-                    )}
+                    href={getDirectLink(dataset, normalized, row.original.code)}
                   />
                 </Tooltip>
               </>

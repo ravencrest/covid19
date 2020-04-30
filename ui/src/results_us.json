@@ -1,8 +1,9 @@
 {
-  "lastUpdated": "2020-04-30T01:38:20.8474417Z",
+  "lastUpdated": "2020-04-30T02:34:30.2724707Z",
   "rows": [
     {
       "region": "New York",
+      "code": "NY",
       "cases": 295106,
       "casesNormalized": 15180,
       "change": -0.2128575044292584,
@@ -359,6 +360,7 @@
     },
     {
       "region": "New Jersey",
+      "code": "NJ",
       "cases": 113856,
       "casesNormalized": 12740,
       "change": 0.24093023255813953,
@@ -715,6 +717,7 @@
     },
     {
       "region": "Massachusetts",
+      "code": "MA",
       "cases": 58302,
       "casesNormalized": 8357,
       "change": 0.2073490813648294,
@@ -1071,6 +1074,7 @@
     },
     {
       "region": "Rhode Island",
+      "code": "RI",
       "cases": 7927,
       "casesNormalized": 7505,
       "change": -0.18587360594795538,
@@ -1427,6 +1431,7 @@
     },
     {
       "region": "Connecticut",
+      "code": "CT",
       "cases": 26312,
       "casesNormalized": 7385,
       "change": -0.5673076923076923,
@@ -1783,6 +1788,7 @@
     },
     {
       "region": "Louisiana",
+      "code": "LA",
       "cases": 27286,
       "casesNormalized": 5874,
       "change": -0.26101694915254237,
@@ -2139,6 +2145,7 @@
     },
     {
       "region": "District of Columbia",
+      "code": "DC",
       "cases": 3994,
       "casesNormalized": 5542,
       "change": 1.0,
@@ -2495,6 +2502,7 @@
     },
     {
       "region": "Delaware",
+      "code": "DE",
       "cases": 4575,
       "casesNormalized": 4655,
       "change": 2.2265625,
@@ -2851,6 +2859,7 @@
     },
     {
       "region": "Michigan",
+      "code": "MI",
       "cases": 39262,
       "casesNormalized": 3909,
       "change": 1.4351851851851851,
@@ -3207,6 +3216,7 @@
     },
     {
       "region": "Illinois",
+      "code": "IL",
       "cases": 48102,
       "casesNormalized": 3800,
       "change": 0.12070707070707071,
@@ -3563,6 +3573,7 @@
     },
     {
       "region": "Pennsylvania",
+      "code": "PA",
       "cases": 45137,
       "casesNormalized": 3521,
       "change": 0.6762208067940552,
@@ -3919,6 +3930,7 @@
     },
     {
       "region": "Maryland",
+      "code": "MD",
       "cases": 20113,
       "casesNormalized": 3306,
       "change": -0.3090507726269316,
@@ -4275,6 +4287,7 @@
     },
     {
       "region": "South Dakota",
+      "code": "SD",
       "cases": 2313,
       "casesNormalized": 2561,
       "change": 1.15625,
@@ -4631,6 +4644,7 @@
     },
     {
       "region": "Indiana",
+      "code": "IN",
       "cases": 16588,
       "casesNormalized": 2459,
       "change": -0.339304531085353,
@@ -4987,6 +5001,7 @@
     },
     {
       "region": "Colorado",
+      "code": "CO",
       "cases": 14316,
       "casesNormalized": 2449,
       "change": -0.00228310502283105,
@@ -5343,6 +5358,7 @@
     },
     {
       "region": "Georgia",
+      "code": "GA",
       "cases": 24922,
       "casesNormalized": 2321,
       "change": -0.24019607843137256,
@@ -5699,6 +5715,7 @@
     },
     {
       "region": "Mississippi",
+      "code": "MS",
       "cases": 6342,
       "casesNormalized": 2122,
       "change": 0.3551912568306011,
@@ -6055,6 +6072,7 @@
     },
     {
       "region": "Iowa",
+      "code": "IA",
       "cases": 6376,
       "casesNormalized": 2005,
       "change": 0.29591836734693877,
@@ -6411,6 +6429,7 @@
     },
     {
       "region": "Nebraska",
+      "code": "NE",
       "cases": 3517,
       "casesNormalized": 1801,
       "change": -0.5152439024390244,
@@ -6767,6 +6786,7 @@
     },
     {
       "region": "Washington",
+      "code": "WA",
       "cases": 13842,
       "casesNormalized": 1775,
       "change": -0.05454545454545454,
@@ -7123,6 +7143,7 @@
     },
     {
       "region": "Virginia",
+      "code": "VA",
       "cases": 14339,
       "casesNormalized": 1662,
       "change": 0.4102112676056338,
@@ -7479,6 +7500,7 @@
     },
     {
       "region": "Nevada",
+      "code": "NV",
       "cases": 4821,
       "casesNormalized": 1536,
       "change": -4.5588235294117645,
@@ -7835,6 +7857,7 @@
     },
     {
       "region": "Florida",
+      "code": "FL",
       "cases": 32848,
       "casesNormalized": 1494,
       "change": 0.1716171617161716,
@@ -8191,6 +8214,7 @@
     },
     {
       "region": "New Hampshire",
+      "code": "NH",
       "cases": 2010,
       "casesNormalized": 1466,
       "change": -0.02702702702702703,
@@ -8547,6 +8571,7 @@
     },
     {
       "region": "Tennessee",
+      "code": "TN",
       "cases": 10052,
       "casesNormalized": 1457,
       "change": -0.46613545816733065,
@@ -8903,6 +8928,7 @@
     },
     {
       "region": "Ohio",
+      "code": "OH",
       "cases": 16769,
       "casesNormalized": 1427,
       "change": 0.2577903682719547,
@@ -9259,6 +9285,7 @@
     },
     {
       "region": "New Mexico",
+      "code": "NM",
       "cases": 2974,
       "casesNormalized": 1418,
       "change": 0.5050505050505051,
@@ -9615,6 +9642,7 @@
     },
     {
       "region": "Alabama",
+      "code": "AL",
       "cases": 6750,
       "casesNormalized": 1375,
       "change": 0.788135593220339,
@@ -9971,6 +9999,7 @@
     },
     {
       "region": "Vermont",
+      "code": "VT",
       "cases": 862,
       "casesNormalized": 1372,
       "change": 0.75,
@@ -10327,6 +10356,7 @@
     },
     {
       "region": "Utah",
+      "code": "UT",
       "cases": 4345,
       "casesNormalized": 1324,
       "change": -0.035398230088495575,
@@ -10683,6 +10713,7 @@
     },
     {
       "region": "North Dakota",
+      "code": "ND",
       "cases": 991,
       "casesNormalized": 1301,
       "change": -0.3466666666666667,
@@ -11039,6 +11070,7 @@
     },
     {
       "region": "Kansas",
+      "code": "KS",
       "cases": 3652,
       "casesNormalized": 1255,
       "change": -0.08673469387755102,
@@ -11395,6 +11427,7 @@
     },
     {
       "region": "Missouri",
+      "code": "MO",
       "cases": 7450,
       "casesNormalized": 1208,
       "change": -0.21621621621621623,
@@ -11751,6 +11784,7 @@
     },
     {
       "region": "California",
+      "code": "CA",
       "cases": 46164,
       "casesNormalized": 1156,
       "change": -0.14914772727272727,
@@ -12107,6 +12141,7 @@
     },
     {
       "region": "South Carolina",
+      "code": "SC",
       "cases": 5735,
       "casesNormalized": 1101,
       "change": 0.06086956521739131,
@@ -12463,6 +12498,7 @@
     },
     {
       "region": "Wisconsin",
+      "code": "WI",
       "cases": 6289,
       "casesNormalized": 1075,
       "change": 0.23076923076923078,
@@ -12819,6 +12855,7 @@
     },
     {
       "region": "Idaho",
+      "code": "ID",
       "cases": 1952,
       "casesNormalized": 1069,
       "change": 0.0,
@@ -13175,6 +13212,7 @@
     },
     {
       "region": "Arkansas",
+      "code": "AR",
       "cases": 3127,
       "casesNormalized": 1029,
       "change": -0.14705882352941177,
@@ -13531,6 +13569,7 @@
     },
     {
       "region": "Kentucky",
+      "code": "KY",
       "cases": 4375,
       "casesNormalized": 972,
       "change": 2.084507042253521,
@@ -13887,6 +13926,7 @@
     },
     {
       "region": "Wyoming",
+      "code": "WY",
       "cases": 536,
       "casesNormalized": 945,
       "change": -0.1111111111111111,
@@ -14243,6 +14283,7 @@
     },
     {
       "region": "Arizona",
+      "code": "AZ",
       "cases": 6955,
       "casesNormalized": 943,
       "change": 0.20418848167539266,
@@ -14599,6 +14640,7 @@
     },
     {
       "region": "North Carolina",
+      "code": "NC",
       "cases": 9755,
       "casesNormalized": 919,
       "change": -0.24129930394431554,
@@ -14955,6 +14997,7 @@
     },
     {
       "region": "Texas",
+      "code": "TX",
       "cases": 26357,
       "casesNormalized": 894,
       "change": 1.926553672316384,
@@ -15311,6 +15354,7 @@
     },
     {
       "region": "Oklahoma",
+      "code": "OK",
       "cases": 3410,
       "casesNormalized": 862,
       "change": 3.7777777777777777,
@@ -15667,6 +15711,7 @@
     },
     {
       "region": "Guam",
+      "code": "GU",
       "cases": 141,
       "casesNormalized": 835,
       "change": 0.0,
@@ -16023,6 +16068,7 @@
     },
     {
       "region": "Maine",
+      "code": "ME",
       "cases": 1040,
       "casesNormalized": 773,
       "change": 1.125,
@@ -16379,6 +16425,7 @@
     },
     {
       "region": "Minnesota",
+      "code": "MN",
       "cases": 4181,
       "casesNormalized": 733,
       "change": 0.7703349282296651,
@@ -16735,6 +16782,7 @@
     },
     {
       "region": "West Virginia",
+      "code": "WV",
       "cases": 1095,
       "casesNormalized": 616,
       "change": 3.0,
@@ -17091,6 +17139,7 @@
     },
     {
       "region": "Oregon",
+      "code": "OR",
       "cases": 2385,
       "casesNormalized": 555,
       "change": -0.27906976744186046,
@@ -17447,6 +17496,7 @@
     },
     {
       "region": "Virgin Islands",
+      "code": "VI",
       "cases": 57,
       "casesNormalized": 546,
       "change": 0.0,
@@ -17803,6 +17853,7 @@
     },
     {
       "region": "Alaska",
+      "code": "AK",
       "cases": 351,
       "casesNormalized": 478,
       "change": 0.2,
@@ -18159,6 +18210,7 @@
     },
     {
       "region": "Puerto Rico",
+      "code": "PR",
       "cases": 1400,
       "casesNormalized": 462,
       "change": -0.3888888888888889,
@@ -18515,6 +18567,7 @@
     },
     {
       "region": "Hawaii",
+      "code": "HI",
       "cases": 609,
       "casesNormalized": 431,
       "change": 1.0,
@@ -18871,6 +18924,7 @@
     },
     {
       "region": "Montana",
+      "code": "MT",
       "cases": 451,
       "casesNormalized": 415,
       "change": 1.0,
@@ -19227,6 +19281,7 @@
     },
     {
       "region": "Northern Mariana Islands",
+      "code": "MP",
       "cases": 14,
       "casesNormalized": 243,
       "change": 0.0,
@@ -19479,6 +19534,7 @@
     },
     {
       "region": "American Samoa",
+      "code": "AS",
       "cases": 0,
       "casesNormalized": 0,
       "change": 0.0,

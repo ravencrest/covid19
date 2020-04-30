@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2020-04-30T01:38:20.2444421Z",
+  "lastUpdated": "2020-04-30T02:34:30.1734706Z",
   "rows": [
     {
       "region": "San Marino",
@@ -11850,6 +11850,7 @@
     },
     {
       "region": "Iran",
+      "code": "IRN",
       "cases": 92584,
       "casesNormalized": 1102,
       "change": 0.12209889001009082,
@@ -35407,6 +35408,7 @@
     },
     {
       "region": "Bolivia",
+      "code": "BOL",
       "cases": 1014,
       "casesNormalized": 87,
       "change": -1.0,
@@ -51448,6 +51450,7 @@
     },
     {
       "region": "Venezuela",
+      "code": "VEN",
       "cases": 329,
       "casesNormalized": 12,
       "change": -1.0,
@@ -56847,6 +56850,7 @@
     },
     {
       "region": "Tanzania",
+      "code": "TZA",
       "cases": 299,
       "casesNormalized": 5,
       "change": 0.0,
@@ -58274,6 +58278,7 @@
     },
     {
       "region": "Vietnam",
+      "code": "VNM",
       "cases": 270,
       "casesNormalized": 3,
       "change": 0.0,

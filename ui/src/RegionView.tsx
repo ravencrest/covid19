@@ -51,9 +51,12 @@ export default function RegionView({
     const changeMapper = normalized ? getNormalizedSeries : getSeries;
     const indexOfMd = rows?.findIndex(indexToSlice) ?? 0;
 
-    const filteredRows = rows?.filter(
-      (row) => row.region.toLowerCase() === routeParams.region.toLowerCase()
-    );
+    const filteredRows = rows?.filter((row) => {
+      const region = row.region.toLowerCase();
+      const code = row.code.toLowerCase();
+      const paramRegion = routeParams.region.toLowerCase();
+      return code === paramRegion || region === paramRegion;
+    });
 
     const newSeries = filteredRows
       .map(changeMapper)

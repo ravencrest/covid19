@@ -14,6 +14,9 @@ val usPopulationPath: Path = Paths.get(rootPath, "us_population.csv").toAbsolute
 // Manually generated list that maps the country labels in the population data to the COVID-19 time series country labels
 val countriesPath: Path = Paths.get(rootPath, "country_codes_b.csv").toAbsolutePath()
 
+// Manually generated list that maps the country labels in the population data to the COVID-19 time series state labels
+val statesPath: Path = Paths.get(rootPath, "us_states.csv").toAbsolutePath()
+
 // Manually generated list for data we don't want to io.ravencrest.covid19.io.ravencrest.covid19.parse.parse
 val blacklistPath: Path = Paths.get(rootPath, "blacklist.txt").toAbsolutePath()
 
@@ -38,6 +41,16 @@ fun loadCountries(): Pair<Map<String, String>, Map<String, String>> {
     }
   }
   return Pair(map.toMap(), countryCodes.toMap())
+}
+
+fun loadStates(): Map<String, String> {
+  val countryCodes = mutableMapOf<String, String>()
+  readCsvToStringArray(statesPath).forEach {
+    val prefValue = it[0]
+    val letterCodeValue = it[1]
+    countryCodes[prefValue] = letterCodeValue
+  }
+  return countryCodes.toMap()
 }
 
 private fun loadPopulations(countries: Map<String, String>?, path: Path): Map<String, Long> {

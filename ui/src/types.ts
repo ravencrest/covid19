@@ -2,7 +2,7 @@ export type DataSets = 'global' | 'us';
 
 export type TableRow = {
   region: string;
-  code?: string;
+  code: string;
   cases: number;
   casesNormalized: number;
   change?: number;

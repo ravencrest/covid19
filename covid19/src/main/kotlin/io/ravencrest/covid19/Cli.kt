@@ -13,6 +13,7 @@ import io.ravencrest.covid19.parse.deleteStaleData
 import io.ravencrest.covid19.parse.isDev
 import io.ravencrest.covid19.parse.loadCountries
 import io.ravencrest.covid19.parse.loadGlobalPopulations
+import io.ravencrest.covid19.parse.loadStates
 import io.ravencrest.covid19.parse.loadUsPopulations
 import io.ravencrest.covid19.parse.normalize
 import io.ravencrest.covid19.parse.parseCsseCasesGlobal
@@ -45,8 +46,8 @@ fun parseGlobal(
   val fourteenDaysAgo = LocalDate.now().minusWeeks(2)
 
   val sortedCases = rawCases.values.map { series ->
-    val country = series.region
-    val countryCode = countryCodeIndex[country]
+    val region = series.region
+    val regionCode = countryCodeIndex[region] ?: error("No region code found for $region")
 
     val thisWeek = series.points.filter { point -> point.date >= sevenDaysAgo }
     val lastWeek = series.points.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
@@ -66,9 +67,9 @@ fun parseGlobal(
     val changePercent =
       if (newCases0 == newCases1 || newCases1 == 0L) 0.0 else ((newCases0 - newCases1) / newCases1.toDouble())
 
-    val population = populationIndex[country] ?: error("Missing population data for $country")
-    val deaths = deathsIndex[country]?.last()?.value ?: 0
-    val recovered = recoveredIndex[country]?.last()?.value
+    val population = populationIndex[region] ?: error("Missing population data for $region")
+    val deaths = deathsIndex[region]?.last()?.value ?: 0
+    val recovered = recoveredIndex[region]?.last()?.value
 
     val pointList = series.points.filter { point -> point.value > 0 }.filter { point -> point.date > startDate }
       .sortedBy { point -> point.date }
@@ -90,14 +91,14 @@ fun parseGlobal(
 
     val normalizedChangeSeries = changeSeries.map { point ->
       try { point.copy(value = normalize(point.value, population)) } catch (e: Exception) {
-        println("failed to normalize $country")
+        println("failed to normalize $region")
         throw e
       }
     }
 
     TableRow(
-      region = country,
-      code = countryCode,
+      region = region,
+      code = regionCode,
       cases = totalCases,
       casesNormalized = normalize(totalCases, population),
       change = changePercent,
@@ -142,7 +143,7 @@ fun main() {
     ::parseCsseDeathsGlobal,
     ::parseCsseRecoveredGlobal
   )
-  val usResults = parseGlobal(emptyMap(), emptyMap(), loadUsPopulations(), ::parseCsseCasesUS, ::parseCsseDeathsUS, null)
+  val usResults = parseGlobal(emptyMap(), loadStates(), loadUsPopulations(), ::parseCsseCasesUS, ::parseCsseDeathsUS, null)
 
   writeResults("results_us", usResults)
   writeResults("results_global", globalResults)
