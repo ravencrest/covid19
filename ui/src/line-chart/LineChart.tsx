@@ -72,7 +72,7 @@ export default React.memo(
           },
         ];
     return (
-      <div style={{ height }}>
+      <div style={{ height, maxWidth: '90vw', width: '100%' }}>
         <ResponsiveLine
           xScale={{
             type: 'time',

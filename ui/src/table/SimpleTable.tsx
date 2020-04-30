@@ -12,11 +12,19 @@ import { Column, useGlobalFilter, useSortBy, useTable, Row } from 'react-table';
 import { TableRow } from '../types';
 import { TableToolbar } from './TableToolbar';
 import { useCellStyles } from './SeriesTableRow';
+import stylesM from './Table.module.css';
+import clsx from 'clsx';
 
 type Props = {
   columns: Column<TableRow>[];
   data: TableRow[];
   rowBuilder: (row: Row<TableRow>, i: number) => React.ReactNode;
+};
+
+export const shouldHideColumn = (id: string) => {
+  return (
+    id === 'change' || id === 'recovered' || id == 'population' || id == 'row#'
+  );
 };
 
 export const SimpleTable = React.memo(
@@ -40,11 +48,19 @@ export const SimpleTable = React.memo(
 
     const headers = headerGroups.map((headerGroup) => (
       <MuiTableRow {...headerGroup.getHeaderGroupProps()}>
-        <TableCell className={styles.cell} />
+        <TableCell
+          className={clsx(
+            styles.cell,
+            shouldHideColumn('row#') ? stylesM.containerHidden : undefined
+          )}
+        />
         <TableCell className={styles.cell} />
         {headerGroup.headers.map((column) => (
           <TableCell
-            className={styles.cell}
+            className={clsx(
+              styles.cell,
+              shouldHideColumn(column.id) ? stylesM.containerHidden : undefined
+            )}
             key={column.id}
             {...column.getHeaderProps({
               ...column.getSortByToggleProps(),

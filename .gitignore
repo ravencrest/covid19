@@ -7,3 +7,4 @@ out
 /tmp
 *.iml
 node_modules
+/ui/src/results*.json

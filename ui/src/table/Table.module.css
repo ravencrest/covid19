@@ -1,0 +1,12 @@
+@media screen and (max-width: 600px) {
+  .container {
+    padding: unset !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .containerHidden {
+    display: none !important;
+    background-color: red !important;
+  }
+}

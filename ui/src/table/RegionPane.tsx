@@ -38,13 +38,13 @@ export default React.memo(function RegionPane({
     [normalized, dataset]
   );
   return (
-    <div style={{ maxWidth: 1048, margin: 'auto' }}>
+    <>
       <CssBaseline />
       <SingleRegionTable
         rowBuilder={rowBuilder}
         columns={filteredColumns}
         data={data}
       />
-    </div>
+    </>
   );
 });

@@ -10,6 +10,9 @@ import {
 import { Column, useTable, Row } from 'react-table';
 import { TableRow } from '../types';
 import { useCellStyles } from './SeriesTableRow';
+import stylesM from './Table.module.css';
+import clsx from 'clsx';
+import { shouldHideColumn } from './SimpleTable';
 
 type Props = {
   columns: Column<TableRow>[];
@@ -25,13 +28,20 @@ function SingleRegionTable({ columns, data, rowBuilder }: Props) {
   const styles = useCellStyles();
 
   const headers = headerGroups.map((headerGroup) => (
-    <MuiTableRow {...headerGroup.getHeaderGroupProps()}>
+    <MuiTableRow
+      {...headerGroup.getHeaderGroupProps()}
+      style={{ maxWidth: '90vw', overflow: 'hidden' }}
+    >
       {headerGroup.headers.map((column) => (
-        <TableCell className={styles.cell} key={column.id}>
+        <TableCell
+          className={clsx(
+            styles.cell,
+            shouldHideColumn(column.id) ? stylesM.containerHidden : undefined
+          )}
+          key={column.id}
+        >
           {' '}
-          <div style={{ display: 'inline-flex' }}>
-            {column.render('Header')}
-          </div>
+          {column.render('Header')}
         </TableCell>
       ))}
     </MuiTableRow>
@@ -47,7 +57,7 @@ function SingleRegionTable({ columns, data, rowBuilder }: Props) {
   );
 
   return (
-    <TableContainer style={{ overflowX: 'unset' }}>
+    <TableContainer style={{ overflowX: 'hidden' }}>
       <Table {...getTableProps()} size='small'>
         <TableHead>{headers}</TableHead>
         <TableBody>{rowCells}</TableBody>

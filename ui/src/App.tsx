@@ -74,7 +74,7 @@ export default function App({
 
   const worldAccessor = normalized ? rowToNormalizedCases : rowToCases;
   return (
-    <div style={{ maxWidth: 1048, margin: 'auto' }}>
+    <div style={{ width: 1048, maxWidth: '95vw', margin: 'auto' }}>
       <React.Suspense fallback={<CircularProgress />}>
         <InfoMenuBar
           lastUpdated={lastUpdated}

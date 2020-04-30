@@ -4,24 +4,19 @@ import { Column, Row } from 'react-table';
 import { SimpleTable } from './SimpleTable';
 import { TableRow, DataSets } from '../types';
 import { SeriesTableRow } from './SeriesTableRow';
+import stylesM from './Table.module.css';
 
 export const Header = ({
   children,
   tooltip,
+  className,
 }: {
   children: React.ReactChild;
   tooltip: string;
+  className?: string;
 }) => (
-  <Tooltip title={tooltip}>
-    <span
-      style={{
-        textOverflow: 'ellipsis',
-        overflow: 'hidden',
-        whiteSpace: 'nowrap',
-      }}
-    >
-      {children}
-    </span>
+  <Tooltip title={tooltip} className={className}>
+    <span>{children}</span>
   </Tooltip>
 );
 
@@ -40,7 +35,12 @@ export const buildColumns = (
   const columns: Column<TableRow>[] = [
     {
       Header: (
-        <Header tooltip='Increase in new cases since last data'>Change</Header>
+        <Header
+          tooltip='Increase in new cases since last data'
+          className={stylesM.containerHidden}
+        >
+          Change
+        </Header>
       ),
       accessor: 'change',
       id: 'change',
@@ -73,7 +73,10 @@ export const buildColumns = (
   if (dataset !== 'us') {
     columns.push({
       Header: (
-        <Header tooltip='Confirmed Recoveries'>
+        <Header
+          tooltip='Confirmed Recoveries'
+          className={stylesM.containerHidden}
+        >
           <div style={{ display: 'flex' }}>
             <span
               style={{
@@ -88,6 +91,7 @@ export const buildColumns = (
           </div>
         </Header>
       ),
+      id: 'recovered',
       accessor: normalized ? 'recoveredNormalized' : 'recovered',
     });
   }
@@ -130,13 +134,13 @@ export default React.memo(function TablePane({
     [normalized, datasetKey]
   );
   return (
-    <div style={{ maxWidth: 1048, margin: 'auto' }}>
+    <>
       <CssBaseline />
       <SimpleTable
         rowBuilder={rowBuilder}
         columns={filteredColumns}
         data={data}
       />
-    </div>
+    </>
   );
 });

@@ -69,7 +69,7 @@ export default function RegionView({
   }, [rows, normalized, dataset, setState, routeParams.region]);
 
   return (
-    <div style={{ maxWidth: 1048, margin: 'auto' }}>
+    <div style={{ width: 1048, maxWidth: '95vw', margin: 'auto' }}>
       <React.Suspense fallback={<CircularProgress />}>
         <Button
           fullWidth

@@ -17,6 +17,10 @@ import { Cell, Row } from 'react-table';
 import { DataSets, TableRow, TimeSeries } from '../types';
 import { getDirectLink } from '../info-menubar/InfoMenuBar';
 import { ShareDialog } from '../info-menubar/ShareDialog';
+import stylesM from './Table.module.css';
+import { Header } from './TablePane';
+import { shouldHideColumn } from './SimpleTable';
+
 const LineChart = React.lazy(() => import('../line-chart/LineChart'));
 const CalendarChart = React.lazy(() =>
   import('../calendar-chart/CalendarChart')
@@ -54,6 +58,10 @@ export const useCellStyles = makeStyles((theme: Theme) =>
     },
     cell: {
       padding: '6px 6px 6px 0px !important',
+      maxWidth: '15vw',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
     },
     bold: {
       fontWeight: 'bold',
@@ -137,7 +145,7 @@ export const SeriesTableRow = ({
 
   return (
     <>
-      <MuiTableRow {...rowProps}>
+      <MuiTableRow {...rowProps} style={{ maxWidth: '95vw' }}>
         {!embedded && (
           <TableCell className={classes.cell} id={`${row.original.region}`}>
             {series && (
@@ -156,14 +164,22 @@ export const SeriesTableRow = ({
           </TableCell>
         )}
         {!embedded && (
-          <TableCell className={classes.cell}>{rowNumber + 1}</TableCell>
+          <TableCell
+            className={clsx(
+              classes.cell,
+              shouldHideColumn('row#') ? stylesM.containerHidden : undefined
+            )}
+          />
         )}
         {cells.map((cell) => {
           return (
             <TableCell
               className={clsx(
                 classes.cell,
-                ...getCellClasses(classes, cell, row)
+                ...getCellClasses(classes, cell, row),
+                shouldHideColumn(cell.column.id)
+                  ? stylesM.containerHidden
+                  : undefined
               )}
               {...cell.getCellProps()}
             >
@@ -195,8 +211,15 @@ export const SeriesTableRow = ({
         )}
       </MuiTableRow>
       {series && expandedState !== 'CLOSED' && (
-        <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`}>
-          <TableCell colSpan={cells.length + (embedded ? 0 : 3)}>
+        <MuiTableRow
+          {...rowProps}
+          key={`${rowProps.key}_expand`}
+          style={{ maxWidth: '95vw', overflow: 'hidden' }}
+        >
+          <TableCell
+            colSpan={cells.length + (embedded ? 0 : 3)}
+            className={stylesM.container}
+          >
             <Collapse
               in={expanded}
               timeout='auto'

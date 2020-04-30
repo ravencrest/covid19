@@ -24,7 +24,7 @@ const CalendarChart = React.memo(({ data, height = '15em' }: Props) => {
     : setDayOfYear(new Date(), 365);
 
   return (
-    <div style={{ height: '15em' }}>
+    <div style={{ height: '15em', maxWidth: '90vw', width: '100%' }}>
       <ResponsiveCalendar
         data={data.points.map(pointToDatum)}
         from={from}
