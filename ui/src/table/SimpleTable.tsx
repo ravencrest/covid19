@@ -77,7 +77,7 @@ export const SimpleTable = React.memo(
     );
 
     return (
-      <TableContainer>
+      <TableContainer style={{ overflowX: 'unset' }}>
         {rows.length > 1 && (
           <TableToolbar
             setGlobalFilter={setGlobalFilter}

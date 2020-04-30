@@ -134,7 +134,6 @@ export default ({
         onDelete={onOpenInfo}
         onClick={onOpenInfo}
       />
-
       <Link href={githubUrl}>
         <Tooltip title='Fork on GitHub'>
           <IconButton aria-label='Fork on GitHub'>
