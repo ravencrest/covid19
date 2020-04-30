@@ -44,12 +44,21 @@ const useResults = (
   }, [global, handler]);
 };
 
+export const setLocation = (
+  dataset: DataSets,
+  normalized: boolean,
+  region?: string
+) => {
+  window.location.hash = `/${dataset}${
+    region ? `/${region}` : ''
+  }?norm=${normalized}`;
+};
+
 const Context = React.createContext({});
 
 function GlobalContext() {
   const pathParams = useParams<{ dataset: string }>();
   const pathDataset = pathParams.dataset ?? 'global';
-
   const a = useLocation();
   const search = a.search;
   const params: { norm?: string } =
@@ -82,22 +91,22 @@ function GlobalContext() {
   );
 
   const onDatasetChange = React.useCallback(
-    (ds) => {
-      window.location.hash = `/${ds}?norm=${normalized}`;
+    (ds: DataSets, region?: string) => {
+      setLocation(ds, normalized, region);
       updateState((draft) => {
         draft.dataset = ds;
       });
     },
-    [updateState]
+    [updateState, normalized]
   );
   const onNormalizedChange = React.useCallback(
-    (norm) => {
-      window.location.hash = `/${dataset}?norm=${norm}`;
+    (norm: boolean, region?: string) => {
+      setLocation(dataset, norm, region);
       updateState((draft) => {
         draft.normalized = norm;
       });
     },
-    [updateState]
+    [updateState, dataset]
   );
 
   return (

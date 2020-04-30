@@ -22,7 +22,7 @@ type Props = {
   rows: TableRow[];
   normalized: boolean;
   lastUpdated: Date | undefined;
-  onNormalizedChange: (normalized: boolean) => void;
+  onNormalizedChange: (normalized: boolean, region: string) => void;
 };
 
 export default function RegionView({
@@ -77,7 +77,7 @@ export default function RegionView({
                 checked={normalized}
                 onChange={(event, value) => {
                   event.stopPropagation();
-                  onNormalizedChange(value);
+                  onNormalizedChange(value, region);
                 }}
                 name='normalized'
               />
