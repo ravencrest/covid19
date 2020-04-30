@@ -42,35 +42,36 @@ export default React.memo(
         ? data.map(seriesToData)
         : [seriesToData(data)];
     }, [data]);
-
-    const legends: LegendProps[] | undefined = hideLegend
-      ? undefined
-      : [
-          {
-            anchor: 'bottom-right',
-            direction: 'column',
-            justify: false,
-            translateX: 100,
-            translateY: 0,
-            itemsSpacing: 0,
-            itemDirection: 'left-to-right',
-            itemWidth: 80,
-            itemHeight: 20,
-            itemOpacity: 0.75,
-            symbolSize: 12,
-            symbolShape: 'circle',
-            symbolBorderColor: 'rgba(0, 0, 0, .5)',
-            effects: [
-              {
-                on: 'hover',
-                style: {
-                  itemBackground: 'rgba(0, 0, 0, .03)',
-                  itemOpacity: 1,
+    const isSmallScreen = document.documentElement.clientWidth < 600;
+    const legends: LegendProps[] | undefined =
+      hideLegend || isSmallScreen
+        ? undefined
+        : [
+            {
+              anchor: isSmallScreen ? 'bottom' : 'bottom-right',
+              direction: isSmallScreen ? 'row' : 'column',
+              justify: false,
+              translateX: 100,
+              translateY: 0,
+              itemsSpacing: 0,
+              itemDirection: 'left-to-right',
+              itemWidth: 80,
+              itemHeight: 20,
+              itemOpacity: 0.75,
+              symbolSize: 12,
+              symbolShape: 'circle',
+              symbolBorderColor: 'rgba(0, 0, 0, .5)',
+              effects: [
+                {
+                  on: 'hover',
+                  style: {
+                    itemBackground: 'rgba(0, 0, 0, .03)',
+                    itemOpacity: 1,
+                  },
                 },
-              },
-            ],
-          },
-        ];
+              ],
+            },
+          ];
     return (
       <div style={{ height, maxWidth: '90vw', width: '100%' }}>
         <ResponsiveLine
@@ -80,7 +81,12 @@ export default React.memo(
             precision: 'day',
           }}
           data={mappedData}
-          margin={{ top: marginTop, right: marginRight, bottom: 50, left: 60 }}
+          margin={{
+            top: marginTop,
+            right: isSmallScreen ? 10 : marginRight,
+            bottom: 50,
+            left: 60,
+          }}
           enablePoints={false}
           yScale={{
             type: 'linear',
@@ -101,19 +107,15 @@ export default React.memo(
             format: '%b %d',
           }}
           tooltip={LineChartTooltip}
-          axisLeft={
-            hideLegend
-              ? undefined
-              : {
-                  orient: 'left',
-                  tickSize: 5,
-                  tickPadding: 5,
-                  tickRotation: 0,
-                  legend: leftAxisLabel,
-                  legendOffset: -40,
-                  legendPosition: 'middle',
-                }
-          }
+          axisLeft={{
+            orient: 'left',
+            tickSize: 5,
+            tickPadding: 5,
+            tickRotation: 0,
+            legend: leftAxisLabel,
+            legendOffset: -40,
+            legendPosition: 'middle',
+          }}
           colors={{ scheme: 'category10' }}
           pointSize={10}
           pointColor={{ theme: 'background' }}
@@ -121,7 +123,6 @@ export default React.memo(
           pointBorderColor={{ from: 'serieColor' }}
           pointLabel='y'
           xFormat='time:%Y-%m-%d'
-          pointLabelYOffset={-12}
           useMesh={true}
           legends={legends}
         />
