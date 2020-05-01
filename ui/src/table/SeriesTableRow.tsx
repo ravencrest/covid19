@@ -18,8 +18,7 @@ import { DataSets, TableRow, TimeSeries } from '../types';
 import { getDirectLink } from '../info-menubar/InfoMenuBar';
 import { ShareDialog } from '../info-menubar/ShareDialog';
 import stylesM from './Table.module.css';
-import { Header } from './TablePane';
-import { shouldHideColumn } from './SimpleTable';
+import { Column } from './SimpleTable';
 
 const LineChart = React.lazy(() => import('../line-chart/LineChart'));
 const CalendarChart = React.lazy(() =>
@@ -33,6 +32,7 @@ type Props = {
   embedded?: boolean;
   dataset: DataSets;
   normalized: boolean;
+  columnIndex: ReadonlyMap<string, Column<TableRow>>;
 };
 
 type ExpandState = 'OPEN' | 'CLOSED' | 'CLOSING';
@@ -119,11 +119,11 @@ export const SeriesPanel = ({ series }: { series: TimeSeries }) => {
 
 export const SeriesTableRow = ({
   row,
-  rowNumber,
   series,
   embedded,
   dataset,
   normalized,
+  columnIndex,
 }: Props) => {
   const [expandedState, setExpandedState] = React.useState<ExpandState>(
     embedded ? 'OPEN' : 'CLOSED'
@@ -164,22 +164,17 @@ export const SeriesTableRow = ({
           </TableCell>
         )}
         {!embedded && (
-          <TableCell
-            className={clsx(
-              classes.cell,
-              shouldHideColumn('row#') ? stylesM.containerHidden : undefined
-            )}
-          />
+          <TableCell className={clsx(classes.cell, stylesM.containerHidden)} />
         )}
         {cells.map((cell) => {
+          const column = columnIndex.get(cell.column.id);
+
           return (
             <TableCell
               className={clsx(
                 classes.cell,
                 ...getCellClasses(classes, cell, row),
-                shouldHideColumn(cell.column.id)
-                  ? stylesM.containerHidden
-                  : undefined
+                column?.className
               )}
               {...cell.getCellProps()}
             >
@@ -191,20 +186,20 @@ export const SeriesTableRow = ({
           <TableCell className={classes.cell} id={`${row.original.region}`}>
             {series && (
               <>
-                <IconButton
-                  size='small'
-                  onClick={handleLinkClick}
-                  aria-label='Share'
-                >
-                  <Share />
-                </IconButton>
                 <Tooltip title='Share'>
-                  <ShareDialog
-                    onClose={closeLinkDialog}
-                    open={showLinkDialog}
-                    href={getDirectLink(dataset, normalized, row.original.code)}
-                  />
+                  <IconButton
+                    size='small'
+                    onClick={handleLinkClick}
+                    aria-label='Share'
+                  >
+                    <Share />
+                  </IconButton>
                 </Tooltip>
+                <ShareDialog
+                  onClose={closeLinkDialog}
+                  open={showLinkDialog}
+                  href={getDirectLink(dataset, normalized, row.original.code)}
+                />
               </>
             )}
           </TableCell>

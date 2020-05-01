@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement, ReactFragment, ReactText } from 'react';
 import {
   Table,
   TableBody,
@@ -8,27 +8,86 @@ import {
   TableRow as MuiTableRow,
   TableSortLabel,
 } from '@material-ui/core';
-import { Column, useGlobalFilter, useSortBy, useTable, Row } from 'react-table';
+import {
+  Column as RtColumn,
+  useGlobalFilter,
+  useSortBy,
+  useTable,
+  Row,
+  CellProps,
+  UseTableRowProps,
+} from 'react-table';
 import { TableRow } from '../types';
 import { TableToolbar } from './TableToolbar';
 import { useCellStyles } from './SeriesTableRow';
 import stylesM from './Table.module.css';
 import clsx from 'clsx';
 
+type ValueOf<T> = T[keyof T];
+
+type ColumnInterfaceBasedOnValue<T, V> = {
+  cell?: (props: {
+    value: V;
+    row: T;
+  }) => ReactElement | ReactText | ReactFragment;
+};
+
+export type Column<T> = {
+  id: string;
+  header?: React.ReactNode;
+  sortable?: boolean;
+  hidden?: boolean;
+  className?: string;
+  width?: number;
+} & ValueOf<
+  {
+    [K in keyof T]: {
+      accessor: K;
+    } & ColumnInterfaceBasedOnValue<T, T[K]>;
+  }
+>;
+
 type Props = {
   columns: Column<TableRow>[];
   data: TableRow[];
-  rowBuilder: (row: Row<TableRow>, i: number) => React.ReactNode;
-};
-
-export const shouldHideColumn = (id: string) => {
-  return (
-    id === 'change' || id === 'recovered' || id == 'population' || id == 'row#'
-  );
+  rowBuilder: (
+    row: Row<TableRow>,
+    columnIndex: ReadonlyMap<string, Column<TableRow>>,
+    i: number
+  ) => React.ReactNode;
+  embedded?: boolean;
 };
 
 export const SimpleTable = React.memo(
-  ({ columns, data, rowBuilder }: Props) => {
+  ({ columns: rawColumns, data, rowBuilder, embedded }: Props) => {
+    const rawColumnIndex = React.useMemo(() => {
+      const index = new Map<string, Column<TableRow>>();
+      for (let column of rawColumns) {
+        index.set(column.id, column);
+      }
+      return index as ReadonlyMap<string, Column<TableRow>>;
+    }, [rawColumns]);
+    const columns = React.useMemo(
+      () =>
+        rawColumns.map((col) => {
+          const { id, header, cell: cellRender, accessor } = col;
+          const c: RtColumn<TableRow> = {
+            id,
+            accessor,
+          };
+          header && (c.Header = header);
+          cellRender &&
+            ((c as any).Cell = ({
+              row,
+              cell,
+            }: {
+              row: UseTableRowProps<TableRow>;
+              cell: CellProps<TableRow>;
+            }) => cellRender({ value: cell.value as any, row: row.original }));
+          return c;
+        }),
+      [rawColumns]
+    );
     const {
       getTableProps,
       headerGroups,
@@ -48,18 +107,15 @@ export const SimpleTable = React.memo(
 
     const headers = headerGroups.map((headerGroup) => (
       <MuiTableRow {...headerGroup.getHeaderGroupProps()}>
-        <TableCell
-          className={clsx(
-            styles.cell,
-            shouldHideColumn('row#') ? stylesM.containerHidden : undefined
-          )}
-        />
-        <TableCell className={styles.cell} />
+        {!embedded && (
+          <TableCell className={clsx(styles.cell, stylesM.containerHidden)} />
+        )}
+        {!embedded && <TableCell className={styles.cell} />}
         {headerGroup.headers.map((column) => (
           <TableCell
             className={clsx(
               styles.cell,
-              shouldHideColumn(column.id) ? stylesM.containerHidden : undefined
+              rawColumnIndex.get(column.id)?.className
             )}
             key={column.id}
             {...column.getHeaderProps({
@@ -87,9 +143,9 @@ export const SimpleTable = React.memo(
       () =>
         rows.map((row, i) => {
           prepareRow(row);
-          return rowBuilder(row, i);
+          return rowBuilder(row, rawColumnIndex, i);
         }),
-      [rowBuilder, prepareRow, rows]
+      [rowBuilder, prepareRow, rows, rawColumnIndex]
     );
 
     return (

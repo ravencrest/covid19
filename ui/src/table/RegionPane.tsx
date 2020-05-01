@@ -3,8 +3,8 @@ import { CssBaseline } from '@material-ui/core';
 import { Row } from 'react-table';
 import { TableRow, DataSets } from '../types';
 import { SeriesTableRow } from './SeriesTableRow';
-import SingleRegionTable from './SingleRegionTable';
 import { buildColumns } from './TablePane';
+import { Column, SimpleTable } from './SimpleTable';
 export default React.memo(function RegionPane({
   data,
   normalized,
@@ -19,13 +19,17 @@ export default React.memo(function RegionPane({
     [normalized, dataset]
   );
   const rowBuilder = React.useCallback(
-    (row: Row<TableRow>, i: number) => (
+    (
+      row: Row<TableRow>,
+      columnIndex: ReadonlyMap<string, Column<TableRow>>,
+      i: number
+    ) => (
       <SeriesTableRow
         embedded
         {...row.getRowProps()}
+        rowNumber={i}
         key={`${i}`}
         row={row}
-        rowNumber={i}
         series={
           normalized
             ? row.original.changeNormalizedSeries
@@ -33,6 +37,7 @@ export default React.memo(function RegionPane({
         }
         normalized={normalized}
         dataset={dataset}
+        columnIndex={columnIndex}
       />
     ),
     [normalized, dataset]
@@ -40,7 +45,8 @@ export default React.memo(function RegionPane({
   return (
     <>
       <CssBaseline />
-      <SingleRegionTable
+      <SimpleTable
+        embedded
         rowBuilder={rowBuilder}
         columns={filteredColumns}
         data={data}

@@ -48,16 +48,33 @@ fun parseGlobal(
   val sortedCases = rawCases.values.map { series ->
     val region = series.region
     val regionCode = countryCodeIndex[region] ?: error("No region code found for $region")
+    var prev: Point? = null
+    val points = series.points.sortedBy { it.date }.filterNot { it.value == 0L }
+    var filteredPoints = mutableListOf<Point>()
+    for (point in points) {
+      if (prev != null) {
+          if(prev.value <= point.value) {
+             filteredPoints.add(point)
+            prev = point
 
-    val thisWeek = series.points.filter { point -> point.date >= sevenDaysAgo }
-    val lastWeek = series.points.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
+          }
+      } else {
+        prev = point
+      }
+    }
+
+    val thisWeek = filteredPoints.filter { point -> point.date >= sevenDaysAgo }
+    val lastWeek = filteredPoints.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
 
     val twa = thisWeek.map { it.value }.average()
     val lwa = lastWeek.map { it.value }.average()
     val weeklyChange = ((twa - lwa) / lwa).takeUnless { it.isInfinite() || it.isNaN() }
 
-    val newCases = series.points.mapIndexed { index, point ->
-      val previous = if (index == 0) 0L else series.points[index - 1].value
+    val newCases = filteredPoints.mapIndexed { index, point ->
+      val previous = if (index == 0) 0L else filteredPoints[index - 1].value
+      if (previous > point.value) {
+        error("$region ${point.value} ${previous} ${point.date}")
+      }
       point.copy(value = point.value - previous)
     }
 
@@ -71,7 +88,7 @@ fun parseGlobal(
     val deaths = deathsIndex[region]?.last()?.value ?: 0
     val recovered = recoveredIndex[region]?.last()?.value
 
-    val pointList = series.points.filter { point -> point.value > 0 }.filter { point -> point.date > startDate }
+    val pointList = filteredPoints.filter { point -> point.value > 0 }.filter { point -> point.date > startDate }
       .sortedBy { point -> point.date }
 
     val changeSet = pointList.mapIndexedNotNull { index, point ->
