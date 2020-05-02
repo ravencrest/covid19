@@ -6,15 +6,17 @@ import GlobalContext from './GlobalContext';
 import { Switch } from 'react-router';
 
 ReactDOM.render(
-  <Router>
-    <Switch>
-      <Route path='/:dataset'>
-        <GlobalContext />
-      </Route>
-      <Route path='/'>
-        <Redirect to={'/global'} />
-      </Route>
-    </Switch>
-  </Router>,
+  <React.StrictMode>
+    <Router>
+      <Switch>
+        <Route path='/:dataset'>
+          <GlobalContext />
+        </Route>
+        <Route path='/'>
+          <Redirect to={'/global'} />
+        </Route>
+      </Switch>
+    </Router>
+  </React.StrictMode>,
   document.getElementById('root')
 );
