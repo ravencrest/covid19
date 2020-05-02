@@ -6,7 +6,6 @@ import {
   CircularProgress,
   Collapse,
   IconButton,
-  TableCell,
   TableRow as MuiTableRow,
   Paper,
   Tooltip,
@@ -19,6 +18,7 @@ import { getDirectLink } from '../info-menubar/InfoMenuBar';
 import { ShareDialog } from '../info-menubar/ShareDialog';
 import stylesM from './Table.module.css';
 import { Column } from './SimpleTable';
+import { TableCell } from './TableCell';
 
 const LineChart = React.lazy(() => import('../line-chart/LineChart'));
 const CalendarChart = React.lazy(() =>
@@ -124,6 +124,7 @@ export const SeriesTableRow = ({
   dataset,
   normalized,
   columnIndex,
+  rowNumber,
 }: Props) => {
   const [expandedState, setExpandedState] = React.useState<ExpandState>(
     embedded ? 'OPEN' : 'CLOSED'
@@ -147,24 +148,29 @@ export const SeriesTableRow = ({
     <>
       <MuiTableRow {...rowProps} style={{ maxWidth: '95vw' }}>
         {!embedded && (
-          <TableCell className={classes.cell} id={`${row.original.region}`}>
-            {series && (
-              <IconButton
-                size='small'
-                className={clsx(classes.expand, {
-                  [classes.expandOpen]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label='show more'
-              >
-                <ExpandMore />
-              </IconButton>
-            )}
-          </TableCell>
-        )}
-        {!embedded && (
-          <TableCell className={clsx(classes.cell, stylesM.containerHidden)} />
+          <>
+            <TableCell className={classes.cell} id={`${row.original.region}`}>
+              {series && (
+                <IconButton
+                  size='small'
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                  })}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label='show more'
+                >
+                  <ExpandMore />
+                </IconButton>
+              )}
+            </TableCell>
+            <TableCell className={clsx(classes.cell, stylesM.containerHidden)}>
+              {rowNumber}
+            </TableCell>
+            <TableCell
+              className={clsx(classes.cell, stylesM.containerHidden)}
+            />
+          </>
         )}
         {cells.map((cell) => {
           const column = columnIndex.get(cell.column.id);
@@ -183,7 +189,7 @@ export const SeriesTableRow = ({
           );
         })}
         {!embedded && (
-          <TableCell className={classes.cell} id={`${row.original.region}`}>
+          <TableCell id={`${row.original.region}`}>
             {series && (
               <>
                 <Tooltip title='Share'>
@@ -212,7 +218,7 @@ export const SeriesTableRow = ({
           style={{ maxWidth: '95vw', overflow: 'hidden' }}
         >
           <TableCell
-            colSpan={cells.length + (embedded ? 0 : 3)}
+            colSpan={cells.length + (embedded ? 0 : 4)}
             className={stylesM.container}
           >
             <Collapse

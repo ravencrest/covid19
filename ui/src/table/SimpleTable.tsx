@@ -2,26 +2,23 @@ import React, { ReactElement, ReactFragment, ReactText } from 'react';
 import {
   Table,
   TableBody,
-  TableCell,
   TableContainer,
   TableHead,
   TableRow as MuiTableRow,
   TableSortLabel,
 } from '@material-ui/core';
 import {
+  CellProps,
   Column as RtColumn,
+  Row,
   useGlobalFilter,
   useSortBy,
   useTable,
-  Row,
-  CellProps,
   UseTableRowProps,
 } from 'react-table';
 import { TableRow } from '../types';
 import { TableToolbar } from './TableToolbar';
-import { useCellStyles } from './SeriesTableRow';
-import stylesM from './Table.module.css';
-import clsx from 'clsx';
+import { TableCell } from './TableCell';
 
 type ValueOf<T> = T[keyof T];
 
@@ -83,7 +80,12 @@ export const SimpleTable = React.memo(
             }: {
               row: UseTableRowProps<TableRow>;
               cell: CellProps<TableRow>;
-            }) => cellRender({ value: cell.value as any, row: row.original }));
+            }) => {
+              return cellRender({
+                value: cell.value as any,
+                row: row.original,
+              });
+            });
           return c;
         }),
       [rawColumns]
@@ -103,20 +105,19 @@ export const SimpleTable = React.memo(
       useGlobalFilter,
       useSortBy
     );
-    const styles = useCellStyles();
 
     const headers = headerGroups.map((headerGroup) => (
       <MuiTableRow {...headerGroup.getHeaderGroupProps()}>
         {!embedded && (
-          <TableCell className={clsx(styles.cell, stylesM.containerHidden)} />
+          <>
+            <TableCell />
+            <TableCell responsive />
+            <TableCell responsive />
+          </>
         )}
-        {!embedded && <TableCell className={styles.cell} />}
         {headerGroup.headers.map((column) => (
           <TableCell
-            className={clsx(
-              styles.cell,
-              rawColumnIndex.get(column.id)?.className
-            )}
+            className={rawColumnIndex.get(column.id)?.className}
             key={column.id}
             {...column.getHeaderProps({
               ...column.getSortByToggleProps(),
@@ -135,7 +136,7 @@ export const SimpleTable = React.memo(
             </div>
           </TableCell>
         ))}
-        <TableCell className={styles.cell} />
+        <TableCell />
       </MuiTableRow>
     ));
 
