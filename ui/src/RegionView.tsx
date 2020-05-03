@@ -12,13 +12,9 @@ import RegionPane from './table/RegionPane';
 import { useParams } from 'react-router-dom';
 import { useImmer } from 'use-immer';
 import { setLocation } from './GlobalContext';
+import { changeMapper, deathMapper } from './App';
 
 const InfoMenuBar = React.lazy(() => import('./info-menubar/InfoMenuBar'));
-
-const getUsIndex = (it: TableRow) => it.region === 'United States';
-const getMdIndex = (it: TableRow) => it.region === 'Maryland';
-const getNormalizedSeries = (row: TableRow) => row.changeNormalizedSeries;
-const getSeries = (row: TableRow) => row.changeSeries;
 
 type Props = {
   dataset: DataSets;
@@ -36,7 +32,8 @@ export default function RegionView({
   onNormalizedChange,
 }: Props) {
   const [state, setState] = useImmer<{
-    series?: TimeSeries[];
+    changeSeries?: TimeSeries;
+    deathSeries?: TimeSeries;
     filteredRows?: TableRow[];
   }>({});
   const { filteredRows } = state;
@@ -45,28 +42,20 @@ export default function RegionView({
   const region = routeParams.region;
 
   React.useEffect(() => {
-    const global = dataset === 'global';
-
-    const indexToSlice = global ? getUsIndex : getMdIndex;
-    const changeMapper = normalized ? getNormalizedSeries : getSeries;
-    const indexOfMd = rows?.findIndex(indexToSlice) ?? 0;
-
-    const filteredRows = rows?.filter((row) => {
-      const region = row.region.toLowerCase();
-      const code = row.code.toLowerCase();
-      const paramRegion = routeParams.region.toLowerCase();
-      return code === paramRegion || region === paramRegion;
+    changeMapper(dataset, normalized)().then((data) => {
+      const series = data[region];
+      setState((draft) => {
+        draft.changeSeries = series;
+      });
     });
 
-    const newSeries = filteredRows
-      .map(changeMapper)
-      .filter((s) => s != null)
-      .slice(0, Math.min(indexOfMd + 1, rows?.length)) as TimeSeries[];
-    setState((draft) => {
-      draft.series = newSeries;
-      draft.filteredRows = filteredRows;
+    deathMapper(dataset, normalized)().then((data) => {
+      const series = data[region];
+      setState((draft) => {
+        draft.deathSeries = series;
+      });
     });
-  }, [rows, normalized, dataset, setState, routeParams.region]);
+  }, [rows, normalized, dataset, setState, region]);
 
   return (
     <div style={{ width: 1048, maxWidth: '95vw', margin: 'auto' }}>

@@ -2,7 +2,7 @@ package io.ravencrest.covid19.model
 
 import java.time.LocalDate
 
-data class RawTimeSeries(val region: String, val points: List<Long?>) {
+data class RawTimeSeries(val region: String, val label: String, val points: List<Long?>) {
   fun toTimeSeries(headers: List<LocalDate>): TimeSeries {
     val points = points.mapIndexed { index, item ->
       if (item != null) {
@@ -16,6 +16,7 @@ data class RawTimeSeries(val region: String, val points: List<Long?>) {
     }.filterNotNull()
     return TimeSeries(
       region = this.region,
+      label = this.label,
       points = points.sortedBy { it.date }
     )
   }

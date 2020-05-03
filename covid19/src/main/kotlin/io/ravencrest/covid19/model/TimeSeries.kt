@@ -1,6 +1,6 @@
 package io.ravencrest.covid19.model
 
-data class TimeSeries(val region: String, val points: List<Point>) {
+data class TimeSeries(val region: String, val label: String, val points: List<Point>) {
   fun last(): Point? {
     return this.points.lastOrNull()
   }

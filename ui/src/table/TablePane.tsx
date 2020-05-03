@@ -133,11 +133,6 @@ export default React.memo(function TablePane({
         key={`${i}-${datasetKey}`}
         rowNumber={i}
         row={row}
-        series={
-          normalized
-            ? row.original.changeNormalizedSeries
-            : row.original.changeSeries
-        }
         normalized={normalized}
         dataset={datasetKey}
         columnIndex={columns}

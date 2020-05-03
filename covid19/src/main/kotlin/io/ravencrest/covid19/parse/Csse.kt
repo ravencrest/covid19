@@ -66,7 +66,7 @@ fun loadTimeSeries(name: String, url: String): MappingIterator<Array<String>> {
   return readCsvToStringArray(ingestDataPath)
 }
 
-fun parse(csvIterator: MappingIterator<Array<String>>, countryOffSet: Int, timeSeriesOffset: Int, countries: Map<String, String>): List<TimeSeries> {
+fun parse(label: String, csvIterator: MappingIterator<Array<String>>, countryOffSet: Int, timeSeriesOffset: Int, countries: Map<String, String>): List<TimeSeries> {
   val blacklist = loadBlacklist()
 
   val parser = DateTimeFormatterBuilder()
@@ -95,7 +95,8 @@ fun parse(csvIterator: MappingIterator<Array<String>>, countryOffSet: Int, timeS
 
     val newRow = RawTimeSeries(
       region = country,
-      points = mergedSeries
+      points = mergedSeries,
+      label = label
     )
     dataMap[country] = newRow
   }
@@ -106,25 +107,25 @@ fun parse(csvIterator: MappingIterator<Array<String>>, countryOffSet: Int, timeS
 }
 
 fun parseWho(countries: Map<String, String>): List<TimeSeries> {
-  return parse(loadTimeSeries("who_cases", WHO_CASES_URL), 1, 3, countries)
+  return parse("cases", loadTimeSeries("who_cases", WHO_CASES_URL), 1, 3, countries)
 }
 
 fun parseCsseCasesGlobal(countries: Map<String, String>): List<TimeSeries> {
-  return parse(loadTimeSeries("csse_cases", CSSE_CASES_GLOBAL_URL), 1, 4, countries)
+  return parse("cases", loadTimeSeries("csse_cases", CSSE_CASES_GLOBAL_URL), 1, 4, countries)
 }
 
 fun parseCsseDeathsGlobal(countries: Map<String, String>): List<TimeSeries> {
-  return parse(loadTimeSeries("csse_deaths", CSSE_DEATHS_GLOBAL_URL), 1, 4, countries)
+  return parse("deaths", loadTimeSeries("csse_deaths", CSSE_DEATHS_GLOBAL_URL), 1, 4, countries)
 }
 
 fun parseCsseRecoveredGlobal(countries: Map<String, String>): List<TimeSeries> {
-  return parse(loadTimeSeries("csse_recovered", CSSE_RECOVERED_GLOBAL_URL), 1, 4, countries)
+  return parse("recovered", loadTimeSeries("csse_recovered", CSSE_RECOVERED_GLOBAL_URL), 1, 4, countries)
 }
 
 fun parseCsseCasesUS(countries: Map<String, String>): List<TimeSeries> {
-  return parse(loadTimeSeries("csse_cases_us", CSSE_CASES_US_URL), 6, 11, countries)
+  return parse("cases", loadTimeSeries("csse_cases_us", CSSE_CASES_US_URL), 6, 11, countries)
 }
 
 fun parseCsseDeathsUS(countries: Map<String, String>): List<TimeSeries> {
-  return parse(loadTimeSeries("csse_deaths_us", CSSE_DEATHS_US_URL), 6, 12, countries)
+  return parse("deaths", loadTimeSeries("csse_deaths_us", CSSE_DEATHS_US_URL), 6, 12, countries)
 }

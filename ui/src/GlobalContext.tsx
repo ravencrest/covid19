@@ -2,7 +2,7 @@ import React from 'react';
 import { parseJSON } from 'date-fns';
 import { Divider, CircularProgress } from '@material-ui/core';
 import memoizeOne from 'memoize-one';
-import { TableRow, DataSets } from './types';
+import { TableRow, DataSets, TimeSeries } from './types';
 import { useImmer } from 'use-immer';
 import {
   Switch as SwitchRoute,
@@ -27,10 +27,68 @@ const getGlobalResults = memoizeOne(async function (): Promise<
   return { lastUpdated, rows: results.rows };
 });
 
-const getUsResults = memoizeOne(async function (): Promise<FilteredResults> {
+export const getUsResults = memoizeOne(async function (): Promise<
+  FilteredResults
+> {
   const results = await import('./results_us.json');
   const lastUpdated = parseJSON(results.lastUpdated);
   return { lastUpdated, rows: results.rows };
+});
+
+export const getUsCases = memoizeOne(async function (): Promise<
+  Record<string, TimeSeries>
+> {
+  const result = await import('./results_us_cases.json');
+  return (result as any) as Record<string, TimeSeries>;
+});
+
+export const getUsDeaths = memoizeOne(async function (): Promise<
+  Record<string, TimeSeries>
+> {
+  const result = await import('./results_us_deaths.json');
+  return (result as any) as Record<string, TimeSeries>;
+});
+
+export const getUsCasesNormalized = memoizeOne(async function (): Promise<
+  Record<string, TimeSeries>
+> {
+  const result = await import('./results_us_cases_normalized.json');
+  return (result as any) as Record<string, TimeSeries>;
+});
+
+export const getUsDeathsNormalized = memoizeOne(async function (): Promise<
+  Record<string, TimeSeries>
+> {
+  const result = await import('./results_us_deaths_normalized.json');
+  return (result as any) as Record<string, TimeSeries>;
+});
+
+export const getGlobalCases = memoizeOne(async function (): Promise<
+  Record<string, TimeSeries>
+> {
+  const result = await import('./results_global_cases.json');
+  return (result as any) as Record<string, TimeSeries>;
+});
+
+export const getGlobalDeaths = memoizeOne(async function (): Promise<
+  Record<string, TimeSeries>
+> {
+  const result = await import('./results_global_deaths.json');
+  return (result as any) as Record<string, TimeSeries>;
+});
+
+export const getGlobalCasesNormalized = memoizeOne(async function (): Promise<
+  Record<string, TimeSeries>
+> {
+  const result = await import('./results_global_cases_normalized.json');
+  return (result as any) as Record<string, TimeSeries>;
+});
+
+export const getGlobalDeathsNormalized = memoizeOne(async function (): Promise<
+  Record<string, TimeSeries>
+> {
+  const result = await import('./results_global_deaths_normalized.json');
+  return (result as any) as Record<string, TimeSeries>;
 });
 
 const useResults = (

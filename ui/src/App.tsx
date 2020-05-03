@@ -12,6 +12,16 @@ import {
 } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
 import { TableRow, DataSets, TimeSeries } from './types';
+import {
+  getGlobalCases,
+  getGlobalCasesNormalized,
+  getGlobalDeaths,
+  getGlobalDeathsNormalized,
+  getUsCases,
+  getUsCasesNormalized,
+  getUsDeaths,
+  getUsDeathsNormalized,
+} from './GlobalContext';
 
 const LineChart = React.lazy(() => import('./line-chart/LineChart'));
 const InfoMenuBar = React.lazy(() => import('./info-menubar/InfoMenuBar'));
@@ -22,8 +32,6 @@ const ChoroplethChart = React.lazy(() =>
 
 const getUsIndex = (it: TableRow) => it.region === 'United States';
 const getMdIndex = (it: TableRow) => it.region === 'Maryland';
-const getNormalizedSeries = (row: TableRow) => row.changeNormalizedSeries;
-const getSeries = (row: TableRow) => row.changeSeries;
 
 const rowToNormalizedCases = (row: TableRow) => row.casesNormalized;
 const rowToCases = (row: TableRow) => row.cases;
@@ -35,6 +43,36 @@ type Props = {
   lastUpdated: Date | undefined;
   onDatasetChange: (ds: DataSets) => void;
   onNormalizedChange: (normalized: boolean) => void;
+};
+
+export const changeMapper = (dataset: DataSets, normalized: boolean) => {
+  let csFunc;
+
+  if (normalized && dataset === 'global') {
+    csFunc = getGlobalCasesNormalized;
+  } else if (!normalized && dataset === 'global') {
+    csFunc = getGlobalCases;
+  } else if (normalized && dataset === 'us') {
+    csFunc = getUsCasesNormalized;
+  } else {
+    csFunc = getUsCases;
+  }
+  return csFunc;
+};
+
+export const deathMapper = (dataset: DataSets, normalized: boolean) => {
+  let dsFunc;
+
+  if (normalized && dataset === 'global') {
+    dsFunc = getGlobalDeathsNormalized;
+  } else if (!normalized && dataset === 'global') {
+    dsFunc = getGlobalDeaths;
+  } else if (normalized && dataset === 'us') {
+    dsFunc = getUsDeathsNormalized;
+  } else {
+    dsFunc = getUsDeaths;
+  }
+  return dsFunc;
 };
 
 export default function App({
@@ -61,15 +99,16 @@ export default function App({
 
     const populationLimit = global ? 1000000 : 6073116;
     const indexToSlice = global ? getUsIndex : getMdIndex;
-    const changeMapper = normalized ? getNormalizedSeries : getSeries;
     const indexOfMd = rows?.findIndex(indexToSlice) ?? 0;
 
-    const newSeries = rows
-      ?.filter((row) => row.population > populationLimit)
-      .map(changeMapper)
-      .filter((s) => s != null)
-      .slice(0, Math.min(indexOfMd + 1, rows?.length)) as TimeSeries[];
-    setSeries(newSeries);
+    changeMapper(dataset, normalized)().then((data) => {
+      const newSeries = rows
+        ?.filter((row) => row.population > populationLimit)
+        .map((row) => data[row.region])
+        .filter((s) => s != null)
+        .slice(0, Math.min(indexOfMd + 1, rows?.length)) as TimeSeries[];
+      setSeries(newSeries);
+    });
   }, [rows, normalized, dataset, setSeries]);
 
   const worldAccessor = normalized ? rowToNormalizedCases : rowToCases;

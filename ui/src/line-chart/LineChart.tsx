@@ -11,9 +11,10 @@ const pointToDatum = (point: Point): Datum => {
   };
 };
 
-const seriesToData = (data: TimeSeries): Serie => {
-  const { region } = data;
-  return { id: region, data: data.points.map(pointToDatum) };
+const seriesToData = (dataKey: keyof TimeSeries) => (
+  data: TimeSeries
+): Serie => {
+  return { id: data[dataKey] as string, data: data.points.map(pointToDatum) };
 };
 
 type Props = {
@@ -23,6 +24,7 @@ type Props = {
   hideLegend?: boolean;
   marginTop?: number;
   marginRight?: number;
+  dataKey?: keyof TimeSeries;
 };
 
 export default React.memo(
@@ -33,15 +35,15 @@ export default React.memo(
     hideLegend,
     marginTop = 50,
     marginRight = 110,
+    dataKey = 'region',
   }: Props) => {
     const mappedData = React.useMemo(() => {
       if (!data) {
         return [];
       }
-      return Array.isArray(data)
-        ? data.map(seriesToData)
-        : [seriesToData(data)];
-    }, [data]);
+      const mapper = seriesToData(dataKey);
+      return Array.isArray(data) ? data.map(mapper) : [mapper(data)];
+    }, [data, dataKey]);
     const isSmallScreen = document.documentElement.clientWidth < 600;
     const legends: LegendProps[] | undefined =
       hideLegend || isSmallScreen

@@ -30,11 +30,6 @@ export default React.memo(function RegionPane({
         rowNumber={i}
         key={`${i}`}
         row={row}
-        series={
-          normalized
-            ? row.original.changeNormalizedSeries
-            : row.original.changeSeries
-        }
         normalized={normalized}
         dataset={dataset}
         columnIndex={columnIndex}

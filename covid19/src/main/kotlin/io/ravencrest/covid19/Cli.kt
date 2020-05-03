@@ -29,18 +29,60 @@ import java.time.ZoneOffset
 
 typealias TimeSeriesParser = (countries: Map<String, String>) -> List<TimeSeries>
 
+
+fun buildChangeSeries(rawCases: Map<String, TimeSeries>): Map<String, TimeSeries> {
+  return rawCases.values.map { series ->
+    val region = series.region
+    val points = series.points.sortedBy { it.date }.filterNot { it.value == 0L }
+    val filteredPoints = filterBadDataPoints(points)
+
+    val newCases = filteredPoints.mapIndexed { index, point ->
+      val previous = if (index == 0) 0L else filteredPoints[index - 1].value
+      if (previous > point.value) {
+        error("$region ${point.value} ${previous} ${point.date}")
+      }
+      point.copy(value = point.value - previous)
+    }
+    series.copy(points = newCases)
+  }.associateBy { it.region }
+}
+
+fun normalizeChangeSeries(series: TimeSeries, population: Long): TimeSeries {
+  return series.copy(points = series.points.map { point ->
+    try { point.copy(value = normalize(point.value, population)) } catch (e: Exception) {
+      println("failed to normalize ${series.region}")
+      throw e
+    }
+  })
+}
+
+fun filterBadDataPoints(rawPoints: List<Point>): List<Point> {
+  val startDate = LocalDate.of(2020, 3, 17)
+
+  var prev: Point? = null
+  val points = rawPoints.sortedBy { it.date }.filterNot { it.value == 0L }
+  var filteredPoints = mutableListOf<Point>()
+  for (point in points) {
+    if (prev != null) {
+      if(prev.value <= point.value) {
+        filteredPoints.add(point)
+        prev = point
+
+      }
+    } else {
+      prev = point
+    }
+  }
+  return filteredPoints.filter { point -> point.date > startDate && point.value > 0L }
+}
+
 fun parseGlobal(
-  countriesIndex: Map<String, String>,
   countryCodeIndex: Map<String, String>,
   populationIndex: Map<String, Long>,
-  parseConfirmed: TimeSeriesParser,
-  parseDeaths: TimeSeriesParser,
-  parseRecovered: TimeSeriesParser?
+  rawCases: Map<String, TimeSeries>,
+  deathsIndex: Map<String, TimeSeries>,
+  recoveredIndex: Map<String, TimeSeries>
 ): Results {
-  val rawCases = parseConfirmed(countriesIndex).associateBy { it.region }
-  val deathsIndex = parseDeaths(countriesIndex).associateBy { it.region }
-  val recoveredIndex = parseRecovered?.let { it(countriesIndex) }?.associateBy { it.region } ?: emptyMap()
-  val startDate = LocalDate.of(2020, 3, 17)
 
   val sevenDaysAgo = LocalDate.now().minusWeeks(1)
   val fourteenDaysAgo = LocalDate.now().minusWeeks(2)
@@ -48,20 +90,7 @@ fun parseGlobal(
   val sortedCases = rawCases.values.map { series ->
     val region = series.region
     val regionCode = countryCodeIndex[region] ?: error("No region code found for $region")
-    var prev: Point? = null
-    val points = series.points.sortedBy { it.date }.filterNot { it.value == 0L }
-    var filteredPoints = mutableListOf<Point>()
-    for (point in points) {
-      if (prev != null) {
-          if(prev.value <= point.value) {
-             filteredPoints.add(point)
-            prev = point
-
-          }
-      } else {
-        prev = point
-      }
-    }
+    val filteredPoints =  filterBadDataPoints(series.points.sortedBy { it.date }.filterNot { it.value == 0L })
 
     val thisWeek = filteredPoints.filter { point -> point.date >= sevenDaysAgo }
     val lastWeek = filteredPoints.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
@@ -73,7 +102,7 @@ fun parseGlobal(
     val newCases = filteredPoints.mapIndexed { index, point ->
       val previous = if (index == 0) 0L else filteredPoints[index - 1].value
       if (previous > point.value) {
-        error("$region ${point.value} ${previous} ${point.date}")
+        error("$region ${point.value} $previous ${point.date}")
       }
       point.copy(value = point.value - previous)
     }
@@ -88,30 +117,6 @@ fun parseGlobal(
     val deaths = deathsIndex[region]?.last()?.value ?: 0
     val recovered = recoveredIndex[region]?.last()?.value
 
-    val pointList = filteredPoints.filter { point -> point.value > 0 }.filter { point -> point.date > startDate }
-      .sortedBy { point -> point.date }
-
-    val changeSet = pointList.mapIndexedNotNull { index, point ->
-      val previous = if (index == 0) null else pointList[index - 1]
-      val previousValue = previous?.value ?: point.value
-      Triple(point.date, point.value, previousValue)
-    }
-
-    val changeSeries = changeSet.map { point ->
-      val date = point.first
-      val value = point.second
-      val previous = point.third
-      val dailyChange = value - previous
-
-      Point(date = date, value = dailyChange)
-    }
-
-    val normalizedChangeSeries = changeSeries.map { point ->
-      try { point.copy(value = normalize(point.value, population)) } catch (e: Exception) {
-        println("failed to normalize $region")
-        throw e
-      }
-    }
 
     TableRow(
       region = region,
@@ -124,9 +129,7 @@ fun parseGlobal(
       deathsNormalized = normalize(deaths, population),
       recovered = recovered,
       recoveredNormalized = recovered?.let { normalize(it, population) },
-      population = population,
-      changeNormalizedSeries = series.copy(points = normalizedChangeSeries),
-      changeSeries = series.copy(points = changeSeries)
+      population = population
     )
   }.sortedWith(compareByDescending { v -> v.casesNormalized })
 
@@ -136,7 +139,7 @@ fun parseGlobal(
   )
 }
 
-fun writeResults(filename: String, results: Results) {
+fun writeResults(filename: String, results: Any) {
   val jsonMapper = ObjectMapper()
     .registerModule(JavaTimeModule())
     .registerModule(KotlinModule())
@@ -151,17 +154,54 @@ fun writeResults(filename: String, results: Results) {
 }
 
 fun main() {
-  val (countries, codes) = loadCountries()
+  val (countriesIndex, codes) = loadCountries()
+  val globalPop = loadGlobalPopulations(countriesIndex)
+  val recoveredIndex = parseCsseRecoveredGlobal(countriesIndex).associateBy { it.region }
+  val globalCases = parseCsseCasesGlobal(countriesIndex).associateBy { it.region }
+  val globalDeaths = parseCsseDeathsGlobal(countriesIndex).associateBy { it.region }
+
+  val globalCasesSeries = buildChangeSeries(globalCases)
+  val globalDeathsSeries = buildChangeSeries(globalDeaths)
+
+  val globalCasesNormalizedSeries = globalCasesSeries.mapValues{ (k, v) ->
+    normalizeChangeSeries(v, globalPop[v.region] ?: error("Missing population for ${v.region}"))
+  }
+  val globalDeathNormalizedSeries = globalDeathsSeries.mapValues{ (k, v) ->
+    normalizeChangeSeries(v, globalPop[v.region] ?: error("Missing population for ${v.region}"))
+  }
+
   val globalResults = parseGlobal(
-    countries,
     codes,
-    loadGlobalPopulations(countries),
-    ::parseCsseCasesGlobal,
-    ::parseCsseDeathsGlobal,
-    ::parseCsseRecoveredGlobal
+    globalPop,
+    globalCases,
+    globalDeaths,
+    recoveredIndex
   )
-  val usResults = parseGlobal(emptyMap(), loadStates(), loadUsPopulations(), ::parseCsseCasesUS, ::parseCsseDeathsUS, null)
+
+  writeResults("results_global", globalResults)
+  writeResults("results_global_cases_normalized", globalCasesNormalizedSeries)
+  writeResults("results_global_cases", globalCasesSeries)
+  writeResults("results_global_deaths_normalized", globalDeathNormalizedSeries)
+  writeResults("results_global_deaths", globalDeathsSeries)
+
+
+
+  val usPop =  loadUsPopulations()
+  val states = loadStates()
+  val usCases = parseCsseCasesUS(emptyMap()).associateBy { it.region }
+  val usDeaths = parseCsseDeathsUS(emptyMap()).associateBy { it.region }
+  val usResults = parseGlobal(states, usPop, usCases, usDeaths, emptyMap())
+
+  val usCasesNormalizedSeries = usCases.mapValues{ (k, v) ->
+    normalizeChangeSeries(v, usPop[v.region] ?: error("Missing population for ${v.region}"))
+  }
+  val usDeathNormalizedSeries = usDeaths.mapValues{ (k, v) ->
+    normalizeChangeSeries(v, usPop[v.region] ?: error("Missing population for ${v.region}"))
+  }
 
   writeResults("results_us", usResults)
-  writeResults("results_global", globalResults)
+  writeResults("results_us_cases_normalized", usCasesNormalizedSeries)
+  writeResults("results_us_cases", usCases)
+  writeResults("results_us_deaths_normalized", usDeathNormalizedSeries)
+  writeResults("results_us_deaths", usDeaths)
 }

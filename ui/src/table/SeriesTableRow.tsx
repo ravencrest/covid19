@@ -9,6 +9,7 @@ import {
   TableRow as MuiTableRow,
   Paper,
   Tooltip,
+  Typography,
 } from '@material-ui/core';
 import { ExpandMore, Share } from '@material-ui/icons';
 import clsx from 'clsx';
@@ -19,6 +20,16 @@ import { ShareDialog } from '../info-menubar/ShareDialog';
 import stylesM from './Table.module.css';
 import { Column } from './SimpleTable';
 import { TableCell } from './TableCell';
+import {
+  getGlobalCases,
+  getGlobalCasesNormalized,
+  getGlobalDeaths,
+  getGlobalDeathsNormalized,
+  getUsCases,
+  getUsCasesNormalized,
+  getUsDeaths,
+  getUsDeathsNormalized,
+} from '../GlobalContext';
 
 const LineChart = React.lazy(() => import('../line-chart/LineChart'));
 const CalendarChart = React.lazy(() =>
@@ -28,7 +39,6 @@ const CalendarChart = React.lazy(() =>
 type Props = {
   row: Row<TableRow>;
   rowNumber: number;
-  series: TimeSeries | undefined;
   embedded?: boolean;
   dataset: DataSets;
   normalized: boolean;
@@ -101,31 +111,86 @@ const getCellClasses = (
   return classes;
 };
 
-export const SeriesPanel = ({ series }: { series: TimeSeries }) => {
+const SeriesPanelHeader = ({ children }: { children: React.ReactChild }) => (
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <Typography component='h3'>{children}</Typography>
+  </div>
+);
+
+export const SeriesPanel = ({
+  normalized,
+  dataset,
+  region,
+}: {
+  normalized: boolean;
+  dataset: DataSets;
+  region: string;
+}) => {
+  const [ds, setDs] = React.useState<TimeSeries | undefined>();
+  const [cs, setCs] = React.useState<TimeSeries | undefined>();
+  React.useEffect(() => {
+    let csFunc;
+    let dsFunc;
+
+    if (normalized && dataset === 'global') {
+      dsFunc = getGlobalDeathsNormalized;
+      csFunc = getGlobalCasesNormalized;
+    } else if (!normalized && dataset === 'global') {
+      dsFunc = getGlobalDeaths;
+      csFunc = getGlobalCases;
+    } else if (normalized && dataset === 'us') {
+      dsFunc = getUsDeathsNormalized;
+      csFunc = getUsCasesNormalized;
+    } else {
+      dsFunc = getUsDeaths;
+      csFunc = getUsCases;
+    }
+
+    csFunc().then((data) => {
+      setCs(data[region]);
+    });
+
+    dsFunc().then((data) => {
+      setDs(data[region]);
+    });
+  }, [setDs, setCs, dataset, normalized, region]);
+
+  const data = React.useMemo(() => {
+    const d: Array<TimeSeries> = [];
+    if (ds) {
+      d.push(ds);
+    }
+    if (cs) {
+      d.push(cs);
+    }
+    return d;
+  }, [ds, cs]);
   return (
     <Paper>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>New cases</div>
-      <CalendarChart data={series} />
+      <SeriesPanelHeader>New deaths and cases</SeriesPanelHeader>
       <LineChart
-        data={series}
+        data={data}
         leftAxisLabel='change'
-        hideLegend
         marginTop={0}
-        marginRight={40}
+        dataKey='label'
       />
+      <SeriesPanelHeader>New cases</SeriesPanelHeader>
+      {cs && <CalendarChart data={cs} />}
+      <SeriesPanelHeader>New deaths</SeriesPanelHeader>
+      {ds && <CalendarChart data={ds} />}
     </Paper>
   );
 };
 
 export const SeriesTableRow = ({
   row,
-  series,
   embedded,
   dataset,
   normalized,
   columnIndex,
   rowNumber,
 }: Props) => {
+  const series = row.original;
   const [expandedState, setExpandedState] = React.useState<ExpandState>(
     embedded ? 'OPEN' : 'CLOSED'
   );
@@ -211,7 +276,7 @@ export const SeriesTableRow = ({
           </TableCell>
         )}
       </MuiTableRow>
-      {series && expandedState !== 'CLOSED' && (
+      {expandedState !== 'CLOSED' && (
         <MuiTableRow
           {...rowProps}
           key={`${rowProps.key}_expand`}
@@ -231,7 +296,11 @@ export const SeriesTableRow = ({
               style={{ width: '100%' }}
             >
               <React.Suspense fallback={<CircularProgress />}>
-                <SeriesPanel series={series} />
+                <SeriesPanel
+                  normalized={normalized}
+                  dataset={dataset}
+                  region={row.original.region}
+                />
               </React.Suspense>
             </Collapse>
           </TableCell>

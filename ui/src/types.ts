@@ -12,8 +12,6 @@ export type TableRow = {
   recovered?: number;
   recoveredNormalized?: number;
   population: number;
-  changeNormalizedSeries?: TimeSeries;
-  changeSeries?: TimeSeries;
 };
 
 export type Point = {
@@ -23,6 +21,7 @@ export type Point = {
 
 export type TimeSeries = {
   region: string;
+  label: string;
   points: Point[];
 };
 
