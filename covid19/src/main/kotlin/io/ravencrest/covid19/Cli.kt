@@ -29,17 +29,17 @@ import java.time.ZoneOffset
 
 typealias TimeSeriesParser = (countries: Map<String, String>) -> List<TimeSeries>
 
+val startDate = LocalDate.of(2020, 3, 17)
 
 fun buildChangeSeries(rawCases: Map<String, TimeSeries>): Map<String, TimeSeries> {
   return rawCases.values.map { series ->
     val region = series.region
-    val points = series.points.sortedBy { it.date }.filterNot { it.value == 0L }
-    val filteredPoints = filterBadDataPoints(points)
+    val filteredPoints = filterBadDataPoints(series.points.sortedBy { it.date })
 
     val newCases = filteredPoints.mapIndexed { index, point ->
       val previous = if (index == 0) 0L else filteredPoints[index - 1].value
       if (previous > point.value) {
-        error("$region ${point.value} ${previous} ${point.date}")
+        error("$region ${point.value} $previous ${point.date}")
       }
       point.copy(value = point.value - previous)
     }
@@ -57,11 +57,9 @@ fun normalizeChangeSeries(series: TimeSeries, population: Long): TimeSeries {
 }
 
 fun filterBadDataPoints(rawPoints: List<Point>): List<Point> {
-  val startDate = LocalDate.of(2020, 3, 17)
-
   var prev: Point? = null
-  val points = rawPoints.sortedBy { it.date }.filterNot { it.value == 0L }
-  var filteredPoints = mutableListOf<Point>()
+  val points = rawPoints.sortedBy { it.date }.filter { point -> point.date > startDate } .filterNot { it.value == 0L }
+  val filteredPoints = mutableListOf<Point>()
   for (point in points) {
     if (prev != null) {
       if(prev.value <= point.value) {
@@ -73,7 +71,7 @@ fun filterBadDataPoints(rawPoints: List<Point>): List<Point> {
       prev = point
     }
   }
-  return filteredPoints.filter { point -> point.date > startDate && point.value > 0L }
+  return filteredPoints
 }
 
 fun parseGlobal(
@@ -90,7 +88,7 @@ fun parseGlobal(
   val sortedCases = rawCases.values.map { series ->
     val region = series.region
     val regionCode = countryCodeIndex[region] ?: error("No region code found for $region")
-    val filteredPoints =  filterBadDataPoints(series.points.sortedBy { it.date }.filterNot { it.value == 0L })
+    val filteredPoints =  filterBadDataPoints(series.points.sortedBy { it.date })
 
     val thisWeek = filteredPoints.filter { point -> point.date >= sevenDaysAgo }
     val lastWeek = filteredPoints.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
@@ -191,13 +189,16 @@ fun main() {
   val usCases = parseCsseCasesUS(emptyMap()).associateBy { it.region }
   val usDeaths = parseCsseDeathsUS(emptyMap()).associateBy { it.region }
   val usResults = parseGlobal(states, usPop, usCases, usDeaths, emptyMap())
+  val usCasesSeries = buildChangeSeries(usCases)
+  val usDeathsSeries = buildChangeSeries(usDeaths)
 
-  val usCasesNormalizedSeries = usCases.mapValues{ (k, v) ->
+  val usCasesNormalizedSeries = usCasesSeries.mapValues{ (k, v) ->
     normalizeChangeSeries(v, usPop[v.region] ?: error("Missing population for ${v.region}"))
   }
-  val usDeathNormalizedSeries = usDeaths.mapValues{ (k, v) ->
+  val usDeathNormalizedSeries = usDeathsSeries.mapValues{ (k, v) ->
     normalizeChangeSeries(v, usPop[v.region] ?: error("Missing population for ${v.region}"))
   }
+
 
   writeResults("results_us", usResults)
   writeResults("results_us_cases_normalized", usCasesNormalizedSeries)
