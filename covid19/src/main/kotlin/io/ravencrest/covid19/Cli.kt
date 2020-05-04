@@ -27,9 +27,11 @@ import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
 
+typealias TimeSeriesIndex = Map<String, TimeSeries>
+
 val startDate = LocalDate.of(2020, 3, 17)!!
 
-fun buildChangeSeries(rawCases: Map<String, TimeSeries>): Map<String, TimeSeries> {
+fun buildChangeSeries(rawCases: TimeSeriesIndex): TimeSeriesIndex {
   return rawCases.values.map { series ->
     val region = series.region
     val filteredPoints = filterBadDataPoints(series.points.sortedBy { it.date })
@@ -41,11 +43,11 @@ fun buildChangeSeries(rawCases: Map<String, TimeSeries>): Map<String, TimeSeries
       }
       point.copy(value = point.value - previous)
     }
-    series.copy(points = newCases)
+    series.copy(points = if (newCases.isNotEmpty()) newCases.subList(1, newCases.size) else newCases)
   }.associateBy { it.region }
 }
 
-fun normalizeChangeSeries(cases: Map<String, TimeSeries>, population: Map<String, Long>): Map<String, TimeSeries> {
+fun normalizeChangeSeries(cases: TimeSeriesIndex, population: Map<String, Long>): TimeSeriesIndex {
   return cases.mapValues { (_, series) ->
     val region = series.region
     val pop = population[region] ?: error("Missing population for $region")
@@ -78,9 +80,9 @@ fun filterBadDataPoints(rawPoints: List<Point>): List<Point> {
 fun parseTableRows(
   countryCodeIndex: Map<String, String>,
   populationIndex: Map<String, Long>,
-  rawCases: Map<String, TimeSeries>,
-  deathsIndex: Map<String, TimeSeries>,
-  recoveredIndex: Map<String, TimeSeries>
+  rawCases: TimeSeriesIndex,
+  deathsIndex: TimeSeriesIndex,
+  recoveredIndex: TimeSeriesIndex
 ): Results {
 
   val sevenDaysAgo = LocalDate.now().minusWeeks(1)
