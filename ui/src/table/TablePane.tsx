@@ -22,7 +22,7 @@ export const Header = ({
 );
 
 export function formatChange(change: number | undefined | null) {
-  change = typeof change === 'number' ? Math.round(change * 100) : undefined;
+  change = typeof change === 'number' ? change : undefined;
   if (!change) {
     return '--';
   }

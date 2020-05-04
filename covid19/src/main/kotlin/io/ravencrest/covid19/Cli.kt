@@ -26,6 +26,7 @@ import java.nio.file.Paths
 import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
+import kotlin.math.round
 
 typealias TimeSeriesIndex = Map<String, TimeSeries>
 
@@ -98,14 +99,14 @@ fun parseTableRows(
 
     val twa = thisWeek.map { it.value }.average()
     val lwa = lastWeek.map { it.value }.average()
-    val weeklyChange = ((twa - lwa) / lwa).takeUnless { it.isInfinite() || it.isNaN() }
+    val weeklyChange = ((twa - lwa) / lwa * 100).takeUnless { it.isInfinite() || it.isNaN() }?.let {round(it) }
     val newCases = rawCases[region]?.points ?: error("No region code found for $region")
 
     val totalCases = series.last()?.value ?: 0L
     val newCases0 = if (newCases.size > 2) newCases[newCases.size - 1].value else 0L
     val newCases1 = if (newCases.size > 2) newCases[newCases.size - 2].value else 0L
     val changePercent =
-      if (newCases0 == newCases1 || newCases1 == 0L) 0.0 else ((newCases0 - newCases1) / newCases1.toDouble())
+      if (newCases0 == newCases1 || newCases1 == 0L) 0.0 else round(((newCases0 - newCases1) / newCases1.toDouble() * 100))
 
     val population = populationIndex[region] ?: error("Missing population data for $region")
     val deaths = deathsIndex[region]?.last()?.value ?: 0
