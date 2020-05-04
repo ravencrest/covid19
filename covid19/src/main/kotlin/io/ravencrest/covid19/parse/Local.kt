@@ -43,7 +43,7 @@ fun loadCountries(): Pair<Map<String, String>, Map<String, String>> {
   return Pair(map.toMap(), countryCodes.toMap())
 }
 
-fun loadStates(): Map<String, String> {
+fun loadStateCodes(): Map<String, String> {
   val countryCodes = mutableMapOf<String, String>()
   readCsvToStringArray(statesPath).forEach {
     val prefValue = it[0]

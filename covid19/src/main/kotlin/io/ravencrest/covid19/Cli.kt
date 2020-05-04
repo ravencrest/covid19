@@ -13,7 +13,7 @@ import io.ravencrest.covid19.parse.deleteStaleData
 import io.ravencrest.covid19.parse.isDev
 import io.ravencrest.covid19.parse.loadCountries
 import io.ravencrest.covid19.parse.loadGlobalPopulations
-import io.ravencrest.covid19.parse.loadStates
+import io.ravencrest.covid19.parse.loadStateCodes
 import io.ravencrest.covid19.parse.loadUsPopulations
 import io.ravencrest.covid19.parse.normalize
 import io.ravencrest.covid19.parse.parseCsseCasesGlobal
@@ -27,9 +27,7 @@ import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
 
-typealias TimeSeriesParser = (countries: Map<String, String>) -> List<TimeSeries>
-
-val startDate = LocalDate.of(2020, 3, 17)
+val startDate = LocalDate.of(2020, 3, 17)!!
 
 fun buildChangeSeries(rawCases: Map<String, TimeSeries>): Map<String, TimeSeries> {
   return rawCases.values.map { series ->
@@ -47,25 +45,28 @@ fun buildChangeSeries(rawCases: Map<String, TimeSeries>): Map<String, TimeSeries
   }.associateBy { it.region }
 }
 
-fun normalizeChangeSeries(series: TimeSeries, population: Long): TimeSeries {
-  return series.copy(points = series.points.map { point ->
-    try { point.copy(value = normalize(point.value, population)) } catch (e: Exception) {
-      println("failed to normalize ${series.region}")
-      throw e
-    }
-  })
+fun normalizeChangeSeries(cases: Map<String, TimeSeries>, population: Map<String, Long>): Map<String, TimeSeries> {
+  return cases.mapValues { (_, series) ->
+    val region = series.region
+    val pop = population[region] ?: error("Missing population for $region")
+    series.copy(points = series.points.map { point ->
+      try { point.copy(value = normalize(point.value, pop)) } catch (e: Exception) {
+        println("failed to normalize ${series.region}")
+        throw e
+      }
+    })
+  }
 }
 
 fun filterBadDataPoints(rawPoints: List<Point>): List<Point> {
   var prev: Point? = null
-  val points = rawPoints.sortedBy { it.date }.filter { point -> point.date > startDate } .filterNot { it.value == 0L }
+  val points = rawPoints.sortedBy { it.date }.filter { point -> point.date > startDate }.filterNot { it.value == 0L }
   val filteredPoints = mutableListOf<Point>()
   for (point in points) {
     if (prev != null) {
-      if(prev.value <= point.value) {
+      if (prev.value <= point.value) {
         filteredPoints.add(point)
         prev = point
-
       }
     } else {
       prev = point
@@ -88,7 +89,7 @@ fun parseTableRows(
   val sortedCases = rawCases.values.map { series ->
     val region = series.region
     val regionCode = countryCodeIndex[region] ?: error("No region code found for $region")
-    val filteredPoints =  filterBadDataPoints(series.points.sortedBy { it.date })
+    val filteredPoints = filterBadDataPoints(series.points.sortedBy { it.date })
 
     val thisWeek = filteredPoints.filter { point -> point.date >= sevenDaysAgo }
     val lastWeek = filteredPoints.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
@@ -143,34 +144,37 @@ fun writeResults(filename: String, results: Any) {
   println("Results exported to $path")
 }
 
-fun parseResults(label: String, codes: Map<String, String>, population: Map<String, Long>, recovered: List<TimeSeries>, cases: List<TimeSeries>, deaths: List<TimeSeries>) {
+fun parseResults(
+  label: String,
+  codes: Map<String, String>,
+  population: Map<String, Long>,
+  recovered: List<TimeSeries>,
+  cases: List<TimeSeries>,
+  deaths: List<TimeSeries>
+) {
   val recoveredIndex = recovered.associateBy { it.region }
-  val globalCases = cases.associateBy { it.region }
-  val globalDeaths = deaths.associateBy { it.region }
+  val cases = cases.associateBy { it.region }
+  val deaths = deaths.associateBy { it.region }
 
-  val globalCasesSeries = buildChangeSeries(globalCases)
-  val globalDeathsSeries = buildChangeSeries(globalDeaths)
+  val casesSeries = buildChangeSeries(cases)
+  val deathsSeries = buildChangeSeries(deaths)
 
-  val globalCasesNormalizedSeries = globalCasesSeries.mapValues{ (k, v) ->
-    normalizeChangeSeries(v, population[v.region] ?: error("Missing population for ${v.region}"))
-  }
-  val globalDeathNormalizedSeries = globalDeathsSeries.mapValues{ (k, v) ->
-    normalizeChangeSeries(v, population[v.region] ?: error("Missing population for ${v.region}"))
-  }
+  val casesNormalizedSeries = normalizeChangeSeries(casesSeries, population)
+  val deathsNormalizedSeries = normalizeChangeSeries(deathsSeries, population)
 
   val globalResults = parseTableRows(
     codes,
     population,
-    globalCases,
-    globalDeaths,
+    cases,
+    deaths,
     recoveredIndex
   )
 
-  writeResults("results_${label}", globalResults)
-  writeResults("results_${label}_cases_normalized", globalCasesNormalizedSeries)
-  writeResults("results_${label}_cases", globalCasesSeries)
-  writeResults("results_${label}_deaths_normalized", globalDeathNormalizedSeries)
-  writeResults("results_${label}_deaths", globalDeathsSeries)
+  writeResults("results_$label", globalResults)
+  writeResults("results_${label}_cases_normalized", casesNormalizedSeries)
+  writeResults("results_${label}_cases", casesSeries)
+  writeResults("results_${label}_deaths_normalized", deathsNormalizedSeries)
+  writeResults("results_${label}_deaths", deathsSeries)
 }
 
 fun main() {
@@ -179,11 +183,25 @@ fun main() {
   val recoveredIndex = parseCsseRecoveredGlobal(countriesIndex)
   val globalCases = parseCsseCasesGlobal(countriesIndex)
   val globalDeaths = parseCsseDeathsGlobal(countriesIndex)
-  parseResults(label = "global", cases = globalCases, codes = codes, deaths = globalDeaths, recovered = recoveredIndex, population = globalPop)
+  parseResults(
+    label = "global",
+    cases = globalCases,
+    codes = codes,
+    deaths = globalDeaths,
+    recovered = recoveredIndex,
+    population = globalPop
+  )
 
-  val usPop =  loadUsPopulations()
-  val states = loadStates()
+  val usPop = loadUsPopulations()
+  val stateCodes = loadStateCodes()
   val usCases = parseCsseCasesUS(emptyMap())
   val usDeaths = parseCsseDeathsUS(emptyMap())
-  parseResults(label = "us", cases = usCases, codes = states, deaths = usDeaths, recovered = emptyList(), population = usPop)
+  parseResults(
+    label = "us",
+    cases = usCases,
+    codes = stateCodes,
+    deaths = usDeaths,
+    recovered = emptyList(),
+    population = usPop
+  )
 }
