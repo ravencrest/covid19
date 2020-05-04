@@ -78,6 +78,14 @@ fun filterBadDataPoints(rawPoints: List<Point>): List<Point> {
   return filteredPoints
 }
 
+fun getChangePercent(current: Double, previous: Double): Long {
+  return ((current - previous) / previous * 100).takeUnless { it.isInfinite() || it.isNaN() }?.let {round(it) }?.toLong() ?: 0L
+}
+
+fun getChangePercent(current: Long, previous: Long): Long {
+  return if (current == previous || previous == 0L) 0 else round(((current - previous) / previous.toDouble() * 100)).toLong()
+}
+
 fun parseTableRows(
   countryCodeIndex: Map<String, String>,
   populationIndex: Map<String, Long>,
@@ -85,7 +93,6 @@ fun parseTableRows(
   deathsIndex: TimeSeriesIndex,
   recoveredIndex: TimeSeriesIndex
 ): Results {
-
   val sevenDaysAgo = LocalDate.now().minusWeeks(1)
   val fourteenDaysAgo = LocalDate.now().minusWeeks(2)
 
@@ -99,14 +106,13 @@ fun parseTableRows(
 
     val twa = thisWeek.map { it.value }.average()
     val lwa = lastWeek.map { it.value }.average()
-    val weeklyChange = ((twa - lwa) / lwa * 100).takeUnless { it.isInfinite() || it.isNaN() }?.let {round(it) }
+    val weeklyChange = getChangePercent(twa, lwa)
     val newCases = rawCases[region]?.points ?: error("No region code found for $region")
 
     val totalCases = series.last()?.value ?: 0L
     val newCases0 = if (newCases.size > 2) newCases[newCases.size - 1].value else 0L
     val newCases1 = if (newCases.size > 2) newCases[newCases.size - 2].value else 0L
-    val changePercent =
-      if (newCases0 == newCases1 || newCases1 == 0L) 0.0 else round(((newCases0 - newCases1) / newCases1.toDouble() * 100))
+    val changePercent = getChangePercent(newCases0, newCases1)
 
     val population = populationIndex[region] ?: error("Missing population data for $region")
     val deaths = deathsIndex[region]?.last()?.value ?: 0
