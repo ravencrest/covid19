@@ -55,6 +55,16 @@ export default function RegionView({
         draft.deathSeries = series;
       });
     });
+
+    const filteredRows = rows?.filter((row) => {
+      const region = row.region.toLowerCase();
+      const code = row.code.toLowerCase();
+      const paramRegion = routeParams.region.toLowerCase();
+      return code === paramRegion || region === paramRegion;
+    });
+    setState((draft) => {
+      draft.filteredRows = filteredRows;
+    });
   }, [rows, normalized, dataset, setState, region]);
 
   return (
