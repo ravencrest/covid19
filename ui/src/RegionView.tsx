@@ -39,7 +39,7 @@ export default function RegionView({
   const { filteredRows } = state;
 
   const routeParams = useParams() as { region: string; dataset: string };
-  const region = routeParams.region;
+  const region = routeParams.region.toLowerCase();
 
   React.useEffect(() => {
     changeMapper(dataset, normalized)().then((data) => {
@@ -57,10 +57,9 @@ export default function RegionView({
     });
 
     const filteredRows = rows?.filter((row) => {
-      const region = row.region.toLowerCase();
+      const rowRegion = row.region.toLowerCase();
       const code = row.code.toLowerCase();
-      const paramRegion = routeParams.region.toLowerCase();
-      return code === paramRegion || region === paramRegion;
+      return code === region || rowRegion === region;
     });
     setState((draft) => {
       draft.filteredRows = filteredRows;
