@@ -24,6 +24,7 @@ type Props = {
   hideLegend?: boolean;
   marginTop?: number;
   marginRight?: number;
+  marginLeft?: number;
   dataKey?: keyof TimeSeries;
 };
 
@@ -35,6 +36,7 @@ export default React.memo(
     hideLegend,
     marginTop = 50,
     marginRight = 110,
+    marginLeft = 60,
     dataKey = 'region',
   }: Props) => {
     const mappedData = React.useMemo(() => {
@@ -87,7 +89,7 @@ export default React.memo(
             top: marginTop,
             right: isSmallScreen ? 10 : marginRight,
             bottom: 50,
-            left: 60,
+            left: marginLeft,
           }}
           enablePoints={false}
           yScale={{
@@ -115,8 +117,9 @@ export default React.memo(
             tickPadding: 5,
             tickRotation: 0,
             legend: leftAxisLabel,
-            legendOffset: -40,
+            legendOffset: -80,
             legendPosition: 'middle',
+            format: '.2s',
           }}
           colors={{ scheme: 'category10' }}
           pointSize={10}

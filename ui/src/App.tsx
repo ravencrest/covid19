@@ -212,14 +212,17 @@ export default function App({
           if (normalized === 'pop') {
             const points = d.points.map((p) => ({
               ...p,
-              value: (p.value / pop) * 1000000,
+              value: Math.round((p.value / pop) * 1000000),
             }));
             return { ...d, points } as TimeSeries;
           } else if (normalized === 'gdp') {
             if (gdp === undefined || gdp === null) {
               return { ...d, points: [] } as TimeSeries;
             }
-            let points = d.points.map((p) => ({ ...p, value: p.value * gdp }));
+            let points = d.points.map((p) => ({
+              ...p,
+              value: Math.round(p.value * gdp),
+            }));
             return { ...d, points } as TimeSeries;
           } else if (normalized === 'gdp+pop') {
             if (gdp === undefined || gdp === null) {
@@ -227,7 +230,7 @@ export default function App({
             }
             let points = d.points.map((p) => ({
               ...p,
-              value: (p.value * gdp) / pop,
+              value: Math.round(((p.value * gdp) / pop) * 1000000),
             }));
             return { ...d, points } as TimeSeries;
           }
@@ -326,8 +329,9 @@ export default function App({
               data={series}
               leftAxisLabel='New Cases'
               height='22em'
-              marginTop={0}
+              marginTop={10}
               marginRight={200}
+              marginLeft={normalized == 'gdp+pop' ? 100 : undefined}
             />
           </ExpansionPanel>
         </React.Suspense>

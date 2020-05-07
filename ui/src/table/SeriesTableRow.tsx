@@ -143,14 +143,17 @@ export const SeriesPanel = ({
       let d = data[region];
       if (normalized === 'pop') {
         let points = d.points.map((point) => {
-          return { ...point, value: (point.value / population) * 1000000 };
+          return {
+            ...point,
+            value: Math.round((point.value / population) * 1000000),
+          };
         });
         d = { ...d, points };
       } else if (normalized === 'gdp') {
         let points: Point[];
         if (gdp !== undefined) {
           points = d.points.map((point) => {
-            return { ...point, value: point.value * gdp };
+            return { ...point, value: Math.round(point.value * gdp) };
           });
         } else {
           points = [];
@@ -162,7 +165,7 @@ export const SeriesPanel = ({
           points = d.points.map((point) => {
             return {
               ...point,
-              value: ((point.value * gdp) / population) * 1000000,
+              value: Math.round(((point.value * gdp) / population) * 1000000),
             };
           });
         } else {
@@ -227,7 +230,7 @@ export const SeriesPanel = ({
       <LineChart
         data={data}
         leftAxisLabel='change'
-        marginTop={0}
+        marginTop={10}
         dataKey='label'
       />
       <SeriesPanelHeader>New cases</SeriesPanelHeader>
