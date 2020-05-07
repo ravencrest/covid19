@@ -2,7 +2,7 @@ import React from 'react';
 import { parseJSON } from 'date-fns';
 import { Divider, CircularProgress } from '@material-ui/core';
 import memoizeOne from 'memoize-one';
-import { TableRow, DataSets, TimeSeries } from './types';
+import { TableRow, DataSets, TimeSeries, Normalization } from './types';
 import { useImmer } from 'use-immer';
 import {
   Switch as SwitchRoute,
@@ -49,20 +49,6 @@ export const getUsDeaths = memoizeOne(async function (): Promise<
   return (result as any) as Record<string, TimeSeries>;
 });
 
-export const getUsCasesNormalized = memoizeOne(async function (): Promise<
-  Record<string, TimeSeries>
-> {
-  const result = await import('./results_us_cases_normalized.json');
-  return (result as any) as Record<string, TimeSeries>;
-});
-
-export const getUsDeathsNormalized = memoizeOne(async function (): Promise<
-  Record<string, TimeSeries>
-> {
-  const result = await import('./results_us_deaths_normalized.json');
-  return (result as any) as Record<string, TimeSeries>;
-});
-
 export const getGlobalCases = memoizeOne(async function (): Promise<
   Record<string, TimeSeries>
 > {
@@ -74,20 +60,6 @@ export const getGlobalDeaths = memoizeOne(async function (): Promise<
   Record<string, TimeSeries>
 > {
   const result = await import('./results_global_deaths.json');
-  return (result as any) as Record<string, TimeSeries>;
-});
-
-export const getGlobalCasesNormalized = memoizeOne(async function (): Promise<
-  Record<string, TimeSeries>
-> {
-  const result = await import('./results_global_cases_normalized.json');
-  return (result as any) as Record<string, TimeSeries>;
-});
-
-export const getGlobalDeathsNormalized = memoizeOne(async function (): Promise<
-  Record<string, TimeSeries>
-> {
-  const result = await import('./results_global_deaths_normalized.json');
   return (result as any) as Record<string, TimeSeries>;
 });
 
@@ -104,7 +76,7 @@ const useResults = (
 
 export const setLocation = (
   dataset: DataSets,
-  normalized: boolean,
+  normalized: Normalization,
   region?: string
 ) => {
   window.location.hash = `/${dataset}${
@@ -124,12 +96,12 @@ function GlobalContext() {
   const [state, updateState] = useImmer<{
     dataset: DataSets;
     rows?: TableRow[];
-    normalized: boolean;
+    normalized: Normalization;
     lastUpdated?: Date;
   }>({
     dataset: pathDataset === 'us' ? 'us' : 'global',
     rows: undefined,
-    normalized: params.norm !== 'false',
+    normalized: params.norm?.replace(' ', '+') as Normalization,
   });
   const { dataset, rows, normalized, lastUpdated } = state;
 
@@ -139,8 +111,6 @@ function GlobalContext() {
       (results) => {
         updateState((draft) => {
           draft.lastUpdated = results?.lastUpdated;
-          //const rows = results?.rows
-          //draft.rows = region ? rows?.filter(rr => rr.region == region) : rows;
           draft.rows = results?.rows;
         });
       },
@@ -158,7 +128,7 @@ function GlobalContext() {
     [updateState, normalized]
   );
   const onNormalizedChange = React.useCallback(
-    (norm: boolean, region?: string) => {
+    (norm: Normalization, region?: string) => {
       setLocation(dataset, norm, region);
       updateState((draft) => {
         draft.normalized = norm;

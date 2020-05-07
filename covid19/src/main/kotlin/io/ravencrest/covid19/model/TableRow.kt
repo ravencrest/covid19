@@ -8,8 +8,7 @@ data class TableRow(
   val change: Long?,
   val weeklyChange: Long?,
   val deaths: Long,
-  val deathsNormalized: Long,
   val recovered: Long?,
-  val recoveredNormalized: Long?,
-  val population: Long
+  val population: Long,
+  val gdp: Double?
 )

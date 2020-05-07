@@ -36,13 +36,19 @@ export type Column<T> = {
   hidden?: boolean;
   className?: string;
   width?: number;
-} & ValueOf<
-  {
-    [K in keyof T]: {
-      accessor: K;
-    } & ColumnInterfaceBasedOnValue<T, T[K]>;
-  }
->;
+} & (
+  | ValueOf<
+      {
+        [K in keyof T]: {
+          accessor: K;
+        } & ColumnInterfaceBasedOnValue<T, T[K]>;
+      }
+    >
+  | ({ accessor: (row: T) => unknown } & ColumnInterfaceBasedOnValue<
+      T,
+      unknown
+    >)
+);
 
 type Props = {
   columns: Column<TableRow>[];
@@ -70,7 +76,7 @@ export const SimpleTable = React.memo(
           const { id, header, cell: cellRender, accessor } = col;
           const c: RtColumn<TableRow> = {
             id,
-            accessor,
+            accessor: accessor as any,
           };
           header && (c.Header = header);
           cellRender &&

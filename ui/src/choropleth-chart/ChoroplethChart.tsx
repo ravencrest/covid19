@@ -5,7 +5,7 @@ import { CircularProgress } from '@material-ui/core';
 
 type Props = {
   data: TableRow[];
-  accessor: (row: TableRow) => number;
+  accessor: (row: TableRow) => number | undefined;
   min: number;
   max: number;
 };

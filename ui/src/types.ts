@@ -1,17 +1,18 @@
 export type DataSets = 'global' | 'us';
 
+export type Normalization = 'gdp' | 'pop' | 'gdp+pop' | 'none';
+
 export type TableRow = {
   region: string;
   code: string;
-  cases: number;
-  casesNormalized: number;
+  cases?: number;
+  casesNormalized?: number;
   change?: number;
   weeklyChange?: number;
-  deaths: number;
-  deathsNormalized: number;
+  deaths?: number;
   recovered?: number;
-  recoveredNormalized?: number;
   population: number;
+  gdp?: number;
 };
 
 export type Point = {

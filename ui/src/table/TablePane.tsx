@@ -2,10 +2,11 @@ import React from 'react';
 import { CssBaseline, Tooltip } from '@material-ui/core';
 import { Row } from 'react-table';
 import { Column, SimpleTable } from './SimpleTable';
-import { TableRow, DataSets } from '../types';
+import { TableRow, DataSets, Normalization } from '../types';
 import { SeriesTableRow } from './SeriesTableRow';
 import stylesM from './Table.module.css';
 import memoizeOne from 'memoize-one';
+import { getAccessor, getDeathsAccessor, getRecoveriesAccessor } from '../App';
 
 export const Header = ({
   children,
@@ -30,7 +31,7 @@ export function formatChange(change: number | undefined | null) {
 }
 
 export const buildColumns = memoizeOne(
-  (normalized: boolean, dataset: DataSets): Column<TableRow>[] => {
+  (normalized: Normalization, dataset: DataSets): Column<TableRow>[] => {
     const columns: Column<TableRow>[] = [
       {
         header: (
@@ -64,12 +65,12 @@ export const buildColumns = memoizeOne(
       {
         id: 'cases',
         header: <Header tooltip='Confirmed Cases'>Cases</Header>,
-        accessor: normalized ? 'casesNormalized' : 'cases',
+        accessor: getAccessor(normalized),
       },
       {
         id: 'deaths',
         header: <Header tooltip='Confirmed Deaths'>Deaths</Header>,
-        accessor: normalized ? 'deathsNormalized' : 'deaths',
+        accessor: getDeathsAccessor(normalized),
       },
     ];
 
@@ -96,7 +97,7 @@ export const buildColumns = memoizeOne(
         ),
         id: 'recovered',
         className: stylesM.containerHidden,
-        accessor: normalized ? 'recoveredNormalized' : 'recovered',
+        accessor: getRecoveriesAccessor(normalized),
       });
     }
     columns.push({
@@ -104,6 +105,12 @@ export const buildColumns = memoizeOne(
       className: stylesM.containerHidden,
       header: <Header tooltip='Population'>Pop.</Header>,
       accessor: 'population',
+    });
+    columns.push({
+      id: 'gdp',
+      className: stylesM.containerHidden,
+      header: <Header tooltip='GDP'>GDP</Header>,
+      accessor: 'gdp',
     });
     return columns;
   }
@@ -116,7 +123,7 @@ export default React.memo(function TablePane({
 }: {
   data: TableRow[];
   datasetKey: DataSets;
-  normalized: boolean;
+  normalized: Normalization;
 }) {
   const filteredColumns = React.useMemo(
     () => buildColumns(normalized, datasetKey),

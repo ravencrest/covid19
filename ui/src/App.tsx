@@ -11,16 +11,12 @@ import {
   ExpansionPanelSummary,
 } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
-import { TableRow, DataSets, TimeSeries } from './types';
+import { TableRow, DataSets, TimeSeries, Normalization } from './types';
 import {
   getGlobalCases,
-  getGlobalCasesNormalized,
   getGlobalDeaths,
-  getGlobalDeathsNormalized,
   getUsCases,
-  getUsCasesNormalized,
   getUsDeaths,
-  getUsDeathsNormalized,
 } from './GlobalContext';
 
 const LineChart = React.lazy(() => import('./line-chart/LineChart'));
@@ -33,46 +29,143 @@ const ChoroplethChart = React.lazy(() =>
 const getUsIndex = (it: TableRow) => it.region === 'United States';
 const getMdIndex = (it: TableRow) => it.region === 'Maryland';
 
-const rowToNormalizedCases = (row: TableRow) => row.casesNormalized;
+const rowToNormalizedGdpCases = (row: TableRow) => {
+  const { cases, gdp } = row;
+  if (cases === undefined || gdp === undefined) {
+    return undefined;
+  }
+  return Math.round(cases * gdp);
+};
+
+const rowToNormalizedPopCases = (row: TableRow) => {
+  const { cases, population: pop } = row;
+  if (cases === undefined || pop === undefined) {
+    return undefined;
+  }
+  return Math.round((cases / pop) * 1000000);
+};
+
+const rowToNormalizedGdpPopCases = (row: TableRow) => {
+  const { cases, gdp, population: pop } = row;
+  if (cases === undefined || gdp === undefined || pop === undefined) {
+    return undefined;
+  }
+  return Math.round(((cases * gdp) / pop) * 1000000);
+};
+
 const rowToCases = (row: TableRow) => row.cases;
+
+const rowToNormalizedGdpRecoveries = (row: TableRow) => {
+  const { recovered: cases, gdp } = row;
+  if (cases === undefined || gdp === undefined) {
+    return undefined;
+  }
+  return Math.round(cases * gdp);
+};
+
+const rowToNormalizedPopRecoveries = (row: TableRow) => {
+  const { recovered: cases, population: pop } = row;
+  if (cases === undefined || pop === undefined) {
+    return undefined;
+  }
+  return Math.round((cases / pop) * 1000000);
+};
+
+const rowToNormalizedGdpPopRecoveries = (row: TableRow) => {
+  const { recovered: cases, gdp, population: pop } = row;
+  if (cases === undefined || gdp === undefined || pop === undefined) {
+    return undefined;
+  }
+  return Math.round(((cases * gdp) / pop) * 1000000);
+};
+
+const rowToRecovered = (row: TableRow) => row.recovered;
+
+const rowToNormalizedGdpDeaths = (row: TableRow) => {
+  const { deaths: cases, gdp } = row;
+  if (cases === undefined || gdp === undefined) {
+    return undefined;
+  }
+  return Math.round(cases * gdp);
+};
+
+const rowToNormalizedPopDeaths = (row: TableRow) => {
+  const { deaths: cases, population: pop } = row;
+  if (cases === undefined || pop === undefined) {
+    return undefined;
+  }
+  return Math.round((cases / pop) * 1000000);
+};
+
+const rowToNormalizedGdpPopDeaths = (row: TableRow) => {
+  const { deaths: cases, gdp, population: pop } = row;
+  if (cases === undefined || gdp === undefined || pop === undefined) {
+    return undefined;
+  }
+  return Math.round(((cases * gdp) / pop) * 1000000);
+};
+
+const rowToDeaths = (row: TableRow) => row.deaths;
 
 type Props = {
   dataset: DataSets;
   rows: TableRow[];
-  normalized: boolean;
+  normalized: Normalization;
   lastUpdated: Date | undefined;
   onDatasetChange: (ds: DataSets) => void;
-  onNormalizedChange: (normalized: boolean) => void;
+  onNormalizedChange: (normalized: Normalization) => void;
 };
 
-export const changeMapper = (dataset: DataSets, normalized: boolean) => {
+export const changeMapper = (dataset: DataSets) => {
   let csFunc;
 
-  if (normalized && dataset === 'global') {
-    csFunc = getGlobalCasesNormalized;
-  } else if (!normalized && dataset === 'global') {
+  if (dataset === 'global') {
     csFunc = getGlobalCases;
-  } else if (normalized && dataset === 'us') {
-    csFunc = getUsCasesNormalized;
   } else {
     csFunc = getUsCases;
   }
   return csFunc;
 };
 
-export const deathMapper = (dataset: DataSets, normalized: boolean) => {
+export const deathMapper = (dataset: DataSets) => {
   let dsFunc;
 
-  if (normalized && dataset === 'global') {
-    dsFunc = getGlobalDeathsNormalized;
-  } else if (!normalized && dataset === 'global') {
+  if (dataset === 'global') {
     dsFunc = getGlobalDeaths;
-  } else if (normalized && dataset === 'us') {
-    dsFunc = getUsDeathsNormalized;
   } else {
     dsFunc = getUsDeaths;
   }
   return dsFunc;
+};
+
+export const getAccessor = (normalized: Normalization) => {
+  return normalized === 'gdp+pop'
+    ? rowToNormalizedGdpPopCases
+    : normalized === 'gdp'
+    ? rowToNormalizedGdpCases
+    : normalized === 'pop'
+    ? rowToNormalizedPopCases
+    : rowToCases;
+};
+
+export const getRecoveriesAccessor = (normalized: Normalization) => {
+  return normalized === 'gdp+pop'
+    ? rowToNormalizedGdpPopRecoveries
+    : normalized === 'gdp'
+    ? rowToNormalizedGdpRecoveries
+    : normalized === 'pop'
+    ? rowToNormalizedPopRecoveries
+    : rowToRecovered;
+};
+
+export const getDeathsAccessor = (normalized: Normalization) => {
+  return normalized === 'gdp+pop'
+    ? rowToNormalizedGdpPopDeaths
+    : normalized === 'gdp'
+    ? rowToNormalizedGdpDeaths
+    : normalized === 'pop'
+    ? rowToNormalizedPopDeaths
+    : rowToDeaths;
 };
 
 export default function App({
@@ -86,9 +179,15 @@ export default function App({
   let min = 80;
   let max = 500;
 
-  if (!normalized) {
+  if (!normalized || normalized === 'none') {
     min = 2000;
     max = 200000;
+  } else if (normalized === 'gdp') {
+    min = 30000;
+    max = 200000000;
+  } else if (normalized === 'gdp+pop') {
+    min = 21000;
+    max = 1900000;
   }
   const [series, setSeries] = React.useState<TimeSeries[] | undefined>(
     undefined
@@ -99,19 +198,48 @@ export default function App({
 
     const populationLimit = global ? 1000000 : 6073116;
     const indexToSlice = global ? getUsIndex : getMdIndex;
-    const indexOfMd = rows?.findIndex(indexToSlice) ?? 0;
+    const indexOfMd = Math.max(rows?.findIndex(indexToSlice), 9) ?? 0;
 
-    changeMapper(dataset, normalized)().then((data) => {
+    changeMapper(dataset)().then((data) => {
       const newSeries = rows
         ?.filter((row) => row.population > populationLimit)
-        .map((row) => data[row.region])
+        .map((row) => {
+          let d = data[row.region];
+          if (!d) {
+            return undefined;
+          }
+          const { population: pop, gdp } = row;
+          if (normalized === 'pop') {
+            const points = d.points.map((p) => ({
+              ...p,
+              value: (p.value / pop) * 1000000,
+            }));
+            return { ...d, points } as TimeSeries;
+          } else if (normalized === 'gdp') {
+            if (gdp === undefined || gdp === null) {
+              return { ...d, points: [] } as TimeSeries;
+            }
+            let points = d.points.map((p) => ({ ...p, value: p.value * gdp }));
+            return { ...d, points } as TimeSeries;
+          } else if (normalized === 'gdp+pop') {
+            if (gdp === undefined || gdp === null) {
+              return { ...d, points: [] } as TimeSeries;
+            }
+            let points = d.points.map((p) => ({
+              ...p,
+              value: (p.value * gdp) / pop,
+            }));
+            return { ...d, points } as TimeSeries;
+          }
+          return d;
+        })
         .filter((s) => s != null)
         .slice(0, Math.min(indexOfMd + 1, rows?.length)) as TimeSeries[];
       setSeries(newSeries);
     });
   }, [rows, normalized, dataset, setSeries]);
 
-  const worldAccessor = normalized ? rowToNormalizedCases : rowToCases;
+  const worldAccessor = getAccessor(normalized);
   return (
     <div style={{ width: 1048, maxWidth: '95vw', margin: 'auto' }}>
       <React.Suspense fallback={<CircularProgress />}>
@@ -123,15 +251,38 @@ export default function App({
           <FormControlLabel
             control={
               <Switch
-                checked={normalized}
+                checked={normalized === 'gdp' || normalized === 'gdp+pop'}
                 onChange={(event, value) => {
                   event.stopPropagation();
-                  onNormalizedChange(value);
+                  const off =
+                    normalized === 'gdp+pop' || normalized === 'pop'
+                      ? 'pop'
+                      : 'none';
+                  const on = normalized === 'pop' ? 'gdp+pop' : 'gdp';
+                  onNormalizedChange(value ? on : off);
                 }}
                 name='normalized'
               />
             }
-            label='Normalized'
+            label='Norm GDP'
+          />
+          <FormControlLabel
+            control={
+              <Switch
+                checked={normalized === 'pop' || normalized === 'gdp+pop'}
+                onChange={(event, value) => {
+                  event.stopPropagation();
+                  const off =
+                    normalized === 'gdp+pop' || normalized === 'gdp'
+                      ? 'gdp'
+                      : 'none';
+                  const on = normalized === 'gdp' ? 'gdp+pop' : 'pop';
+                  onNormalizedChange(value ? on : off);
+                }}
+                name='normalized'
+              />
+            }
+            label='Norm Pop'
           />
           <RadioGroup
             row

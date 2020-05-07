@@ -1,7 +1,7 @@
 import React from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { Row } from 'react-table';
-import { TableRow, DataSets } from '../types';
+import { TableRow, DataSets, Normalization } from '../types';
 import { SeriesTableRow } from './SeriesTableRow';
 import { buildColumns } from './TablePane';
 import { Column, SimpleTable } from './SimpleTable';
@@ -11,7 +11,7 @@ export default React.memo(function RegionPane({
   dataset,
 }: {
   data: TableRow[];
-  normalized: boolean;
+  normalized: Normalization;
   dataset: DataSets;
 }) {
   const filteredColumns = React.useMemo(

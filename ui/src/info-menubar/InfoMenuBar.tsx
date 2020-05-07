@@ -15,7 +15,7 @@ import { githubUrl } from '../constants';
 import { formatRelative as format } from 'date-fns';
 import { ShareDialog } from './ShareDialog';
 import { DialogTitle } from '../dialog/DialogTitle';
-import { DataSets } from '../types';
+import { DataSets, Normalization } from '../types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,14 +48,14 @@ const now = new Date();
 type Props = {
   lastUpdated: Date | undefined;
   dataset: DataSets;
-  normalized: boolean;
+  normalized: Normalization;
   children: React.ReactNode;
   region?: string;
 };
 
 export const getDirectLink = (
   dataset: DataSets,
-  normalized: boolean,
+  normalized: Normalization,
   region?: string
 ) => {
   return `${window.location.protocol}//${window.location.host}${

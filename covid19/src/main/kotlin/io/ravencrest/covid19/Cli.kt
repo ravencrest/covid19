@@ -12,10 +12,13 @@ import io.ravencrest.covid19.model.TimeSeries
 import io.ravencrest.covid19.parse.deleteStaleData
 import io.ravencrest.covid19.parse.isDev
 import io.ravencrest.covid19.parse.loadCountries
+import io.ravencrest.covid19.parse.loadGlobalGdp
 import io.ravencrest.covid19.parse.loadGlobalPopulations
 import io.ravencrest.covid19.parse.loadStateCodes
+import io.ravencrest.covid19.parse.loadUsGdp
 import io.ravencrest.covid19.parse.loadUsPopulations
 import io.ravencrest.covid19.parse.normalize
+import io.ravencrest.covid19.parse.normalizeByPop
 import io.ravencrest.covid19.parse.parseCsseCasesGlobal
 import io.ravencrest.covid19.parse.parseCsseCasesUS
 import io.ravencrest.covid19.parse.parseCsseDeathsGlobal
@@ -48,12 +51,12 @@ fun buildChangeSeries(rawCases: TimeSeriesIndex): TimeSeriesIndex {
   }.associateBy { it.region }
 }
 
-fun normalizeChangeSeries(cases: TimeSeriesIndex, population: Map<String, Long>): TimeSeriesIndex {
+fun normalizeChangeSeriesByPop(cases: TimeSeriesIndex, population: Map<String, Long>): TimeSeriesIndex {
   return cases.mapValues { (_, series) ->
     val region = series.region
     val pop = population[region] ?: error("Missing population for $region")
     series.copy(points = series.points.map { point ->
-      try { point.copy(value = normalize(point.value, pop)) } catch (e: Exception) {
+      try { point.copy(value = normalizeByPop(point.value, pop)) } catch (e: Exception) {
         println("failed to normalize ${series.region}")
         throw e
       }
@@ -89,6 +92,7 @@ fun getChangePercent(current: Long, previous: Long): Long {
 fun parseTableRows(
   countryCodeIndex: Map<String, String>,
   populationIndex: Map<String, Long>,
+  gdpIndex: Map<String, Double>,
   rawCases: TimeSeriesIndex,
   deathsIndex: TimeSeriesIndex,
   recoveredIndex: TimeSeriesIndex
@@ -115,6 +119,7 @@ fun parseTableRows(
     val changePercent = getChangePercent(newCases0, newCases1)
 
     val population = populationIndex[region] ?: error("Missing population data for $region")
+    val gdp = gdpIndex[region]
     val deaths = deathsIndex[region]?.last()?.value ?: 0
     val recovered = recoveredIndex[region]?.last()?.value
 
@@ -122,14 +127,13 @@ fun parseTableRows(
       region = region,
       code = regionCode,
       cases = totalCases,
-      casesNormalized = normalize(totalCases, population),
+      casesNormalized = normalize(totalCases, population, gdp ?: 1.0),
       change = changePercent,
       weeklyChange = weeklyChange,
       deaths = deaths,
-      deathsNormalized = normalize(deaths, population),
       recovered = recovered,
-      recoveredNormalized = recovered?.let { normalize(it, population) },
-      population = population
+      population = population,
+      gdp = gdp
     )
   }.sortedWith(compareByDescending { v -> v.casesNormalized })
 
@@ -157,6 +161,7 @@ fun parseResults(
   label: String,
   codes: Map<String, String>,
   population: Map<String, Long>,
+  gdp: Map<String, Double>,
   recovered: List<TimeSeries>,
   cases: List<TimeSeries>,
   deaths: List<TimeSeries>
@@ -168,27 +173,24 @@ fun parseResults(
   val casesSeries = buildChangeSeries(cases)
   val deathsSeries = buildChangeSeries(deaths)
 
-  val casesNormalizedSeries = normalizeChangeSeries(casesSeries, population)
-  val deathsNormalizedSeries = normalizeChangeSeries(deathsSeries, population)
-
   val globalResults = parseTableRows(
     codes,
     population,
+    gdp,
     cases,
     deaths,
     recoveredIndex
   )
 
   writeResults("results_$label", globalResults)
-  writeResults("results_${label}_cases_normalized", casesNormalizedSeries)
   writeResults("results_${label}_cases", casesSeries)
-  writeResults("results_${label}_deaths_normalized", deathsNormalizedSeries)
   writeResults("results_${label}_deaths", deathsSeries)
 }
 
 fun main() {
   val (countriesIndex, codes) = loadCountries()
   val globalPop = loadGlobalPopulations(countriesIndex)
+  val globalGdp = loadGlobalGdp(countriesIndex)
   val recoveredIndex = parseCsseRecoveredGlobal(countriesIndex)
   val globalCases = parseCsseCasesGlobal(countriesIndex)
   val globalDeaths = parseCsseDeathsGlobal(countriesIndex)
@@ -198,10 +200,12 @@ fun main() {
     codes = codes,
     deaths = globalDeaths,
     recovered = recoveredIndex,
-    population = globalPop
+    population = globalPop,
+    gdp = globalGdp
   )
 
   val usPop = loadUsPopulations()
+  val usGdp = loadUsGdp()
   val stateCodes = loadStateCodes()
   val usCases = parseCsseCasesUS(emptyMap())
   val usDeaths = parseCsseDeathsUS(emptyMap())
@@ -211,6 +215,7 @@ fun main() {
     codes = stateCodes,
     deaths = usDeaths,
     recovered = emptyList(),
-    population = usPop
+    population = usPop,
+    gdp = usGdp
   )
 }

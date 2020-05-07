@@ -14,7 +14,7 @@ import {
 import { ExpandMore, Share } from '@material-ui/icons';
 import clsx from 'clsx';
 import { Cell, Row } from 'react-table';
-import { DataSets, TableRow, TimeSeries } from '../types';
+import { DataSets, Normalization, Point, TableRow, TimeSeries } from '../types';
 import { getDirectLink } from '../info-menubar/InfoMenuBar';
 import { ShareDialog } from '../info-menubar/ShareDialog';
 import stylesM from './Table.module.css';
@@ -22,13 +22,9 @@ import { Column } from './SimpleTable';
 import { TableCell } from './TableCell';
 import {
   getGlobalCases,
-  getGlobalCasesNormalized,
   getGlobalDeaths,
-  getGlobalDeathsNormalized,
   getUsCases,
-  getUsCasesNormalized,
   getUsDeaths,
-  getUsDeathsNormalized,
 } from '../GlobalContext';
 
 const LineChart = React.lazy(() => import('../line-chart/LineChart'));
@@ -41,7 +37,7 @@ type Props = {
   rowNumber: number;
   embedded?: boolean;
   dataset: DataSets;
-  normalized: boolean;
+  normalized: Normalization;
   columnIndex: ReadonlyMap<string, Column<TableRow>>;
 };
 
@@ -121,39 +117,99 @@ export const SeriesPanel = ({
   normalized,
   dataset,
   region,
+  row,
 }: {
-  normalized: boolean;
+  normalized: Normalization;
   dataset: DataSets;
   region: string;
+  row: TableRow;
 }) => {
   const [ds, setDs] = React.useState<TimeSeries | undefined>();
   const [cs, setCs] = React.useState<TimeSeries | undefined>();
+  const { population, gdp } = row;
   React.useEffect(() => {
     let csFunc;
     let dsFunc;
 
-    if (normalized && dataset === 'global') {
-      dsFunc = getGlobalDeathsNormalized;
-      csFunc = getGlobalCasesNormalized;
-    } else if (!normalized && dataset === 'global') {
+    if (dataset === 'global') {
       dsFunc = getGlobalDeaths;
       csFunc = getGlobalCases;
-    } else if (normalized && dataset === 'us') {
-      dsFunc = getUsDeathsNormalized;
-      csFunc = getUsCasesNormalized;
     } else {
       dsFunc = getUsDeaths;
       csFunc = getUsCases;
     }
 
     csFunc().then((data) => {
-      setCs(data[region]);
+      let d = data[region];
+      if (normalized === 'pop') {
+        let points = d.points.map((point) => {
+          return { ...point, value: (point.value / population) * 1000000 };
+        });
+        d = { ...d, points };
+      } else if (normalized === 'gdp') {
+        let points: Point[];
+        if (gdp !== undefined) {
+          points = d.points.map((point) => {
+            return { ...point, value: point.value * gdp };
+          });
+        } else {
+          points = [];
+        }
+        d = { ...d, points };
+      } else if (normalized === 'gdp+pop') {
+        let points: Point[];
+        if (gdp !== undefined) {
+          points = d.points.map((point) => {
+            return {
+              ...point,
+              value: ((point.value * gdp) / population) * 1000000,
+            };
+          });
+        } else {
+          points = [];
+        }
+        d = { ...d, points };
+      }
+      setCs(d);
     });
 
     dsFunc().then((data) => {
-      setDs(data[region]);
+      let d = data[region];
+      if (normalized === 'pop') {
+        let points = d.points.map((point) => {
+          return {
+            ...point,
+            value: Math.round((point.value / population) * 1000000),
+          };
+        });
+        d = { ...d, points };
+      } else if (normalized === 'gdp') {
+        let points: Point[];
+        if (gdp !== undefined) {
+          points = d.points.map((point) => {
+            return { ...point, value: Math.round(point.value * gdp) };
+          });
+        } else {
+          points = [];
+        }
+        d = { ...d, points };
+      } else if (normalized === 'gdp+pop') {
+        let points: Point[];
+        if (gdp !== undefined) {
+          points = d.points.map((point) => {
+            return {
+              ...point,
+              value: Math.round(((point.value * gdp) / population) * 1000000),
+            };
+          });
+        } else {
+          points = [];
+        }
+        d = { ...d, points };
+      }
+      setDs(d);
     });
-  }, [setDs, setCs, dataset, normalized, region]);
+  }, [setDs, setCs, dataset, normalized, region, population, gdp]);
 
   const data = React.useMemo(() => {
     const d: Array<TimeSeries> = [];
@@ -300,6 +356,7 @@ export const SeriesTableRow = ({
                   normalized={normalized}
                   dataset={dataset}
                   region={row.original.region}
+                  row={row.original}
                 />
               </React.Suspense>
             </Collapse>

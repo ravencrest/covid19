@@ -7,7 +7,7 @@ import {
   Button,
 } from '@material-ui/core';
 import { ArrowBack } from '@material-ui/icons';
-import { TableRow, DataSets, TimeSeries } from './types';
+import { TableRow, DataSets, TimeSeries, Normalization } from './types';
 import RegionPane from './table/RegionPane';
 import { useParams } from 'react-router-dom';
 import { useImmer } from 'use-immer';
@@ -19,9 +19,9 @@ const InfoMenuBar = React.lazy(() => import('./info-menubar/InfoMenuBar'));
 type Props = {
   dataset: DataSets;
   rows: TableRow[];
-  normalized: boolean;
+  normalized: Normalization;
   lastUpdated: Date | undefined;
-  onNormalizedChange: (normalized: boolean, region: string) => void;
+  onNormalizedChange: (normalized: Normalization, region: string) => void;
 };
 
 export default function RegionView({
@@ -42,14 +42,14 @@ export default function RegionView({
   const region = routeParams.region.toLowerCase();
 
   React.useEffect(() => {
-    changeMapper(dataset, normalized)().then((data) => {
+    changeMapper(dataset)().then((data) => {
       const series = data[region];
       setState((draft) => {
         draft.changeSeries = series;
       });
     });
 
-    deathMapper(dataset, normalized)().then((data) => {
+    deathMapper(dataset)().then((data) => {
       const series = data[region];
       setState((draft) => {
         draft.deathSeries = series;
@@ -89,15 +89,38 @@ export default function RegionView({
           <FormControlLabel
             control={
               <Switch
-                checked={normalized}
+                checked={normalized === 'gdp' || normalized === 'gdp+pop'}
                 onChange={(event, value) => {
                   event.stopPropagation();
-                  onNormalizedChange(value, region);
+                  const off =
+                    normalized === 'gdp+pop' || normalized === 'pop'
+                      ? 'pop'
+                      : 'none';
+                  const on = normalized === 'pop' ? 'gdp+pop' : 'gdp';
+                  onNormalizedChange(value ? on : off, region);
                 }}
                 name='normalized'
               />
             }
-            label='Normalized'
+            label='Norm GDP'
+          />
+          <FormControlLabel
+            control={
+              <Switch
+                checked={normalized === 'pop' || normalized === 'gdp+pop'}
+                onChange={(event, value) => {
+                  event.stopPropagation();
+                  const off =
+                    normalized === 'gdp+pop' || normalized === 'gdp'
+                      ? 'gdp'
+                      : 'none';
+                  const on = normalized === 'gdp' ? 'gdp+pop' : 'pop';
+                  onNormalizedChange(value ? on : off, region);
+                }}
+                name='normalized'
+              />
+            }
+            label='Norm Pop'
           />
         </InfoMenuBar>
         <Divider />

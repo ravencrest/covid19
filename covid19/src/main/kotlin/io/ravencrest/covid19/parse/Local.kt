@@ -20,6 +20,9 @@ val statesPath: Path = Paths.get(rootPath, "us_states.csv").toAbsolutePath()
 // Manually generated list for data we don't want to io.ravencrest.covid19.io.ravencrest.covid19.parse.parse
 val blacklistPath: Path = Paths.get(rootPath, "blacklist.txt").toAbsolutePath()
 
+val globalGdpPath: Path = Paths.get(rootPath, "global_gdp.csv").toAbsolutePath()
+val usGdpPath: Path = Paths.get(rootPath, "us_gdp.csv").toAbsolutePath()
+
 fun loadCountries(): Pair<Map<String, String>, Map<String, String>> {
   val map = mutableMapOf<String, String>()
   val countryCodes = mutableMapOf<String, String>()
@@ -83,4 +86,34 @@ fun loadUsPopulations(): Map<String, Long> {
 
 fun loadBlacklist(): Set<String> {
   return Files.newBufferedReader(blacklistPath).readLines().toSet()
+}
+
+
+fun loadGlobalGdp(regions: Map<String, String>): Map<String, Double> {
+  val map = mutableMapOf<String, Double>()
+  val iterator = readCsvToStringArray(globalGdpPath)
+  iterator.next()
+  iterator.forEach {
+    val rawRegion = it[1]
+    val gdp =it.last().toDoubleOrNull()
+    if (gdp == null) {
+      println("Unable to convert GDP to number for $rawRegion and value ${it.last()}")
+      return@forEach
+    }
+    val region = regions[rawRegion] ?: rawRegion
+    map[region] = gdp
+  }
+  return map.toMap()
+}
+
+fun loadUsGdp(): Map<String, Double> {
+  val map = mutableMapOf<String, Double>()
+  val iterator = readCsvToStringArray(usGdpPath)
+  iterator.next()
+  iterator.forEach {
+    val region = it[0].trim()
+    val gdp = it.last().filter { c -> c != ',' }.toDoubleOrNull() ?: error("Unable to convert GDP to number for $region and value ${it.last()}")
+    map[region] = gdp / 100_000
+  }
+  return map.toMap()
 }
