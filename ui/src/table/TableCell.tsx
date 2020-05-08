@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCellStyles } from './SeriesTableRow';
+import { useCellStyles } from '../region/SeriesTableRow';
 import { TableCell as MuiTableCell } from '@material-ui/core';
 import clsx from 'clsx';
 import stylesM from './Table.module.css';

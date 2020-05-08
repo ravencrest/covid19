@@ -10,14 +10,14 @@ import {
   Typography,
 } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
-import { assertNever, DataSets, Normalization, TableRow, TimeSeries } from './types';
-import { getGlobalCases, getGlobalDeaths, getUsCases, getUsDeaths } from './GlobalContext';
+import { assertNever, DataSets, Normalization, TableRow, TimeSeries } from '../types';
 import { NormalizeSwitch } from './NormalizeSwitch';
+import { getCasesTimeSeries } from '../data-mappers';
 
-const LineChart = React.lazy(() => import('./line-chart/LineChart'));
-const InfoMenuBar = React.lazy(() => import('./info-menubar/InfoMenuBar'));
-const TablePane = React.lazy(() => import('./table/TablePane'));
-const ChoroplethChart = React.lazy(() => import('./choropleth-chart/ChoroplethChart'));
+const LineChart = React.lazy(() => import('../line-chart/LineChart'));
+const InfoMenuBar = React.lazy(() => import('../info-menubar/InfoMenuBar'));
+const TablePane = React.lazy(() => import('../table/TablePane'));
+const ChoroplethChart = React.lazy(() => import('../choropleth-chart/ChoroplethChart'));
 
 const getUsIndex = (it: TableRow) => it.region === 'United States';
 const getMdIndex = (it: TableRow) => it.region === 'Maryland';
@@ -62,28 +62,6 @@ type Props = {
   lastUpdated: Date | undefined;
   onDatasetChange: (ds: DataSets) => void;
   onNormalizedChange: (normalized: Normalization) => void;
-};
-
-export const changeMapper = (dataset: DataSets) => {
-  let csFunc;
-
-  if (dataset === 'global') {
-    csFunc = getGlobalCases;
-  } else {
-    csFunc = getUsCases;
-  }
-  return csFunc;
-};
-
-export const deathMapper = (dataset: DataSets) => {
-  let dsFunc;
-
-  if (dataset === 'global') {
-    dsFunc = getGlobalDeaths;
-  } else {
-    dsFunc = getUsDeaths;
-  }
-  return dsFunc;
 };
 
 export const getAccessor = (normalized: Normalization) => {
@@ -131,7 +109,14 @@ export const getDeathsAccessor = (normalized: Normalization) => {
   }
 };
 
-export default function App({ dataset, rows, normalized, lastUpdated, onDatasetChange, onNormalizedChange }: Props) {
+export default function DatasetView({
+  dataset,
+  rows,
+  normalized,
+  lastUpdated,
+  onDatasetChange,
+  onNormalizedChange,
+}: Props) {
   let min = 80;
   let max = 500;
 
@@ -154,7 +139,7 @@ export default function App({ dataset, rows, normalized, lastUpdated, onDatasetC
     const indexToSlice = global ? getUsIndex : getMdIndex;
     const indexOfMd = Math.max(rows?.findIndex(indexToSlice), 9) ?? 0;
 
-    changeMapper(dataset)().then((data) => {
+    getCasesTimeSeries(dataset)().then((data) => {
       const newSeries = rows
         ?.filter((row) => row.population > populationLimit)
         .map((row) => {

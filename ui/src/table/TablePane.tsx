@@ -3,10 +3,10 @@ import { CssBaseline, Tooltip } from '@material-ui/core';
 import { Row } from 'react-table';
 import { Column, SimpleTable } from './SimpleTable';
 import { TableRow, DataSets, Normalization } from '../types';
-import { SeriesTableRow } from './SeriesTableRow';
+import { SeriesTableRow } from '../region/SeriesTableRow';
 import stylesM from './Table.module.css';
 import memoizeOne from 'memoize-one';
-import { getAccessor, getDeathsAccessor, getRecoveriesAccessor } from '../App';
+import { getAccessor, getDeathsAccessor, getRecoveriesAccessor } from '../dataset/DatasetView';
 
 export const Header = ({
   children,
@@ -126,9 +126,10 @@ export default React.memo(function TablePane({
         normalized={normalized}
         dataset={dataset}
         columnIndex={columns}
+        embedded={embedded}
       />
     ),
-    [normalized, dataset]
+    [normalized, dataset, embedded]
   );
   return (
     <>

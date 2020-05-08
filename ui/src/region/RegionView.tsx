@@ -1,14 +1,14 @@
 import React from 'react';
 import { Divider, CircularProgress, Button } from '@material-ui/core';
 import { ArrowBack } from '@material-ui/icons';
-import { TableRow, DataSets, TimeSeries, Normalization } from './types';
+import { TableRow, DataSets, TimeSeries, Normalization } from '../types';
 import { useParams } from 'react-router-dom';
 import { useImmer } from 'use-immer';
-import { setLocation } from './GlobalContext';
-import { changeMapper, deathMapper } from './App';
-import TablePane from './table/TablePane';
-import { NormalizeSwitch } from './NormalizeSwitch';
-const InfoMenuBar = React.lazy(() => import('./info-menubar/InfoMenuBar'));
+import { setLocation } from '../GlobalContext';
+import TablePane from '../table/TablePane';
+import { NormalizeSwitch } from '../dataset/NormalizeSwitch';
+import { getCasesTimeSeries, getDeathsTimeSeries } from '../data-mappers';
+const InfoMenuBar = React.lazy(() => import('../info-menubar/InfoMenuBar'));
 
 type Props = {
   dataset: DataSets;
@@ -42,14 +42,14 @@ export default function RegionView({
   );
 
   React.useEffect(() => {
-    changeMapper(dataset)().then((data) => {
+    getCasesTimeSeries(dataset)().then((data) => {
       const series = data[region];
       setState((draft) => {
         draft.changeSeries = series;
       });
     });
 
-    deathMapper(dataset)().then((data) => {
+    getDeathsTimeSeries(dataset)().then((data) => {
       const series = data[region];
       setState((draft) => {
         draft.deathSeries = series;

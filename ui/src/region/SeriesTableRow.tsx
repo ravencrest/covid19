@@ -1,29 +1,24 @@
 import React from 'react';
 import {
-  createStyles,
-  makeStyles,
-  Theme,
   CircularProgress,
   Collapse,
+  createStyles,
   IconButton,
+  makeStyles,
   TableRow as MuiTableRow,
-  Paper,
+  Theme,
   Tooltip,
-  Typography,
 } from '@material-ui/core';
 import { ExpandMore, Share } from '@material-ui/icons';
 import clsx from 'clsx';
 import { Cell, Row } from 'react-table';
-import { DataSets, Normalization, Point, TableRow, TimeSeries } from '../types';
+import { DataSets, Normalization, TableRow } from '../types';
 import { getDirectLink } from '../info-menubar/InfoMenuBar';
 import { ShareDialog } from '../info-menubar/ShareDialog';
-import stylesM from './Table.module.css';
-import { Column } from './SimpleTable';
-import { TableCell } from './TableCell';
-import { getGlobalCases, getGlobalDeaths, getUsCases, getUsDeaths } from '../GlobalContext';
-
-const LineChart = React.lazy(() => import('../line-chart/LineChart'));
-const CalendarChart = React.lazy(() => import('../calendar-chart/CalendarChart'));
+import stylesM from '../table/Table.module.css';
+import { Column } from '../table/SimpleTable';
+import { TableCell } from '../table/TableCell';
+import { SeriesPanel } from './RegionSeriesPane';
 
 type Props = {
   row: Row<TableRow>;
@@ -93,135 +88,6 @@ const getCellClasses = (styles: ReturnType<typeof useCellStyles>, cell: Cell<Tab
       break;
   }
   return classes;
-};
-
-const SeriesPanelHeader = ({ children }: { children: React.ReactChild }) => (
-  <div style={{ display: 'flex', justifyContent: 'center' }}>
-    <Typography component='h3'>{children}</Typography>
-  </div>
-);
-
-export const SeriesPanel = ({
-  normalized,
-  dataset,
-  region,
-  row,
-}: {
-  normalized: Normalization;
-  dataset: DataSets;
-  region: string;
-  row: TableRow;
-}) => {
-  const [ds, setDs] = React.useState<TimeSeries | undefined>();
-  const [cs, setCs] = React.useState<TimeSeries | undefined>();
-  const { population, gdp } = row;
-  React.useEffect(() => {
-    let csFunc;
-    let dsFunc;
-
-    if (dataset === 'global') {
-      dsFunc = getGlobalDeaths;
-      csFunc = getGlobalCases;
-    } else {
-      dsFunc = getUsDeaths;
-      csFunc = getUsCases;
-    }
-
-    csFunc().then((data) => {
-      let d = data[region];
-      if (normalized === 'pop') {
-        let points = d.points.map((point) => {
-          return {
-            ...point,
-            value: Math.round((point.value / population) * 1000000),
-          };
-        });
-        d = { ...d, points };
-      } else if (normalized === 'gdp') {
-        let points: Point[];
-        if (gdp !== undefined) {
-          points = d.points.map((point) => {
-            return { ...point, value: Math.round(point.value * gdp) };
-          });
-        } else {
-          points = [];
-        }
-        d = { ...d, points };
-      } else if (normalized === 'gdp+pop') {
-        let points: Point[];
-        if (gdp !== undefined) {
-          points = d.points.map((point) => {
-            return {
-              ...point,
-              value: Math.round(((point.value * gdp) / population) * 1000000),
-            };
-          });
-        } else {
-          points = [];
-        }
-        d = { ...d, points };
-      }
-      setCs(d);
-    });
-
-    dsFunc().then((data) => {
-      let d = data[region];
-      if (normalized === 'pop') {
-        let points = d.points.map((point) => {
-          return {
-            ...point,
-            value: Math.round((point.value / population) * 1000000),
-          };
-        });
-        d = { ...d, points };
-      } else if (normalized === 'gdp') {
-        let points: Point[];
-        if (gdp !== undefined) {
-          points = d.points.map((point) => {
-            return { ...point, value: Math.round(point.value * gdp) };
-          });
-        } else {
-          points = [];
-        }
-        d = { ...d, points };
-      } else if (normalized === 'gdp+pop') {
-        let points: Point[];
-        if (gdp !== undefined) {
-          points = d.points.map((point) => {
-            return {
-              ...point,
-              value: Math.round(((point.value * gdp) / population) * 1000000),
-            };
-          });
-        } else {
-          points = [];
-        }
-        d = { ...d, points };
-      }
-      setDs(d);
-    });
-  }, [setDs, setCs, dataset, normalized, region, population, gdp]);
-
-  const data = React.useMemo(() => {
-    const d: Array<TimeSeries> = [];
-    if (ds) {
-      d.push(ds);
-    }
-    if (cs) {
-      d.push(cs);
-    }
-    return d;
-  }, [ds, cs]);
-  return (
-    <Paper>
-      <SeriesPanelHeader>New deaths and cases</SeriesPanelHeader>
-      <LineChart data={data} leftAxisLabel='change' marginTop={10} dataKey='label' />
-      <SeriesPanelHeader>New cases</SeriesPanelHeader>
-      {cs && <CalendarChart data={cs} />}
-      <SeriesPanelHeader>New deaths</SeriesPanelHeader>
-      {ds && <CalendarChart data={ds} />}
-    </Paper>
-  );
 };
 
 export const SeriesTableRow = ({ row, embedded, dataset, normalized, columnIndex, rowNumber }: Props) => {

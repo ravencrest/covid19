@@ -1,55 +1,17 @@
 import React from 'react';
-import { parseJSON } from 'date-fns';
-import { Divider, CircularProgress } from '@material-ui/core';
-import memoizeOne from 'memoize-one';
-import { TableRow, DataSets, TimeSeries, Normalization } from './types';
+import { CircularProgress, Divider } from '@material-ui/core';
+import { DataSets, Normalization, Results, TableRow } from './types';
 import { useImmer } from 'use-immer';
-import { Switch as SwitchRoute, Route, useLocation, useParams } from 'react-router-dom';
+import { Route, Switch as SwitchRoute, useLocation, useParams } from 'react-router-dom';
 import qs from 'qs';
-import App from './App';
-import RegionView from './RegionView';
+import DatasetView from './dataset/DatasetView';
+import RegionView from './region/RegionView';
+import { getGlobalTableRows, getUsTableRows } from './data-mappers';
 
-type FilteredResults = {
-  lastUpdated: Date;
-  rows: TableRow[];
-};
-
-const getGlobalResults = memoizeOne(async function (): Promise<FilteredResults> {
-  const results = await import('./results_global.json');
-  const lastUpdated = parseJSON(results.lastUpdated);
-  return { lastUpdated, rows: results.rows };
-});
-
-export const getUsResults = memoizeOne(async function (): Promise<FilteredResults> {
-  const results = await import('./results_us.json');
-  const lastUpdated = parseJSON(results.lastUpdated);
-  return { lastUpdated, rows: results.rows };
-});
-
-export const getUsCases = memoizeOne(async function (): Promise<Record<string, TimeSeries>> {
-  const result = await import('./results_us_cases.json');
-  return (result as any) as Record<string, TimeSeries>;
-});
-
-export const getUsDeaths = memoizeOne(async function (): Promise<Record<string, TimeSeries>> {
-  const result = await import('./results_us_deaths.json');
-  return (result as any) as Record<string, TimeSeries>;
-});
-
-export const getGlobalCases = memoizeOne(async function (): Promise<Record<string, TimeSeries>> {
-  const result = await import('./results_global_cases.json');
-  return (result as any) as Record<string, TimeSeries>;
-});
-
-export const getGlobalDeaths = memoizeOne(async function (): Promise<Record<string, TimeSeries>> {
-  const result = await import('./results_global_deaths.json');
-  return (result as any) as Record<string, TimeSeries>;
-});
-
-const useResults = (dataset: DataSets, handler: (r: FilteredResults | undefined) => void) => {
+const useResults = (dataset: DataSets, handler: (r: Results | undefined) => void) => {
   const global = dataset === 'global';
   React.useEffect(() => {
-    const promise = global ? getGlobalResults : getUsResults;
+    const promise = global ? getGlobalTableRows : getUsTableRows;
     promise().then(handler);
   }, [global, handler]);
 };
@@ -143,7 +105,7 @@ function GlobalContext() {
         <Route path='/'>
           <Divider />
           {rows && (
-            <App
+            <DatasetView
               rows={rows}
               dataset={dataset}
               normalized={normalized}

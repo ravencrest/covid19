@@ -1,4 +1,4 @@
-import { Normalization } from './types';
+import { Normalization } from '../types';
 import { FormControlLabel, Switch } from '@material-ui/core';
 import React from 'react';
 

@@ -26,10 +26,14 @@ export type TimeSeries = {
   points: Point[];
 };
 
-export type Results = {
+export type RawResults = {
   lastUpdated: string;
   rows: Array<TableRow>;
-  graph: TimeSeries[];
+};
+
+export type Results = {
+  lastUpdated: Date;
+  rows: Array<TableRow>;
 };
 
 export function assertNever(value: never): never {
