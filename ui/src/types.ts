@@ -31,3 +31,7 @@ export type Results = {
   rows: Array<TableRow>;
   graph: TimeSeries[];
 };
+
+export function assertNever(value: never): never {
+  throw new Error(`assertNever received value: ${value}`);
+}

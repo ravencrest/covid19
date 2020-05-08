@@ -93,6 +93,20 @@ function GlobalContext() {
   const search = a.search;
   const params: { norm?: string } =
     search[0] === '?' ? qs.parse(search.slice(1)) : {};
+  let norm: Normalization;
+  switch (params.norm) {
+    case 'gdp pop':
+      norm = 'gdp+pop';
+      break;
+    case 'gdp':
+      norm = 'gdp';
+      break;
+    case 'pop':
+      norm = 'pop';
+      break;
+    default:
+      norm = 'none';
+  }
   const [state, updateState] = useImmer<{
     dataset: DataSets;
     rows?: TableRow[];
@@ -101,7 +115,7 @@ function GlobalContext() {
   }>({
     dataset: pathDataset === 'us' ? 'us' : 'global',
     rows: undefined,
-    normalized: params.norm?.replace(' ', '+') as Normalization,
+    normalized: norm,
   });
   const { dataset, rows, normalized, lastUpdated } = state;
 
