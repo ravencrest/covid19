@@ -33,10 +33,7 @@ export const TableToolbar = (props: Props) => {
   const { setGlobalFilter, globalFilter } = props;
   return (
     <Toolbar className={clsx(classes.root)}>
-      <GlobalFilter
-        globalFilter={globalFilter}
-        setGlobalFilter={setGlobalFilter}
-      />
+      <GlobalFilter globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
     </Toolbar>
   );
 };

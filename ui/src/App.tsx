@@ -1,36 +1,23 @@
 import React from 'react';
 import {
-  Divider,
-  RadioGroup,
-  Radio,
-  FormControlLabel,
   CircularProgress,
-  Switch,
-  Typography,
+  Divider,
   ExpansionPanel,
   ExpansionPanelSummary,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  Typography,
 } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
-import {
-  TableRow,
-  DataSets,
-  TimeSeries,
-  Normalization,
-  assertNever,
-} from './types';
-import {
-  getGlobalCases,
-  getGlobalDeaths,
-  getUsCases,
-  getUsDeaths,
-} from './GlobalContext';
+import { assertNever, DataSets, Normalization, TableRow, TimeSeries } from './types';
+import { getGlobalCases, getGlobalDeaths, getUsCases, getUsDeaths } from './GlobalContext';
+import { NormalizeSwitch } from './NormalizeSwitch';
 
 const LineChart = React.lazy(() => import('./line-chart/LineChart'));
 const InfoMenuBar = React.lazy(() => import('./info-menubar/InfoMenuBar'));
 const TablePane = React.lazy(() => import('./table/TablePane'));
-const ChoroplethChart = React.lazy(() =>
-  import('./choropleth-chart/ChoroplethChart')
-);
+const ChoroplethChart = React.lazy(() => import('./choropleth-chart/ChoroplethChart'));
 
 const getUsIndex = (it: TableRow) => it.region === 'United States';
 const getMdIndex = (it: TableRow) => it.region === 'Maryland';
@@ -49,36 +36,23 @@ const normalizePop = (value: number | undefined, pop: number | undefined) => {
   return Math.round((value / pop) * 1000000);
 };
 
-const normalizeGdpPop = (
-  value: number | undefined,
-  gdp: number | undefined,
-  pop: number | undefined
-) => {
+const normalizeGdpPop = (value: number | undefined, gdp: number | undefined, pop: number | undefined) => {
   return normalizePop(normalizeGdp(value, gdp), pop);
 };
 
-const rowToNormalizedGdpCases = (row: TableRow) =>
-  normalizeGdp(row.cases, row.gdp);
-const rowToNormalizedPopCases = (row: TableRow) =>
-  normalizePop(row.cases, row.population);
-const rowToNormalizedGdpPopCases = (row: TableRow) =>
-  normalizeGdpPop(row.cases, row.gdp, row.population);
+const rowToNormalizedGdpCases = (row: TableRow) => normalizeGdp(row.cases, row.gdp);
+const rowToNormalizedPopCases = (row: TableRow) => normalizePop(row.cases, row.population);
+const rowToNormalizedGdpPopCases = (row: TableRow) => normalizeGdpPop(row.cases, row.gdp, row.population);
 const rowToCases = (row: TableRow) => row.cases;
 
-const rowToNormalizedGdpRecoveries = (row: TableRow) =>
-  normalizeGdp(row.recovered, row.gdp);
-const rowToNormalizedPopRecoveries = (row: TableRow) =>
-  normalizePop(row.recovered, row.population);
-const rowToNormalizedGdpPopRecoveries = (row: TableRow) =>
-  normalizeGdpPop(row.recovered, row.gdp, row.population);
+const rowToNormalizedGdpRecoveries = (row: TableRow) => normalizeGdp(row.recovered, row.gdp);
+const rowToNormalizedPopRecoveries = (row: TableRow) => normalizePop(row.recovered, row.population);
+const rowToNormalizedGdpPopRecoveries = (row: TableRow) => normalizeGdpPop(row.recovered, row.gdp, row.population);
 const rowToRecovered = (row: TableRow) => row.recovered;
 
-const rowToNormalizedGdpDeaths = (row: TableRow) =>
-  normalizeGdp(row.deaths, row.gdp);
-const rowToNormalizedPopDeaths = (row: TableRow) =>
-  normalizePop(row.deaths, row.population);
-const rowToNormalizedGdpPopDeaths = (row: TableRow) =>
-  normalizeGdpPop(row.deaths, row.gdp, row.population);
+const rowToNormalizedGdpDeaths = (row: TableRow) => normalizeGdp(row.deaths, row.gdp);
+const rowToNormalizedPopDeaths = (row: TableRow) => normalizePop(row.deaths, row.population);
+const rowToNormalizedGdpPopDeaths = (row: TableRow) => normalizeGdpPop(row.deaths, row.gdp, row.population);
 const rowToDeaths = (row: TableRow) => row.deaths;
 
 type Props = {
@@ -157,47 +131,7 @@ export const getDeathsAccessor = (normalized: Normalization) => {
   }
 };
 
-const NormalizeSwitch = ({
-  norm,
-  alt,
-  label,
-  onChange,
-  currentValue,
-}: {
-  norm: Normalization;
-  alt: Normalization;
-  label: string;
-  onChange: (normalization: Normalization) => void;
-  currentValue: Normalization;
-}) => {
-  return (
-    <FormControlLabel
-      control={
-        <Switch
-          checked={currentValue === norm || currentValue === 'gdp+pop'}
-          onChange={(event, value) => {
-            event.stopPropagation();
-            const off =
-              currentValue === 'gdp+pop' || currentValue === alt ? alt : 'none';
-            const on = currentValue === alt ? 'gdp+pop' : norm;
-            onChange(value ? on : off);
-          }}
-          name='normalized'
-        />
-      }
-      label={label}
-    />
-  );
-};
-
-export default function App({
-  dataset,
-  rows,
-  normalized,
-  lastUpdated,
-  onDatasetChange,
-  onNormalizedChange,
-}: Props) {
+export default function App({ dataset, rows, normalized, lastUpdated, onDatasetChange, onNormalizedChange }: Props) {
   let min = 80;
   let max = 500;
 
@@ -211,9 +145,7 @@ export default function App({
     min = 21000;
     max = 1900000;
   }
-  const [series, setSeries] = React.useState<TimeSeries[] | undefined>(
-    undefined
-  );
+  const [series, setSeries] = React.useState<TimeSeries[] | undefined>(undefined);
 
   React.useEffect(() => {
     const global = dataset === 'global';
@@ -231,9 +163,7 @@ export default function App({
             return undefined;
           }
           const { population: pop, gdp } = row;
-          let mapper:
-            | undefined
-            | ((value: number | undefined) => number | undefined);
+          let mapper: undefined | ((value: number | undefined) => number | undefined);
           switch (normalized) {
             case 'pop':
               mapper = (value: number | undefined) => normalizePop(value, pop);
@@ -242,8 +172,7 @@ export default function App({
               mapper = (value: number | undefined) => normalizeGdp(value, gdp);
               break;
             case 'gdp+pop':
-              mapper = (value: number | undefined) =>
-                normalizeGdpPop(value, gdp, pop);
+              mapper = (value: number | undefined) => normalizeGdpPop(value, gdp, pop);
               break;
             case 'none':
               mapper = undefined;
@@ -274,11 +203,7 @@ export default function App({
   return (
     <div style={{ width: 1048, maxWidth: '95vw', margin: 'auto' }}>
       <React.Suspense fallback={<CircularProgress />}>
-        <InfoMenuBar
-          lastUpdated={lastUpdated}
-          normalized={normalized}
-          dataset={dataset}
-        >
+        <InfoMenuBar lastUpdated={lastUpdated} normalized={normalized} dataset={dataset}>
           <NormalizeSwitch
             label='Norm GDP'
             norm='gdp'
@@ -302,11 +227,7 @@ export default function App({
             }}
           >
             <FormControlLabel value='us' control={<Radio />} label='US' />
-            <FormControlLabel
-              value='global'
-              control={<Radio />}
-              label='Global'
-            />
+            <FormControlLabel value='global' control={<Radio />} label='Global' />
           </RadioGroup>
         </InfoMenuBar>
         <React.Suspense fallback={<CircularProgress />}>
@@ -317,12 +238,7 @@ export default function App({
                   Total Cases
                 </Typography>
               </ExpansionPanelSummary>
-              <ChoroplethChart
-                data={rows}
-                accessor={worldAccessor}
-                min={min}
-                max={max}
-              />
+              <ChoroplethChart data={rows} accessor={worldAccessor} min={min} max={max} />
             </ExpansionPanel>
           )}
           <ExpansionPanel defaultExpanded>
@@ -342,9 +258,7 @@ export default function App({
           </ExpansionPanel>
         </React.Suspense>
         <Divider />
-        {rows && (
-          <TablePane data={rows} datasetKey={dataset} normalized={normalized} />
-        )}
+        {rows && <TablePane data={rows} dataset={dataset} normalized={normalized} />}
         {!rows && <CircularProgress />}
       </React.Suspense>
     </div>

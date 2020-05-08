@@ -20,17 +20,10 @@ import { ShareDialog } from '../info-menubar/ShareDialog';
 import stylesM from './Table.module.css';
 import { Column } from './SimpleTable';
 import { TableCell } from './TableCell';
-import {
-  getGlobalCases,
-  getGlobalDeaths,
-  getUsCases,
-  getUsDeaths,
-} from '../GlobalContext';
+import { getGlobalCases, getGlobalDeaths, getUsCases, getUsDeaths } from '../GlobalContext';
 
 const LineChart = React.lazy(() => import('../line-chart/LineChart'));
-const CalendarChart = React.lazy(() =>
-  import('../calendar-chart/CalendarChart')
-);
+const CalendarChart = React.lazy(() => import('../calendar-chart/CalendarChart'));
 
 type Props = {
   row: Row<TableRow>;
@@ -81,11 +74,7 @@ export const useCellStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const getCellClasses = (
-  styles: ReturnType<typeof useCellStyles>,
-  cell: Cell<TableRow>,
-  row: Row<TableRow>
-) => {
+const getCellClasses = (styles: ReturnType<typeof useCellStyles>, cell: Cell<TableRow>, row: Row<TableRow>) => {
   const region = row.original.region;
   const id = cell.column.id;
   const value: unknown = cell.value;
@@ -98,8 +87,7 @@ const getCellClasses = (
     case 'change':
     case 'weeklyChange':
       if (typeof value == 'number' && value !== 0) {
-        const className =
-          value > 0 ? styles.negativeChange : styles.positiveChange;
+        const className = value > 0 ? styles.negativeChange : styles.positiveChange;
         classes.push(className);
       }
       break;
@@ -227,12 +215,7 @@ export const SeriesPanel = ({
   return (
     <Paper>
       <SeriesPanelHeader>New deaths and cases</SeriesPanelHeader>
-      <LineChart
-        data={data}
-        leftAxisLabel='change'
-        marginTop={10}
-        dataKey='label'
-      />
+      <LineChart data={data} leftAxisLabel='change' marginTop={10} dataKey='label' />
       <SeriesPanelHeader>New cases</SeriesPanelHeader>
       {cs && <CalendarChart data={cs} />}
       <SeriesPanelHeader>New deaths</SeriesPanelHeader>
@@ -241,22 +224,12 @@ export const SeriesPanel = ({
   );
 };
 
-export const SeriesTableRow = ({
-  row,
-  embedded,
-  dataset,
-  normalized,
-  columnIndex,
-  rowNumber,
-}: Props) => {
+export const SeriesTableRow = ({ row, embedded, dataset, normalized, columnIndex, rowNumber }: Props) => {
   const series = row.original;
-  const [expandedState, setExpandedState] = React.useState<ExpandState>(
-    embedded ? 'OPEN' : 'CLOSED'
-  );
+  const [expandedState, setExpandedState] = React.useState<ExpandState>(embedded ? 'OPEN' : 'CLOSED');
   const [showLinkDialog, setShowLinkDialog] = React.useState<boolean>(false);
   const expanded = expandedState === 'OPEN';
-  const handleExpandClick = () =>
-    setExpandedState(expanded ? 'CLOSING' : 'OPEN');
+  const handleExpandClick = () => setExpandedState(expanded ? 'CLOSING' : 'OPEN');
   const classes = useCellStyles();
   const rowProps = row.getRowProps();
   const cells = row.cells;
@@ -288,12 +261,8 @@ export const SeriesTableRow = ({
                 </IconButton>
               )}
             </TableCell>
-            <TableCell className={clsx(classes.cell, stylesM.containerHidden)}>
-              {rowNumber}
-            </TableCell>
-            <TableCell
-              className={clsx(classes.cell, stylesM.containerHidden)}
-            />
+            <TableCell className={clsx(classes.cell, stylesM.containerHidden)}>{rowNumber}</TableCell>
+            <TableCell className={clsx(classes.cell, stylesM.containerHidden)} />
           </>
         )}
         {cells.map((cell) => {
@@ -301,11 +270,7 @@ export const SeriesTableRow = ({
 
           return (
             <TableCell
-              className={clsx(
-                classes.cell,
-                ...getCellClasses(classes, cell, row),
-                column?.className
-              )}
+              className={clsx(classes.cell, ...getCellClasses(classes, cell, row), column?.className)}
               {...cell.getCellProps()}
             >
               {cell.render('Cell')}
@@ -317,11 +282,7 @@ export const SeriesTableRow = ({
             {series && (
               <>
                 <Tooltip title='Share'>
-                  <IconButton
-                    size='small'
-                    onClick={handleLinkClick}
-                    aria-label='Share'
-                  >
+                  <IconButton size='small' onClick={handleLinkClick} aria-label='Share'>
                     <Share />
                   </IconButton>
                 </Tooltip>
@@ -336,15 +297,8 @@ export const SeriesTableRow = ({
         )}
       </MuiTableRow>
       {expandedState !== 'CLOSED' && (
-        <MuiTableRow
-          {...rowProps}
-          key={`${rowProps.key}_expand`}
-          style={{ maxWidth: '95vw', overflow: 'hidden' }}
-        >
-          <TableCell
-            colSpan={cells.length + (embedded ? 0 : 4)}
-            className={stylesM.container}
-          >
+        <MuiTableRow {...rowProps} key={`${rowProps.key}_expand`} style={{ maxWidth: '95vw', overflow: 'hidden' }}>
+          <TableCell colSpan={cells.length + (embedded ? 0 : 4)} className={stylesM.container}>
             <Collapse
               in={expanded}
               timeout='auto'

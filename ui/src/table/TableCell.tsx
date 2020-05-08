@@ -9,22 +9,10 @@ type Props = { responsive?: boolean } & Pick<
   'id' | 'children' | 'colSpan' | 'className'
 >;
 
-export const TableCell = ({
-  children,
-  responsive,
-  className,
-  ...rest
-}: Props) => {
+export const TableCell = ({ children, responsive, className, ...rest }: Props) => {
   const styles = useCellStyles();
   return (
-    <MuiTableCell
-      {...rest}
-      className={clsx(
-        styles.cell,
-        responsive ? stylesM.containerHidden : undefined,
-        className
-      )}
-    >
+    <MuiTableCell {...rest} className={clsx(styles.cell, responsive ? stylesM.containerHidden : undefined, className)}>
       {children}
     </MuiTableCell>
   );

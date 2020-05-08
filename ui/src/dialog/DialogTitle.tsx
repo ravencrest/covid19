@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  DialogTitle as MuiDialogTitle,
-  IconButton,
-  makeStyles,
-  Typography,
-} from '@material-ui/core';
+import { DialogTitle as MuiDialogTitle, IconButton, makeStyles, Typography } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
 
 export const useStyles = makeStyles((theme) => ({
@@ -16,21 +11,14 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const DialogTitle = (props: {
-  onClose: () => void;
-  children: React.ReactChild;
-}) => {
+export const DialogTitle = (props: { onClose: () => void; children: React.ReactChild }) => {
   const { children, onClose } = props;
   const styles = useStyles();
   return (
     <MuiDialogTitle disableTypography>
       <Typography variant='h6'>{children}</Typography>
       {onClose ? (
-        <IconButton
-          aria-label='close'
-          className={styles.closeButton}
-          onClick={onClose}
-        >
+        <IconButton aria-label='close' className={styles.closeButton} onClick={onClose}>
           <Close />
         </IconButton>
       ) : null}

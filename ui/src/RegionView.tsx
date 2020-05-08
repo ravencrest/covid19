@@ -1,19 +1,13 @@
 import React from 'react';
-import {
-  Divider,
-  FormControlLabel,
-  CircularProgress,
-  Switch,
-  Button,
-} from '@material-ui/core';
+import { Divider, CircularProgress, Button } from '@material-ui/core';
 import { ArrowBack } from '@material-ui/icons';
 import { TableRow, DataSets, TimeSeries, Normalization } from './types';
-import RegionPane from './table/RegionPane';
 import { useParams } from 'react-router-dom';
 import { useImmer } from 'use-immer';
 import { setLocation } from './GlobalContext';
 import { changeMapper, deathMapper } from './App';
-
+import TablePane from './table/TablePane';
+import { NormalizeSwitch } from './NormalizeSwitch';
 const InfoMenuBar = React.lazy(() => import('./info-menubar/InfoMenuBar'));
 
 type Props = {
@@ -29,7 +23,7 @@ export default function RegionView({
   rows,
   normalized,
   lastUpdated,
-  onNormalizedChange,
+  onNormalizedChange: handleNormalizationChange,
 }: Props) {
   const [state, setState] = useImmer<{
     changeSeries?: TimeSeries;
@@ -37,9 +31,15 @@ export default function RegionView({
     filteredRows?: TableRow[];
   }>({});
   const { filteredRows } = state;
-
   const routeParams = useParams() as { region: string; dataset: string };
   const region = routeParams.region.toLowerCase();
+
+  const onNormalizedChange = React.useCallback(
+    (normalization: Normalization) => {
+      handleNormalizationChange(normalization, region);
+    },
+    [handleNormalizationChange, region]
+  );
 
   React.useEffect(() => {
     changeMapper(dataset)().then((data) => {
@@ -80,57 +80,24 @@ export default function RegionView({
         >
           Back to all results
         </Button>
-        <InfoMenuBar
-          lastUpdated={lastUpdated}
-          normalized={normalized}
-          dataset={dataset}
-          region={region}
-        >
-          <FormControlLabel
-            control={
-              <Switch
-                checked={normalized === 'gdp' || normalized === 'gdp+pop'}
-                onChange={(event, value) => {
-                  event.stopPropagation();
-                  const off =
-                    normalized === 'gdp+pop' || normalized === 'pop'
-                      ? 'pop'
-                      : 'none';
-                  const on = normalized === 'pop' ? 'gdp+pop' : 'gdp';
-                  onNormalizedChange(value ? on : off, region);
-                }}
-                name='normalized'
-              />
-            }
+        <InfoMenuBar lastUpdated={lastUpdated} normalized={normalized} dataset={dataset} region={region}>
+          <NormalizeSwitch
             label='Norm GDP'
+            norm='gdp'
+            alt='pop'
+            onChange={onNormalizedChange}
+            currentValue={normalized}
           />
-          <FormControlLabel
-            control={
-              <Switch
-                checked={normalized === 'pop' || normalized === 'gdp+pop'}
-                onChange={(event, value) => {
-                  event.stopPropagation();
-                  const off =
-                    normalized === 'gdp+pop' || normalized === 'gdp'
-                      ? 'gdp'
-                      : 'none';
-                  const on = normalized === 'gdp' ? 'gdp+pop' : 'pop';
-                  onNormalizedChange(value ? on : off, region);
-                }}
-                name='normalized'
-              />
-            }
+          <NormalizeSwitch
             label='Norm Pop'
+            norm='pop'
+            alt='gdp'
+            onChange={onNormalizedChange}
+            currentValue={normalized}
           />
         </InfoMenuBar>
         <Divider />
-        {filteredRows && (
-          <RegionPane
-            data={filteredRows}
-            normalized={normalized}
-            dataset={dataset}
-          />
-        )}
+        {filteredRows && <TablePane embedded data={filteredRows} normalized={normalized} dataset={dataset} />}
         {!filteredRows && <CircularProgress />}
       </React.Suspense>
     </div>

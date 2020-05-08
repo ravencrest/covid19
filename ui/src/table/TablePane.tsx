@@ -30,131 +30,110 @@ export function formatChange(change: number | undefined | null) {
   return `${change > 0 ? '+' : ''}${change}%`;
 }
 
-export const buildColumns = memoizeOne(
-  (normalized: Normalization, dataset: DataSets): Column<TableRow>[] => {
-    const columns: Column<TableRow>[] = [
-      {
-        header: (
-          <Header
-            tooltip='Increase in new cases since last data'
-            className={stylesM.containerHidden}
-          >
-            Change
-          </Header>
-        ),
-        className: stylesM.containerHidden,
-        accessor: 'change',
-        id: 'change',
-        cell: ({ row, value }) => formatChange(value),
-      },
-      {
-        header: (
-          <Header tooltip='Average weekly increase in new cases'>
-            Change (W)
-          </Header>
-        ),
-        accessor: 'weeklyChange',
-        id: 'weeklyChange',
-        cell: ({ row, value }) => formatChange(value),
-      },
-      {
-        id: 'region',
-        header: <Header tooltip='Region'>Region</Header>,
-        accessor: 'region',
-      },
-      {
-        id: 'cases',
-        header: <Header tooltip='Confirmed Cases'>Cases</Header>,
-        accessor: getAccessor(normalized),
-      },
-      {
-        id: 'deaths',
-        header: <Header tooltip='Confirmed Deaths'>Deaths</Header>,
-        accessor: getDeathsAccessor(normalized),
-      },
-    ];
+export const buildColumns = memoizeOne((normalized: Normalization, dataset: DataSets): Column<TableRow>[] => {
+  const columns: Column<TableRow>[] = [
+    {
+      header: (
+        <Header tooltip='Increase in new cases since last data' className={stylesM.containerHidden}>
+          Change
+        </Header>
+      ),
+      className: stylesM.containerHidden,
+      accessor: 'change',
+      id: 'change',
+      cell: ({ row, value }) => formatChange(value),
+    },
+    {
+      header: <Header tooltip='Average weekly increase in new cases'>Change (W)</Header>,
+      accessor: 'weeklyChange',
+      id: 'weeklyChange',
+      cell: ({ row, value }) => formatChange(value),
+    },
+    {
+      id: 'region',
+      header: <Header tooltip='Region'>Region</Header>,
+      accessor: 'region',
+    },
+    {
+      id: 'cases',
+      header: <Header tooltip='Confirmed Cases'>Cases</Header>,
+      accessor: getAccessor(normalized),
+    },
+    {
+      id: 'deaths',
+      header: <Header tooltip='Confirmed Deaths'>Deaths</Header>,
+      accessor: getDeathsAccessor(normalized),
+    },
+  ];
 
-    if (dataset !== 'us') {
-      columns.push({
-        header: (
-          <Header
-            tooltip='Confirmed Recoveries'
-            className={stylesM.containerHidden}
-          >
-            <div style={{ display: 'flex' }}>
-              <span
-                style={{
-                  maxWidth: '3rem',
-                  textOverflow: 'ellipsis',
-                  display: 'inline-block',
-                  overflow: 'hidden',
-                }}
-              >
-                Recoveries
-              </span>
-            </div>
-          </Header>
-        ),
-        id: 'recovered',
-        className: stylesM.containerHidden,
-        accessor: getRecoveriesAccessor(normalized),
-      });
-    }
+  if (dataset !== 'us') {
     columns.push({
-      id: 'population',
+      header: (
+        <Header tooltip='Confirmed Recoveries' className={stylesM.containerHidden}>
+          <div style={{ display: 'flex' }}>
+            <span
+              style={{
+                maxWidth: '3rem',
+                textOverflow: 'ellipsis',
+                display: 'inline-block',
+                overflow: 'hidden',
+              }}
+            >
+              Recoveries
+            </span>
+          </div>
+        </Header>
+      ),
+      id: 'recovered',
       className: stylesM.containerHidden,
-      header: <Header tooltip='Population'>Pop.</Header>,
-      accessor: 'population',
+      accessor: getRecoveriesAccessor(normalized),
     });
-    columns.push({
-      id: 'gdp',
-      className: stylesM.containerHidden,
-      header: <Header tooltip='GDP'>GDP</Header>,
-      accessor: 'gdp',
-    });
-    return columns;
   }
-);
+  columns.push({
+    id: 'population',
+    className: stylesM.containerHidden,
+    header: <Header tooltip='Population'>Pop.</Header>,
+    accessor: 'population',
+  });
+  columns.push({
+    id: 'gdp',
+    className: stylesM.containerHidden,
+    header: <Header tooltip='GDP'>GDP</Header>,
+    accessor: 'gdp',
+  });
+  return columns;
+});
 
 export default React.memo(function TablePane({
   data,
-  datasetKey,
+  dataset,
   normalized,
+  embedded,
 }: {
   data: TableRow[];
-  datasetKey: DataSets;
+  dataset: DataSets;
   normalized: Normalization;
+  embedded?: boolean;
 }) {
-  const filteredColumns = React.useMemo(
-    () => buildColumns(normalized, datasetKey),
-    [normalized, datasetKey]
-  );
+  const filteredColumns = React.useMemo(() => buildColumns(normalized, dataset), [normalized, dataset]);
   const rowBuilder = React.useCallback(
-    (
-      row: Row<TableRow>,
-      columns: ReadonlyMap<string, Column<TableRow>>,
-      i: number
-    ) => (
+    (row: Row<TableRow>, columns: ReadonlyMap<string, Column<TableRow>>, i: number) => (
       <SeriesTableRow
         {...row.getRowProps()}
-        key={`${i}-${datasetKey}`}
+        key={`${i}-${dataset}`}
         rowNumber={i}
         row={row}
         normalized={normalized}
-        dataset={datasetKey}
+        dataset={dataset}
         columnIndex={columns}
       />
     ),
-    [normalized, datasetKey]
+    [normalized, dataset]
   );
   return (
     <>
       <CssBaseline />
-      <SimpleTable
-        rowBuilder={rowBuilder}
-        columns={filteredColumns}
-        data={data}
-      />
+      <SimpleTable embedded={embedded} rowBuilder={rowBuilder} columns={filteredColumns} data={data} />
     </>
   );
 });

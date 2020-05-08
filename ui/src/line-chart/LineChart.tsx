@@ -11,9 +11,7 @@ const pointToDatum = (point: Point): Datum => {
   };
 };
 
-const seriesToData = (dataKey: keyof TimeSeries) => (
-  data: TimeSeries
-): Serie => {
+const seriesToData = (dataKey: keyof TimeSeries) => (data: TimeSeries): Serie => {
   return { id: data[dataKey] as string, data: data.points.map(pointToDatum) };
 };
 

@@ -1,9 +1,4 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  TextField,
-} from '@material-ui/core';
+import { Dialog, DialogContent, DialogContentText, TextField } from '@material-ui/core';
 import React from 'react';
 import { DialogTitle } from '../dialog/DialogTitle';
 
@@ -32,17 +27,9 @@ export const ShareDialog = React.forwardRef(
         }}
       >
         <DialogTitle onClose={onClose}>Direct Link</DialogTitle>
-        <DialogContent
-          style={{ width: `${href.length / 1.5}em`, maxWidth: '80vw' }}
-        >
+        <DialogContent style={{ width: `${href.length / 1.5}em`, maxWidth: '80vw' }}>
           <DialogContentText component='div'>
-            <TextField
-              value={href}
-              inputRef={ref}
-              InputProps={{ readOnly: true }}
-              fullWidth
-              variant='outlined'
-            />
+            <TextField value={href} inputRef={ref} InputProps={{ readOnly: true }} fullWidth variant='outlined' />
           </DialogContentText>
         </DialogContent>
       </Dialog>

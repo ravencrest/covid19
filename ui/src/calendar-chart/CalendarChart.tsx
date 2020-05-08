@@ -19,9 +19,7 @@ const CalendarChart = React.memo(({ data, height = '15em' }: Props) => {
   const from = setDayOfYear(new Date(), 1);
   const points = data.points;
   const pointsLength = points && points.length;
-  const to = pointsLength
-    ? points[points.length - 1].date
-    : setDayOfYear(new Date(), 365);
+  const to = pointsLength ? points[points.length - 1].date : setDayOfYear(new Date(), 365);
 
   return (
     <div style={{ height: '15em', maxWidth: '90vw', width: '100%' }}>

@@ -31,13 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Link = ({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactChild;
-}) => (
+const Link = ({ href, children }: { href: string; children: React.ReactChild }) => (
   <MuiLink href={href} target='_blank' rel='noopener noreferrer'>
     {children}
   </MuiLink>
@@ -53,26 +47,14 @@ type Props = {
   region?: string;
 };
 
-export const getDirectLink = (
-  dataset: DataSets,
-  normalized: Normalization,
-  region?: string
-) => {
-  return `${window.location.protocol}//${window.location.host}${
-    window.location.pathname
-  }#/${dataset}${region ? `/${region}` : ''}?norm=${normalized}`.toLowerCase();
+export const getDirectLink = (dataset: DataSets, normalized: Normalization, region?: string) => {
+  return `${window.location.protocol}//${window.location.host}${window.location.pathname}#/${dataset}${
+    region ? `/${region}` : ''
+  }?norm=${normalized}`.toLowerCase();
 };
 
-export default ({
-  lastUpdated,
-  children,
-  normalized,
-  dataset,
-  region,
-}: Props) => {
-  const [open, setOpen] = React.useState<'link' | 'info' | undefined>(
-    undefined
-  );
+export default ({ lastUpdated, children, normalized, dataset, region }: Props) => {
+  const [open, setOpen] = React.useState<'link' | 'info' | undefined>(undefined);
   const styles = useStyles();
   const onClose = () => setOpen(undefined);
   const onOpenLink = () => setOpen('link');
@@ -105,35 +87,20 @@ export default ({
           Share
         </Button>
       </Tooltip>
-      <ShareDialog
-        onClose={onClose}
-        open={open === 'link'}
-        href={getDirectLink(dataset, normalized, region)}
-      />
-      <Dialog
-        onClose={onClose}
-        aria-labelledby='simple-dialog-title'
-        open={open === 'info'}
-      >
+      <ShareDialog onClose={onClose} open={open === 'link'} href={getDirectLink(dataset, normalized, region)} />
+      <Dialog onClose={onClose} aria-labelledby='simple-dialog-title' open={open === 'info'}>
         <DialogTitle onClose={onClose}>About</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Licensed under the{' '}
-            <Link href='https://www.apache.org/licenses/LICENSE-2.0.html'>
-              Apache 2.0 License
-            </Link>
+            Licensed under the <Link href='https://www.apache.org/licenses/LICENSE-2.0.html'>Apache 2.0 License</Link>
             <br />
             Source can be found at: <Link href={githubUrl}>GitHub</Link>
             <br />
             COVID-19 data is taken from:{' '}
-            <Link href='https://github.com/CSSEGISandData/COVID-19'>
-              CSSE at Johns Hopkins University
-            </Link>
+            <Link href='https://github.com/CSSEGISandData/COVID-19'>CSSE at Johns Hopkins University</Link>
             <br />
             Population data is taken from:{' '}
-            <Link href='https://www.worldometers.info/world-population/population-by-country/'>
-              Worldometer
-            </Link>
+            <Link href='https://www.worldometers.info/world-population/population-by-country/'>Worldometer</Link>
           </DialogContentText>
         </DialogContent>
       </Dialog>
