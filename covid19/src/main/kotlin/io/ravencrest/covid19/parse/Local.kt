@@ -8,14 +8,14 @@ val isDev = Paths.get("./build.gradle").toAbsolutePath().toFile().exists()
 val rootPath = if (isDev) "data" else ".."
 
 // Population data is manually scraped from https://www.worldometers.info/world-population/population-by-country/ It'd be nice to find a better source
-val globalPopulationPath: Path = Paths.get(rootPath, "population.csv").toAbsolutePath()
+val globalPopulationPath: Path = Paths.get(rootPath, "global_population.csv").toAbsolutePath()
 val usPopulationPath: Path = Paths.get(rootPath, "us_population.csv").toAbsolutePath()
 
 // Manually generated list that maps the country labels in the population data to the COVID-19 time series country labels
-val countriesPath: Path = Paths.get(rootPath, "country_codes_b.csv").toAbsolutePath()
+val countriesPath: Path = Paths.get(rootPath, "global_regions.csv").toAbsolutePath()
 
 // Manually generated list that maps the country labels in the population data to the COVID-19 time series state labels
-val statesPath: Path = Paths.get(rootPath, "us_states.csv").toAbsolutePath()
+val statesPath: Path = Paths.get(rootPath, "us_regions.csv").toAbsolutePath()
 
 // Manually generated list for data we don't want to io.ravencrest.covid19.io.ravencrest.covid19.parse.parse
 val blacklistPath: Path = Paths.get(rootPath, "blacklist.txt").toAbsolutePath()
