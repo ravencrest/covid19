@@ -189,20 +189,8 @@ export default function DatasetView({
     <div style={{ width: 1048, maxWidth: '95vw', margin: 'auto' }}>
       <React.Suspense fallback={<CircularProgress />}>
         <InfoMenuBar lastUpdated={lastUpdated} normalized={normalized} dataset={dataset}>
-          <NormalizeSwitch
-            label='Norm GDP'
-            norm='gdp'
-            alt='pop'
-            onChange={onNormalizedChange}
-            currentValue={normalized}
-          />
-          <NormalizeSwitch
-            label='Norm Pop'
-            norm='pop'
-            alt='gdp'
-            onChange={onNormalizedChange}
-            currentValue={normalized}
-          />
+          <NormalizeSwitch label='GDP' norm='gdp' alt='pop' onChange={onNormalizedChange} currentValue={normalized} />
+          <NormalizeSwitch label='Pop.' norm='pop' alt='gdp' onChange={onNormalizedChange} currentValue={normalized} />
           <RadioGroup
             row
             value={dataset}
