@@ -5,14 +5,14 @@ import { TableRow, DataSets, Normalization } from '../types';
 import { SeriesTableRow } from './SeriesTableRow';
 import { buildColumns } from './TablePane';
 import { Column, SimpleTable } from './SimpleTable';
-export default React.memo(function RegionPane({
+export default React.memo(function TablePane({
   data,
-  normalized,
   dataset,
+  normalized,
 }: {
   data: TableRow[];
-  normalized: Normalization;
   dataset: DataSets;
+  normalized: Normalization;
 }) {
   const filteredColumns = React.useMemo(
     () => buildColumns(normalized, dataset),
@@ -21,18 +21,17 @@ export default React.memo(function RegionPane({
   const rowBuilder = React.useCallback(
     (
       row: Row<TableRow>,
-      columnIndex: ReadonlyMap<string, Column<TableRow>>,
+      columns: ReadonlyMap<string, Column<TableRow>>,
       i: number
     ) => (
       <SeriesTableRow
-        embedded
         {...row.getRowProps()}
+        key={`${i}-${dataset}`}
         rowNumber={i}
-        key={`${i}`}
         row={row}
         normalized={normalized}
         dataset={dataset}
-        columnIndex={columnIndex}
+        columnIndex={columns}
       />
     ),
     [normalized, dataset]
