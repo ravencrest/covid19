@@ -37,6 +37,7 @@ fun loadCountries(): Pair<Map<String, String>, Map<String, String>> {
       prefValue
     }
     countryCodes[normalizedValue] = code
+    map[code] = normalizedValue
 
     for (i in 3 until it.size) {
       val key = it[i]
@@ -93,14 +94,17 @@ fun loadGlobalGdp(regions: Map<String, String>): Map<String, Double> {
   val map = mutableMapOf<String, Double>()
   val iterator = readCsvToStringArray(globalGdpPath)
   iterator.next()
+  var i = 0
   iterator.forEach {
+    i++
+    val code = it[0]
     val rawRegion = it[1]
     val gdp =it.last().toDoubleOrNull()
     if (gdp == null) {
       println("Unable to convert GDP to number for $rawRegion and value ${it.last()}")
       return@forEach
     }
-    val region = regions[rawRegion] ?: rawRegion
+    val region = regions[code] ?: rawRegion
     map[region] = gdp
   }
   return map.toMap()

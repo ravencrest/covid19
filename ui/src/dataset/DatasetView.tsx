@@ -26,14 +26,14 @@ const normalizeGdp = (value: number | undefined, gdp: number | undefined) => {
   if (value === undefined || gdp === undefined) {
     return undefined;
   }
-  return Math.round(value * gdp);
+  return Math.ceil(value * (gdp || 1));
 };
 
 const normalizePop = (value: number | undefined, pop: number | undefined) => {
   if (value === undefined || pop === undefined) {
     return undefined;
   }
-  return Math.round((value / pop) * 1000000);
+  return Math.ceil((value / pop) * 1000000);
 };
 
 const normalizeGdpPop = (value: number | undefined, gdp: number | undefined, pop: number | undefined) => {

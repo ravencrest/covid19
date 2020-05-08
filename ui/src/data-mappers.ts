@@ -2,8 +2,8 @@ import { parseJSON } from 'date-fns';
 import memoizeOne from 'memoize-one';
 import { DataSets, RawResults, Results, TimeSeries } from './types';
 
-const getTableRows = async function (file: Promise<unknown>): Promise<Results> {
-  const results = (await file) as RawResults;
+const getTableRows = async function (file: Promise<RawResults>): Promise<Results> {
+  const results = await file;
   const lastUpdated = parseJSON(results.lastUpdated);
   return { lastUpdated, rows: results.rows };
 };
