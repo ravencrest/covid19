@@ -1,0 +1,11 @@
+:global(.MuiTableCell-body).bold {
+  font-weight: bold;
+}
+
+:global(.MuiTableCell-body).negativeChange {
+  color: red;
+}
+
+:global(.MuiTableCell-body).positiveChange {
+  color: green;
+}

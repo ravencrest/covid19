@@ -19,6 +19,7 @@ import stylesM from '../table/Table.module.css';
 import { Column } from '../table/SimpleTable';
 import { TableCell } from '../table/TableCell';
 import { SeriesPanel } from './RegionSeriesPane';
+import cssStyles from './SeriesTableRow.module.css';
 
 type Props = {
   row: Row<TableRow>;
@@ -57,15 +58,6 @@ export const useCellStyles = makeStyles((theme: Theme) =>
       whiteSpace: 'nowrap',
       overflow: 'hidden',
     },
-    bold: {
-      fontWeight: 'bold !important',
-    },
-    positiveChange: {
-      color: 'green',
-    },
-    negativeChange: {
-      color: 'red',
-    },
   })
 );
 
@@ -76,13 +68,13 @@ const getCellClasses = (styles: ReturnType<typeof useCellStyles>, cell: Cell<Tab
 
   let classes: string[] = [];
   if (region === 'United States' || region === 'Maryland') {
-    classes = [styles.bold];
+    classes = [cssStyles.bold];
   }
   switch (id) {
     case 'change':
     case 'weeklyChange':
       if (typeof value == 'number' && value !== 0) {
-        const className = value > 0 ? styles.negativeChange : styles.positiveChange;
+        const className = value > 0 ? cssStyles.negativeChange : cssStyles.positiveChange;
         classes.push(className);
       }
       break;
