@@ -31,7 +31,7 @@ export function formatChange(change: number | undefined | null) {
   return `${change > 0 ? '+' : ''}${change}%`;
 }
 
-const numberFormatter = d3.format(',.2r');
+const numberFormatter = d3.format(',');
 
 function formatNumber(value: number | undefined | null) {
   if (value === null || value === undefined) {
@@ -129,7 +129,7 @@ export const buildColumns = memoizeOne((normalized: Normalization, dataset: Data
   columns.push({
     id: 'gdp',
     className: stylesM.containerHidden,
-    header: <Header tooltip='GDP (Billions)'>GDP</Header>,
+    header: <Header tooltip='GDP (Billions)'>GDP (B)</Header>,
     accessor: 'gdp',
     cell: ({ value }: { row: TableRow; value: any }) => formatCurrency(value),
   });
