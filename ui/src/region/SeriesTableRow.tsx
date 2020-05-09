@@ -58,7 +58,7 @@ export const useCellStyles = makeStyles((theme: Theme) =>
       overflow: 'hidden',
     },
     bold: {
-      fontWeight: 'bold',
+      fontWeight: 'bold !important',
     },
     positiveChange: {
       color: 'green',
