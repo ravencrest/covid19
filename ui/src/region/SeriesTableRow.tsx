@@ -127,7 +127,7 @@ export const SeriesTableRow = ({ row, embedded, dataset, normalized, columnIndex
                 </IconButton>
               )}
             </TableCell>
-            <TableCell className={clsx(classes.cell, stylesM.containerHidden)}>{rowNumber}</TableCell>
+            <TableCell className={clsx(classes.cell, stylesM.containerHidden)}>{rowNumber + 1}</TableCell>
             <TableCell className={clsx(classes.cell, stylesM.containerHidden)} />
           </>
         )}

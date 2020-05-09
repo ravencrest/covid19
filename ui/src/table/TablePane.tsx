@@ -6,7 +6,7 @@ import { TableRow, DataSets, Normalization } from '../types';
 import { SeriesTableRow } from '../region/SeriesTableRow';
 import stylesM from './Table.module.css';
 import memoizeOne from 'memoize-one';
-import { getAccessor, getDeathsAccessor, getRecoveriesAccessor } from '../dataset/DatasetView';
+import { getRowMapper, casesMapperConfig, deathsMapperConfig, recoveriesMapperConfig } from '../dataset/DatasetView';
 import * as d3 from 'd3-format';
 
 export const Header = ({
@@ -84,13 +84,13 @@ export const buildColumns = memoizeOne((normalized: Normalization, dataset: Data
     {
       id: 'cases',
       header: <Header tooltip='Confirmed Cases'>Cases</Header>,
-      accessor: getAccessor(normalized),
+      accessor: getRowMapper(normalized, casesMapperConfig),
       cell: ({ value }: { row: TableRow; value: any }) => formatNumber(value),
     },
     {
       id: 'deaths',
       header: <Header tooltip='Confirmed Deaths'>Deaths</Header>,
-      accessor: getDeathsAccessor(normalized),
+      accessor: getRowMapper(normalized, deathsMapperConfig),
       cell: ({ value }: { row: TableRow; value: any }) => formatNumber(value),
     },
   ];
@@ -115,7 +115,7 @@ export const buildColumns = memoizeOne((normalized: Normalization, dataset: Data
       ),
       id: 'recovered',
       className: stylesM.containerHidden,
-      accessor: getRecoveriesAccessor(normalized),
+      accessor: getRowMapper(normalized, recoveriesMapperConfig),
       cell: ({ value }: { row: TableRow; value: any }) => formatNumber(value),
     });
   }

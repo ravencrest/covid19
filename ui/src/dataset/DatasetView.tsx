@@ -64,48 +64,48 @@ type Props = {
   onNormalizedChange: (normalized: Normalization) => void;
 };
 
-export const getAccessor = (normalized: Normalization) => {
-  switch (normalized) {
-    case 'gdp+pop':
-      return rowToNormalizedGdpPopCases;
-    case 'gdp':
-      return rowToNormalizedGdpCases;
-    case 'pop':
-      return rowToNormalizedPopCases;
-    case 'none':
-      return rowToCases;
-    default:
-      assertNever(normalized);
-  }
+type RowMapper = (row: TableRow) => number | undefined;
+
+type MapperConfig = {
+  gdpPop: RowMapper;
+  gdp: RowMapper;
+  pop: RowMapper;
+  none: RowMapper;
 };
 
-export const getRecoveriesAccessor = (normalized: Normalization) => {
-  switch (normalized) {
-    case 'gdp+pop':
-      return rowToNormalizedGdpPopRecoveries;
-    case 'gdp':
-      return rowToNormalizedGdpRecoveries;
-    case 'pop':
-      return rowToNormalizedPopRecoveries;
-    case 'none':
-      return rowToRecovered;
-    default:
-      assertNever(normalized);
-  }
+export const casesMapperConfig: MapperConfig = {
+  gdpPop: rowToNormalizedGdpPopCases,
+  gdp: rowToNormalizedGdpCases,
+  pop: rowToNormalizedPopCases,
+  none: rowToCases,
 };
 
-export const getDeathsAccessor = (normalized: Normalization) => {
-  switch (normalized) {
+export const recoveriesMapperConfig: MapperConfig = {
+  gdpPop: rowToNormalizedGdpPopRecoveries,
+  gdp: rowToNormalizedGdpRecoveries,
+  pop: rowToNormalizedPopRecoveries,
+  none: rowToRecovered,
+};
+
+export const deathsMapperConfig: MapperConfig = {
+  gdpPop: rowToNormalizedGdpPopDeaths,
+  gdp: rowToNormalizedGdpDeaths,
+  pop: rowToNormalizedPopDeaths,
+  none: rowToDeaths,
+};
+
+export const getRowMapper = (normalization: Normalization, config: MapperConfig) => {
+  switch (normalization) {
     case 'gdp+pop':
-      return rowToNormalizedGdpPopDeaths;
+      return config.gdpPop;
     case 'gdp':
-      return rowToNormalizedGdpDeaths;
+      return config.gdp;
     case 'pop':
-      return rowToNormalizedPopDeaths;
+      return config.pop;
     case 'none':
-      return rowToDeaths;
+      return config.none;
     default:
-      assertNever(normalized);
+      assertNever(normalization);
   }
 };
 
@@ -147,6 +147,7 @@ export default function DatasetView({
           if (!d) {
             return undefined;
           }
+          // Tried refactoring this by giving the row mapper an optional value param and moving this to use that, but that broke the table view.
           const { population: pop, gdp } = row;
           let mapper: undefined | ((value: number | undefined) => number | undefined);
           switch (normalized) {
@@ -166,7 +167,6 @@ export default function DatasetView({
               assertNever(normalized);
               break;
           }
-
           //TODO: Figure out why this null check isn't working in Typescript
           if (mapper) {
             const points = d.points.map((p) => ({
@@ -184,7 +184,7 @@ export default function DatasetView({
     });
   }, [rows, normalized, dataset, setSeries]);
 
-  const worldAccessor = getAccessor(normalized);
+  const worldAccessor = getRowMapper(normalized, casesMapperConfig);
   return (
     <div style={{ width: 1048, maxWidth: '95vw', margin: 'auto' }}>
       <React.Suspense fallback={<CircularProgress />}>
