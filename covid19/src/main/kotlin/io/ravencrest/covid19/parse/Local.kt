@@ -12,10 +12,10 @@ val globalPopulationPath: Path = Paths.get(rootPath, "global_population.csv").to
 val usPopulationPath: Path = Paths.get(rootPath, "us_population.csv").toAbsolutePath()
 
 // Manually generated list that maps the country labels in the population data to the COVID-19 time series country labels
-val countriesPath: Path = Paths.get(rootPath, "global_regions.csv").toAbsolutePath()
+val globalRegionsPath: Path = Paths.get(rootPath, "global_regions.csv").toAbsolutePath()
 
 // Manually generated list that maps the country labels in the population data to the COVID-19 time series state labels
-val statesPath: Path = Paths.get(rootPath, "us_regions.csv").toAbsolutePath()
+val usRegionsPath: Path = Paths.get(rootPath, "us_regions.csv").toAbsolutePath()
 
 // Manually generated list for data we don't want to io.ravencrest.covid19.io.ravencrest.covid19.parse.parse
 val blacklistPath: Path = Paths.get(rootPath, "blacklist.txt").toAbsolutePath()
@@ -23,10 +23,10 @@ val blacklistPath: Path = Paths.get(rootPath, "blacklist.txt").toAbsolutePath()
 val globalGdpPath: Path = Paths.get(rootPath, "global_gdp.csv").toAbsolutePath()
 val usGdpPath: Path = Paths.get(rootPath, "us_gdp.csv").toAbsolutePath()
 
-fun loadCountries(): Pair<Map<String, String>, Map<String, String>> {
+fun loadGlobalRegions(): Pair<Map<String, String>, Map<String, String>> {
   val map = mutableMapOf<String, String>()
   val countryCodes = mutableMapOf<String, String>()
-  readCsvToStringArray(countriesPath).forEach {
+  readCsvToStringArray(globalRegionsPath).forEach {
     val prefValue = it[0]
     val isoValue = it[1]
     val code = it[2]
@@ -47,9 +47,9 @@ fun loadCountries(): Pair<Map<String, String>, Map<String, String>> {
   return Pair(map.toMap(), countryCodes.toMap())
 }
 
-fun loadStateCodes(): Map<String, String> {
+fun loadUsRegions(): Map<String, String> {
   val countryCodes = mutableMapOf<String, String>()
-  readCsvToStringArray(statesPath).forEach {
+  readCsvToStringArray(usRegionsPath).forEach {
     val prefValue = it[0]
     val letterCodeValue = it[1]
     countryCodes[prefValue] = letterCodeValue
@@ -57,13 +57,13 @@ fun loadStateCodes(): Map<String, String> {
   return countryCodes.toMap()
 }
 
-private fun loadPopulations(countries: Map<String, String>?, path: Path): Map<String, Long> {
+private fun loadPopulations(regions: Map<String, String>?, path: Path): Map<String, Long> {
   val csvIterator =
     readCsvToStringArray(path)
   return csvIterator.asSequence().associateBy({ row -> row[0] }, { row -> row[1].toLong() }).toMutableMap()
     .let { populations ->
       // Combine territory populations with their sovereign state population
-      countries?.forEach { (rawState, normalizedState) ->
+      regions?.forEach { (rawState, normalizedState) ->
         // Look up the territory and state names and map them to the appropriate key for the population data
         val normalizedPop = populations[normalizedState] ?: 0
         val rawPop = populations[rawState] ?: 0

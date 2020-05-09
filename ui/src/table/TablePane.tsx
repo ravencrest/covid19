@@ -7,6 +7,7 @@ import { SeriesTableRow } from '../region/SeriesTableRow';
 import stylesM from './Table.module.css';
 import memoizeOne from 'memoize-one';
 import { getAccessor, getDeathsAccessor, getRecoveriesAccessor } from '../dataset/DatasetView';
+import * as d3 from 'd3-format';
 
 export const Header = ({
   children,
@@ -30,6 +31,32 @@ export function formatChange(change: number | undefined | null) {
   return `${change > 0 ? '+' : ''}${change}%`;
 }
 
+const numberFormatter = d3.format(',.2r');
+
+function formatNumber(value: number | undefined | null) {
+  if (value === null || value === undefined) {
+    return '---';
+  }
+  return numberFormatter(value);
+}
+
+const currencyFormatter = d3.format('$,.2f');
+
+function formatCurrency(value: number | undefined | null) {
+  if (value === null || value === undefined) {
+    return '---';
+  }
+  return currencyFormatter(value);
+}
+
+const populationFormatter = d3.format('.2s');
+function formatPopulation(value: number | undefined | null) {
+  if (value === null || value === undefined) {
+    return '---';
+  }
+  return populationFormatter(value);
+}
+
 export const buildColumns = memoizeOne((normalized: Normalization, dataset: DataSets): Column<TableRow>[] => {
   const columns: Column<TableRow>[] = [
     {
@@ -41,13 +68,13 @@ export const buildColumns = memoizeOne((normalized: Normalization, dataset: Data
       className: stylesM.containerHidden,
       accessor: 'change',
       id: 'change',
-      cell: ({ row, value }) => formatChange(value),
+      cell: ({ value }) => formatChange(value),
     },
     {
       header: <Header tooltip='Average weekly increase in new cases'>Change (W)</Header>,
       accessor: 'weeklyChange',
       id: 'weeklyChange',
-      cell: ({ row, value }) => formatChange(value),
+      cell: ({ value }) => formatChange(value),
     },
     {
       id: 'region',
@@ -58,11 +85,13 @@ export const buildColumns = memoizeOne((normalized: Normalization, dataset: Data
       id: 'cases',
       header: <Header tooltip='Confirmed Cases'>Cases</Header>,
       accessor: getAccessor(normalized),
+      cell: ({ value }: { row: TableRow; value: any }) => formatNumber(value),
     },
     {
       id: 'deaths',
       header: <Header tooltip='Confirmed Deaths'>Deaths</Header>,
       accessor: getDeathsAccessor(normalized),
+      cell: ({ value }: { row: TableRow; value: any }) => formatNumber(value),
     },
   ];
 
@@ -87,6 +116,7 @@ export const buildColumns = memoizeOne((normalized: Normalization, dataset: Data
       id: 'recovered',
       className: stylesM.containerHidden,
       accessor: getRecoveriesAccessor(normalized),
+      cell: ({ value }: { row: TableRow; value: any }) => formatNumber(value),
     });
   }
   columns.push({
@@ -94,12 +124,14 @@ export const buildColumns = memoizeOne((normalized: Normalization, dataset: Data
     className: stylesM.containerHidden,
     header: <Header tooltip='Population'>Pop.</Header>,
     accessor: 'population',
+    cell: ({ value }: { row: TableRow; value: any }) => formatPopulation(value),
   });
   columns.push({
     id: 'gdp',
     className: stylesM.containerHidden,
-    header: <Header tooltip='GDP'>GDP</Header>,
+    header: <Header tooltip='GDP (Billions)'>GDP</Header>,
     accessor: 'gdp',
+    cell: ({ value }: { row: TableRow; value: any }) => formatCurrency(value),
   });
   return columns;
 });

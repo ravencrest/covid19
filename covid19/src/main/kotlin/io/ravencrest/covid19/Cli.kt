@@ -11,10 +11,10 @@ import io.ravencrest.covid19.model.TableRow
 import io.ravencrest.covid19.model.TimeSeries
 import io.ravencrest.covid19.parse.deleteStaleData
 import io.ravencrest.covid19.parse.isDev
-import io.ravencrest.covid19.parse.loadCountries
+import io.ravencrest.covid19.parse.loadGlobalRegions
 import io.ravencrest.covid19.parse.loadGlobalGdp
 import io.ravencrest.covid19.parse.loadGlobalPopulations
-import io.ravencrest.covid19.parse.loadStateCodes
+import io.ravencrest.covid19.parse.loadUsRegions
 import io.ravencrest.covid19.parse.loadUsGdp
 import io.ravencrest.covid19.parse.loadUsPopulations
 import io.ravencrest.covid19.parse.normalize
@@ -188,7 +188,7 @@ fun parseResults(
 }
 
 fun main() {
-  val (countriesIndex, codes) = loadCountries()
+  val (countriesIndex, codes) = loadGlobalRegions()
   val globalPop = loadGlobalPopulations(countriesIndex)
   val globalGdp = loadGlobalGdp(countriesIndex)
   val recoveredIndex = parseCsseRecoveredGlobal(countriesIndex)
@@ -206,7 +206,7 @@ fun main() {
 
   val usPop = loadUsPopulations()
   val usGdp = loadUsGdp()
-  val stateCodes = loadStateCodes()
+  val stateCodes = loadUsRegions()
   val usCases = parseCsseCasesUS(emptyMap())
   val usDeaths = parseCsseDeathsUS(emptyMap())
   parseResults(
