@@ -10,9 +10,10 @@ import {
   Typography,
 } from '@material-ui/core';
 import { ExpandMore } from '@material-ui/icons';
-import { assertNever, DataSets, Normalization, TableRow, TimeSeries } from '../types';
+import { assertNever, DataSets, Normalization, Point, TableRow, TimeSeries } from '../types';
 import { NormalizeSwitch } from './NormalizeSwitch';
 import { getCasesTimeSeries } from '../data-mappers';
+import { parseISO, sub, isBefore, startOfDay } from 'date-fns';
 
 const LineChart = React.lazy(() => import('../line-chart/LineChart'));
 const InfoMenuBar = React.lazy(() => import('../info-menubar/InfoMenuBar'));
@@ -39,6 +40,21 @@ const normalizePop = (value: number | undefined, pop: number | undefined) => {
 const normalizeGdpPop = (value: number | undefined, gdp: number | undefined, pop: number | undefined) => {
   return normalizePop(normalizeGdp(value, gdp), pop);
 };
+
+export class SevenDayAverageNormalizer {
+  private queue: Point[] = [];
+
+  calc = (point: Point) => {
+    const { queue } = this;
+    queue.push(point);
+    const now = startOfDay(parseISO(queue[0].date));
+    const start = sub(now, { days: 7 });
+    while (queue.length > 1 && isBefore(startOfDay(parseISO(queue[0].date)), start)) {
+      queue.shift();
+    }
+    return { ...point, value: Math.ceil(queue.reduce((a, b) => a + b.value, 0) / queue.length) };
+  };
+}
 
 const rowToNormalizedGdpCases = (row: TableRow) => normalizeGdp(row.cases, row.gdp);
 const rowToNormalizedPopCases = (row: TableRow) => normalizePop(row.cases, row.population);
@@ -175,6 +191,8 @@ export default function DatasetView({
             }));
             return { ...d, points } as TimeSeries;
           }
+          const norm = new SevenDayAverageNormalizer();
+          d.points = d.points.map(norm.calc);
 
           return d;
         })
