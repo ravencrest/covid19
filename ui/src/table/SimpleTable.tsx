@@ -107,10 +107,10 @@ export const SimpleTable = React.memo(({ columns: rawColumns, data, rowBuilder, 
       {headerGroup.headers.map((column) => (
         <TableCell
           className={rawColumnIndex.get(column.id)?.className}
-          key={column.id}
           {...column.getHeaderProps({
             ...column.getSortByToggleProps(),
           })}
+          key={column.id}
         >
           {' '}
           {column.isSortedDesc}
