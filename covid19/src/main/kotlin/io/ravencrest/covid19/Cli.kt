@@ -51,19 +51,6 @@ fun buildChangeSeries(rawCases: TimeSeriesIndex): TimeSeriesIndex {
   }.associateBy { it.region }
 }
 
-fun normalizeChangeSeriesByPop(cases: TimeSeriesIndex, population: Map<String, Long>): TimeSeriesIndex {
-  return cases.mapValues { (_, series) ->
-    val region = series.region
-    val pop = population[region] ?: error("Missing population for $region")
-    series.copy(points = series.points.map { point ->
-      try { point.copy(value = normalizeByPop(point.value, pop)) } catch (e: Exception) {
-        println("failed to normalize ${series.region}")
-        throw e
-      }
-    })
-  }
-}
-
 fun filterBadDataPoints(rawPoints: List<Point>): List<Point> {
   var prev: Point? = null
   val points = rawPoints.sortedBy { it.date }.filter { point -> point.date > startDate }.filterNot { it.value == 0L }
