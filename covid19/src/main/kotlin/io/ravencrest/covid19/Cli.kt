@@ -118,9 +118,9 @@ fun parseTableRows(
     val twa = thisWeek.map { it.value }.average()
     val lwa = lastWeek.map { it.value }.average()
     val weeklyChange = getChangePercent(twa, lwa)
-    val newCases = rawCases[region]?.points ?: error("No region code found for $region")
+    val newCases = series.points ?: error("No region code found for $region")
 
-    val totalCases = series.last()?.value ?: 0L
+    val totalCases = rawCases[region]?.last()?.value ?: 0L
     val newCases0 = if (newCases.size > 2) newCases[newCases.size - 1].value else 0L
     val newCases1 = if (newCases.size > 2) newCases[newCases.size - 2].value else 0L
     val changePercent = getChangePercent(newCases0, newCases1)
