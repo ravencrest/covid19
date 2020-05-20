@@ -29,6 +29,7 @@ import java.nio.file.Paths
 import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.ZoneOffset
+import kotlin.math.ceil
 import kotlin.math.round
 
 typealias TimeSeriesIndex = Map<String, TimeSeries>
@@ -68,7 +69,7 @@ fun filterBadDataPoints(rawPoints: List<Point>): List<Point> {
   return filteredPoints
 }
 
-fun getChangePercent(current: Double, previous: Double): Long {
+fun   getChangePercent(current: Double, previous: Double): Long {
   return ((current - previous) / previous * 100).takeUnless { it.isInfinite() || it.isNaN() }?.let {round(it) }?.toLong() ?: 0L
 }
 
@@ -76,24 +77,43 @@ fun getChangePercent(current: Long, previous: Long): Long {
   return if (current == previous || previous == 0L) 0 else round(((current - previous) / previous.toDouble() * 100)).toLong()
 }
 
+class SevenDayAverageNormalizer {
+  private val queue = mutableListOf<Point>()
+
+  fun calc(point: Point): Point {
+
+    queue.add(point);
+    val now = queue[0].date
+    val start = now.minusDays(7)
+    while (queue.size > 1 && now < start) {
+      queue.removeAt(0)
+    }
+    return point.copy(value = ceil(queue.map{it.value}.reduce { a, b -> a + b } / queue.size.toDouble()).toLong())
+  };
+}
+
 fun parseTableRows(
   countryCodeIndex: Map<String, String>,
   populationIndex: Map<String, Long>,
   gdpIndex: Map<String, Double>,
   rawCases: TimeSeriesIndex,
+  changeCases: TimeSeriesIndex,
   deathsIndex: TimeSeriesIndex,
   recoveredIndex: TimeSeriesIndex
 ): Results {
   val sevenDaysAgo = LocalDate.now().minusWeeks(1)
   val fourteenDaysAgo = LocalDate.now().minusWeeks(2)
 
-  val sortedCases = rawCases.values.map { series ->
+  val sortedCases = changeCases.values.map { series ->
     val region = series.region
     val regionCode = countryCodeIndex[region] ?: error("No region code found for $region")
     val filteredPoints = series.points.sortedBy { it.date }
 
-    val thisWeek = filteredPoints.filter { point -> point.date >= sevenDaysAgo }
-    val lastWeek = filteredPoints.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
+    val average = SevenDayAverageNormalizer()
+    val sda = filteredPoints.map { average.calc(it)}
+
+    val thisWeek = sda.filter { point -> point.date >= sevenDaysAgo }
+    val lastWeek = sda.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
 
     val twa = thisWeek.map { it.value }.average()
     val lwa = lastWeek.map { it.value }.average()
@@ -164,8 +184,9 @@ fun parseResults(
     codes,
     population,
     gdp,
+    cases,
     casesSeries,
-    deathsSeries,
+    deaths,
     recoveredIndex
   )
 
