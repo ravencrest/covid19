@@ -133,18 +133,18 @@ export default function DatasetView({
   onDatasetChange,
   onNormalizedChange,
 }: Props) {
-  let min = 0;
-  let max = 50;
+  let min = 80;
+  let max = 500;
 
   if (!normalized || normalized === 'none') {
-    min = 200;
-    max = 5000;
+    min = 2000;
+    max = 200000;
   } else if (normalized === 'gdp') {
-    min = 1000000;
-    max = 4000000;
+    min = 30000;
+    max = 200000000;
   } else if (normalized === 'gdp+pop') {
-    min = 10000;
-    max = 120000;
+    min = 21000;
+    max = 1900000;
   }
   const [series, setSeries] = React.useState<TimeSeries[] | undefined>(undefined);
 
