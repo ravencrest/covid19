@@ -60,17 +60,6 @@ function formatPopulation(value: number | undefined | null) {
 export const buildColumns = memoizeOne((normalized: Normalization, dataset: DataSets): Column<TableRow>[] => {
   const columns: Column<TableRow>[] = [
     {
-      header: (
-        <Header tooltip='Increase in new cases since last data' className={stylesM.containerHidden}>
-          Change
-        </Header>
-      ),
-      className: stylesM.containerHidden,
-      accessor: 'change',
-      id: 'change',
-      cell: ({ value }) => formatChange(value),
-    },
-    {
       header: <Header tooltip='Average weekly increase in new cases'>Change (W)</Header>,
       accessor: 'weeklyChange',
       id: 'weeklyChange',

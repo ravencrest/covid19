@@ -69,7 +69,7 @@ fun filterBadDataPoints(rawPoints: List<Point>): List<Point> {
   return filteredPoints
 }
 
-fun   getChangePercent(current: Double, previous: Double): Long {
+fun getChangePercent(current: Double, previous: Double): Long {
   return ((current - previous) / previous * 100).takeUnless { it.isInfinite() || it.isNaN() }?.let {round(it) }?.toLong() ?: 0L
 }
 
@@ -115,8 +115,8 @@ fun parseTableRows(
     val thisWeek = sda.filter { point -> point.date >= sevenDaysAgo }
     val lastWeek = sda.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
 
-    val twa = thisWeek.map { it.value }.average()
-    val lwa = lastWeek.map { it.value }.average()
+    val twa = sda.lastOrNull()?.value ?: 0L
+    val lwa = sda.findLast { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }?.value ?: 0L
     val weeklyChange = getChangePercent(twa, lwa)
     val newCases = series.points ?: error("No region code found for $region")
 
