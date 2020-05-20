@@ -119,29 +119,18 @@ export const SeriesPanel = ({
       //console.warn(d);
     });
   }, [setDs, setCs, dataset, normalized, region, population, gdp]);
-
-  const data = React.useMemo(() => {
-    const d: Array<TimeSeries> = [];
-    if (ds) {
-      d.push(ds);
-    }
-    if (cs) {
-      d.push(cs);
-    }
-    return d;
-  }, [ds, cs]);
   return (
     <Paper>
-      <SeriesPaneHeader>New deaths and cases</SeriesPaneHeader>
+      <SeriesPaneHeader>New deaths and cases (7-day Average)</SeriesPaneHeader>
       <LineChart
         data={cs && ds ? [cs, ds] : cs ? [cs] : ds ? [ds] : []}
         leftAxisLabel='change'
         marginTop={10}
         dataKey='label'
       />
-      <SeriesPaneHeader>New cases</SeriesPaneHeader>
+      <SeriesPaneHeader>New cases (7-day Average)</SeriesPaneHeader>
       {cs && <CalendarChart data={cs} />}
-      <SeriesPaneHeader>New deaths</SeriesPaneHeader>
+      <SeriesPaneHeader>New deaths (7-day Average)</SeriesPaneHeader>
       {ds && <CalendarChart data={ds} />}
     </Paper>
   );

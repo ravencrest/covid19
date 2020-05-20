@@ -133,18 +133,18 @@ export default function DatasetView({
   onDatasetChange,
   onNormalizedChange,
 }: Props) {
-  let min = 80;
-  let max = 500;
+  let min = 0;
+  let max = 50;
 
   if (!normalized || normalized === 'none') {
-    min = 2000;
-    max = 200000;
+    min = 200;
+    max = 5000;
   } else if (normalized === 'gdp') {
-    min = 30000;
-    max = 200000000;
+    min = 1000000;
+    max = 4000000;
   } else if (normalized === 'gdp+pop') {
-    min = 21000;
-    max = 1900000;
+    min = 10000;
+    max = 120000;
   }
   const [series, setSeries] = React.useState<TimeSeries[] | undefined>(undefined);
 
@@ -226,7 +226,7 @@ export default function DatasetView({
             <ExpansionPanel defaultExpanded>
               <ExpansionPanelSummary expandIcon={<ExpandMore />}>
                 <Typography variant='h6' display='block' gutterBottom>
-                  Total Cases
+                  New Cases (7-day Average)
                 </Typography>
               </ExpansionPanelSummary>
               <ChoroplethChart data={rows} accessor={worldAccessor} min={min} max={max} />
@@ -235,7 +235,7 @@ export default function DatasetView({
           <ExpansionPanel defaultExpanded>
             <ExpansionPanelSummary expandIcon={<ExpandMore />}>
               <Typography variant='h6' display='block' gutterBottom>
-                New Cases Over Time
+                New Cases Over Time (7-day Average)
               </Typography>
             </ExpansionPanelSummary>
             <LineChart

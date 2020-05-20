@@ -90,7 +90,7 @@ fun parseTableRows(
   val sortedCases = rawCases.values.map { series ->
     val region = series.region
     val regionCode = countryCodeIndex[region] ?: error("No region code found for $region")
-    val filteredPoints = filterBadDataPoints(series.points.sortedBy { it.date })
+    val filteredPoints = series.points.sortedBy { it.date }
 
     val thisWeek = filteredPoints.filter { point -> point.date >= sevenDaysAgo }
     val lastWeek = filteredPoints.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
@@ -164,8 +164,8 @@ fun parseResults(
     codes,
     population,
     gdp,
-    cases,
-    deaths,
+    casesSeries,
+    deathsSeries,
     recoveredIndex
   )
 
