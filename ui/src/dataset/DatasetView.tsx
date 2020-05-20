@@ -184,17 +184,14 @@ export default function DatasetView({
               break;
           }
           //TODO: Figure out why this null check isn't working in Typescript
-          if (mapper) {
-            const points = d.points.map((p) => ({
-              ...p,
-              value: mapper && mapper(p.value),
-            }));
-            return { ...d, points } as TimeSeries;
-          }
           const norm = new SevenDayAverageNormalizer();
-          d.points = d.points.map(norm.calc);
 
-          return d;
+          const points: Point[] = d.points.map((p) => ({
+            ...p,
+            value: (mapper ? mapper(p.value) : p.value) ?? p.value,
+          }));
+
+          return { ...d, points: points.map((p) => norm.calc(p)) } as TimeSeries;
         })
         .filter((s) => s != null)
         .slice(0, Math.min(indexOfMd + 1, rows?.length)) as TimeSeries[];
@@ -235,7 +232,7 @@ export default function DatasetView({
           <ExpansionPanel defaultExpanded>
             <ExpansionPanelSummary expandIcon={<ExpandMore />}>
               <Typography variant='h6' display='block' gutterBottom>
-                New Cases Over Time (7-day Average)
+                New Cases (7-day Average)
               </Typography>
             </ExpansionPanelSummary>
             <LineChart

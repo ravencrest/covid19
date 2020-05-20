@@ -112,9 +112,6 @@ fun parseTableRows(
     val average = SevenDayAverageNormalizer()
     val sda = filteredPoints.map { average.calc(it)}
 
-    val thisWeek = sda.filter { point -> point.date >= sevenDaysAgo }
-    val lastWeek = sda.filter { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }
-
     val twa = sda.lastOrNull()?.value ?: 0L
     val lwa = sda.findLast { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }?.value ?: 0L
     val weeklyChange = getChangePercent(twa, lwa)
