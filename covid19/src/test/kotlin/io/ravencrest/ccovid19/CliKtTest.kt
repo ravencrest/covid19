@@ -1,8 +1,8 @@
 package io.ravencrest.ccovid19
 
 import io.ravencrest.covid19.getChangePercent
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 
 internal class CliKtTest {
 

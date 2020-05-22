@@ -11,14 +11,13 @@ import io.ravencrest.covid19.model.TableRow
 import io.ravencrest.covid19.model.TimeSeries
 import io.ravencrest.covid19.parse.deleteStaleData
 import io.ravencrest.covid19.parse.isDev
-import io.ravencrest.covid19.parse.loadGlobalRegions
 import io.ravencrest.covid19.parse.loadGlobalGdp
 import io.ravencrest.covid19.parse.loadGlobalPopulations
-import io.ravencrest.covid19.parse.loadUsRegions
+import io.ravencrest.covid19.parse.loadGlobalRegions
 import io.ravencrest.covid19.parse.loadUsGdp
 import io.ravencrest.covid19.parse.loadUsPopulations
+import io.ravencrest.covid19.parse.loadUsRegions
 import io.ravencrest.covid19.parse.normalize
-import io.ravencrest.covid19.parse.normalizeByPop
 import io.ravencrest.covid19.parse.parseCsseCasesGlobal
 import io.ravencrest.covid19.parse.parseCsseCasesUS
 import io.ravencrest.covid19.parse.parseCsseDeathsGlobal
@@ -70,7 +69,7 @@ fun filterBadDataPoints(rawPoints: List<Point>): List<Point> {
 }
 
 fun getChangePercent(current: Double, previous: Double): Long {
-  return ((current - previous) / previous * 100).takeUnless { it.isInfinite() || it.isNaN() }?.let {round(it) }?.toLong() ?: 0L
+  return ((current - previous) / previous * 100).takeUnless { it.isInfinite() || it.isNaN() }?.let { round(it) }?.toLong() ?: 0L
 }
 
 fun getChangePercent(current: Long, previous: Long): Long {
@@ -82,14 +81,14 @@ class SevenDayAverageNormalizer {
 
   fun calc(point: Point): Point {
 
-    queue.add(point);
+    queue.add(point)
     val now = queue[0].date
     val start = now.minusDays(7)
     while (queue.size > 1 && now < start) {
       queue.removeAt(0)
     }
-    return point.copy(value = ceil(queue.map{it.value}.reduce { a, b -> a + b } / queue.size.toDouble()).toLong())
-  };
+    return point.copy(value = ceil(queue.map { it.value }.reduce { a, b -> a + b } / queue.size.toDouble()).toLong())
+  }
 }
 
 fun parseTableRows(
@@ -110,7 +109,7 @@ fun parseTableRows(
     val filteredPoints = series.points.sortedBy { it.date }
 
     val average = SevenDayAverageNormalizer()
-    val sda = filteredPoints.map { average.calc(it)}
+    val sda = filteredPoints.map { average.calc(it) }
 
     val twa = sda.lastOrNull()?.value ?: 0L
     val lwa = sda.findLast { point -> point.date >= fourteenDaysAgo && point.date < sevenDaysAgo }?.value ?: 0L

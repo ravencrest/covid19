@@ -89,7 +89,6 @@ fun loadBlacklist(): Set<String> {
   return Files.newBufferedReader(blacklistPath).readLines().toSet()
 }
 
-
 fun loadGlobalGdp(regions: Map<String, String>): Map<String, Double> {
   val map = mutableMapOf<String, Double>()
   val iterator = readCsvToStringArray(globalGdpPath)
@@ -99,7 +98,7 @@ fun loadGlobalGdp(regions: Map<String, String>): Map<String, Double> {
     i++
     val code = it[0]
     val rawRegion = it[1]
-    val gdp =it.last().toDoubleOrNull()
+    val gdp = it.last().toDoubleOrNull()
     if (gdp == null) {
       println("Unable to convert GDP to number for $rawRegion and value ${it.last()}")
       return@forEach
