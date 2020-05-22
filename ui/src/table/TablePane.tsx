@@ -141,7 +141,7 @@ export default React.memo(function TablePane({
     (row: Row<TableRow>, columns: ReadonlyMap<string, Column<TableRow>>, i: number) => (
       <SeriesTableRow
         {...row.getRowProps()}
-        key={`${i}-${dataset}`}
+        key={`${dataset}-${row.original.region}`}
         rowNumber={i}
         row={row}
         normalized={normalized}
