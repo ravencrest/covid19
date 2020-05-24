@@ -17,6 +17,7 @@ import kotlin.system.exitProcess
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import kotlin.math.roundToLong
 
 const val WHO_CASES_URL =
   "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/who_covid_19_situation_reports/who_covid_19_sit_rep_time_series/who_covid_19_sit_rep_time_series.csv"
@@ -84,7 +85,8 @@ fun parse(label: String, csvIterator: MappingIterator<Array<String>>, countryOff
     if (blacklist.contains(country)) {
       continue
     }
-    val newSeries = row.slice(timeSeriesOffset until row.size).map { it.toLongOrNull() }
+    // Sometimes, the last entry is a float even though everything else is a long. If we parse it as a long first, we may end up missing the last row
+    val newSeries = row.slice(timeSeriesOffset until row.size).map { it.toFloatOrNull()?.roundToLong() }
     val previousSeries = dataMap[country]?.points
 
     // Some countries are broken up into multiple rows, we want to merge the previously parsed rows with the most recently parsed row
