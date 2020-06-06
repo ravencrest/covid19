@@ -70,11 +70,12 @@ export const SeriesPanel = ({
           points = [];
         }
         d = { ...d, points };
+      } else {
+        pp = d.points.map((p) => nor.calc(p));
+        d = { ...d, points: pp };
+        //console.warn(d);
       }
-      pp = d.points.map((p) => nor.calc(p));
-      d = { ...d, points: pp };
       setCs(d);
-      //console.warn(d);
     });
 
     dsFunc().then((data) => {
@@ -112,11 +113,11 @@ export const SeriesPanel = ({
           points = [];
         }
         d = { ...d, points };
+      } else {
+        pp = d.points.map((p) => nor.calc(p));
+        d = { ...d, points: pp };
       }
-      pp = d.points.map((p) => nor.calc(p));
-      d = { ...d, points: pp };
       setDs(d);
-      //console.warn(d);
     });
   }, [setDs, setCs, dataset, normalized, region, population, gdp]);
   return (

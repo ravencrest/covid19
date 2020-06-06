@@ -43,10 +43,15 @@ const normalizeGdpPop = (value: number | undefined, gdp: number | undefined, pop
 
 export class SevenDayAverageNormalizer {
   private queue: Point[] = [];
+  private count = -1;
 
   calc = (point: Point) => {
     const { queue } = this;
     queue.push(point);
+    this.count++;
+    if (queue.length > 2 && this.count > 7) {
+      queue.shift();
+    }
     const now = startOfDay(parseISO(queue[0].date));
     const start = sub(now, { days: 7 });
     while (queue.length > 1 && isBefore(startOfDay(parseISO(queue[0].date)), start)) {
