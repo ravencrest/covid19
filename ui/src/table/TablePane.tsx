@@ -6,7 +6,13 @@ import { TableRow, DataSets, Normalization } from '../types';
 import { SeriesTableRow } from '../region/SeriesTableRow';
 import stylesM from './Table.module.css';
 import memoizeOne from 'memoize-one';
-import { getRowMapper, casesMapperConfig, deathsMapperConfig, recoveriesMapperConfig } from '../dataset/DatasetView';
+import {
+  getRowMapper,
+  casesMapperConfig,
+  deathsMapperConfig,
+  recoveriesMapperConfig,
+  testsMapperConfig,
+} from '../dataset/DatasetView';
 import * as d3 from 'd3-format';
 
 export const Header = ({
@@ -57,7 +63,7 @@ function formatPopulation(value: number | undefined | null) {
   return populationFormatter(value);
 }
 
-export const buildColumns = memoizeOne((normalized: Normalization, dataset: DataSets): Column<TableRow>[] => {
+export const buildColumns = memoizeOne((normalized: Normalization[], dataset: DataSets): Column<TableRow>[] => {
   const columns: Column<TableRow>[] = [
     {
       header: <Header tooltip='Average weekly increase in new cases'>Change (W)</Header>,
@@ -80,6 +86,12 @@ export const buildColumns = memoizeOne((normalized: Normalization, dataset: Data
       id: 'deaths',
       header: <Header tooltip='Confirmed Deaths'>Deaths</Header>,
       accessor: getRowMapper(normalized, deathsMapperConfig),
+      cell: ({ value }: { row: TableRow; value: any }) => formatNumber(value),
+    },
+    {
+      id: 'tests',
+      header: <Header tooltip='Tests'>Tests</Header>,
+      accessor: getRowMapper(normalized, testsMapperConfig),
       cell: ({ value }: { row: TableRow; value: any }) => formatNumber(value),
     },
   ];
@@ -133,7 +145,7 @@ export default React.memo(function TablePane({
 }: {
   data: TableRow[];
   dataset: DataSets;
-  normalized: Normalization;
+  normalized: Normalization[];
   embedded?: boolean;
 }) {
   const filteredColumns = React.useMemo(() => buildColumns(normalized, dataset), [normalized, dataset]);

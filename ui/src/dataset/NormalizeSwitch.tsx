@@ -4,28 +4,28 @@ import React from 'react';
 
 export const NormalizeSwitch = ({
   norm,
-  alt,
   label,
   onChange,
   currentValue,
+  disabled,
 }: {
   norm: Normalization;
-  alt: Normalization;
   label: string;
-  onChange: (normalization: Normalization) => void;
-  currentValue: Normalization;
+  onChange: (normalization: Normalization[]) => void;
+  currentValue: Normalization[];
+  disabled?: boolean;
 }) => {
+  const checked = currentValue.includes(norm);
   return (
     <Tooltip title={`Normalize by ${label}`}>
       <FormControlLabel
+        disabled={disabled}
         control={
           <Switch
-            checked={currentValue === norm || currentValue === 'gdp+pop'}
+            checked={checked}
             onChange={(event, value) => {
               event.stopPropagation();
-              const off = currentValue === 'gdp+pop' || currentValue === alt ? alt : 'none';
-              const on = currentValue === alt ? 'gdp+pop' : norm;
-              onChange(value ? on : off);
+              onChange(checked ? currentValue.filter((it) => it !== norm) : [...currentValue, norm]);
             }}
             name='normalized'
           />

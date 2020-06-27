@@ -42,15 +42,15 @@ const now = new Date();
 type Props = {
   lastUpdated: Date | undefined;
   dataset: DataSets;
-  normalized: Normalization;
+  normalized: Normalization[];
   children: React.ReactNode;
   region?: string;
 };
 
-export const getDirectLink = (dataset: DataSets, normalized: Normalization, region?: string) => {
+export const getDirectLink = (dataset: DataSets, normalized: Normalization[], region?: string) => {
   return `${window.location.protocol}//${window.location.host}${window.location.pathname}#/${dataset}${
     region ? `/${region}` : ''
-  }?norm=${normalized}`.toLowerCase();
+  }?norm=${normalized.join(' ')}`.toLowerCase();
 };
 
 export default ({ lastUpdated, children, normalized, dataset, region }: Props) => {
