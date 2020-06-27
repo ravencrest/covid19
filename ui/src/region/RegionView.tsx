@@ -83,7 +83,9 @@ export default function RegionView({
         <InfoMenuBar lastUpdated={lastUpdated} normalized={normalized} dataset={dataset} region={region}>
           <NormalizeSwitch label='GDP' norm='gdp' onChange={onNormalizedChange} currentValue={normalized} />
           <NormalizeSwitch label='Pop.' norm='pop' onChange={onNormalizedChange} currentValue={normalized} />
-          <NormalizeSwitch label='Tests' norm='tests' onChange={onNormalizedChange} currentValue={normalized} />
+          {false && (
+            <NormalizeSwitch label='Tests' norm='tests' onChange={onNormalizedChange} currentValue={normalized} />
+          )}
         </InfoMenuBar>
         <Divider />
         {filteredRows && <TablePane embedded data={filteredRows} normalized={normalized} dataset={dataset} />}
