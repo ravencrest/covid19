@@ -1,4 +1,4 @@
-import React from 'react';
+import { useMemo, memo } from 'react';
 import { LegendProps } from '@nivo/legends';
 import { Datum, ResponsiveLine, Serie } from '@nivo/line';
 import { Point, TimeSeries } from '../types';
@@ -26,7 +26,7 @@ type Props = {
   dataKey?: keyof TimeSeries;
 };
 
-export default React.memo(
+export default memo(
   ({
     data,
     leftAxisLabel,
@@ -37,7 +37,7 @@ export default React.memo(
     marginLeft = 60,
     dataKey = 'region',
   }: Props) => {
-    const mappedData = React.useMemo(() => {
+    const mappedData = useMemo(() => {
       if (!data) {
         return [];
       }

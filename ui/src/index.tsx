@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { HashRouter as Router, Route, Redirect } from 'react-router-dom';
@@ -6,7 +6,7 @@ import GlobalContext from './GlobalContext';
 import { Switch } from 'react-router';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <Router>
       <Switch>
         <Route path='/:dataset'>
@@ -17,6 +17,6 @@ ReactDOM.render(
         </Route>
       </Switch>
     </Router>
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root')
 );

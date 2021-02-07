@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactChild, useMemo, useCallback, memo } from 'react';
 import { CssBaseline, Tooltip } from '@material-ui/core';
 import { Row } from 'react-table';
 import { Column, SimpleTable } from './SimpleTable';
@@ -20,7 +20,7 @@ export const Header = ({
   tooltip,
   className,
 }: {
-  children: React.ReactChild;
+  children: ReactChild;
   tooltip: string;
   className?: string;
 }) => (
@@ -137,7 +137,7 @@ export const buildColumns = memoizeOne((normalized: Normalization[], dataset: Da
   return columns;
 });
 
-export default React.memo(function TablePane({
+export default memo(function TablePane({
   data,
   dataset,
   normalized,
@@ -148,8 +148,8 @@ export default React.memo(function TablePane({
   normalized: Normalization[];
   embedded?: boolean;
 }) {
-  const filteredColumns = React.useMemo(() => buildColumns(normalized, dataset), [normalized, dataset]);
-  const rowBuilder = React.useCallback(
+  const filteredColumns = useMemo(() => buildColumns(normalized, dataset), [normalized, dataset]);
+  const rowBuilder = useCallback(
     (row: Row<TableRow>, columns: ReadonlyMap<string, Column<TableRow>>, i: number) => (
       <SeriesTableRow
         {...row.getRowProps()}

@@ -1,4 +1,4 @@
-import React from 'react';
+import { lazy, useCallback, useEffect, Suspense } from 'react';
 import { Divider, CircularProgress, Button } from '@material-ui/core';
 import { ArrowBack } from '@material-ui/icons';
 import { TableRow, DataSets, TimeSeries, Normalization } from '../types';
@@ -8,7 +8,7 @@ import { setLocation } from '../GlobalContext';
 import TablePane from '../table/TablePane';
 import { NormalizeSwitch } from '../dataset/NormalizeSwitch';
 import { getCasesTimeSeries, getDeathsTimeSeries } from '../data-mappers';
-const InfoMenuBar = React.lazy(() => import('../info-menubar/InfoMenuBar'));
+const InfoMenuBar = lazy(() => import('../info-menubar/InfoMenuBar'));
 
 type Props = {
   dataset: DataSets;
@@ -34,14 +34,14 @@ export default function RegionView({
   const routeParams = useParams() as { region: string; dataset: string };
   const region = routeParams.region.toLowerCase();
 
-  const onNormalizedChange = React.useCallback(
+  const onNormalizedChange = useCallback(
     (normalization: Normalization[]) => {
       handleNormalizationChange(normalization, region);
     },
     [handleNormalizationChange, region]
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     getCasesTimeSeries(dataset)().then((data) => {
       const series = data[region];
       setState((draft) => {
@@ -68,7 +68,7 @@ export default function RegionView({
 
   return (
     <div style={{ width: 1048, maxWidth: '95vw', margin: 'auto' }}>
-      <React.Suspense fallback={<CircularProgress />}>
+      <Suspense fallback={<CircularProgress />}>
         <Button
           fullWidth
           color='primary'
@@ -90,7 +90,7 @@ export default function RegionView({
         <Divider />
         {filteredRows && <TablePane embedded data={filteredRows} normalized={normalized} dataset={dataset} />}
         {!filteredRows && <CircularProgress />}
-      </React.Suspense>
+      </Suspense>
     </div>
   );
 }

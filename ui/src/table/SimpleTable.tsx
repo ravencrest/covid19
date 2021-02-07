@@ -1,11 +1,13 @@
-import React, { ReactElement, ReactFragment, ReactText } from 'react';
+import { memo, useMemo, ReactElement, ReactFragment, ReactText, ReactNode } from 'react';
 import {
   Table,
   TableBody,
   TableContainer,
   TableHead,
   TableRow as MuiTableRow,
+  TableRowTypeMap,
   TableSortLabel,
+  TableTypeMap,
 } from '@material-ui/core';
 import {
   CellProps,
@@ -19,6 +21,7 @@ import {
 import { TableRow } from '../types';
 import { TableToolbar } from './TableToolbar';
 import { TableCell } from './TableCell';
+import { CommonProps } from '@material-ui/core/OverridableComponent';
 
 type ValueOf<T> = T[keyof T];
 
@@ -28,7 +31,7 @@ type ColumnInterfaceBasedOnValue<T, V> = {
 
 export type Column<T> = {
   id: string;
-  header?: React.ReactNode;
+  header?: ReactNode;
   sortable?: boolean;
   hidden?: boolean;
   className?: string;
@@ -47,19 +50,19 @@ export type Column<T> = {
 type Props = {
   columns: Column<TableRow>[];
   data: TableRow[];
-  rowBuilder: (row: Row<TableRow>, columnIndex: ReadonlyMap<string, Column<TableRow>>, i: number) => React.ReactNode;
+  rowBuilder: (row: Row<TableRow>, columnIndex: ReadonlyMap<string, Column<TableRow>>, i: number) => ReactNode;
   embedded?: boolean;
 };
 
-export const SimpleTable = React.memo(({ columns: rawColumns, data, rowBuilder, embedded }: Props) => {
-  const rawColumnIndex = React.useMemo(() => {
+export const SimpleTable = memo(({ columns: rawColumns, data, rowBuilder, embedded }: Props) => {
+  const rawColumnIndex = useMemo(() => {
     const index = new Map<string, Column<TableRow>>();
     for (let column of rawColumns) {
       index.set(column.id, column);
     }
     return index as ReadonlyMap<string, Column<TableRow>>;
   }, [rawColumns]);
-  const columns = React.useMemo(
+  const columns = useMemo(
     () =>
       rawColumns.map((col) => {
         const { id, header, cell: cellRender, accessor } = col;
@@ -96,7 +99,7 @@ export const SimpleTable = React.memo(({ columns: rawColumns, data, rowBuilder, 
   );
 
   const headers = headerGroups.map((headerGroup) => (
-    <MuiTableRow {...headerGroup.getHeaderGroupProps()}>
+    <MuiTableRow {...(headerGroup.getHeaderGroupProps() as CommonProps<TableRowTypeMap>)}>
       {!embedded && (
         <>
           <TableCell />
@@ -129,7 +132,7 @@ export const SimpleTable = React.memo(({ columns: rawColumns, data, rowBuilder, 
     </MuiTableRow>
   ));
 
-  const rowCells = React.useMemo(
+  const rowCells = useMemo(
     () =>
       rows.map((row, i) => {
         prepareRow(row);
@@ -141,7 +144,7 @@ export const SimpleTable = React.memo(({ columns: rawColumns, data, rowBuilder, 
   return (
     <TableContainer style={{ overflowX: 'unset' }}>
       {rows.length > 1 && <TableToolbar setGlobalFilter={setGlobalFilter} globalFilter={globalFilter} />}
-      <Table {...getTableProps()} size='small'>
+      <Table {...(getTableProps() as CommonProps<TableTypeMap>)} size='small'>
         <TableHead>{headers}</TableHead>
         <TableBody>{rowCells}</TableBody>
       </Table>

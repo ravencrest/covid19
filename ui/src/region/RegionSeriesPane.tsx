@@ -1,12 +1,12 @@
-import React from 'react';
+import { useState, useEffect, lazy } from 'react';
 import { Paper } from '@material-ui/core';
 import { SeriesPaneHeader } from './SeriesPaneHeader';
 import { DataSets, Normalization, Point, TableRow, TimeSeries } from '../types';
 import { getGlobalCases, getGlobalDeaths, getUsCases, getUsDeaths, getUsTests } from '../data-mappers';
 import { SevenDayAverageNormalizer } from '../dataset/DatasetView';
 
-const LineChart = React.lazy(() => import('../line-chart/LineChart'));
-const CalendarChart = React.lazy(() => import('../calendar-chart/CalendarChart'));
+const LineChart = lazy(() => import('../line-chart/LineChart'));
+const CalendarChart = lazy(() => import('../calendar-chart/CalendarChart'));
 
 export const SeriesPanel = ({
   normalized,
@@ -19,12 +19,12 @@ export const SeriesPanel = ({
   region: string;
   row: TableRow;
 }) => {
-  const [ds, setDs] = React.useState<TimeSeries | undefined>();
-  const [cs, setCs] = React.useState<TimeSeries | undefined>();
-  const [ts, setTs] = React.useState<TimeSeries | undefined>();
+  const [ds, setDs] = useState<TimeSeries | undefined>();
+  const [cs, setCs] = useState<TimeSeries | undefined>();
+  const [ts, setTs] = useState<TimeSeries | undefined>();
 
   const { population, gdp } = row;
-  React.useEffect(() => {
+  useEffect(() => {
     let csFunc: () => Promise<Record<string, TimeSeries>>;
     let dsFunc: () => Promise<Record<string, TimeSeries>>;
     let tsFunc;

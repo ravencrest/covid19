@@ -1,8 +1,8 @@
 import { Dialog, DialogContent, DialogContentText, TextField } from '@material-ui/core';
-import React from 'react';
+import { forwardRef, useRef } from 'react';
 import { DialogTitle } from '../dialog/DialogTitle';
 
-export const ShareDialog = React.forwardRef(
+export const ShareDialog = forwardRef(
   (
     {
       onClose,
@@ -15,7 +15,7 @@ export const ShareDialog = React.forwardRef(
     },
     forwardRef
   ) => {
-    const ref = React.useRef<HTMLInputElement>(null);
+    const ref = useRef<HTMLInputElement>(null);
     return (
       <Dialog
         ref={forwardRef}

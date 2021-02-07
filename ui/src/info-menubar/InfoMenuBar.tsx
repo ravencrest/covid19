@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactChild, ReactNode, useState } from 'react';
 import {
   Button,
   Chip,
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Link = ({ href, children }: { href: string; children: React.ReactChild }) => (
+const Link = ({ href, children }: { href: string; children: ReactChild }) => (
   <MuiLink href={href} target='_blank' rel='noopener noreferrer'>
     {children}
   </MuiLink>
@@ -43,7 +43,7 @@ type Props = {
   lastUpdated: Date | undefined;
   dataset: DataSets;
   normalized: Normalization[];
-  children: React.ReactNode;
+  children: ReactNode;
   region?: string;
 };
 
@@ -54,7 +54,7 @@ export const getDirectLink = (dataset: DataSets, normalized: Normalization[], re
 };
 
 export default ({ lastUpdated, children, normalized, dataset, region }: Props) => {
-  const [open, setOpen] = React.useState<'link' | 'info' | undefined>(undefined);
+  const [open, setOpen] = useState<'link' | 'info' | undefined>(undefined);
   const styles = useStyles();
   const onClose = () => setOpen(undefined);
   const onOpenLink = () => setOpen('link');
