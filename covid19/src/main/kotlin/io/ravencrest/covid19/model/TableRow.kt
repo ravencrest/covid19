@@ -10,6 +10,5 @@ data class TableRow(
   val deaths: Long,
   val recovered: Long?,
   val population: Long,
-  val gdp: Double?,
-  val tests: Long?
+  val gdp: Double?
 )

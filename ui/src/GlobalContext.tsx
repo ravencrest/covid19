@@ -16,8 +16,8 @@ const useResults = (dataset: DataSets, handler: (r: Results | undefined) => void
   }, [global, handler]);
 };
 
-export const setLocation = (dataset: DataSets, normalized: Normalization[], region?: string) => {
-  window.location.hash = `/${dataset}${region ? `/${region}` : ''}?norm=${normalized.join('+')}`;
+export const setLocation = (dataset: DataSets, normalized: Normalization, region?: string) => {
+  window.location.hash = `/${dataset}${region ? `/${region}` : ''}?norm=${normalized}`;
 };
 
 const Context = React.createContext({});
@@ -28,18 +28,29 @@ function GlobalContext() {
   const a = useLocation();
   const search = a.search;
   const params: { norm?: string } = search[0] === '?' ? qs.parse(search.slice(1)) : {};
-  const norm = params.norm
-    ?.split(' ')
-    .filter((f) => f === 'gdp' || f === 'pop' || f === 'tests' || f === 'none') as Normalization[];
+  let norm: Normalization;
+  switch (params.norm) {
+    case 'gdp pop':
+      norm = 'gdp+pop';
+      break;
+    case 'gdp':
+      norm = 'gdp';
+      break;
+    case 'pop':
+      norm = 'pop';
+      break;
+    default:
+      norm = 'none';
+  }
   const [state, updateState] = useImmer<{
     dataset: DataSets;
     rows?: TableRow[];
-    normalized: Normalization[];
+    normalized: Normalization;
     lastUpdated?: Date;
   }>({
     dataset: pathDataset === 'us' ? 'us' : 'global',
     rows: undefined,
-    normalized: norm || [],
+    normalized: norm,
   });
   const { dataset, rows, normalized, lastUpdated } = state;
 
@@ -66,7 +77,7 @@ function GlobalContext() {
     [updateState, normalized]
   );
   const onNormalizedChange = React.useCallback(
-    (norm: Normalization[], region?: string) => {
+    (norm: Normalization, region?: string) => {
       setLocation(dataset, norm, region);
       updateState((draft) => {
         draft.normalized = norm;

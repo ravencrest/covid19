@@ -13,9 +13,9 @@ const InfoMenuBar = React.lazy(() => import('../info-menubar/InfoMenuBar'));
 type Props = {
   dataset: DataSets;
   rows: TableRow[];
-  normalized: Normalization[];
+  normalized: Normalization;
   lastUpdated: Date | undefined;
-  onNormalizedChange: (normalized: Normalization[], region: string) => void;
+  onNormalizedChange: (normalized: Normalization, region: string) => void;
 };
 
 export default function RegionView({
@@ -35,7 +35,7 @@ export default function RegionView({
   const region = routeParams.region.toLowerCase();
 
   const onNormalizedChange = React.useCallback(
-    (normalization: Normalization[]) => {
+    (normalization: Normalization) => {
       handleNormalizationChange(normalization, region);
     },
     [handleNormalizationChange, region]
@@ -81,9 +81,8 @@ export default function RegionView({
           Back to all results
         </Button>
         <InfoMenuBar lastUpdated={lastUpdated} normalized={normalized} dataset={dataset} region={region}>
-          <NormalizeSwitch label='GDP' norm='gdp' onChange={onNormalizedChange} currentValue={normalized} />
-          <NormalizeSwitch label='Pop.' norm='pop' onChange={onNormalizedChange} currentValue={normalized} />
-          <NormalizeSwitch label='Tests' norm='tests' onChange={onNormalizedChange} currentValue={normalized} />
+          <NormalizeSwitch label='GDP' norm='gdp' alt='pop' onChange={onNormalizedChange} currentValue={normalized} />
+          <NormalizeSwitch label='Pop.' norm='pop' alt='gdp' onChange={onNormalizedChange} currentValue={normalized} />
         </InfoMenuBar>
         <Divider />
         {filteredRows && <TablePane embedded data={filteredRows} normalized={normalized} dataset={dataset} />}

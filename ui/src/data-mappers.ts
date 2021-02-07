@@ -19,7 +19,6 @@ export const getUsCases = memoizeOne(() => getTimeSeries(import('./results_us_ca
 export const getUsDeaths = memoizeOne(() => getTimeSeries(import('./results_us_deaths.json')));
 export const getGlobalCases = memoizeOne(() => getTimeSeries(import('./results_global_cases.json')));
 export const getGlobalDeaths = memoizeOne(() => getTimeSeries(import('./results_global_deaths.json')));
-export const getUsTests = memoizeOne(() => getTimeSeries(import('./results_us_tests.json')));
 
 export const getCasesTimeSeries = (dataset: DataSets) => {
   let csFunc;

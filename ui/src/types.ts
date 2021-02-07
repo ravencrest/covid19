@@ -1,12 +1,11 @@
 export type DataSets = 'global' | 'us';
 
-export type Normalization = 'gdp' | 'pop' | 'gdp+pop' | 'none' | 'tests' | 'tests+gdp' | 'tests+pop' | 'tests+gdp+pop';
+export type Normalization = 'gdp' | 'pop' | 'gdp+pop' | 'none';
 
 export type TableRow = {
   region: string;
   code: string;
   cases?: number;
-  tests?: number;
   casesNormalized?: number;
   change?: number;
   weeklyChange?: number;

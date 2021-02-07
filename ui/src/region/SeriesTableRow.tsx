@@ -26,7 +26,7 @@ type Props = {
   rowNumber: number;
   embedded?: boolean;
   dataset: DataSets;
-  normalized: Normalization[];
+  normalized: Normalization;
   columnIndex: ReadonlyMap<string, Column<TableRow>>;
 };
 

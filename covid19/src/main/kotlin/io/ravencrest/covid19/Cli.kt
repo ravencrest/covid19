@@ -23,7 +23,6 @@ import io.ravencrest.covid19.parse.parseCsseCasesUS
 import io.ravencrest.covid19.parse.parseCsseDeathsGlobal
 import io.ravencrest.covid19.parse.parseCsseDeathsUS
 import io.ravencrest.covid19.parse.parseCsseRecoveredGlobal
-import io.ravencrest.covid19.parse.parseCtpUS
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.time.LocalDate
@@ -99,8 +98,7 @@ fun parseTableRows(
   rawCases: TimeSeriesIndex,
   changeCases: TimeSeriesIndex,
   deathsIndex: TimeSeriesIndex,
-  recoveredIndex: TimeSeriesIndex,
-  tests: TimeSeriesIndex?
+  recoveredIndex: TimeSeriesIndex
 ): Results {
   val sevenDaysAgo = LocalDate.now().minusWeeks(1)
   val fourteenDaysAgo = LocalDate.now().minusWeeks(2)
@@ -127,7 +125,6 @@ fun parseTableRows(
     val gdp = gdpIndex[region]
     val deaths = deathsIndex[region]?.last()?.value ?: 0
     val recovered = recoveredIndex[region]?.last()?.value
-    val tests = tests?.get(region)?.last()?.value
 
     TableRow(
       region = region,
@@ -139,8 +136,7 @@ fun parseTableRows(
       deaths = deaths,
       recovered = recovered,
       population = population,
-      gdp = gdp,
-      tests = tests
+      gdp = gdp
     )
   }.sortedWith(compareByDescending { v -> v.casesNormalized })
 
@@ -171,19 +167,14 @@ fun parseResults(
   gdp: Map<String, Double>,
   recovered: List<TimeSeries>,
   cases: List<TimeSeries>,
-  deaths: List<TimeSeries>,
-  tests: List<TimeSeries>?
+  deaths: List<TimeSeries>
 ) {
   val recoveredIndex = recovered.associateBy { it.region }
   val cases = cases.associateBy { it.region }
   val deaths = deaths.associateBy { it.region }
-  val tests = tests?.associateBy { it.region }
 
   val casesSeries = buildChangeSeries(cases)
   val deathsSeries = buildChangeSeries(deaths)
-  val testsSeries = tests?.let { t ->
-    buildChangeSeries(t)
-  }
 
   val globalResults = parseTableRows(
     codes,
@@ -192,14 +183,12 @@ fun parseResults(
     cases,
     casesSeries,
     deaths,
-    recoveredIndex,
-    tests
+    recoveredIndex
   )
 
   writeResults("results_$label", globalResults)
   writeResults("results_${label}_cases", casesSeries)
   writeResults("results_${label}_deaths", deathsSeries)
-  testsSeries?.let { writeResults("results_${label}_tests", testsSeries) }
 }
 
 fun main() {
@@ -216,8 +205,7 @@ fun main() {
     deaths = globalDeaths,
     recovered = recoveredIndex,
     population = globalPop,
-    gdp = globalGdp,
-    tests = null
+    gdp = globalGdp
   )
 
   val usPop = loadUsPopulations()
@@ -225,10 +213,6 @@ fun main() {
   val stateCodes = loadUsRegions()
   val usCases = parseCsseCasesUS(emptyMap())
   val usDeaths = parseCsseDeathsUS(emptyMap())
-  val usTests = parseCtpUS(stateCodes, startDate)
-
-  //val usTestsIndex = usTests.associateBy { it.region }.mapValues {  }
-
   parseResults(
     label = "us",
     cases = usCases,
@@ -236,7 +220,6 @@ fun main() {
     deaths = usDeaths,
     recovered = emptyList(),
     population = usPop,
-    gdp = usGdp,
-    tests = usTests
+    gdp = usGdp
   )
 }
