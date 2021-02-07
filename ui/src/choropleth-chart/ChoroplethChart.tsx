@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState } from 'react';
+import React from 'react';
 import { ChoroplethBoundFeature, ResponsiveChoropleth } from '@nivo/geo';
 import { TableRow } from '../types';
 import { CircularProgress } from '@material-ui/core';
@@ -11,13 +11,13 @@ type Props = {
 };
 
 export default ({ data, accessor, min, max }: Props) => {
-  const results = useMemo(() => {
+  const results = React.useMemo(() => {
     return data.map((row) => ({ id: row.code, value: accessor(row) }));
   }, [data, accessor]);
 
-  const [features, setFeatures] = useState<ChoroplethBoundFeature[]>([]);
+  const [features, setFeatures] = React.useState<ChoroplethBoundFeature[]>([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     import('../world_countries.json').then((f) => {
       setFeatures(f.features as any);
     });

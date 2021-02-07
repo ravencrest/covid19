@@ -1,11 +1,11 @@
-import { TdHTMLAttributes } from 'react';
+import React from 'react';
 import { useCellStyles } from '../region/SeriesTableRow';
 import { TableCell as MuiTableCell } from '@material-ui/core';
 import clsx from 'clsx';
 import stylesM from './Table.module.css';
 
 type Props = { responsive?: boolean } & Pick<
-  TdHTMLAttributes<HTMLTableDataCellElement>,
+  React.TdHTMLAttributes<HTMLTableDataCellElement>,
   'id' | 'children' | 'colSpan' | 'className'
 >;
 

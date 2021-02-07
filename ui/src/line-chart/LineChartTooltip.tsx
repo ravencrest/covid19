@@ -1,3 +1,4 @@
+import React from 'react';
 import { PointTooltipProps } from '@nivo/line';
 import { BasicTooltip } from '@nivo/tooltip';
 

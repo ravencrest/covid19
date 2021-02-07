@@ -1,4 +1,4 @@
-import { lazy, useState, useEffect, Suspense } from 'react';
+import React from 'react';
 import {
   CircularProgress,
   Divider,
@@ -15,10 +15,10 @@ import { NormalizeSwitch } from './NormalizeSwitch';
 import { getCasesTimeSeries, getUsTests } from '../data-mappers';
 import { parseISO, sub, isBefore, startOfDay } from 'date-fns';
 
-const LineChart = lazy(() => import('../line-chart/LineChart'));
-const InfoMenuBar = lazy(() => import('../info-menubar/InfoMenuBar'));
-const TablePane = lazy(() => import('../table/TablePane'));
-const ChoroplethChart = lazy(() => import('../choropleth-chart/ChoroplethChart'));
+const LineChart = React.lazy(() => import('../line-chart/LineChart'));
+const InfoMenuBar = React.lazy(() => import('../info-menubar/InfoMenuBar'));
+const TablePane = React.lazy(() => import('../table/TablePane'));
+const ChoroplethChart = React.lazy(() => import('../choropleth-chart/ChoroplethChart'));
 
 const getUsIndex = (it: TableRow) => it.region === 'United States';
 const getMdIndex = (it: TableRow) => it.region === 'Maryland';
@@ -216,10 +216,10 @@ export default function DatasetView({
     min = 21000;
     max = 1900000;
   }
-  const [series, setSeries] = useState<TimeSeries[] | undefined>(undefined);
-  const [tests, setTests] = useState<Record<string, TimeSeries> | undefined>(undefined);
+  const [series, setSeries] = React.useState<TimeSeries[] | undefined>(undefined);
+  const [tests, setTests] = React.useState<Record<string, TimeSeries> | undefined>(undefined);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const global = dataset === 'global';
 
     const populationLimit = global ? 1000000 : 6073116;
@@ -277,7 +277,7 @@ export default function DatasetView({
   const worldAccessor = getRowMapper(normalized, casesMapperConfig);
   return (
     <div style={{ width: 1048, maxWidth: '95vw', margin: 'auto' }}>
-      <Suspense fallback={<CircularProgress />}>
+      <React.Suspense fallback={<CircularProgress />}>
         <InfoMenuBar lastUpdated={lastUpdated} normalized={normalized} dataset={dataset}>
           <NormalizeSwitch label='GDP' norm='gdp' onChange={onNormalizedChange} currentValue={normalized} />
           <NormalizeSwitch label='Pop.' norm='pop' onChange={onNormalizedChange} currentValue={normalized} />
@@ -302,7 +302,7 @@ export default function DatasetView({
             <FormControlLabel value='global' control={<Radio />} label='Global' />
           </RadioGroup>
         </InfoMenuBar>
-        <Suspense fallback={<CircularProgress />}>
+        <React.Suspense fallback={<CircularProgress />}>
           {dataset === 'global' && rows && (
             <ExpansionPanel defaultExpanded>
               <ExpansionPanelSummary expandIcon={<ExpandMore />}>
@@ -328,11 +328,11 @@ export default function DatasetView({
               marginLeft={normalized.includes('gdp') && normalized.includes('pop') ? 100 : undefined}
             />
           </ExpansionPanel>
-        </Suspense>
+        </React.Suspense>
         <Divider />
         {rows && <TablePane data={rows} dataset={dataset} normalized={normalized} />}
         {!rows && <CircularProgress />}
-      </Suspense>
+      </React.Suspense>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 import clsx from 'clsx';
 import { Toolbar, lighten, makeStyles } from '@material-ui/core';
 import { GlobalFilter } from './GlobalFilter';

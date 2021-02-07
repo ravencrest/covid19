@@ -1,5 +1,6 @@
 import { Normalization } from '../types';
 import { FormControlLabel, Switch, Tooltip } from '@material-ui/core';
+import React from 'react';
 
 export const NormalizeSwitch = ({
   norm,

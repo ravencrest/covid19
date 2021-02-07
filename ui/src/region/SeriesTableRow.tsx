@@ -1,4 +1,4 @@
-import { useState, Suspense } from 'react';
+import React from 'react';
 import {
   CircularProgress,
   Collapse,
@@ -84,8 +84,8 @@ const getCellClasses = (styles: ReturnType<typeof useCellStyles>, cell: Cell<Tab
 
 export const SeriesTableRow = ({ row, embedded, dataset, normalized, columnIndex, rowNumber }: Props) => {
   const series = row.original;
-  const [expandedState, setExpandedState] = useState<ExpandState>(embedded ? 'OPEN' : 'CLOSED');
-  const [showLinkDialog, setShowLinkDialog] = useState<boolean>(false);
+  const [expandedState, setExpandedState] = React.useState<ExpandState>(embedded ? 'OPEN' : 'CLOSED');
+  const [showLinkDialog, setShowLinkDialog] = React.useState<boolean>(false);
   const expanded = expandedState === 'OPEN';
   const handleExpandClick = () => setExpandedState(expanded ? 'CLOSING' : 'OPEN');
   const classes = useCellStyles();
@@ -166,14 +166,14 @@ export const SeriesTableRow = ({ row, embedded, dataset, normalized, columnIndex
               }}
               style={{ width: '100%' }}
             >
-              <Suspense fallback={<CircularProgress />}>
+              <React.Suspense fallback={<CircularProgress />}>
                 <SeriesPanel
                   normalized={normalized}
                   dataset={dataset}
                   region={row.original.region}
                   row={row.original}
                 />
-              </Suspense>
+              </React.Suspense>
             </Collapse>
           </TableCell>
         </MuiTableRow>

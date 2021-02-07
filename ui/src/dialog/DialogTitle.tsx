@@ -1,4 +1,4 @@
-import { ReactChild } from 'react';
+import React from 'react';
 import { DialogTitle as MuiDialogTitle, IconButton, makeStyles, Typography } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
 
@@ -11,7 +11,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const DialogTitle = (props: { onClose: () => void; children: ReactChild }) => {
+export const DialogTitle = (props: { onClose: () => void; children: React.ReactChild }) => {
   const { children, onClose } = props;
   const styles = useStyles();
   return (

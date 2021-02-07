@@ -1,4 +1,4 @@
-import { createContext, useEffect, useCallback, memo } from 'react';
+import React from 'react';
 import { CircularProgress, Divider } from '@material-ui/core';
 import { DataSets, Normalization, Results, TableRow } from './types';
 import { useImmer } from 'use-immer';
@@ -10,7 +10,7 @@ import { getGlobalTableRows, getUsTableRows } from './data-mappers';
 
 const useResults = (dataset: DataSets, handler: (r: Results | undefined) => void) => {
   const global = dataset === 'global';
-  useEffect(() => {
+  React.useEffect(() => {
     const promise = global ? getGlobalTableRows : getUsTableRows;
     promise().then(handler);
   }, [global, handler]);
@@ -20,7 +20,7 @@ export const setLocation = (dataset: DataSets, normalized: Normalization[], regi
   window.location.hash = `/${dataset}${region ? `/${region}` : ''}?norm=${normalized.join('+')}`;
 };
 
-const Context = createContext({});
+const Context = React.createContext({});
 
 function GlobalContext() {
   const pathParams = useParams<{ dataset: string }>();
@@ -45,7 +45,7 @@ function GlobalContext() {
 
   useResults(
     dataset,
-    useCallback(
+    React.useCallback(
       (results) => {
         updateState((draft) => {
           draft.lastUpdated = results?.lastUpdated;
@@ -56,7 +56,7 @@ function GlobalContext() {
     )
   );
 
-  const onDatasetChange = useCallback(
+  const onDatasetChange = React.useCallback(
     (ds: DataSets, region?: string) => {
       setLocation(ds, normalized, region);
       updateState((draft) => {
@@ -65,7 +65,7 @@ function GlobalContext() {
     },
     [updateState, normalized]
   );
-  const onNormalizedChange = useCallback(
+  const onNormalizedChange = React.useCallback(
     (norm: Normalization[], region?: string) => {
       setLocation(dataset, norm, region);
       updateState((draft) => {
@@ -110,4 +110,4 @@ function GlobalContext() {
   );
 }
 
-export default memo(GlobalContext);
+export default React.memo(GlobalContext);

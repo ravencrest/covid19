@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import React from 'react';
 import { ResponsiveCalendar, CalendarDatum as Datum } from '@nivo/calendar';
 import { TimeSeries, Point } from '../types';
 import { setDayOfYear } from 'date-fns';
@@ -15,7 +15,7 @@ const pointToDatum = (point: Point): Datum => {
   };
 };
 
-const CalendarChart = memo(({ data, height = '15em' }: Props) => {
+const CalendarChart = React.memo(({ data, height = '15em' }: Props) => {
   const from = setDayOfYear(new Date(), 1);
   const points = data.points;
   const pointsLength = points && points.length;
