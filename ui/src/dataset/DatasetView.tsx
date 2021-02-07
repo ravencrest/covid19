@@ -281,7 +281,7 @@ export default function DatasetView({
         <InfoMenuBar lastUpdated={lastUpdated} normalized={normalized} dataset={dataset}>
           <NormalizeSwitch label='GDP' norm='gdp' onChange={onNormalizedChange} currentValue={normalized} />
           <NormalizeSwitch label='Pop.' norm='pop' onChange={onNormalizedChange} currentValue={normalized} />
-          {false && (
+          {
             <NormalizeSwitch
               label='Tests'
               norm='tests'
@@ -289,7 +289,7 @@ export default function DatasetView({
               currentValue={normalized}
               disabled={dataset !== 'us'}
             />
-          )}
+          }
           <RadioGroup
             row
             value={dataset}
